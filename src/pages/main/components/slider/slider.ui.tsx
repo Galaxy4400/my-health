@@ -33,7 +33,6 @@ export const Slider = () => {
 			swiper.autoplay.stop();
 
 			video.onended = () => {
-				video.pause();
 				swiper.slideNext();
 				swiper.autoplay.start();
 			};
@@ -56,7 +55,7 @@ export const Slider = () => {
 			{data?.map((item, i) => (
 				<SwiperSlide className={css['slide']} key={i}>
 					{item.url.trim().endsWith('.mp4') ? (
-						<video src={item.url} muted />
+						<video src={item.url} muted loop={false} />
 					) : (
 						<img src={item.url} alt="slide" />
 					)}

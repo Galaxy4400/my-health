@@ -7,15 +7,15 @@ import { path } from 'shared/lib/router';
 export const MainPage = () => {
 	const navigate = useNavigate();
 
-	// useEffect(() => {
-	// 	const clickHandler = () => {
-	// 		navigate(path.start());
-	// 	};
+	useEffect(() => {
+		const clickHandler = () => {
+			navigate(path.start());
+		};
 
-	// 	document.addEventListener('click', clickHandler);
+		document.addEventListener('click', clickHandler);
 
-	// 	return () => document.removeEventListener('click', clickHandler);
-	// }, [navigate]);
+		return () => document.removeEventListener('click', clickHandler);
+	}, [navigate]);
 
 	return (
 		<div className={css['main']}>
