@@ -1,0 +1,25 @@
+.main {
+	background: $color-second;
+	padding: rem(13) 0px;
+	display: grid;
+	align-content: center;
+	text-align: center;
+	height: rem(304);
+}
+
+.body {
+	display: grid;
+	gap: rem(20);
+	justify-items: center;
+}
+
+.title {
+	color: #fff;
+	font-size: 48px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.thumb {
+}

@@ -1,0 +1,18 @@
+.block {
+	width: rem(500);
+	display: grid;
+	gap: rem(20);
+}
+
+.title {
+	justify-self: center;
+}
+
+.form {
+	display: grid;
+	gap: rem(20);
+}
+
+.link {
+	justify-self: center;
+}

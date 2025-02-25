@@ -1,0 +1,22 @@
+.container {
+	display: grid;
+	gap: rem(30);
+}
+
+.title {
+
+}
+
+.actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: rem(20);
+}
+
+.reject {
+	background: $color-error;
+}
+
+.confirm {
+	background: $color-success;
+}

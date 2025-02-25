@@ -1,0 +1,35 @@
+.wraper {
+
+}
+
+.label {
+	color: #888;
+	font-weight: 400;
+	font-size: rem(14);
+	display: inline-block;
+	margin: 0px 0px rem(5) 0px;
+}
+
+.input {
+	display: block;
+	width: 100%;
+	font-size: rem(16);
+	line-height: prc(20, 16);
+	padding: rem(15) rem(12);
+	min-height: rem(100);
+	color: #000000;
+	background: #ffffff;
+	border: rem(1) solid #cccccc;
+	border-radius: rem(4);
+	transition: border 0.3s ease 0s;
+	resize: vertical;
+	&:focus {
+		border: rem(1) solid $color-focus;
+	}
+	&.error {
+		border: rem(1) solid $color-error;
+	}
+	&.success {
+		border: rem(1) solid $color-success;
+	}
+}

@@ -1,0 +1,21 @@
+.main {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: rem(15);
+	align-items: center;
+}
+
+.icon {
+	background: $color-primary;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	width: rem(80);
+	height: rem(80);
+}
+
+.text {
+	font-size: rem(24);
+}

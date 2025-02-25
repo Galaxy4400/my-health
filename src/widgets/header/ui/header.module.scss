@@ -1,0 +1,32 @@
+.header {
+	background: #fff;
+	padding: rem(30) 0px;
+	height: rem(216);
+}
+
+.container {
+	height: 100%;
+}
+
+.title {
+	display: grid;
+	text-align: center;
+	gap: rem(10);
+	p {
+		font-size: rem(24);
+	}
+}
+
+.body {
+	position: relative;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.logo {
+	position: absolute;
+	top: 0;
+	left: 0;
+}

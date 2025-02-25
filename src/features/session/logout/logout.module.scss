@@ -1,0 +1,17 @@
+.button {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.3s ease 0s;
+	@media (any-hover: hover) {
+		&:hover {
+			color: $color-primary;
+		}
+	}
+}
+
+
+.icon {
+	width: rem(32);
+	height: rem(32);
+}

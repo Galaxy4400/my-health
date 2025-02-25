@@ -1,0 +1,98 @@
+.typography {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 0px 0px rem(20) 0px;
+	}
+
+	a {
+		transition: all 0.3s ease 0s;
+		color: $color-link;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $color-primary-dark;
+			}
+		}
+	}
+
+	p {
+		margin: 0px 0px rem(20) 0px;
+	}
+
+	figure {
+		display: inline-block;
+		margin: 0px 0px rem(20) 0px;
+		img {
+			border-radius: rem(5);
+		}
+	}
+
+	ul {
+		padding: 0px 0px 0px rem(22);
+		margin: 0px 0px rem(10) 0px;
+		li {
+			position: relative;
+			line-height: 150%;
+			margin: 0px 0px rem(10) 0px;
+			& > ul,
+			& > ol {
+				padding-top: rem(10);
+			}
+			&::before {
+				content: "";
+				position: absolute;
+				top: em(9);
+				left: em(-18);
+				width: em(6);
+				height: em(6);
+				background: $color-primary-dark;
+				border-radius: 50%;
+			}
+		}
+	}
+
+	ol {
+		padding: 0px 0px 0px rem(22);
+		margin: 0px 0px rem(15) 0px;
+		li {
+			line-height: 150%;
+			margin: 0px 0px rem(10) 0px;
+			& > ul,
+			& > ol {
+				padding-top: rem(10);
+			}
+		}
+	}
+
+	table {
+		max-width: 100%;
+		border-collapse: collapse;
+		margin: 0px 0px rem(40) 0px;
+		@media (max-width: ($md)) {
+			margin: 0px 0px rem(20) 0px;
+		}
+		tr {
+			th {
+				font-size: rem(16);
+				font-weight: 400;
+				background: #111111;
+				padding: rem(5) rem(10);
+				border: 1px solid #000000;
+				color: #ffffff;
+			}
+			td {
+				background: #dddddd;
+				border: 1px solid #000000;
+				padding: rem(5) rem(10);
+			}
+		}
+	}
+
+	.table-wrapper {
+		width: 100%;
+		overflow-x: auto;
+	}
+}

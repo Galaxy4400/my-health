@@ -1,0 +1,29 @@
+.main {
+	display: grid;
+	justify-items: start;
+	gap: rem(20);
+	margin: 0px 0px rem(50) 0px;
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	font-size: rem(18);
+	transition: all 0.3s ease 0s;
+	font-weight: 500;
+	@media (any-hover: hover) {
+		&:hover {
+			color: $color-primary;
+			.icon {
+				stroke: $color-primary;
+			}
+		}
+	}
+}
+
+.icon {
+	width: rem(20);
+	height: rem(20);
+	stroke: #000;
+	transition: all 0.3s ease 0s;
+}

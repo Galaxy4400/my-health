@@ -1,0 +1,1 @@
+export type Price = `${string} ₽`;

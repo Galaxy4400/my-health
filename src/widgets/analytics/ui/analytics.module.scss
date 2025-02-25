@@ -1,0 +1,26 @@
+.main {
+	display: grid;
+	gap: rem(30);
+}
+
+.selectors {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: rem(20);
+}
+
+.head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: rem(20);
+	margin: 0px 0px rem(20) 0px;
+}
+
+.range-label {
+	text-transform: capitalize;
+}
+
+.loading {
+	height: rem(20);
+}

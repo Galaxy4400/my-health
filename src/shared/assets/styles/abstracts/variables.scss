@@ -1,0 +1,31 @@
+$color-error: #b81111;
+$color-warning: #ffc107;
+$color-success: #198754;
+$color-focus: #26b9ff;
+$color-primary-light: #fd531b;
+$color-primary: #fd531b;
+$color-primary-dark: #fd531b;
+$color-second-light: #4ac4d0;
+$color-second: #4ac4d0;
+$color-second-dark: #4ac4d0;
+$color-body-background: #ffffff;
+$color-font: #000000;
+$color-link: #000000;
+$color-link-hover: #271dd7;
+$color-titles: #000000;
+
+$containerWidth: 1080;
+$containerPadding: 50;
+$minWidth: 320;
+$maxWidth: 1920;
+$maxWidthContainer: $containerWidth + ($containerPadding * 2);
+
+$ms: $maxWidthContainer + 12;
+$xl: 1200;
+$lg: 992;
+$md: 768;
+$sm: 576;
+$xs: 576;
+
+$font-size-base: 20;
+$fontFamily: "Inter";

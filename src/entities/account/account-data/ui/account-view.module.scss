@@ -1,0 +1,36 @@
+.view {
+	position: relative;
+	max-width: rem(700);
+	display: grid;
+	gap: rem(20);
+
+	dl {
+		display: grid;
+		gap: rem(15);
+		div {
+			display: flex;
+			gap: rem(10);
+			dt {
+				font-weight: 700;
+			}
+		}
+	}
+}
+
+.actions {
+	position: absolute;
+	top: rem(20);
+	right: rem(20);
+	display: flex;
+	align-items: center;
+}
+
+.edit-link {
+	padding: rem(5);
+}
+
+.edit-icon {
+	color: $color-success;
+	height: rem(24);
+	width: rem(24);
+}

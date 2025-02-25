@@ -1,0 +1,20 @@
+.block {
+	display: grid;
+	gap: rem(30);
+}
+
+.operations {
+	position: relative;
+	max-width: rem(700);
+	display: grid;
+	gap: rem(20);
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+
+	a {
+		color: $color-success;
+	}
+}

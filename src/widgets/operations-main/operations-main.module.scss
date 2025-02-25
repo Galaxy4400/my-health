@@ -1,0 +1,17 @@
+.main {
+	display: grid;
+	gap: rem(30);
+}
+
+.title {
+
+}
+
+.list {
+	display: grid;
+	gap: rem(10);
+}
+
+.more {
+	color: $color-success;
+}

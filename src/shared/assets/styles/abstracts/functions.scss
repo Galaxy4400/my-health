@@ -1,0 +1,25 @@
+@use 'sass:math';
+
+//Пиксели(px) в проценты(%)
+@function prc($pxCurrent: 0, $pxDefault: 0) {
+	$result: math.div($pxCurrent, $pxDefault) * 100%;
+	@return $result;
+}
+
+//Пиксели(px) в пиксели(px)
+@function px($px: 0) {
+	$result: $px + px;
+	@return $result;
+}
+
+//Пиксели(px) в (rem)
+@function rem($px: 0) {
+	$result: math.div($px, 16) + rem;
+	@return $result;
+}
+
+//Пиксели(px) в (em)
+@function em($pxCurrent: 0, $pxDefault: 16) {
+	$result: math.div($pxCurrent, $pxDefault) + em;
+	@return $result;
+}

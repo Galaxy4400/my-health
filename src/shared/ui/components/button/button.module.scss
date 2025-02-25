@@ -1,0 +1,52 @@
+.button {
+	position: relative;
+	cursor: pointer;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: rem(16);
+	line-height: 1;
+	padding: rem(8) rem(22);
+	height: rem(40);
+	background: $color-primary;
+	color: #ffffff;
+	border-radius: rem(4);
+	transition: opacity 0.3s;
+	
+	@media (any-hover: hover) {
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 1px $color-focus;
+	}
+
+	&:disabled {
+		background: #ccc;
+		cursor: default;
+	}
+
+	&::after {
+		content: url('../../../assets/img/loading.gif');
+		position: absolute;
+		inset: 0;
+		background: #fff;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.2s;
+	}
+
+	&:global(.loading) {
+		box-shadow: none;
+		&::after {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}

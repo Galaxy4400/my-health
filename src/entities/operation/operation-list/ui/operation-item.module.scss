@@ -1,0 +1,96 @@
+.operation {
+	position: relative;
+	border-radius: rem(5);
+	transition: all 0.3s ease 0s;
+	@media (any-hover: hover) {
+		&:hover {
+			background: #f3f4ff;
+			color: #000;
+		}
+	}
+}
+
+.main {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+	gap: rem(30);
+	padding: rem(10);
+	color: #000;
+}
+
+.radiobuttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: rem(30);
+}
+
+.figure {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.icon {
+	width: rem(40);
+	height: rem(40);
+	color: $color-primary;
+}
+
+.abort-icon {
+	width: rem(40);
+	height: rem(40);
+	color: $color-error;
+}
+
+.info {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: center;
+	gap: rem(3) rem(10);
+	padding: 0px rem(50) 0px 0px;
+	color: #000;
+}
+
+.amount {
+	font-size: rem(24);
+	font-weight: 500;
+	transition: all 0.3s ease 0s;
+	color: #000;
+
+	&:global(.income) {
+		color: $color-success;
+		&::before {
+			content: '+';
+		}
+	}
+
+	&:global(.expense) {
+		color: $color-error;
+		&::before {
+			content: '-';
+		}
+	}
+}
+
+.datetime {
+	font-size: rem(14);
+	color: #888;
+}
+
+.delete {
+	position: absolute;
+	top: 50%;
+	translate: 0 -50%;
+	right: rem(15);
+	z-index: 5;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease 0s;
+	@media (any-hover: hover) {
+		.operation:hover & {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
