@@ -12,9 +12,9 @@ export const Modal = () => {
 	return (
 		<div className={`${css['modal']} ${isOpen ? 'active' : ''}`}>
 			<div className={css['container']} ref={clickAwayRef}>
-				<button className={css['close']} onClick={closeModal}>
+				{/* <button className={css['close']} onClick={closeModal}>
 					<Icon className={css['icon']} name={Icons.cross} />
-				</button>
+				</button> */}
 				{content}
 			</div>
 		</div>

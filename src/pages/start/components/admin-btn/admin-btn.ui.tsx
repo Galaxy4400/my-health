@@ -4,12 +4,20 @@ import { useModal } from 'app/providers/modal';
 import { IconItem } from 'shared/ui/components';
 import { LoginForm } from 'features/session';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'app/providers/auth';
+import { path } from 'shared/lib/router';
 
 export const AdminBtn = () => {
+	const { authUser } = useAuth();
 	const { openModal, closeModal } = useModal();
 	const navigate = useNavigate();
 
 	const clickHandler = () => {
+		if (authUser) {
+			navigate(path.admin());
+			return;
+		}
+
 		openModal(<LoginForm navigate={navigate} onSuccess={closeModal} />);
 	};
 

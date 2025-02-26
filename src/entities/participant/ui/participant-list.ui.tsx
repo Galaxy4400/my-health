@@ -1,7 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import css from './participant-list.module.scss';
 import { Button, Typography } from 'shared/ui/components';
+import { path } from 'shared/lib/router';
 
 export const ParticipantList = () => {
+	const navigate = useNavigate();
+
 	return (
 		<Typography>
 			<table className={css['table']}>
@@ -20,10 +24,12 @@ export const ParticipantList = () => {
 						<td>Константинов Константин Константинович</td>
 						<td>52</td>
 						<td>
-							<Button size="small">+ Новое</Button>
+							<Button size="small" onClick={() => navigate(path.registration())}>
+								+ Новое
+							</Button>
 						</td>
 						<td>
-							<Button size="small" color="second">
+							<Button size="small" color="second" onClick={() => navigate(path.registration())}>
 								Отчёт »
 							</Button>
 						</td>
@@ -33,10 +39,12 @@ export const ParticipantList = () => {
 						<td>Константинов Константин Константинович</td>
 						<td>52</td>
 						<td>
-							<Button size="small">+ Новое</Button>
+							<Button size="small" onClick={() => navigate(path.registration())}>
+								+ Новое
+							</Button>
 						</td>
 						<td>
-							<Button size="small" color="second">
+							<Button size="small" color="second" onClick={() => navigate(path.registration())}>
 								Отчёт »
 							</Button>
 						</td>
@@ -46,10 +54,12 @@ export const ParticipantList = () => {
 						<td>Константинов Константин Константинович</td>
 						<td>52</td>
 						<td>
-							<Button size="small">+ Новое</Button>
+							<Button size="small" onClick={() => navigate(path.registration())}>
+								+ Новое
+							</Button>
 						</td>
 						<td>
-							<Button size="small" color="second">
+							<Button size="small" color="second" onClick={() => navigate(path.registration())}>
 								Отчёт »
 							</Button>
 						</td>
@@ -59,10 +69,12 @@ export const ParticipantList = () => {
 						<td>Константинов Константин Константинович</td>
 						<td>52</td>
 						<td>
-							<Button size="small">+ Новое</Button>
+							<Button size="small" onClick={() => navigate(path.registration())}>
+								+ Новое
+							</Button>
 						</td>
 						<td>
-							<Button size="small" color="second">
+							<Button size="small" color="second" onClick={() => navigate(path.registration())}>
 								Отчёт »
 							</Button>
 						</td>
@@ -72,10 +84,12 @@ export const ParticipantList = () => {
 						<td>Константинов Константин Константинович</td>
 						<td>52</td>
 						<td>
-							<Button size="small">+ Новое</Button>
+							<Button size="small" onClick={() => navigate(path.registration())}>
+								+ Новое
+							</Button>
 						</td>
 						<td>
-							<Button size="small" color="second">
+							<Button size="small" color="second" onClick={() => navigate(path.registration())}>
 								Отчёт »
 							</Button>
 						</td>
@@ -85,10 +99,12 @@ export const ParticipantList = () => {
 						<td>Константинов Константин Константинович</td>
 						<td>52</td>
 						<td>
-							<Button size="small">+ Новое</Button>
+							<Button size="small" onClick={() => navigate(path.registration())}>
+								+ Новое
+							</Button>
 						</td>
 						<td>
-							<Button size="small" color="second">
+							<Button size="small" color="second" onClick={() => navigate(path.registration())}>
 								Отчёт »
 							</Button>
 						</td>
@@ -98,10 +114,12 @@ export const ParticipantList = () => {
 						<td>Константинов Константин Константинович</td>
 						<td>52</td>
 						<td>
-							<Button size="small">+ Новое</Button>
+							<Button size="small" onClick={() => navigate(path.registration())}>
+								+ Новое
+							</Button>
 						</td>
 						<td>
-							<Button size="small" color="second">
+							<Button size="small" color="second" onClick={() => navigate(path.registration())}>
 								Отчёт »
 							</Button>
 						</td>
@@ -111,10 +129,12 @@ export const ParticipantList = () => {
 						<td>Константинов Константин Константинович</td>
 						<td>52</td>
 						<td>
-							<Button size="small">+ Новое</Button>
+							<Button size="small" onClick={() => navigate(path.registration())}>
+								+ Новое
+							</Button>
 						</td>
 						<td>
-							<Button size="small" color="second">
+							<Button size="small" color="second" onClick={() => navigate(path.registration())}>
 								Отчёт »
 							</Button>
 						</td>
@@ -124,10 +144,12 @@ export const ParticipantList = () => {
 						<td>Константинов Константин Константинович</td>
 						<td>52</td>
 						<td>
-							<Button size="small">+ Новое</Button>
+							<Button size="small" onClick={() => navigate(path.registration())}>
+								+ Новое
+							</Button>
 						</td>
 						<td>
-							<Button size="small" color="second">
+							<Button size="small" color="second" onClick={() => navigate(path.registration())}>
 								Отчёт »
 							</Button>
 						</td>
@@ -137,10 +159,12 @@ export const ParticipantList = () => {
 						<td>Константинов Константин Константинович</td>
 						<td>52</td>
 						<td>
-							<Button size="small">+ Новое</Button>
+							<Button size="small" onClick={() => navigate(path.registration())}>
+								+ Новое
+							</Button>
 						</td>
 						<td>
-							<Button size="small" color="second">
+							<Button size="small" color="second" onClick={() => navigate(path.registration())}>
 								Отчёт »
 							</Button>
 						</td>

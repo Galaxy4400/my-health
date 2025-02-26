@@ -4,9 +4,9 @@ import { MainLayout } from '../layouts';
 import { ErrorPage } from 'pages/error';
 import { MainPage } from 'pages/main';
 import { StartPage } from 'pages/start';
-import { Step1Page } from 'pages/step1';
 import { AdminPage } from 'pages/admin';
 import { ProtectedRoute } from './router.hocs';
+import { RegistrationPage } from 'pages/registration';
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -31,8 +31,8 @@ export const routerConfig = createBrowserRouter([
 				element: <StartPage />,
 			},
 			{
-				path: path.step1(),
-				element: <Step1Page />,
+				path: path.registration(),
+				element: <RegistrationPage />,
 			},
 		],
 	},
