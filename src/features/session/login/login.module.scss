@@ -1,18 +1,23 @@
-.block {
-	width: rem(500);
+.main {
 	display: grid;
-	gap: rem(20);
-}
-
-.title {
-	justify-self: center;
+	justify-content: center;
 }
 
 .form {
-	display: grid;
-	gap: rem(20);
+	max-width: rem(434);
 }
 
-.link {
-	justify-self: center;
+.title {
+	margin: 0px 0px rem(40) 0px;
+}
+
+.inputs {
+	display: grid;
+	gap: rem(20);
+	margin: 0px 0px rem(40) 0px;
+}
+
+.login {
+	border: none !important;
+	border-bottom: rem(2) solid $color-second !important;
 }

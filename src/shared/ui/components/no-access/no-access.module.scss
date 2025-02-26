@@ -1,0 +1,23 @@
+.main {
+	display: grid;
+	justify-items: center;
+	gap: rem(40);
+}
+
+.title {
+	display: flex;
+	align-items: center;
+	gap: rem(30);
+	white-space: nowrap;
+}
+
+.icon {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border: rem(1) solid $color-primary;
+	border-radius: 50%;
+	width: rem(80);
+	height: rem(80);
+	color: $color-primary;
+}

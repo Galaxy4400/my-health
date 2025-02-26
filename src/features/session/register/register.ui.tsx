@@ -4,7 +4,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { registerFormRules } from './register.rules';
 import { useAuth } from 'app/providers/auth';
 import { Button, Form, Input } from 'shared/ui/form-components';
-import { Block } from 'shared/ui/components';
 import { Link } from 'react-router-dom';
 import { path } from 'shared/lib/router';
 import { useToast } from 'app/providers/toast';

@@ -5,6 +5,9 @@ export const path = {
 	home() {
 		return path.root;
 	},
+	admin() {
+		return path.root.concat('admin');
+	},
 	start() {
 		return path.root.concat('start');
 	},

@@ -2,12 +2,13 @@ import css from './admin-btn.module.scss';
 import { Icons } from 'shared/types';
 import { useModal } from 'app/providers/modal';
 import { IconItem } from 'shared/ui/components';
+import { LoginForm } from 'features/session';
 
 export const AdminBtn = () => {
-	const { openModal, closeModal } = useModal();
+	const { openModal } = useModal();
 
 	const clickHandler = () => {
-		openModal(<div>Форма</div>);
+		openModal(<LoginForm />);
 	};
 
 	return (

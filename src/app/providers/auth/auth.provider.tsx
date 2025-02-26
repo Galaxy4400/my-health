@@ -3,7 +3,6 @@ import { AuthContext } from './auth.context';
 import { signCheck, signIn, signOut, signUp, UserResponse, UserType } from 'shared/api/user';
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
-	const [isAuthInitialize, setIsAuthInitialize] = useState(false);
 	const [authUser, setAuthUser] = useState<UserType | null>(null);
 
 	const authorize = useCallback(async (login: string, password: string): Promise<UserResponse> => {
@@ -40,11 +39,9 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
 		if (!user) {
 			logout();
-			setIsAuthInitialize(true);
 			return;
 		}
 
-		setIsAuthInitialize(true);
 		setAuthUser(user);
 	}, [logout]);
 
@@ -62,7 +59,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 				authUser,
 			}}
 		>
-			{isAuthInitialize && children}
+			{children}
 		</AuthContext.Provider>
 	);
 };

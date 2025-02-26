@@ -5,6 +5,7 @@ import { ErrorPage } from 'pages/error';
 import { MainPage } from 'pages/main';
 import { StartPage } from 'pages/start';
 import { Step1Page } from 'pages/step1';
+import { AdminPage } from 'pages/admin';
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -19,6 +20,10 @@ export const routerConfig = createBrowserRouter([
 			{
 				index: true,
 				element: <MainPage />,
+			},
+			{
+				path: path.admin(),
+				element: <AdminPage />,
 			},
 			{
 				path: path.start(),

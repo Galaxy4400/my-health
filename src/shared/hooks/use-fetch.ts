@@ -14,7 +14,7 @@ export const useFetch = <T>(url: string | 'mock', mockData: T) => {
 					setTimeout(() => {
 						setData(mockData);
 						setLoading(false);
-					}, 1000);
+					}, 500);
 					return;
 				}
 

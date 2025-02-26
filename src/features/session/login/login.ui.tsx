@@ -1,22 +1,19 @@
 import css from './login.module.scss';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { loginFormRules } from './login.rules';
 import { useAuth } from 'app/providers/auth';
-import { Form, Input } from 'shared/ui/form-components';
-import { Block } from 'shared/ui/components';
-import { useFrom } from 'shared/lib/location';
-import { path } from 'shared/lib/router';
+import { Form, Input, Password } from 'shared/ui/form-components';
 import { Button } from 'shared/ui/form-components';
-import { useToast } from 'app/providers/toast';
 import { RequestData } from 'shared/api';
+import { useModal } from 'app/providers/modal';
+import { NoAccess } from 'shared/ui/components';
+import { path } from 'shared/lib/router';
 
-export const LoginForm = () => {
-	const navigate = useNavigate();
-	const from = useFrom();
-	const { showToast } = useToast();
+export const LoginForm = ({ navigate }: { navigate: NavigateFunction }) => {
 	const [isLoading, setIsLoading] = useState(false);
+	const { openModal, closeModal } = useModal();
 
 	const { authorize } = useAuth();
 
@@ -28,29 +25,26 @@ export const LoginForm = () => {
 		setIsLoading(false);
 
 		if (error) {
-			showToast({ message: error, type: 'error' });
+			openModal(<NoAccess onClick={closeModal} />);
 
 			return;
 		}
 
-		navigate(from?.pathname || path.home());
-
-		showToast({ message: 'Вы успешно вошли в систему', type: 'success' });
+		navigate(path.admin());
 	};
 
 	return (
-		<Block className={css['block']}>
-			<h1 className={css['title']}>Авторизация</h1>
+		<div className={css['main']}>
+			<h3 className={css['title']}>Доступ администратора</h3>
 			<Form className={css['form']} onSubmit={loginHandler} resolver={yupResolver(loginFormRules)}>
-				<Input type="text" name="login" label="Логин" />
-				<Input type="password" name="password" label="Пароль" />
+				<div className={css['inputs']}>
+					<Input className={css['login']} type="text" name="login" placeholder="Логин" />
+					<Password name="password" placeholder="Пароль" />
+				</div>
 				<Button type="submit" disabled={isLoading} loading={isLoading}>
-					Войти
+					Вход
 				</Button>
 			</Form>
-			<Link className={css['link']} to={path.register()}>
-				Регистрация
-			</Link>
-		</Block>
+		</div>
 	);
 };

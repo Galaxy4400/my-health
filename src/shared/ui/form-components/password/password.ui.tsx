@@ -1,13 +1,13 @@
-import css from './input.module.scss';
+import css from './password.module.scss';
 import { InputHTMLAttributes } from 'react';
 import { useFormContext } from 'react-hook-form';
 import cn from 'classnames';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface PasswordProps extends InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
 }
 
-export const Input = ({ name, label, type = 'text', className, ...rest }: InputProps) => {
+export const Password = ({ name, label, className, ...rest }: PasswordProps) => {
 	const {
 		register,
 		formState: { errors },
@@ -20,7 +20,7 @@ export const Input = ({ name, label, type = 'text', className, ...rest }: InputP
 	return (
 		<label className={css['wraper']}>
 			{label && <span className={css['label']}>{label}</span>}
-			<input className={cn(css['input'], className)} {...register(name)} type={type} {...rest} />
+			<input className={cn(css['input'], className)} {...register(name)} type="password" {...rest} />
 			{!!errors[name] && <p className={css['error']}>{String(errors[name]?.message)}</p>}
 		</label>
 	);
