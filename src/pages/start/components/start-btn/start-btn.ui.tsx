@@ -6,7 +6,7 @@ export const StartBtn = () => {
 	return (
 		<div className={css['wrapper']}>
 			<NavLink className={css['btn']} to={path.step1()}>
-				<span>Начать</span>
+				Начать
 			</NavLink>
 		</div>
 	);
