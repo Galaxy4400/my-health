@@ -5,6 +5,7 @@ import Doc from './svg/doc.svg?react';
 import Heart from './svg/heart.svg?react';
 import Lock from './svg/lock.svg?react';
 import Weight from './svg/weight.svg?react';
+import Cross from './svg/cross.svg?react';
 import { Icons } from 'shared/types';
 import { SVGProps } from 'react';
 
@@ -35,6 +36,9 @@ export const Icon = ({ name, className, width = 36, height = 36, ...rest }: Icon
 
 		case Icons.weight:
 			return <Weight className={className} width={width} height={height} {...rest} />;
+
+		case Icons.cross:
+			return <Cross className={className} width={width} height={height} {...rest} />;
 
 		default:
 			return null;
