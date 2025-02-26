@@ -1,0 +1,51 @@
+.steps {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: rem(33);
+	margin: 0 rem(-40);
+}
+
+.step {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	justify-items: center;
+	text-align: center;
+	gap: rem(30);
+	&:last-child {
+		.number::before {
+			display: none;
+		}
+	}
+}
+
+.number {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: rem(90);
+	height: rem(90);
+	border: rem(1) solid $color-second;
+	background: #fff;
+	color: #000;
+	font-size: rem(36);
+	border-radius: 50%;
+	&:global(.active) {
+		background: $color-second;
+		color: #fff;
+	}
+	&::before {
+		content: "";
+		position: absolute;
+		top: rem(45);
+		left: calc(100% + rem(15));
+		width: rem(85);
+		height: rem(1);
+		background: $color-second;
+	}
+}
+
+.label {
+	font-size: rem(20);
+}
