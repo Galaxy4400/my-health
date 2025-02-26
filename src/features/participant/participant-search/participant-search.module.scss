@@ -1,0 +1,57 @@
+.main {
+	padding: 0px rem(64);
+	display: flex;
+	align-items: center;
+	gap: rem(30);
+	margin: 0px 0px rem(80) 0px;
+}
+
+.label {
+}
+
+.body {
+	display: flex;
+	gap: rem(15);
+	flex: 1 1 auto;
+}
+
+.input-wrapper {
+	position: relative;
+	flex: 1 1 auto;
+}
+
+.input {
+	height: rem(44);
+	padding: rem(10) rem(15);
+	border-radius: rem(10);
+	border: rem(1) solid $color-second;
+	background: #fff;
+	width: 100%;
+	font-size: rem(20);
+}
+
+.clear {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	translate: 0 -50%;
+	height: rem(42);
+	width: rem(42);
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	color: $color-second;
+}
+
+.btn {
+	height: rem(44);
+	border-radius: rem(7);
+	background: $color-primary;
+	color: #fff;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	min-width: rem(150);
+	font-size: rem(20);
+	line-height: normal;
+}

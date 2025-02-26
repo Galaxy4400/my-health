@@ -1,5 +1,5 @@
-import { Icon } from 'shared/ui/icons';
 import css from './participant-search.module.scss';
+import { Icon } from 'shared/ui/icons';
 import { useState } from 'react';
 import { Icons } from 'shared/types';
 
