@@ -3,17 +3,24 @@ import { ButtonHTMLAttributes } from 'react';
 import { Button as ButtonComponent } from '../../components/button';
 import { useFormContext, UseFormReturn } from 'react-hook-form';
 import { RequestData } from 'shared/api';
+import cn from 'classnames';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	label?: string;
 	isReset?: boolean;
 	isTrigger?: boolean;
 	loading?: boolean;
+	size?: 'default' | 'small';
+	color?: 'primary' | 'second' | 'white';
+	width?: 'auto' | 'big';
 }
 
 export const Button = ({
 	className = '',
 	type = 'button',
+	size = 'default',
+	color = 'primary',
+	width = 'auto',
 	children,
 	label,
 	isReset = false,
@@ -32,7 +39,16 @@ export const Button = ({
 	};
 
 	return (
-		<ButtonComponent className={className} type={type} loading={loading} onClick={clickHandler} {...rest}>
+		<ButtonComponent
+			className={className}
+			type={type}
+			loading={loading}
+			onClick={clickHandler}
+			size={size}
+			color={color}
+			width={width}
+			{...rest}
+		>
 			{label || children}
 		</ButtonComponent>
 	);

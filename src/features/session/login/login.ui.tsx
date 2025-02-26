@@ -48,7 +48,7 @@ export const LoginForm = ({ navigate, onSuccess }: LoginFormProps) => {
 					<Input className={css['login']} type="text" name="login" placeholder="Логин" />
 					<Password name="password" placeholder="Пароль" />
 				</div>
-				<Button type="submit" disabled={isLoading} loading={isLoading}>
+				<Button type="submit" disabled={isLoading} loading={isLoading} width="big">
 					Вход
 				</Button>
 			</Form>

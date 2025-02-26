@@ -12,7 +12,9 @@ export const NoAccess = ({ onClick }: { onClick: () => void }) => {
 				</span>
 				Доступ запрещен
 			</h3>
-			<Button onClick={onClick}>ОК</Button>
+			<Button onClick={onClick} width="big">
+				ОК
+			</Button>
 		</div>
 	);
 };

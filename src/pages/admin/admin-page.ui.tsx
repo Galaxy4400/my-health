@@ -12,7 +12,9 @@ export const AdminPage = () => {
 			<Container>
 				<div className={css['body']}>
 					<PageHead>
-						<Button onClick={logout}>Выйти</Button>
+						<Button onClick={logout} width="big">
+							Выйти
+						</Button>
 					</PageHead>
 					<h2 className={css['title']}>Исследования</h2>
 					<ParticipantFilter />

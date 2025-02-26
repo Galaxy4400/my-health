@@ -7,9 +7,8 @@
 	text-align: center;
 	font-size: rem(24);
 	line-height: 1;
-	padding: rem(20) rem(5);
+	padding: rem(5) rem(30);
 	height: rem(59);
-	min-width: rem(300);
 	background: $color-primary;
 	color: #ffffff;
 	border-radius: rem(10);
@@ -25,8 +24,18 @@
 		border-radius: rem(6);
 	}
 
+	&:global(.big) {
+		min-width: rem(300);
+	}
+
 	&:global(.second) {
 		background: $color-second;
+	}
+
+	&:global(.white) {
+		background: #fff;
+		border: rem(1) solid $color-second;
+		color: #000;
 	}
 
 	@media (any-hover: hover) {

@@ -6,7 +6,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	label?: string;
 	loading?: boolean;
 	size?: 'default' | 'small';
-	color?: 'primary' | 'second';
+	color?: 'primary' | 'second' | 'white';
+	width?: 'auto' | 'big';
 }
 
 export const Button = ({
@@ -14,6 +15,7 @@ export const Button = ({
 	type = 'button',
 	size = 'default',
 	color = 'primary',
+	width = 'auto',
 	children,
 	label,
 	loading,
@@ -21,7 +23,7 @@ export const Button = ({
 }: ButtonProps) => {
 	return (
 		<button
-			className={cn(className, css['button'], loading ? 'loading' : '', size, color)}
+			className={cn(className, css['button'], loading ? 'loading' : '', size, color, width)}
 			type={type}
 			{...rest}
 		>
