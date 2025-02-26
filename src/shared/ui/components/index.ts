@@ -9,3 +9,4 @@ export * from './modal';
 export * from './toast';
 export * from './icon-item';
 export * from './no-access';
+export * from './page-head';

@@ -6,6 +6,7 @@ import { MainPage } from 'pages/main';
 import { StartPage } from 'pages/start';
 import { Step1Page } from 'pages/step1';
 import { AdminPage } from 'pages/admin';
+import { ProtectedRoute } from './router.hocs';
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -23,7 +24,7 @@ export const routerConfig = createBrowserRouter([
 			},
 			{
 				path: path.admin(),
-				element: <AdminPage />,
+				element: <ProtectedRoute element={<AdminPage />} />,
 			},
 			{
 				path: path.start(),

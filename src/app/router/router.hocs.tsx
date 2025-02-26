@@ -8,11 +8,5 @@ export const ProtectedRoute = ({ element }: PropsWithElement) => {
 
 	const { authUser } = useAuth();
 
-	return authUser ? element : <Navigate to={path.login()} replace state={{ from: location }} />;
-};
-
-export const AuthenticationRoute = ({ element }: PropsWithElement) => {
-	const { authUser } = useAuth();
-
-	return authUser ? <Navigate to={path.home()} replace /> : element;
+	return authUser ? element : <Navigate to={path.start()} replace state={{ from: location }} />;
 };

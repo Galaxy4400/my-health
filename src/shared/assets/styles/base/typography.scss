@@ -39,10 +39,10 @@ h3 {
 .h4,
 h4 a,
 h4 {
-	font-weight: 700;
-	font-size: rem(21);
-	line-height: prc(24, 21);
 	color: $color-titles;
+	font-size: rem(24);
+	font-weight: 400;
+	line-height: normal;
 }
 .h5,
 h5 a,

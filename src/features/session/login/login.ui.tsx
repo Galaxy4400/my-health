@@ -11,7 +11,12 @@ import { useModal } from 'app/providers/modal';
 import { NoAccess } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
 
-export const LoginForm = ({ navigate }: { navigate: NavigateFunction }) => {
+interface LoginFormProps {
+	navigate: NavigateFunction;
+	onSuccess: () => void;
+}
+
+export const LoginForm = ({ navigate, onSuccess }: LoginFormProps) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { openModal, closeModal } = useModal();
 
@@ -29,6 +34,8 @@ export const LoginForm = ({ navigate }: { navigate: NavigateFunction }) => {
 
 			return;
 		}
+
+		onSuccess();
 
 		navigate(path.admin());
 	};

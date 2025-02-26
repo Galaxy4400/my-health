@@ -1,12 +1,24 @@
 import css from './admin-page.module.scss';
-import { Container } from 'shared/ui/components';
+import { useAuth } from 'app/providers/auth';
+import { ParticipantList } from 'entities/participant';
+import { ParticipantFilter, ParticipantPagination, ParticipantSearch } from 'features/participant';
+import { Button, Container, PageHead } from 'shared/ui/components';
 
 export const AdminPage = () => {
+	const { logout } = useAuth();
+
 	return (
 		<div className={css['main']}>
 			<Container>
 				<div className={css['body']}>
-					<h3 className={css['title']}>admin</h3>
+					<PageHead>
+						<Button onClick={logout}>Выйти</Button>
+					</PageHead>
+					<h2 className={css['title']}>Исследования</h2>
+					<ParticipantFilter />
+					<ParticipantSearch />
+					<ParticipantList />
+					<ParticipantPagination />
 				</div>
 			</Container>
 		</div>

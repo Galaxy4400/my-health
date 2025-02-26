@@ -1,0 +1,14 @@
+.table {
+	margin: 0px 0px rem(80) 0px;
+	th {
+		white-space: nowrap;
+	}
+	td {
+		text-align: center;
+		vertical-align: middle;
+		&:nth-child(2) {
+			text-align: left;
+			padding: rem(15) rem(30);
+		}
+	}
+}

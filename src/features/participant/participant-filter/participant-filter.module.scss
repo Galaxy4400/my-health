@@ -1,0 +1,35 @@
+.main {
+	display: flex;
+	align-items: center;
+	padding: 0px rem(64);
+	gap: rem(30);
+}
+
+.label {
+}
+
+.body {
+	flex: 1 1 auto;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: rem(15);
+}
+
+.btn {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	padding: rem(5) rem(10);
+	background: #fff;
+	border-radius: rem(7);
+	border: rem(1) solid $color-second;
+	transition: all 0.3s ease 0s;
+	font-size: rem(20);
+	height: rem(44);
+	&:global(.active) {
+		background: $color-second;
+		color: #fff;
+	}
+}
