@@ -5,7 +5,7 @@ import logo from 'shared/assets/img/logo.svg';
 export const Header = () => {
 	return (
 		<header className={css['header']}>
-			<Container className={css['container']}>
+			<Container className={css['container']} width={1080}>
 				<div className={css['body']}>
 					<div className={css['logo']}>
 						<img src={logo} alt="logo" />

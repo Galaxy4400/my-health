@@ -6,41 +6,37 @@ import { Banner } from 'shared/ui/components/banner';
 
 export const StartPage = () => {
 	return (
-		<div className={css['main']}>
-			<Container>
-				<div className={css['body']}>
-					<h3 className={css['title']}>
-						Пройдите экспресс-диагностику
-						<br />
-						вашего организма
-						<br />
-						за 5 минут
-					</h3>
-					<div className={css['grid']}>
-						<IconItem icon={Icons.body} width={40} height={48}>
-							Состав тела
-						</IconItem>
-						<IconItem icon={Icons.weight} width={40} height={40}>
-							Индекс массы тела
-						</IconItem>
-						<IconItem icon={Icons.alarm} width={40} height={40}>
-							Факторы риска
-						</IconItem>
-						<IconItem icon={Icons.heart} width={36} height={44}>
-							Здоровье сердца
-						</IconItem>
-						<IconItem icon={Icons.back} width={40} height={44}>
-							Обмен веществ
-						</IconItem>
-						<IconItem icon={Icons.doc} width={34} height={42}>
-							Рекомендации
-						</IconItem>
-					</div>
-					<StartBtn />
-					<AdminBtn />
-					<Banner url="https://msch9fmba.ru/" />
-				</div>
-			</Container>
-		</div>
+		<Container>
+			<h3 className={css['title']}>
+				Пройдите экспресс-диагностику
+				<br />
+				вашего организма
+				<br />
+				за 5 минут
+			</h3>
+			<div className={css['grid']}>
+				<IconItem icon={Icons.body} width={40} height={48}>
+					Состав тела
+				</IconItem>
+				<IconItem icon={Icons.weight} width={40} height={40}>
+					Индекс массы тела
+				</IconItem>
+				<IconItem icon={Icons.alarm} width={40} height={40}>
+					Факторы риска
+				</IconItem>
+				<IconItem icon={Icons.heart} width={36} height={44}>
+					Здоровье сердца
+				</IconItem>
+				<IconItem icon={Icons.back} width={40} height={44}>
+					Обмен веществ
+				</IconItem>
+				<IconItem icon={Icons.doc} width={34} height={42}>
+					Рекомендации
+				</IconItem>
+			</div>
+			<StartBtn />
+			<AdminBtn />
+			<Banner url="https://msch9fmba.ru/" />
+		</Container>
 	);
 };

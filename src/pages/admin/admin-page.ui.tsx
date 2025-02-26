@@ -8,21 +8,17 @@ export const AdminPage = () => {
 	const { logout } = useAuth();
 
 	return (
-		<div className={css['main']}>
-			<Container>
-				<div className={css['body']}>
-					<PageHead>
-						<Button onClick={logout} width="big">
-							Выйти
-						</Button>
-					</PageHead>
-					<h2 className={css['title']}>Исследования</h2>
-					<ParticipantFilter />
-					<ParticipantSearch />
-					<ParticipantList />
-					<ParticipantPagination />
-				</div>
-			</Container>
-		</div>
+		<Container>
+			<PageHead>
+				<Button onClick={logout} width="big">
+					Выйти
+				</Button>
+			</PageHead>
+			<h2 className={css['title']}>Исследования</h2>
+			<ParticipantFilter />
+			<ParticipantSearch />
+			<ParticipantList />
+			<ParticipantPagination />
+		</Container>
 	);
 };

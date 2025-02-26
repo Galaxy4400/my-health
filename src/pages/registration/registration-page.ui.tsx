@@ -1,12 +1,17 @@
 import css from './registration-page.module.scss';
-import { Container } from 'shared/ui/components';
+import { useNavigate } from 'react-router-dom';
+import { Button, Container, PageHead } from 'shared/ui/components';
+import { path } from 'shared/lib/router';
 
 export const RegistrationPage = () => {
+	const navigate = useNavigate();
 	return (
-		<div className={css['main']}>
-			<Container>
-				<div className={css['body']}>Step 1</div>
-			</Container>
-		</div>
+		<Container>
+			<PageHead>
+				<Button onClick={() => navigate(path.start())} width="big">
+					В начало
+				</Button>
+			</PageHead>
+		</Container>
 	);
 };
