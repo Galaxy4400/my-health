@@ -2,7 +2,7 @@ import css from './admin-page.module.scss';
 import { useAuth } from 'app/providers/auth';
 import { ParticipantList } from 'entities/participant';
 import { ParticipantFilter, ParticipantPagination, ParticipantSearch } from 'features/participant';
-import { Button, Container, PageHead } from 'shared/ui/components';
+import { Button, Container, PageHead, TitleBlock } from 'shared/ui/components';
 
 export const AdminPage = () => {
 	const { logout } = useAuth();
@@ -14,7 +14,7 @@ export const AdminPage = () => {
 					Выйти
 				</Button>
 			</PageHead>
-			<h2 className={css['title']}>Исследования</h2>
+			<TitleBlock className={css['title']} title="Исследования" />
 			<ParticipantFilter />
 			<ParticipantSearch />
 			<ParticipantList />

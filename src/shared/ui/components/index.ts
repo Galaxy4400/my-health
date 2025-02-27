@@ -11,3 +11,4 @@ export * from './icon-item';
 export * from './no-access';
 export * from './page-head';
 export * from './steps';
+export * from './title-block';

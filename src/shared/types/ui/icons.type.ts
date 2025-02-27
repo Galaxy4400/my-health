@@ -9,4 +9,5 @@ export enum Icons {
 	lock = 'lock',
 	weight = 'weight',
 	cross = 'cross',
+	eye = 'eye',
 }

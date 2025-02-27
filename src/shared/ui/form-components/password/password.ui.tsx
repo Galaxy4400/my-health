@@ -1,13 +1,17 @@
 import css from './password.module.scss';
-import { InputHTMLAttributes } from 'react';
-import { useFormContext } from 'react-hook-form';
 import cn from 'classnames';
+import { InputHTMLAttributes, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
+import { Icon } from 'shared/ui/icons';
+import { Icons } from 'shared/types';
 
 interface PasswordProps extends InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
 }
 
 export const Password = ({ name, label, className, ...rest }: PasswordProps) => {
+	const [visible, setVisible] = useState(false);
+
 	const {
 		register,
 		formState: { errors },
@@ -20,7 +24,17 @@ export const Password = ({ name, label, className, ...rest }: PasswordProps) => 
 	return (
 		<label className={css['wraper']}>
 			{label && <span className={css['label']}>{label}</span>}
-			<input className={cn(css['input'], className)} {...register(name)} type="password" {...rest} />
+			<div className={css['input-wrapper']}>
+				<input
+					className={cn(css['input'], className)}
+					{...register(name)}
+					type={visible ? 'text' : 'password'}
+					{...rest}
+				/>
+				<div className={css['eye']} onClick={() => setVisible((prev) => !prev)}>
+					<Icon name={Icons.eye} width={30} height={21} />
+				</div>
+			</div>
 			{!!errors[name] && <p className={css['error']}>{String(errors[name]?.message)}</p>}
 		</label>
 	);
