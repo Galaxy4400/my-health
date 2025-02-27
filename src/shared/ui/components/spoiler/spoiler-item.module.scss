@@ -1,0 +1,45 @@
+.main {
+	background: #fff;
+	border: rem(1) solid $color-second;
+}
+
+.button {
+	position: relative;
+	padding: rem(30) rem(30) rem(30) rem(65);
+	font-size: 20px;
+	width: 100%;
+	text-align: left;
+	&:global(.active) {
+		&:after {
+			display: inline-block;
+		}
+	}
+	&::before {
+		content: "";
+		position: absolute;
+		top: rem(30);
+		left: rem(30);
+		width: rem(25);
+		height: rem(25);
+		border: rem(1) solid $color-second;
+		border-radius: 50%;
+	}
+	&::after {
+		position: absolute;
+		content: "";
+		top: rem(37);
+		left: rem(37);
+		width: rem(10);
+		height: rem(10);
+		border-radius: 50%;
+		background: $color-second;
+		display: none;
+	}
+}
+
+.content {
+	display: none;
+	&:global(.active) {
+		display: block;
+	}
+}
