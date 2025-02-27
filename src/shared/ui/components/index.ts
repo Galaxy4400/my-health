@@ -13,3 +13,4 @@ export * from './page-head';
 export * from './steps';
 export * from './title-block';
 export * from './spoiler';
+export * from './tabs';

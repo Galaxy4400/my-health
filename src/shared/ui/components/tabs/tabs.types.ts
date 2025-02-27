@@ -13,7 +13,6 @@ export interface TabsProps extends PropsWithChildren, HTMLAttributes<HTMLDivElem
 
 export interface TabsItemProps extends PropsWithChildren, PropsWithElement, HTMLAttributes<HTMLDivElement> {
 	index: number;
-	title: string;
 }
 
 export interface TabsContainerProps
@@ -21,5 +20,4 @@ export interface TabsContainerProps
 		PropsWithElement,
 		HTMLAttributes<HTMLDivElement> {
 	index: number;
-	title: string;
 }

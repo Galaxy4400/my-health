@@ -6,7 +6,7 @@ export const Banner = ({ url }: { url: string }) => {
 	const { openModal } = useModal();
 
 	const clickHandler = () => {
-		openModal(<iframe src={url} width="100%" height="1000px"></iframe>);
+		openModal(<iframe src={url} width="700px" height="1000px"></iframe>);
 	};
 
 	return (
