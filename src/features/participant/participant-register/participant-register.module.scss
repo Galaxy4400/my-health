@@ -1,0 +1,46 @@
+.main {
+}
+
+.title {
+	text-align: center;
+	margin: 0px 0px rem(32) 0px;
+}
+
+.form {
+}
+
+.inputs {
+	display: grid;
+	gap: rem(10);
+	margin: 0px 0px rem(30) 0px;
+	input {
+		max-width: rem(286);
+	}
+}
+
+.row {
+	display: grid;
+	grid-template-columns: 45% 1fr;
+	gap: rem(30);
+	align-items: center;
+}
+
+.column {
+}
+
+.param {
+	font-size: rem(24);
+	text-align: right;
+}
+
+.radios {
+	padding: rem(22) 0px;
+	display: flex;
+	gap: rem(30);
+}
+
+.actions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

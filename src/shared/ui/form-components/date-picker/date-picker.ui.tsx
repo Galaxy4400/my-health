@@ -7,7 +7,7 @@ import { forwardRef } from 'react';
 interface DatePickerProps {
 	name: string;
 	label?: string;
-	defaultValue: [Date | string, Date | string];
+	defaultValue?: [Date | string, Date | string];
 }
 
 interface DatePickerInputProps {
