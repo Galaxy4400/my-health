@@ -1,13 +1,7 @@
 import css from './spoiler-item.module.scss';
-import { PropsWithChildren } from 'react';
 import { useSpoiler } from './spoiler.use';
 import cn from 'classnames';
-import { PropsWithElement } from 'shared/types';
-
-interface SpoilerItemProps extends PropsWithChildren, PropsWithElement {
-	index: number;
-	title: string;
-}
+import { SpoilerItemProps } from './spoiler.types';
 
 export const SpoilerItem = ({ title, index, element, children }: SpoilerItemProps) => {
 	const { toggle, openIndex } = useSpoiler();

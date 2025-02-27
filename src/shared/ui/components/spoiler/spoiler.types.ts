@@ -1,12 +1,17 @@
 /* eslint-disable no-unused-vars */
-import { ReactNode } from 'react';
+import { HTMLAttributes, PropsWithChildren, ReactNode } from 'react';
+import { PropsWithElement } from 'shared/types';
 
-export interface ModalState {
-	isOpen: boolean;
-	content: ReactNode;
+export interface SpoilerProps extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
+	active?: number | null;
 }
 
-export interface ModalFunctions {
-	openModal: (content: ReactNode) => void;
-	closeModal: () => void;
+export interface SpoilerContextValue {
+	toggle: (index: number) => void;
+	openIndex: number | null;
+}
+
+export interface SpoilerItemProps extends PropsWithChildren, PropsWithElement {
+	index: number;
+	title: string;
 }
