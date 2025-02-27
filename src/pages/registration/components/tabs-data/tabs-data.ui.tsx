@@ -1,5 +1,5 @@
 import css from './tabs-data.module.scss';
-import { ParticipantRegister } from 'features/participant';
+import { ParticipantLogin, ParticipantRegister } from 'features/participant';
 import { Tabs, TabsButton, TabsContainer } from 'shared/ui/components';
 
 export const TabsData = () => {
@@ -18,7 +18,7 @@ export const TabsData = () => {
 					<ParticipantRegister />
 				</TabsContainer>
 				<TabsContainer className={css['container']} index={2}>
-					content 2
+					<ParticipantLogin />
 				</TabsContainer>
 			</div>
 		</Tabs>

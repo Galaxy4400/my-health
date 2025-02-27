@@ -8,6 +8,7 @@ interface DatePickerProps {
 	name: string;
 	label?: string;
 	defaultValue?: [Date | string, Date | string];
+	required?: boolean;
 }
 
 interface DatePickerInputProps {
@@ -15,7 +16,7 @@ interface DatePickerInputProps {
 	onClick?: () => void;
 }
 
-export const DatePicker = ({ name, label, defaultValue }: DatePickerProps) => {
+export const DatePicker = ({ name, label, defaultValue, required }: DatePickerProps) => {
 	const { control } = useFormContext();
 
 	const DatePickerInput = forwardRef<HTMLInputElement, DatePickerInputProps>(({ value, onClick }, ref) => (
@@ -30,6 +31,7 @@ export const DatePicker = ({ name, label, defaultValue }: DatePickerProps) => {
 			<Controller
 				name={name}
 				control={control}
+				rules={required ? { required: 'Обязательное поле' } : {}}
 				defaultValue={defaultValue}
 				render={({ field: { onChange, onBlur, value, ref } }) => (
 					<ReactDatePicker
@@ -38,6 +40,7 @@ export const DatePicker = ({ name, label, defaultValue }: DatePickerProps) => {
 						onChange={onChange}
 						onBlur={onBlur}
 						customInput={<DatePickerInput />}
+						dateFormat="dd.MM.yyyy"
 						locale="ru"
 						ref={ref}
 					/>

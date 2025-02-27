@@ -4,13 +4,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, DatePicker, Form, Input, Radio } from 'shared/ui/form-components';
 import { RequestData } from 'shared/api';
 import { participantRegisterFormRules } from './participant-register.rules';
+import { useNavigate } from 'react-router-dom';
+import { path } from 'shared/lib/router';
 
 export const ParticipantRegister = () => {
 	const [isLoading, setIsLoading] = useState(false);
+	const navigate = useNavigate();
 
-	const submitHandler = async ({ login, password }: RequestData) => {
+	const submitHandler = async (data: RequestData) => {
 		setIsLoading(true);
-
+		console.log(data);
 		// const { error } = await registration(login as string, password as string);
 
 		setIsLoading(false);
@@ -25,6 +28,8 @@ export const ParticipantRegister = () => {
 		// }
 
 		// showToast({ message: 'Вы успешно зарегистрировались', type: 'success' });
+
+		navigate(path.start());
 	};
 
 	return (
@@ -60,7 +65,7 @@ export const ParticipantRegister = () => {
 							<h5 className={css['param']}>Фамилия:</h5>
 						</div>
 						<div className={css['column']}>
-							<Input name="last-name" />
+							<Input name="lastname" required />
 						</div>
 					</div>
 					<div className={css['row']}>
@@ -68,7 +73,7 @@ export const ParticipantRegister = () => {
 							<h5 className={css['param']}>Имя:</h5>
 						</div>
 						<div className={css['column']}>
-							<Input name="name" />
+							<Input name="name" required />
 						</div>
 					</div>
 					<div className={css['row']}>
@@ -76,7 +81,7 @@ export const ParticipantRegister = () => {
 							<h5 className={css['param']}>Отчество:</h5>
 						</div>
 						<div className={css['column']}>
-							<Input name="second-name" />
+							<Input name="secondname" required />
 						</div>
 					</div>
 					<div className={css['row']}>
@@ -84,7 +89,9 @@ export const ParticipantRegister = () => {
 							<h5 className={css['param']}>Дата рождения:</h5>
 						</div>
 						<div className={css['column']}>
-							<DatePicker name="birthday" />
+							<div className={css['datepicker-wrapper']}>
+								<DatePicker name="birthday" required />
+							</div>
 						</div>
 					</div>
 				</div>

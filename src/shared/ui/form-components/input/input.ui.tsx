@@ -21,7 +21,7 @@ export const Input = ({ name, label, type = 'text', className, ...rest }: InputP
 		<label className={css['wraper']}>
 			{label && <span className={css['label']}>{label}</span>}
 			<input className={cn(css['input'], className)} {...register(name)} type={type} {...rest} />
-			{!!errors[name] && <p className={css['error']}>{String(errors[name]?.message)}</p>}
+			{/* {!!errors[name] && <p className={css['error']}>{String(errors[name]?.message)}</p>} */}
 		</label>
 	);
 };

@@ -28,7 +28,12 @@ export const Button = ({
 	loading,
 	...rest
 }: ButtonProps) => {
-	const { reset, handleSubmit, onSubmit } = useFormContext() as UseFormReturn & {
+	const {
+		reset,
+		handleSubmit,
+		onSubmit,
+		formState: { isValid },
+	} = useFormContext() as UseFormReturn & {
 		onSubmit: (submittedData: RequestData) => void;
 	};
 
@@ -47,6 +52,7 @@ export const Button = ({
 			size={size}
 			color={color}
 			width={width}
+			disabled={!isValid}
 			{...rest}
 		>
 			{label || children}
