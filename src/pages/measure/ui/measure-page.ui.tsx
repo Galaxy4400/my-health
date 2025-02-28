@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useMeasure } from '../lib';
 
 import img from 'shared/assets/img/measure/man.png';
-import { MeasureBtn } from 'widgets/measure-btn';
+import { Measure } from 'widgets/measure';
 
 export const MeasurePage = () => {
 	const [isComplete, setIsComplete] = useState(false);
@@ -30,7 +30,7 @@ export const MeasurePage = () => {
 				<img src={img} alt="patient" />
 			</figure>
 			<MeasureStatus isComplete={isComplete} />
-			<MeasureBtn action={startMeasure} onSuccess={() => setIsComplete(true)} nextStep={path.cardio()} />
+			<Measure action={startMeasure} onSuccess={() => setIsComplete(true)} nextStep={path.cardio()} />
 		</Container>
 	);
 };

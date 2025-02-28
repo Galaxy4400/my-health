@@ -1,11 +1,12 @@
-import css from './measure-btn.module.scss';
+import css from './measure.module.scss';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Icons } from 'shared/types';
 import { Icon } from 'shared/ui/icons';
 import cn from 'classnames';
+import { SkipStep } from 'features/steps';
 
-interface MeasureBtnProps<T = unknown> {
+interface MeasureProps<T = unknown> {
 	startCount?: number;
 	action: () => Promise<T>;
 	onSuccess?: () => void;
@@ -13,7 +14,7 @@ interface MeasureBtnProps<T = unknown> {
 	nextStep: string;
 }
 
-export const MeasureBtn = ({ action, onSuccess, onError, nextStep, startCount = 5 }: MeasureBtnProps) => {
+export const Measure = ({ action, onSuccess, onError, nextStep, startCount = 5 }: MeasureProps) => {
 	const [isRunning, setIsRunning] = useState(false);
 	const [isActionProcess, setIsActionProcess] = useState(false);
 	const [isComplete, setIsComplete] = useState(false);
@@ -90,6 +91,7 @@ export const MeasureBtn = ({ action, onSuccess, onError, nextStep, startCount = 
 					<span className={css['process']}>Измеряем...</span>
 				</div>
 			</div>
+			{!isRunning && !isActionProcess && !isComplete && <SkipStep nextStep={nextStep} />}
 		</div>
 	);
 };

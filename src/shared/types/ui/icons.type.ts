@@ -11,4 +11,5 @@ export enum Icons {
 	cross = 'cross',
 	eye = 'eye',
 	load = 'load',
+	exclam = 'exclam',
 }

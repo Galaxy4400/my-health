@@ -5,7 +5,7 @@ import { path } from 'shared/lib/router';
 import { useState } from 'react';
 import { useMeasure } from '../lib';
 
-import { MeasureBtn } from 'widgets/measure-btn';
+import { Measure } from 'widgets/measure';
 
 export const CardioPage = () => {
 	const [isComplete, setIsComplete] = useState(false);
@@ -22,7 +22,7 @@ export const CardioPage = () => {
 			<Steps current={3} />
 			<TitleBlock className={css['title']} title="Давайте измерим ваше давление и пульс" />
 			<MeasureStatus isComplete={isComplete} />
-			<MeasureBtn action={startMeasure} onSuccess={() => setIsComplete(true)} nextStep={path.start()} />
+			<Measure action={startMeasure} onSuccess={() => setIsComplete(true)} nextStep={path.start()} />
 		</Container>
 	);
 };
