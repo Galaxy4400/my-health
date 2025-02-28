@@ -10,6 +10,9 @@ const __dirname = dirname(__filename);
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	build: {
+		outDir: 'build',
+	},
 	plugins: [svgr(), react()],
 	resolve: {
 		alias: {

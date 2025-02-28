@@ -6,7 +6,7 @@ import { MainPage } from 'pages/main';
 import { StartPage } from 'pages/start';
 import { AdminPage } from 'pages/admin';
 import { ProtectedRoute } from './router.hocs';
-import { RegistrationPage } from 'pages/registration';
+import { PatientDataPage } from 'pages/patient-data';
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -31,8 +31,8 @@ export const routerConfig = createBrowserRouter([
 				element: <StartPage />,
 			},
 			{
-				path: path.registration(),
-				element: <RegistrationPage />,
+				path: path.patientData(),
+				element: <PatientDataPage />,
 			},
 		],
 	},

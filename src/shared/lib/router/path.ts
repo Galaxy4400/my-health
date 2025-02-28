@@ -11,8 +11,8 @@ export const path = {
 	start() {
 		return path.root.concat('start');
 	},
-	registration() {
-		return path.root.concat('registration');
+	patientData() {
+		return path.root.concat('patient-data');
 	},
 	page404() {
 		return path.root.concat('404');
