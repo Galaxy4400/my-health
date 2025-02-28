@@ -7,6 +7,7 @@ import { StartPage } from 'pages/start';
 import { AdminPage } from 'pages/admin';
 import { ProtectedRoute } from './router.hocs';
 import { PatientDataPage } from 'pages/patient-data';
+import { MeasurePage } from 'pages/measure';
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -33,6 +34,10 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.patientData(),
 				element: <PatientDataPage />,
+			},
+			{
+				path: path.measure(),
+				element: <MeasurePage />,
 			},
 		],
 	},

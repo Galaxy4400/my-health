@@ -14,6 +14,9 @@ export const path = {
 	patientData() {
 		return path.root.concat('patient-data');
 	},
+	measure() {
+		return path.root.concat('measure');
+	},
 	page404() {
 		return path.root.concat('404');
 	},

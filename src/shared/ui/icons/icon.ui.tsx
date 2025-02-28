@@ -7,6 +7,7 @@ import Lock from './svg/lock.svg?react';
 import Weight from './svg/weight.svg?react';
 import Cross from './svg/cross.svg?react';
 import Eye from './svg/eye.svg?react';
+import Load from './svg/load.svg?react';
 import { Icons } from 'shared/types';
 import { SVGProps } from 'react';
 
@@ -43,6 +44,9 @@ export const Icon = ({ name, className, width = 36, height = 36, ...rest }: Icon
 
 		case Icons.eye:
 			return <Eye className={className} width={width} height={height} {...rest} />;
+
+		case Icons.load:
+			return <Load className={className} width={width} height={height} {...rest} />;
 
 		default:
 			return null;

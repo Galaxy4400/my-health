@@ -29,7 +29,7 @@ export const PatientLogin = () => {
 
 		// showToast({ message: 'Вы успешно зарегистрировались', type: 'success' });
 
-		navigate(path.start());
+		navigate(path.measure());
 	};
 
 	return (
