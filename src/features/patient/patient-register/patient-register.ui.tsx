@@ -51,7 +51,7 @@ export const PatientRegister = () => {
 						</div>
 						<div className={css['column']}>
 							<div className={css['radios']}>
-								<Radio label="Мужчина" name="sex" value="X" checked />
+								<Radio label="Мужчина" name="sex" value="X" />
 								<Radio label="Женщина" name="sex" value="Y" />
 							</div>
 						</div>
@@ -61,7 +61,7 @@ export const PatientRegister = () => {
 							<h5 className={css['param']}>Фамилия:</h5>
 						</div>
 						<div className={css['column']}>
-							<Input name="lastname" required />
+							<Input name="lastname" />
 						</div>
 					</div>
 					<div className={css['row']}>
@@ -69,7 +69,7 @@ export const PatientRegister = () => {
 							<h5 className={css['param']}>Имя:</h5>
 						</div>
 						<div className={css['column']}>
-							<Input name="name" required />
+							<Input name="name" />
 						</div>
 					</div>
 					<div className={css['row']}>
@@ -77,7 +77,7 @@ export const PatientRegister = () => {
 							<h5 className={css['param']}>Отчество:</h5>
 						</div>
 						<div className={css['column']}>
-							<Input name="secondname" required />
+							<Input name="secondname" />
 						</div>
 					</div>
 					<div className={css['row']}>
@@ -86,7 +86,7 @@ export const PatientRegister = () => {
 						</div>
 						<div className={css['column']}>
 							<div className={css['datepicker-wrapper']}>
-								<DatePicker name="birthday" required />
+								<DatePicker name="birthday" />
 							</div>
 						</div>
 					</div>

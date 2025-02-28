@@ -46,7 +46,7 @@ export const PatientNodata = () => {
 						</div>
 						<div className={css['column']}>
 							<div className={css['radios']}>
-								<Radio label="Мужчина" name="sex" value="X" checked />
+								<Radio label="Мужчина" name="sex" value="X" />
 								<Radio label="Женщина" name="sex" value="Y" />
 							</div>
 						</div>
@@ -57,7 +57,7 @@ export const PatientNodata = () => {
 						</div>
 						<div className={css['column']}>
 							<div className={css['age-wrapper']}>
-								<Input name="age" required />
+								<Input name="age" />
 							</div>
 						</div>
 					</div>
