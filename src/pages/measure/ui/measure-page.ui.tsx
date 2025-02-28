@@ -1,14 +1,17 @@
 import css from './measure-page.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/components';
+import { Button, Container, MeasureStatus, PageHead, Steps, TitleBlock } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
+import { useState } from 'react';
+import { useMeasure } from '../lib';
 
 import img from 'shared/assets/img/measure/man.png';
-import { useState } from 'react';
+import { MeasureBtn } from 'widgets/measure-btn';
 
 export const MeasurePage = () => {
 	const [isComplete, setIsComplete] = useState(false);
 	const navigate = useNavigate();
+	const { startMeasure } = useMeasure();
 
 	return (
 		<Container>
@@ -26,15 +29,8 @@ export const MeasurePage = () => {
 			<figure className={css['img']}>
 				<img src={img} alt="patient" />
 			</figure>
-			{isComplete ? (
-				<p className={css['complete']}>
-					<span>Поздравляем!</span>
-					<br />
-					Измерение успешно завершено. Давайте перейдём к следующему шагу. Нажмите на кнопку:
-				</p>
-			) : (
-				<p className={css['redy']}>Когда будете готовы - нажмите кнопку &quot;Измерить&quot;:</p>
-			)}
+			<MeasureStatus isComplete={isComplete} />
+			<MeasureBtn action={startMeasure} onSuccess={() => setIsComplete(true)} nextStep={path.start()} />
 		</Container>
 	);
 };

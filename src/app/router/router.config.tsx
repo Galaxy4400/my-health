@@ -1,13 +1,14 @@
 import { path } from 'shared/lib/router';
 import { createBrowserRouter } from 'react-router-dom';
 import { MainLayout } from '../layouts';
+import { ProtectedRoute } from './router.hocs';
 import { ErrorPage } from 'pages/error';
 import { MainPage } from 'pages/main';
 import { StartPage } from 'pages/start';
 import { AdminPage } from 'pages/admin';
-import { ProtectedRoute } from './router.hocs';
 import { PatientDataPage } from 'pages/patient-data';
 import { MeasurePage } from 'pages/measure';
+import { CardioPage } from 'pages/cardio';
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -38,6 +39,10 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.measure(),
 				element: <MeasurePage />,
+			},
+			{
+				path: path.cardio(),
+				element: <CardioPage />,
 			},
 		],
 	},

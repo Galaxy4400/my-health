@@ -30,6 +30,7 @@
 	z-index: 50;
 	opacity: 0;
 	visibility: hidden;
+	transition: all 0.3s ease 0s;
 	&::before {
 		content: "";
 		position: absolute;
@@ -47,6 +48,11 @@
 
 .icon-wrapper {
 	position: relative;
+	scale: 0;
+	transition: all 0.8s ease 0s;
+	&:global(.active) {
+		scale: 1;
+	}
 	&::before {
 		content: "";
 		position: absolute;
@@ -78,6 +84,19 @@
 	left: 50%;
 	translate: -50% -50%;
 	font-size: rem(150);
+	color: $color-second;
+	span {
+		font-size: rem(36);
+	}
+}
+
+.processs {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
+	font-size: rem(36);
+	color: $color-second;
 }
 
 @keyframes spin {

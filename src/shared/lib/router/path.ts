@@ -17,6 +17,9 @@ export const path = {
 	measure() {
 		return path.root.concat('measure');
 	},
+	cardio() {
+		return path.root.concat('cardio');
+	},
 	page404() {
 		return path.root.concat('404');
 	},

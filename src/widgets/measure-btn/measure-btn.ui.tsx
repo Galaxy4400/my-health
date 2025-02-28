@@ -1,21 +1,43 @@
 import css from './measure-btn.module.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { path } from 'shared/lib/router';
 import { Icons } from 'shared/types';
 import { Icon } from 'shared/ui/icons';
 import cn from 'classnames';
 
-interface MesureBtnProps {
+interface MeasureBtnProps<T = unknown> {
 	startCount?: number;
-	action?: () => void;
+	action: () => Promise<T>;
+	onSuccess?: () => void;
+	onError?: () => void;
+	nextStep: string;
 }
 
-export const MesureBtn = ({ action, startCount = 5 }: MesureBtnProps) => {
+export const MeasureBtn = ({ action, onSuccess, onError, nextStep, startCount = 5 }: MeasureBtnProps) => {
 	const [isRunning, setIsRunning] = useState(false);
+	const [isActionProcess, setIsActionProcess] = useState(false);
 	const [isComplete, setIsComplete] = useState(false);
 	const [count, setCount] = useState(startCount);
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (count > 0) return;
+
+		setIsActionProcess(true);
+
+		action()
+			.then(() => {
+				if (onSuccess) onSuccess();
+			})
+			.catch(() => {
+				if (onError) onError();
+			})
+			.finally(() => {
+				setIsComplete(true);
+				setIsRunning(false);
+				setIsActionProcess(false);
+			});
+	}, [count, action, onError, onSuccess]);
 
 	useEffect(() => {
 		if (!isRunning) return;
@@ -24,8 +46,6 @@ export const MesureBtn = ({ action, startCount = 5 }: MesureBtnProps) => {
 			setCount((prev) => {
 				if (prev <= 1) {
 					clearInterval(interval);
-					setIsComplete(true);
-					setIsRunning(false);
 					return 0;
 				}
 				return prev - 1;
@@ -37,7 +57,7 @@ export const MesureBtn = ({ action, startCount = 5 }: MesureBtnProps) => {
 
 	const clickHandler = () => {
 		if (isComplete) {
-			navigate(path.start());
+			navigate(nextStep);
 			return;
 		}
 		setIsRunning(true);
@@ -51,9 +71,13 @@ export const MesureBtn = ({ action, startCount = 5 }: MesureBtnProps) => {
 				{isComplete ? 'Следующий шаг' : 'Измерить'}
 			</button>
 			<div className={cn(css['loader'], isRunning ? 'active' : '')}>
-				<div className={css['icon-wrapper']}>
+				<div className={cn(css['icon-wrapper'], isRunning ? 'active' : '')}>
 					<Icon className={cn(css['icon'], isRunning ? 'active' : '')} name={Icons.load} />
-					<span className={css['counter']}>{count}</span>
+					{isActionProcess ? (
+						<span className={css['processs']}>Измеряем...</span>
+					) : (
+						<span className={css['counter']}>{count}</span>
+					)}
 				</div>
 			</div>
 		</div>
