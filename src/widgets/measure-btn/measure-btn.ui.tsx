@@ -49,11 +49,7 @@ export const MeasureBtn = ({ action, onSuccess, onError, nextStep, startCount = 
 
 		const interval = setInterval(() => {
 			setCount((prev) => {
-				if (prev <= 2) {
-					setTimeout(() => {
-						setIsBtnClose(true);
-					}, 500);
-				}
+				if (prev <= 2) setTimeout(() => setIsBtnClose(true), 500);
 				if (prev <= 1) {
 					clearInterval(interval);
 					return 0;
