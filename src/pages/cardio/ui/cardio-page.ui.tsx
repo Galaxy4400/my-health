@@ -1,4 +1,4 @@
-import css from './measure-page.module.scss';
+import css from './cardio-page.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, MeasureStatus, PageHead, Steps, TitleBlock } from 'shared/ui/components';
 import { path } from 'shared/lib/router';

@@ -1,6 +1,4 @@
-import css from './banner.module.scss';
-import { useModal } from 'app/providers/modal';
-import banner from 'shared/assets/img/banner1.jpg';
+import css from './measure-status.module.scss';
 
 export const MeasureStatus = ({ isComplete }: { isComplete: boolean }) => {
 	return (

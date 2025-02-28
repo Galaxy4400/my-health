@@ -30,7 +30,7 @@ export const MeasurePage = () => {
 				<img src={img} alt="patient" />
 			</figure>
 			<MeasureStatus isComplete={isComplete} />
-			<MeasureBtn action={startMeasure} onSuccess={() => setIsComplete(true)} nextStep={path.start()} />
+			<MeasureBtn action={startMeasure} onSuccess={() => setIsComplete(true)} nextStep={path.cardio()} />
 		</Container>
 	);
 };
