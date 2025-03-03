@@ -4,11 +4,23 @@
 	gap: rem(40);
 }
 
+.body {
+	display: flex;
+	gap: rem(30);
+}
+
 .title {
 	display: flex;
 	align-items: center;
 	gap: rem(30);
 	white-space: nowrap;
+	margin: 0px 0px rem(18) 0px;
+}
+
+.text {
+	display: grid;
+	gap: rem(15);
+	font-size: rem(20);
 }
 
 .icon {
@@ -20,4 +32,9 @@
 	width: rem(80);
 	height: rem(80);
 	color: $color-primary;
+}
+
+.actions {
+	display: flex;
+	gap: rem(10);
 }

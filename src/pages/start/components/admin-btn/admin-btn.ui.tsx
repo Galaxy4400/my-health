@@ -18,7 +18,14 @@ export const AdminBtn = () => {
 			return;
 		}
 
-		openModal(<LoginForm navigate={navigate} onSuccess={closeModal} />);
+		openModal(
+			<LoginForm
+				onSuccess={() => {
+					closeModal();
+					navigate(path.admin());
+				}}
+			/>,
+		);
 	};
 
 	return (

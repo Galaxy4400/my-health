@@ -1,7 +1,6 @@
 import css from './login.module.scss';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { loginFormRules } from './login.rules';
 import { useAuth } from 'app/providers/auth';
 import { Form, Input, Password } from 'shared/ui/form-components';
@@ -9,14 +8,12 @@ import { Button } from 'shared/ui/form-components';
 import { RequestData } from 'shared/api';
 import { useModal } from 'app/providers/modal';
 import { NoAccess } from 'shared/ui/components';
-import { path } from 'shared/lib/router';
 
 interface LoginFormProps {
-	navigate: NavigateFunction;
 	onSuccess: () => void;
 }
 
-export const LoginForm = ({ navigate, onSuccess }: LoginFormProps) => {
+export const LoginForm = ({ onSuccess }: LoginFormProps) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { openModal, closeModal } = useModal();
 
@@ -36,8 +33,6 @@ export const LoginForm = ({ navigate, onSuccess }: LoginFormProps) => {
 		}
 
 		onSuccess();
-
-		navigate(path.admin());
 	};
 
 	return (

@@ -18,7 +18,7 @@ export const Skip = ({ onConfirm, onReject }: SkipProps) => {
 					</div>
 				</div>
 				<div className={css['content']}>
-					<h3 className={css['title']}></h3>
+					<h3 className={css['title']}>Пропустить это шаг?</h3>
 					<div className={css['text']}>
 						<p>Если пропустите измерение - это снизит точность диагностики.</p>
 						<p>Вы уверены?</p>
@@ -27,7 +27,9 @@ export const Skip = ({ onConfirm, onReject }: SkipProps) => {
 			</div>
 			<div className={css['actions']}>
 				<Button onClick={onReject}>Нет, вернуться к измерению</Button>
-				<Button onClick={onConfirm}>Да, пропустить</Button>
+				<Button onClick={onConfirm} color="second">
+					Да, пропустить
+				</Button>
 			</div>
 		</div>
 	);
