@@ -1,4 +1,4 @@
-import css from './measure-page.module.scss';
+import css from './body-page.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, MeasureStatus, PageHead, Steps, TitleBlock } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
@@ -7,7 +7,7 @@ import { useMeasure } from '../lib';
 import img from 'shared/assets/img/measure/man.png';
 import { Measure } from 'widgets/measure';
 
-export const MeasurePage = () => {
+export const BodyPage = () => {
 	const [isComplete, setIsComplete] = useState(false);
 	const navigate = useNavigate();
 	const { startMeasure } = useMeasure();
@@ -19,11 +19,17 @@ export const MeasurePage = () => {
 					В начало
 				</Button>
 			</PageHead>
-			<Steps current={2} />
+			<Steps current={4} />
 			<TitleBlock
 				className={css['title']}
-				title="Встаньте, пожалуйста, на весы"
-				label="Так, как показано на рисунке. Обувь можно не снимать."
+				title="Измерение состава тела и обмена веществ"
+				label={
+					<span>
+						Мы используем метод биоимпедансного анализа. Это совершенно безопасно.
+						<br />
+						Положите ладони на электроды, как показано на рисунке:
+					</span>
+				}
 			/>
 			<figure className={css['img']}>
 				<img src={img} alt="patient" />

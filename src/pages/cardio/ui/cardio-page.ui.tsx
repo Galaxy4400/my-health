@@ -35,7 +35,7 @@ export const CardioPage = () => {
 				</div>
 			</div>
 			<MeasureStatus isComplete={isComplete} />
-			<Measure action={startMeasure} onSuccess={() => setIsComplete(true)} nextStep={path.start()} />
+			<Measure action={startMeasure} onSuccess={() => setIsComplete(true)} nextStep={path.body()} />
 		</Container>
 	);
 };

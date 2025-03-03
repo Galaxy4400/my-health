@@ -1,10 +1,10 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import css from './title-block.module.scss';
 import cn from 'classnames';
 
-interface TitleBlockProps extends HTMLAttributes<HTMLDivElement> {
-	title?: string;
-	label?: string;
+interface TitleBlockProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+	title?: ReactNode;
+	label?: ReactNode;
 }
 
 export const TitleBlock = ({ title, label, className }: TitleBlockProps) => {

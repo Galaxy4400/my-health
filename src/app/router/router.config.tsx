@@ -9,6 +9,7 @@ import { AdminPage } from 'pages/admin';
 import { PatientDataPage } from 'pages/patient-data';
 import { MeasurePage } from 'pages/measure';
 import { CardioPage } from 'pages/cardio';
+import { BodyPage } from 'pages/body';
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -43,6 +44,10 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.cardio(),
 				element: <CardioPage />,
+			},
+			{
+				path: path.body(),
+				element: <BodyPage />,
 			},
 		],
 	},

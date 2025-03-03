@@ -20,6 +20,9 @@ export const path = {
 	cardio() {
 		return path.root.concat('cardio');
 	},
+	body() {
+		return path.root.concat('body');
+	},
 	page404() {
 		return path.root.concat('404');
 	},
