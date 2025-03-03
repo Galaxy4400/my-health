@@ -2,23 +2,19 @@
 	margin: 0px 0px rem(40) 0px;
 }
 
+.items {
+	display: grid;
+	gap: rem(40);
+}
+
+.item {
+	text-align: center;
+}
+
+.label {
+	margin: 0px 0px rem(10) 0px;
+}
+
 .img {
-	text-align: center;
-	margin: 0px 0px rem(46) 0px;
-}
-
-.complete {
-	text-align: center;
-	font-size: rem(30);
-	margin: 0px 0px rem(40) 0px;
-	span {
-		font-weight: 700;
-	}
-}
-
-.redy {
-	padding: rem(64) 0px 0px 0px;
-	margin: 0px 0px rem(40) 0px;
-	font-size: rem(35);
-	text-align: center;
+	max-height: rem(265);
 }
