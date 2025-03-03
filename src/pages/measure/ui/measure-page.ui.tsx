@@ -1,14 +1,12 @@
 import css from './measure-page.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { Button, Container, MeasureStatus, PageHead, Steps, TitleBlock } from 'shared/ui/components';
+import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
-import { useState } from 'react';
 import { useMeasure } from '../lib';
 import img from 'shared/assets/img/measure/man.png';
 import { Measure } from 'widgets/measure';
 
 export const MeasurePage = () => {
-	const [isComplete, setIsComplete] = useState(false);
 	const navigate = useNavigate();
 	const { startMeasure } = useMeasure();
 
@@ -28,8 +26,7 @@ export const MeasurePage = () => {
 			<figure className={css['img']}>
 				<img src={img} alt="patient" />
 			</figure>
-			<MeasureStatus isComplete={isComplete} />
-			<Measure action={startMeasure} onSuccess={() => setIsComplete(true)} nextStep={path.cardio()} />
+			<Measure action={startMeasure} nextStep={path.cardio()} />
 		</Container>
 	);
 };

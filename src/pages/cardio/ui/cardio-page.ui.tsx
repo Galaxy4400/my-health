@@ -1,15 +1,13 @@
 import css from './cardio-page.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { Button, Container, MeasureStatus, PageHead, Steps, TitleBlock } from 'shared/ui/components';
+import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
-import { useState } from 'react';
 import { useMeasure } from '../lib';
 import { Measure } from 'widgets/measure';
 import img1 from 'shared/assets/img/measure/tonometr.png';
 import img2 from 'shared/assets/img/measure/pulsococsimetr.png';
 
 export const CardioPage = () => {
-	const [isComplete, setIsComplete] = useState(false);
 	const navigate = useNavigate();
 	const { startMeasure } = useMeasure();
 
@@ -34,8 +32,7 @@ export const CardioPage = () => {
 					<img className={css['img']} src={img2} alt="image2" />
 				</div>
 			</div>
-			<MeasureStatus isComplete={isComplete} />
-			<Measure action={startMeasure} onSuccess={() => setIsComplete(true)} nextStep={path.body()} />
+			<Measure action={startMeasure} nextStep={path.body()} />
 		</Container>
 	);
 };
