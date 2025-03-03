@@ -10,6 +10,7 @@ import { PatientDataPage } from 'pages/patient-data';
 import { MeasurePage } from 'pages/measure';
 import { CardioPage } from 'pages/cardio';
 import { BodyPage } from 'pages/body';
+import { FinishPage } from 'pages/finish/ui/finish-page.ui';
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -48,6 +49,10 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.body(),
 				element: <BodyPage />,
+			},
+			{
+				path: path.finish(),
+				element: <FinishPage />,
 			},
 		],
 	},

@@ -23,6 +23,9 @@ export const path = {
 	body() {
 		return path.root.concat('body');
 	},
+	finish() {
+		return path.root.concat('finish');
+	},
 	page404() {
 		return path.root.concat('404');
 	},
