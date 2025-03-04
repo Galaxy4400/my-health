@@ -32,46 +32,6 @@
 	}
 }
 
-.loader {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	translate: -50% 0;
-	width: rem(250);
-	height: rem(250);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 50;
-	opacity: 0;
-	visibility: hidden;
-	transition: all 0.5s ease 0s;
-	&:global(.process) {
-		opacity: 1;
-		visibility: visible;
-	}
-}
-
-.icon-wrapper {
-	scale: 0;
-	transition: all 0.5s ease 0s;
-	&:global(.process) {
-		scale: 1;
-	}
-}
-
-.icon {
-	position: relative;
-	width: rem(250);
-	height: rem(250);
-	color: $color-second;
-	animation: spin 2s linear infinite;
-	animation-play-state: paused;
-	&:global(.process) {
-		animation-play-state: running;
-	}
-}
-
 .counter {
 	position: absolute;
 	top: 50%;
@@ -81,23 +41,5 @@
 	color: $color-second;
 	span {
 		font-size: rem(36);
-	}
-}
-
-.process {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	translate: -50% -50%;
-	font-size: rem(26);
-	color: $color-second;
-}
-
-@keyframes spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
 	}
 }

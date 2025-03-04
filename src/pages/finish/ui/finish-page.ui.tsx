@@ -1,6 +1,6 @@
 import css from './finish-page.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/components';
+import { Button, Container, Loader, PageHead, PulsBtn, Steps, TitleBlock } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
 import { useMeasure } from '../lib';
 import { useEffect } from 'react';
@@ -22,23 +22,31 @@ export const FinishPage = () => {
 			</PageHead>
 			<Steps current={5} />
 			{loading ? (
-				<TitleBlock
-					className={css['title']}
-					title="Обследование завершено"
-					label={
-						<span>
-							Поздравляем! Вы заботитесь о своём здоровье - Вы великолепны.
-							<br />
-							Сейчас мы формируем отчёт. Когда он будет готов, мы сообщим Вам.
-						</span>
-					}
-				/>
+				<>
+					<TitleBlock
+						className={css['title']}
+						title="Обследование завершено"
+						label={
+							<span>
+								Поздравляем! Вы заботитесь о своём здоровье - Вы великолепны.
+								<br />
+								Сейчас мы формируем отчёт. Когда он будет готов, мы сообщим Вам.
+							</span>
+						}
+					/>
+					<div className={css['loader-container']}>
+						<Loader text="Формируем отчёт" isLoading={true} />
+					</div>
+				</>
 			) : (
-				<TitleBlock
-					className={css['title']}
-					title="Исследование завершено"
-					label={'Результаты готовы. Нажмите на кнопку для просмотра:'}
-				/>
+				<>
+					<TitleBlock
+						className={css['title']}
+						title="Исследование завершено"
+						label={'Результаты готовы. Нажмите на кнопку для просмотра:'}
+					/>
+					<PulsBtn onClick={() => navigate(path.results())}>Результаты</PulsBtn>
+				</>
 			)}
 		</Container>
 	);

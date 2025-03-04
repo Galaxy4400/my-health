@@ -5,7 +5,7 @@ import { Icons } from 'shared/types';
 import { Icon } from 'shared/ui/icons';
 import cn from 'classnames';
 import { SkipStep } from 'features/steps';
-import { MeasureStatus } from 'shared/ui/components';
+import { Loader, MeasureStatus } from 'shared/ui/components';
 
 interface MeasureProps<T = unknown> {
 	startCount?: number;
@@ -79,7 +79,6 @@ export const Measure = ({ action, onSuccess, onError, nextStep, startCount = 5 }
 	const btnCloseClass = isBtnClose ? 'close' : '';
 	const completeClass = isComplete ? 'complete' : '';
 	const activeClass = isRunning ? 'active' : '';
-	const processClass = isActionProcess ? 'process' : '';
 
 	return (
 		<>
@@ -88,12 +87,7 @@ export const Measure = ({ action, onSuccess, onError, nextStep, startCount = 5 }
 				<button className={cn(css['btn'], completeClass, activeClass, btnCloseClass)} onClick={clickHandler}>
 					{btnText}
 				</button>
-				<div className={cn(css['loader'], processClass)}>
-					<div className={cn(css['icon-wrapper'], processClass)}>
-						<Icon className={cn(css['icon'], processClass)} name={Icons.load} />
-						<span className={css['process']}>Измеряем...</span>
-					</div>
-				</div>
+				<Loader text="Измеряем..." isLoading={isActionProcess} />
 				{!isRunning && !isActionProcess && !isComplete && <SkipStep nextStep={nextStep} />}
 			</div>
 		</>

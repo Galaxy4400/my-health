@@ -17,3 +17,4 @@ export * from './tabs';
 export * from './measure-status';
 export * from './skip';
 export * from './puls-btn';
+export * from './loader';

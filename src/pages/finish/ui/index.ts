@@ -1,1 +1,1 @@
-export * from './body-page.ui';
+export * from './finish-page.ui';
