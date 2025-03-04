@@ -1,0 +1,112 @@
+.main {
+	padding: 0px 0px rem(80) 0px;
+	background: #000;
+	border: rem(2) solid $color-second;
+	background: #fff;
+	padding: rem(30) rem(30) rem(80);
+}
+
+.title {
+	text-align: center;
+	margin: 0px 0px rem(32) 0px;
+}
+
+.form {
+}
+
+.age-wrapper {
+	width: rem(150);
+}
+
+.label {
+	text-align: center;
+	font-size: rem(20);
+	margin: 0px 0px rem(30) 0px;
+	span {
+		font-weight: 700;
+	}
+}
+
+.inputs {
+	display: grid;
+	gap: rem(10);
+	margin: 0px 0px rem(30) 0px;
+	input {
+		max-width: rem(286);
+	}
+}
+
+.row {
+	display: grid;
+	grid-template-columns: 45% 1fr;
+	gap: rem(30);
+	align-items: center;
+}
+
+.column {
+}
+
+.param {
+	font-size: rem(24);
+	text-align: right;
+}
+
+.datepicker-wrapper {
+	width: rem(144);
+}
+
+.radios {
+	padding: rem(22) 0px;
+	display: flex;
+	gap: rem(30);
+}
+
+.actions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.questions {
+	width: rem(600);
+	margin: 0 auto rem(30);
+	display: grid;
+	gap: rem(30);
+	align-items: center;
+}
+
+.question-row {
+	display: flex;
+	justify-content: space-between;
+	gap: rem(10);
+}
+
+.question {
+	flex: 1 1 auto;
+	font-size: rem(20);
+}
+
+.question-values {
+	display: flex;
+	gap: rem(10);
+}
+
+.question-value {
+	height: rem(32);
+	border-radius: rem(6);
+	opacity: 50%;
+	background: $color-primary;
+	color: #fff;
+	font-size: rem(18);
+	font-weight: 700;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: rem(65);
+	&:global(.no) {
+		background: $color-second;
+	}
+	&:global(.checked) {
+		opacity: 1;
+	}
+}

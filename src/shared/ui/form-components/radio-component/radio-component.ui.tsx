@@ -5,7 +5,6 @@ import { useFormContext } from 'react-hook-form';
 interface RadioProps extends PropsWithChildren {
 	name: string;
 	className?: string;
-	label?: string;
 	value: number | string;
 	defaultChecked?: boolean;
 }
