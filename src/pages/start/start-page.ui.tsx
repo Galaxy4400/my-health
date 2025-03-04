@@ -38,7 +38,9 @@ export const StartPage = () => {
 					Рекомендации
 				</IconItem>
 			</div>
-			<PulsBtn onClick={() => navigate(path.patientData())}>Начать</PulsBtn>
+			<PulsBtn className={css['btn']} onClick={() => navigate(path.patientData())}>
+				Начать
+			</PulsBtn>
 			<AdminBtn />
 			<Banner url="https://msch9fmba.ru/" />
 		</Container>

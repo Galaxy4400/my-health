@@ -35,7 +35,7 @@ export const FinishPage = () => {
 						}
 					/>
 					<div className={css['loader-container']}>
-						<Loader text="Формируем отчёт" isLoading={true} />
+						<Loader className={css['loader']} text="Формируем отчёт" isLoading={true} />
 					</div>
 				</>
 			) : (
@@ -45,7 +45,9 @@ export const FinishPage = () => {
 						title="Исследование завершено"
 						label={'Результаты готовы. Нажмите на кнопку для просмотра:'}
 					/>
-					<PulsBtn onClick={() => navigate(path.results())}>Результаты</PulsBtn>
+					<PulsBtn className={css['btn']} onClick={() => navigate(path.results())}>
+						Результаты
+					</PulsBtn>
 				</>
 			)}
 		</Container>

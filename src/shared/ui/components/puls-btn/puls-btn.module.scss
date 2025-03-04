@@ -1,9 +1,3 @@
-.wrapper {
-	display: flex;
-	justify-content: center;
-	margin: 0px 0px rem(154) 0px;
-}
-
 .btn {
 	position: relative;
 	display: inline-flex;
@@ -11,9 +5,9 @@
 	align-items: center;
 	border-radius: 50%;
 	color: #fff !important;
-	font-size: rem(64);
 	font-weight: 400;
 	line-height: normal;
+	font-size: rem(64);
 	width: rem(300);
 	height: rem(300);
 	background: $color-second;
