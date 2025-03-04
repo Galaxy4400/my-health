@@ -1,6 +1,6 @@
 import css from './radio-component.module.scss';
-import { PropsWithChildren, useEffect, useRef } from 'react';
-import { useFormContext } from 'react-hook-form';
+import React, { PropsWithChildren, ReactElement, useEffect, useRef } from 'react';
+import { useFormContext, useWatch } from 'react-hook-form';
 
 interface RadioProps extends PropsWithChildren {
 	name: string;
@@ -9,51 +9,25 @@ interface RadioProps extends PropsWithChildren {
 	defaultChecked?: boolean;
 }
 
-export const RadioComponent = ({ className, name, value, children, defaultChecked, ...rest }: RadioProps) => {
-	const { register, setValue, watch } = useFormContext();
+export const RadioComponent = ({ className, name, value, children, ...rest }: RadioProps) => {
+	const { register, control } = useFormContext();
+	const selectedValue = useWatch({ control, name });
 
-	const radioWrapperRef = useRef(null);
-	const selectedValue = watch(name);
+	if (!name) {
+		throw new Error("The 'name' prop is required for RadioComponent.");
+	}
 
-	useEffect(() => {
-		const radioWrapper = radioWrapperRef.current as HTMLElement | null;
-
-		const input = radioWrapper?.querySelector('input');
-
-		const isChecked = selectedValue ? selectedValue === value : defaultChecked;
-
-		if (!(input?.nextSibling instanceof Element)) {
-			throw new Error("Expected input's next sibling to be an Element.");
-		}
-
-		if (isChecked) {
-			input.nextSibling.classList.add('checked');
-		} else {
-			input.nextSibling.classList.remove('checked');
-		}
-
-		const clickHandler = () => {
-			setValue(name, value);
-		};
-
-		radioWrapper?.addEventListener('mousedown', clickHandler);
-
-		return () => {
-			radioWrapper?.removeEventListener('mousedown', clickHandler);
-		};
-	}, [name, value, selectedValue, setValue, defaultChecked]);
+	const isChecked = selectedValue === value;
 
 	return (
-		<div className={className} ref={radioWrapperRef}>
-			<input
-				className={css['input']}
-				{...register(name)}
-				value={value}
-				type="radio"
-				defaultChecked={defaultChecked}
-				{...rest}
-			/>
-			{children}
-		</div>
+		<label className={className}>
+			<input className={css['input']} {...register(name)} value={value} type="radio" {...rest} />
+			{React.isValidElement(children)
+				? React.cloneElement(children as ReactElement, {
+						className:
+							`${(children.props as { className?: string })?.className || ''} ${isChecked ? 'checked' : ''}`.trim(),
+					})
+				: children}
+		</label>
 	);
 };

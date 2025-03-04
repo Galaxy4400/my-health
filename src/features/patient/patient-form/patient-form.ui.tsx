@@ -1,5 +1,5 @@
 import css from './patient-form.module.scss';
-import { useState } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form, Input, Radio, RadioComponent } from 'shared/ui/form-components';
 import { RequestData } from 'shared/api';
@@ -11,6 +11,7 @@ import cn from 'classnames';
 export const PatientForm = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const navigate = useNavigate();
+	const formRef = useRef<HTMLFormElement | null>(null);
 
 	const submitHandler = async (data: RequestData) => {
 		setIsLoading(true);
@@ -33,12 +34,28 @@ export const PatientForm = () => {
 		navigate(path.measure());
 	};
 
+	const changeHandler = () => {
+		if (!formRef.current) return;
+
+		const formData = new FormData(formRef.current);
+
+		const data = Object.fromEntries(formData.entries());
+
+		console.log(data);
+	};
+
 	return (
 		<div className={css['main']}>
 			<p className={css['label']}>
 				Укажите, пожалуйста, <b>Ваш пол и возраст</b> - это нужно для диагностики.
 			</p>
-			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(patientFormRules)}>
+			<Form
+				className={css['form']}
+				onSubmit={submitHandler}
+				resolver={yupResolver(patientFormRules)}
+				onChange={changeHandler}
+				ref={formRef}
+			>
 				<div className={css['inputs']}>
 					<div className={css['row']}>
 						<div className={css['column']}>
