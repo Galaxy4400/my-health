@@ -1,10 +1,14 @@
 import css from './start-page.module.scss';
-import { Container, IconItem } from 'shared/ui/components';
+import { Container, IconItem, PulsBtn } from 'shared/ui/components';
 import { Icons } from 'shared/types';
-import { AdminBtn, StartBtn } from './components';
+import { AdminBtn } from './components';
 import { Banner } from 'shared/ui/components/banner';
+import { useNavigate } from 'react-router-dom';
+import { path } from 'shared/lib/router';
 
 export const StartPage = () => {
+	const navigate = useNavigate();
+
 	return (
 		<Container>
 			<h3 className={css['title']}>
@@ -34,7 +38,7 @@ export const StartPage = () => {
 					Рекомендации
 				</IconItem>
 			</div>
-			<StartBtn />
+			<PulsBtn onClick={() => navigate(path.patientData())}>Начать</PulsBtn>
 			<AdminBtn />
 			<Banner url="https://msch9fmba.ru/" />
 		</Container>
