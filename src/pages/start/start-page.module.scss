@@ -1,3 +1,9 @@
+.container {
+	height: 100%;
+	display: grid;
+	grid-template-rows: auto auto 1fr;
+}
+
 .title {
 	padding: rem(50) 0px 0px 0px;
 	line-height: normal;
@@ -12,7 +18,32 @@
 	margin: 0px 0px rem(154) 0px;
 }
 
+.body {
+	display: flex;
+	align-items: flex-end;
+}
+
+.block {
+	padding: rem(114) rem(87) rem(50);
+	background: rgba(255, 255, 255, 0.5);
+	margin: 0px 0px rem(50) 0px;
+	width: 100%;
+}
+
 .btn {
 	display: block;
-	margin: 0 auto rem(100);
+	margin: 0 auto rem(114);
+	font-size: rem(40);
+}
+
+.actions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	justify-content: space-between;
+	gap: rem(40);
+}
+
+.doctor-btn {
+	width: rem(295);
 }

@@ -1,5 +1,5 @@
-import { PropsWithChildren } from 'react';
 import css from './icon-item.module.scss';
+import { PropsWithChildren } from 'react';
 import { Icons } from 'shared/types';
 import { Icon } from 'shared/ui/icons';
 import cn from 'classnames';

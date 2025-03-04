@@ -1,16 +1,23 @@
 import css from './start-page.module.scss';
-import { Container, IconItem, PulsBtn } from 'shared/ui/components';
+import { Button, Container, IconItem, PulsBtn } from 'shared/ui/components';
 import { Icons } from 'shared/types';
 import { AdminBtn } from './components';
-import { Banner } from 'shared/ui/components/banner';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
+import { useModal } from 'app/providers/modal';
 
 export const StartPage = () => {
 	const navigate = useNavigate();
+	const { openModal } = useModal();
+
+	const clickHandler = () => {
+		openModal(
+			<iframe src="https://www.mos.ru/services/zapis-k-vrachu/" width="700px" height="1000px"></iframe>,
+		);
+	};
 
 	return (
-		<Container>
+		<Container className={css['container']}>
 			<h3 className={css['title']}>
 				Пройдите экспресс-диагностику
 				<br />
@@ -38,11 +45,19 @@ export const StartPage = () => {
 					Рекомендации
 				</IconItem>
 			</div>
-			<PulsBtn className={css['btn']} onClick={() => navigate(path.patientData())}>
-				Начать
-			</PulsBtn>
-			<AdminBtn />
-			<Banner url="https://msch9fmba.ru/" />
+			<div className={css['body']}>
+				<div className={css['block']}>
+					<PulsBtn className={css['btn']} onClick={() => navigate(path.patientData())}>
+						Начать исследование
+					</PulsBtn>
+					<div className={css['actions']}>
+						<AdminBtn />
+						<Button className={css['doctor-btn']} onClick={clickHandler}>
+							Запись к врачу
+						</Button>
+					</div>
+				</div>
+			</div>
 		</Container>
 	);
 };

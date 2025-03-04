@@ -29,10 +29,8 @@ export const AdminBtn = () => {
 	};
 
 	return (
-		<div className={css['wrapper']}>
-			<IconItem className={css['btn']} icon={Icons.lock} width={35} height={38} onClick={clickHandler}>
-				Доступ администратора
-			</IconItem>
-		</div>
+		<IconItem className={css['btn']} icon={Icons.lock} width={35} height={38} onClick={clickHandler}>
+			Доступ администратора
+		</IconItem>
 	);
 };
