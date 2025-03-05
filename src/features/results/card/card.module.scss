@@ -1,0 +1,45 @@
+.main {
+	padding: rem(60) rem(120) rem(80);
+}
+
+.title {
+	text-align: center;
+	margin: 0px 0px rem(20) 0px;
+}
+
+.label {
+	text-align: center;
+	margin: 0px 0px rem(40) 0px;
+	font-size: rem(24);
+}
+
+.form {
+}
+
+.inputs {
+	margin: 0px 0px rem(40) 0px;
+}
+
+.inputs-row {
+	display: flex;
+	gap: rem(30);
+	justify-content: center;
+	align-items: center;
+}
+
+.input-label {
+	font-size: rem(24);
+}
+
+.radios {
+	display: flex;
+	justify-content: center;
+	gap: rem(30);
+	margin: 0px 0px rem(40) 0px;
+}
+
+.actions {
+	display: flex;
+	justify-content: center;
+	gap: rem(10);
+}

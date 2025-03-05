@@ -1,7 +1,7 @@
 import css from './result-actions.module.scss';
-import { SendToEmail } from 'widgets/results/send-to-email';
 import { Button } from 'shared/ui/components';
 import { Appointment } from 'widgets/appointment';
+import { AddToCard, Print, SendToEmail } from 'widgets/results';
 
 export const ResultActions = () => {
 	return (
@@ -12,12 +12,8 @@ export const ResultActions = () => {
 				</div>
 				<div className={css['actions']}>
 					<SendToEmail />
-					<Button className={css['btn']} color="second">
-						Распечатать
-					</Button>
-					<Button className={css['btn']} color="second">
-						Добавить в мед. карту
-					</Button>
+					<Print />
+					<AddToCard />
 				</div>
 			</div>
 			<div className={css['block']}>
