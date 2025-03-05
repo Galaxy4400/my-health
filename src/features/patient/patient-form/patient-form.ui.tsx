@@ -1,5 +1,5 @@
 import css from './patient-form.module.scss';
-import { ChangeEvent, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form, Input, Radio, RadioComponent } from 'shared/ui/form-components';
 import { RequestData } from 'shared/api';
@@ -7,9 +7,12 @@ import { patientFormRules } from './patient-form.rules';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
 import cn from 'classnames';
+import { Icon } from 'shared/ui/icons';
+import { Icons } from 'shared/types';
 
 export const PatientForm = () => {
 	const [isLoading, setIsLoading] = useState(false);
+	const [hasYes, setHasYes] = useState(false);
 	const navigate = useNavigate();
 	const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -41,7 +44,9 @@ export const PatientForm = () => {
 
 		const data = Object.fromEntries(formData.entries());
 
-		console.log(data);
+		const hasYes = ['q1', 'q2', 'q3', 'q4'].some((key) => data[key] === 'yes');
+
+		setHasYes(hasYes);
 	};
 
 	return (
@@ -133,6 +138,17 @@ export const PatientForm = () => {
 				<div className={css['actions']}>
 					<Button type="submit">Начать обследование</Button>
 				</div>
+				{hasYes && (
+					<div className={css['allert']}>
+						<div className={css['allert-icon']}>
+							<Icon name={Icons.exclam} />
+						</div>
+						<p className={css['allert-text']}>
+							Результаты исследования носят рекомендательный характер. Необходимо проконсультироваться со
+							специалистом по поводу рекомендаций, которые будут выданы после исследования.
+						</p>
+					</div>
+				)}
 			</Form>
 		</div>
 	);
