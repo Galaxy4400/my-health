@@ -1,20 +1,13 @@
 import css from './start-page.module.scss';
 import { Button, Container, IconItem, PulsBtn } from 'shared/ui/components';
 import { Icons } from 'shared/types';
-import { AdminBtn } from './components';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
-import { useModal } from 'app/providers/modal';
+import { AdminEnter } from 'features/session';
+import { Appointment } from 'features/results';
 
 export const StartPage = () => {
 	const navigate = useNavigate();
-	const { openModal } = useModal();
-
-	const clickHandler = () => {
-		openModal(
-			<iframe src="https://www.mos.ru/services/zapis-k-vrachu/" width="700px" height="1000px"></iframe>,
-		);
-	};
 
 	return (
 		<Container className={css['container']}>
@@ -51,10 +44,8 @@ export const StartPage = () => {
 						Начать исследование
 					</PulsBtn>
 					<div className={css['actions']}>
-						<AdminBtn />
-						<Button className={css['doctor-btn']} onClick={clickHandler}>
-							Запись к врачу
-						</Button>
+						<AdminEnter />
+						<Appointment />
 					</div>
 				</div>
 			</div>

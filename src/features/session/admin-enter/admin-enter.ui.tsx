@@ -1,4 +1,4 @@
-import css from './admin-btn.module.scss';
+import css from './admin-enter.module.scss';
 import { Icons } from 'shared/types';
 import { useModal } from 'app/providers/modal';
 import { IconItem } from 'shared/ui/components';
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'app/providers/auth';
 import { path } from 'shared/lib/router';
 
-export const AdminBtn = () => {
+export const AdminEnter = () => {
 	const { authUser } = useAuth();
 	const { openModal, closeModal } = useModal();
 	const navigate = useNavigate();
