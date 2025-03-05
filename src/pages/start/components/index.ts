@@ -1,1 +1,1 @@
-export * from '../../../features/session/admin-enter';
+export * from '../../../widgets/admin-enter';

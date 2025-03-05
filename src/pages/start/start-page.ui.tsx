@@ -1,10 +1,10 @@
 import css from './start-page.module.scss';
-import { Button, Container, IconItem, PulsBtn } from 'shared/ui/components';
+import { Container, IconItem, PulsBtn } from 'shared/ui/components';
 import { Icons } from 'shared/types';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
-import { AdminEnter } from 'features/session';
-import { Appointment } from 'features/results';
+import { Appointment } from 'widgets/appointment';
+import { AdminEnter } from 'widgets/admin-enter';
 
 export const StartPage = () => {
 	const navigate = useNavigate();

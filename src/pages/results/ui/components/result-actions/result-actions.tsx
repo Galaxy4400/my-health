@@ -1,6 +1,7 @@
-import { Appointment } from 'features/results';
 import css from './result-actions.module.scss';
+import { SendToEmail } from 'widgets/results/send-to-email';
 import { Button } from 'shared/ui/components';
+import { Appointment } from 'widgets/appointment';
 
 export const ResultActions = () => {
 	return (
@@ -10,9 +11,7 @@ export const ResultActions = () => {
 					<h5 className={css['title']}>Хотите получить подробный отчёт с рекомендациями?</h5>
 				</div>
 				<div className={css['actions']}>
-					<Button className={css['btn']} color="second">
-						Отправить на email
-					</Button>
+					<SendToEmail />
 					<Button className={css['btn']} color="second">
 						Распечатать
 					</Button>
