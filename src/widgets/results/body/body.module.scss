@@ -10,13 +10,31 @@
 }
 
 .main-value {
-	margin: 0px 0px rem(60) 0px;
+	margin: 0px 0px rem(30) 0px;
 }
 
 .buttons {
+	border-bottom: rem(1) solid $color-second;
+	display: flex;
+	justify-content: space-between;
+	gap: rem(5);
+	margin: 0px 0px rem(20) 0px;
 }
 
 .btn {
+	flex-grow: 1;
+	border-radius: rem(10) rem(10) 0px 0px;
+	border: rem(1) solid $color-second;
+	border-bottom: none;
+	background: $color-second;
+	color: #fff;
+	text-align: center;
+	font-size: rem(20);
+	padding: rem(15) rem(24);
+	&:global(.active) {
+		background: #fff;
+		color: $color-second;
+	}
 }
 
 .btn-head {
@@ -38,4 +56,45 @@
 	justify-content: center;
 	align-items: center;
 	margin: 0px 0px rem(10) 0px;
+}
+
+.content-wrapper {
+}
+
+.value-list {
+	display: grid;
+	gap: rem(20);
+}
+
+.value-row {
+	display: grid;
+	grid-template-columns: rem(220) 1fr;
+	gap: rem(20);
+	align-items: center;
+}
+
+.value-title {
+	font-size: rem(20);
+}
+
+.value-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: rem(0) rem(30);
+	text-align: center;
+}
+
+.balues-block {
+	display: grid;
+	gap: rem(10);
+	margin: rem(10) 0px 0px 0px;
+}
+
+.just-value {
+	font-size: rem(18);
+	font-weight: 700;
+	min-height: 50;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

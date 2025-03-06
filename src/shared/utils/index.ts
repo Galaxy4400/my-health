@@ -3,3 +3,4 @@ export * from './price-format';
 export * from './build-select-options';
 export * from './calc-page';
 export * from './is-obj-empty';
+export * from './hex-to-rgb';

@@ -1,0 +1,25 @@
+.main {
+}
+
+.top {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	height: rem(30);
+}
+
+.title {
+	padding: rem(2) 0px 0px 0px;
+	font-size: rem(18);
+}
+
+.arrow {
+	position: absolute;
+	bottom: 0;
+	z-index: 2;
+	translate: rem(-5) 0;
+}
+
+.bottom {
+	height: rem(10);
+}
