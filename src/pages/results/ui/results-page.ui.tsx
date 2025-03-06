@@ -1,8 +1,8 @@
 import css from './results-page.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { Button, Container, PageHead, Steps } from 'shared/ui/components';
+import { Button, Container, PageHead, Steps, Tabs, TabsContainer } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
-import { ResultActions } from './components';
+import { ResultActions, ResultButtons } from './components';
 
 export const ResultsPage = () => {
 	const navigate = useNavigate();
@@ -15,7 +15,19 @@ export const ResultsPage = () => {
 				</Button>
 			</PageHead>
 			<Steps current={5} />
-			Результаты
+			<Tabs active={1}>
+				<div className={css['results']}>
+					<TabsContainer index={1}>results 1</TabsContainer>
+					<TabsContainer index={2}>results 2</TabsContainer>
+					<TabsContainer index={3}>results 3</TabsContainer>
+					<TabsContainer index={4}>results 4</TabsContainer>
+					<TabsContainer index={5}>results 5</TabsContainer>
+					<TabsContainer index={6}>results 6</TabsContainer>
+					<TabsContainer index={7}>results 7</TabsContainer>
+					<TabsContainer index={8}>results 8</TabsContainer>
+				</div>
+				<ResultButtons />
+			</Tabs>
 			<ResultActions />
 		</Container>
 	);

@@ -1,0 +1,50 @@
+.main {
+	margin: 0px 0px rem(30) 0px;
+}
+
+.title {
+	padding: rem(28) 0px 0px 0px;
+	margin: 0px 0px rem(20) 0px;
+}
+
+.start {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: rem(20);
+}
+
+.all {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: rem(20);
+}
+
+.btn {
+	display: flex;
+	align-items: center;
+	gap: rem(20);
+	background: #fff;
+	border-radius: rem(10);
+	border: rem(1) solid $color-second;
+	padding: rem(15) rem(20);
+	font-size: rem(20);
+	line-height: 1;
+	&:global(.center) {
+		justify-content: center;
+	}
+	&:global(.active) {
+		background: $color-second;
+		color: #fff;
+		.icon {
+			color: #fff;
+		}
+	}
+}
+
+.icon {
+	width: rem(40);
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	color: $color-second;
+}

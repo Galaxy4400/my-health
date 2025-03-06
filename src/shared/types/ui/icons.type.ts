@@ -12,4 +12,7 @@ export enum Icons {
 	eye = 'eye',
 	load = 'load',
 	exclam = 'exclam',
+	apple = 'apple',
+	gantel = 'gantel',
+	brain = 'brain',
 }
