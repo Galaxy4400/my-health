@@ -11,6 +11,7 @@
 	width: rem(150);
 	height: rem(150);
 	background: var(--color);
+	animation: pulse2 1.5s infinite;
 	&::before {
 		content: "";
 		position: absolute;
@@ -57,5 +58,19 @@
 	100% {
 		transform: scale(1.4);
 		opacity: 0;
+	}
+}
+
+@keyframes pulse2 {
+	0% {
+		transform: scale(0.9);
+	}
+
+	70% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(0.9);
 	}
 }
