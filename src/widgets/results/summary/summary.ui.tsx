@@ -5,7 +5,7 @@ export const Summary = () => {
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
-				<ResultHead />
+				<ResultHead patient="Константинопольский К.К. (М)" age="52" />
 				<MainValue
 					className={css['main-value']}
 					valueTitle="Общая оценка:"

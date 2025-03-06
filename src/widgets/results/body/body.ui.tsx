@@ -5,7 +5,7 @@ export const Body = () => {
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
-				<ResultHead />
+				<ResultHead patient="Константинопольский К.К. (М)" age="52" />
 				<MainValue
 					className={css['main-value']}
 					title="Состав тела:"
@@ -13,7 +13,7 @@ export const Body = () => {
 					status="Хорошо"
 					value="(7/10)"
 				/>
-				<Tabs>
+				<Tabs active={1}>
 					<div className={css['buttons']}>
 						<TabsButton className={css['btn']} index={1}>
 							Основное
