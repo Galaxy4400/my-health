@@ -1,7 +1,6 @@
 export * from './error-handler';
 export * from './button';
 export * from './container';
-export * from './grid';
 export * from './layout-wrapper';
 export * from './typography';
 export * from './confirm';
