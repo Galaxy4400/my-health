@@ -19,3 +19,5 @@ export * from './skip';
 export * from './puls-btn';
 export * from './loader';
 export * from './model-3d';
+export * from './result-head';
+export * from './puls-circle';
