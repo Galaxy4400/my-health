@@ -23,3 +23,5 @@ export * from './result-head';
 export * from './puls-circle';
 export * from './main-value';
 export * from './gradient-value';
+export * from './value-list';
+export * from './value-grid';

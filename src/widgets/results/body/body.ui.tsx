@@ -7,6 +7,10 @@ import {
 	Tabs,
 	TabsButton,
 	TabsContainer,
+	ValueGrid,
+	ValueGridItem,
+	ValueItem,
+	ValueList,
 } from 'shared/ui/components';
 
 export const Body = () => {
@@ -36,9 +40,8 @@ export const Body = () => {
 					<div className={css['containers']}>
 						<TabsContainer index={1}>
 							<div className={css['content-wrapper']}>
-								<div className={css['value-list']}>
-									<div className={css['value-row']}>
-										<h5 className={css['value-title']}>Мышечная масса:</h5>
+								<ValueList>
+									<ValueItem title="Мышечная масса:">
 										<GradientValue
 											title="отлично (85.4 кг)"
 											value={85.4}
@@ -46,9 +49,8 @@ export const Body = () => {
 											max={100}
 											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
 										/>
-									</div>
-									<div className={css['value-row']}>
-										<h5 className={css['value-title']}>Процент мышц:</h5>
+									</ValueItem>
+									<ValueItem title="Процент мышц:">
 										<GradientValue
 											title="отлично (62.5%)"
 											value={62.5}
@@ -56,9 +58,8 @@ export const Body = () => {
 											max={100}
 											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
 										/>
-									</div>
-									<div className={css['value-row']}>
-										<h5 className={css['value-title']}>Телесный жир:</h5>
+									</ValueItem>
+									<ValueItem title="Телесный жир:">
 										<GradientValue
 											title="выше нормы (25%)"
 											value={25}
@@ -66,9 +67,8 @@ export const Body = () => {
 											max={100}
 											gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
 										/>
-									</div>
-									<div className={css['value-row']}>
-										<h5 className={css['value-title']}>Подкожный жир:</h5>
+									</ValueItem>
+									<ValueItem title="Подкожный жир:">
 										<GradientValue
 											title="выше нормы (25%)"
 											value={25}
@@ -76,9 +76,8 @@ export const Body = () => {
 											max={100}
 											gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
 										/>
-									</div>
-									<div className={css['value-row']}>
-										<h5 className={css['value-title']}>Висцеральный жир:</h5>
+									</ValueItem>
+									<ValueItem title="Висцеральный жир:">
 										<GradientValue
 											title="выше нормы (16%)"
 											value={16}
@@ -86,9 +85,8 @@ export const Body = () => {
 											max={100}
 											gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
 										/>
-									</div>
-									<div className={css['value-row']}>
-										<h5 className={css['value-title']}>Вода:</h5>
+									</ValueItem>
+									<ValueItem title="Вода:">
 										<GradientValue
 											title="ниже нормы (47%)"
 											value={47}
@@ -96,15 +94,14 @@ export const Body = () => {
 											max={100}
 											gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
 										/>
-									</div>
-								</div>
+									</ValueItem>
+								</ValueList>
 							</div>
 						</TabsContainer>
 						<TabsContainer index={2}>
 							<div className={css['content-wrapper']}>
-								<div className={css['value-list']}>
-									<div className={css['value-row']}>
-										<h5 className={css['value-title']}>Вес:</h5>
+								<ValueList>
+									<ValueItem title="Вес:">
 										<GradientValue
 											title="выше нормы (110 кг)"
 											value={110}
@@ -112,9 +109,8 @@ export const Body = () => {
 											max={120}
 											gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
 										/>
-									</div>
-									<div className={css['value-row']}>
-										<h5 className={css['value-title']}>Скелетные мышцы:</h5>
+									</ValueItem>
+									<ValueItem title="Скелетные мышцы:">
 										<GradientValue
 											title="отлично (38.8%)"
 											value={38.8}
@@ -122,9 +118,8 @@ export const Body = () => {
 											max={50}
 											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
 										/>
-									</div>
-									<div className={css['value-row']}>
-										<h5 className={css['value-title']}>Костная масса:</h5>
+									</ValueItem>
+									<ValueItem title="Костная масса:">
 										<GradientValue
 											title="отлично (6.1 кг)"
 											value={6.1}
@@ -132,9 +127,8 @@ export const Body = () => {
 											max={7}
 											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
 										/>
-									</div>
-									<div className={css['value-row']}>
-										<h5 className={css['value-title']}>Белок:</h5>
+									</ValueItem>
+									<ValueItem title="Белок:">
 										<GradientValue
 											title="отлично (13.3%)"
 											value={13.3}
@@ -142,113 +136,97 @@ export const Body = () => {
 											max={15}
 											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
 										/>
-									</div>
-									<div className={css['value-row']}>
-										<h5 className={css['value-title']}>Идеальный вес тела:</h5>
+									</ValueItem>
+									<ValueItem title="Идеальный вес тела:">
 										<div className={css['just-value']}>82 кг</div>
-									</div>
-								</div>
+									</ValueItem>
+								</ValueList>
 							</div>
 						</TabsContainer>
 						<TabsContainer index={3}>
 							<div className={css['content-wrapper']}>
-								<div className={css['value-grid']}>
-									<div className={css['value-item']} style={{ gridRowStart: 1, gridColumnStart: 1 }}>
-										<h5 className={css['value-title']}>Левая рука:</h5>
-										<div className={css['balues-block']}>
-											<GradientValue
-												title="жир: 416%"
-												value={416}
-												min={0}
-												max={500}
-												gradientColors={['#95D665', '#FFEA07', '#FD531B']}
-											/>
-											<GradientValue
-												title="мышцы: 108%"
-												value={108}
-												min={0}
-												max={120}
-												gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-											/>
-										</div>
-									</div>
-									<div className={css['value-item']} style={{ gridRowStart: 1, gridColumnStart: 3 }}>
-										<h5 className={css['value-title']}>Правая рука:</h5>
-										<div className={css['balues-block']}>
-											<GradientValue
-												title="жир: 416%"
-												value={416}
-												min={0}
-												max={500}
-												gradientColors={['#95D665', '#FFEA07', '#FD531B']}
-											/>
-											<GradientValue
-												title="мышцы: 108%"
-												value={108}
-												min={0}
-												max={120}
-												gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-											/>
-										</div>
-									</div>
-									<div className={css['value-item']} style={{ gridRowStart: 2, gridColumnStart: 2 }}>
-										<h5 className={css['value-title']}>Торс:</h5>
-										<div className={css['balues-block']}>
-											<GradientValue
-												title="жир: 416%"
-												value={416}
-												min={0}
-												max={500}
-												gradientColors={['#95D665', '#FFEA07', '#FD531B']}
-											/>
-											<GradientValue
-												title="мышцы: 108%"
-												value={108}
-												min={0}
-												max={120}
-												gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-											/>
-										</div>
-									</div>
-									<div className={css['value-item']} style={{ gridRowStart: 3, gridColumnStart: 1 }}>
-										<h5 className={css['value-title']}>Левая нога:</h5>
-										<div className={css['balues-block']}>
-											<GradientValue
-												title="жир: 416%"
-												value={416}
-												min={0}
-												max={500}
-												gradientColors={['#95D665', '#FFEA07', '#FD531B']}
-											/>
-											<GradientValue
-												title="мышцы: 108%"
-												value={108}
-												min={0}
-												max={120}
-												gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-											/>
-										</div>
-									</div>
-									<div className={css['value-item']} style={{ gridRowStart: 3, gridColumnStart: 3 }}>
-										<h5 className={css['value-title']}>Правая нога:</h5>
-										<div className={css['balues-block']}>
-											<GradientValue
-												title="жир: 416%"
-												value={416}
-												min={0}
-												max={500}
-												gradientColors={['#95D665', '#FFEA07', '#FD531B']}
-											/>
-											<GradientValue
-												title="мышцы: 108%"
-												value={108}
-												min={0}
-												max={120}
-												gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-											/>
-										</div>
-									</div>
-								</div>
+								<ValueGrid>
+									<ValueGridItem title="Левая рука:" row={1} col={1}>
+										<GradientValue
+											title="жир: 416%"
+											value={416}
+											min={0}
+											max={500}
+											gradientColors={['#95D665', '#FFEA07', '#FD531B']}
+										/>
+										<GradientValue
+											title="мышцы: 108%"
+											value={108}
+											min={0}
+											max={120}
+											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
+										/>
+									</ValueGridItem>
+									<ValueGridItem title="Правая рука:" row={1} col={3}>
+										<GradientValue
+											title="жир: 416%"
+											value={416}
+											min={0}
+											max={500}
+											gradientColors={['#95D665', '#FFEA07', '#FD531B']}
+										/>
+										<GradientValue
+											title="мышцы: 108%"
+											value={108}
+											min={0}
+											max={120}
+											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
+										/>
+									</ValueGridItem>
+									<ValueGridItem title="Торс:" row={2} col={2}>
+										<GradientValue
+											title="жир: 416%"
+											value={416}
+											min={0}
+											max={500}
+											gradientColors={['#95D665', '#FFEA07', '#FD531B']}
+										/>
+										<GradientValue
+											title="мышцы: 108%"
+											value={108}
+											min={0}
+											max={120}
+											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
+										/>
+									</ValueGridItem>
+									<ValueGridItem title="Левая нога:" row={3} col={1}>
+										<GradientValue
+											title="жир: 416%"
+											value={416}
+											min={0}
+											max={500}
+											gradientColors={['#95D665', '#FFEA07', '#FD531B']}
+										/>
+										<GradientValue
+											title="мышцы: 108%"
+											value={108}
+											min={0}
+											max={120}
+											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
+										/>
+									</ValueGridItem>
+									<ValueGridItem title="Правая нога:" row={3} col={3}>
+										<GradientValue
+											title="жир: 416%"
+											value={416}
+											min={0}
+											max={500}
+											gradientColors={['#95D665', '#FFEA07', '#FD531B']}
+										/>
+										<GradientValue
+											title="мышцы: 108%"
+											value={108}
+											min={0}
+											max={120}
+											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
+										/>
+									</ValueGridItem>
+								</ValueGrid>
 							</div>
 						</TabsContainer>
 					</div>

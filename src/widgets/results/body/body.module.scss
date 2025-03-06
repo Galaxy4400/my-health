@@ -4,11 +4,6 @@
 	gap: rem(40);
 }
 
-.common-value {
-	text-align: center;
-	font-size: rem(20);
-}
-
 .main-value {
 	margin: 0px 0px rem(30) 0px;
 }
@@ -37,57 +32,7 @@
 	}
 }
 
-.btn-head {
-	min-height: rem(48);
-	display: flex;
-	align-items: flex-end;
-	justify-content: center;
-	margin: 0px 0px rem(20) 0px;
-}
-
-.btn-title {
-	text-align: center;
-	font-size: rem(20);
-	font-weight: 700;
-}
-
-.btn-value {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0px 0px rem(10) 0px;
-}
-
 .content-wrapper {
-}
-
-.value-list {
-	display: grid;
-	gap: rem(20);
-}
-
-.value-row {
-	display: grid;
-	grid-template-columns: rem(220) 1fr;
-	gap: rem(20);
-	align-items: center;
-}
-
-.value-title {
-	font-size: rem(20);
-}
-
-.value-grid {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: rem(0) rem(30);
-	text-align: center;
-}
-
-.balues-block {
-	display: grid;
-	gap: rem(10);
-	margin: rem(10) 0px 0px 0px;
 }
 
 .just-value {
