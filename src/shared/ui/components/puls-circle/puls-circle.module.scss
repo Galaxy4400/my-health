@@ -10,7 +10,6 @@
 	align-items: center;
 	width: rem(150);
 	height: rem(150);
-	padding: em(20);
 	background: var(--color);
 	&::before {
 		content: "";
@@ -21,7 +20,7 @@
 		height: 100%;
 		border-radius: 50%;
 		background: var(--color);
-		opacity: 0.5;
+		opacity: 0.7;
 		z-index: 1;
 		animation: pulse 1.5s infinite;
 	}
@@ -55,12 +54,8 @@
 	0% {
 		transform: scale(1);
 	}
-	70% {
-		transform: scale(1.4);
-		opacity: 0;
-	}
 	100% {
-		transform: scale(1);
+		transform: scale(1.4);
 		opacity: 0;
 	}
 }

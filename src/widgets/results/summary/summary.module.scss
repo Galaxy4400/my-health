@@ -8,3 +8,44 @@
 	text-align: center;
 	font-size: rem(20);
 }
+
+.value {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0px 0px rem(50) 0px;
+}
+
+.buttons {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: rem(20);
+}
+
+.btn {
+	border-radius: rem(10);
+	border: rem(1) solid $color-second;
+	background: #fff;
+	padding: rem(15) rem(20);
+}
+
+.btn-head {
+	min-height: rem(48);
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	margin: 0px 0px rem(20) 0px;
+}
+
+.btn-title {
+	text-align: center;
+	font-size: rem(20);
+	font-weight: 700;
+}
+
+.btn-value {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0px 0px rem(10) 0px;
+}

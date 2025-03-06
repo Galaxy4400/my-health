@@ -1,8 +1,8 @@
 import css from './puls-circle.module.scss';
-import { CSSProperties, HTMLAttributes } from 'react';
+import { CSSProperties } from 'react';
 import cn from 'classnames';
 
-interface PulsCircleProps extends HTMLAttributes<HTMLDivElement> {
+interface PulsCircleProps {
 	diameter?: number;
 	color?: string;
 	title?: string;
@@ -11,15 +11,7 @@ interface PulsCircleProps extends HTMLAttributes<HTMLDivElement> {
 	fontSize?: number;
 }
 
-export const PulsCircle = ({
-	diameter,
-	fontSize,
-	className,
-	color,
-	title,
-	status,
-	value,
-}: PulsCircleProps) => {
+export const PulsCircle = ({ diameter, fontSize, color, title, status, value }: PulsCircleProps) => {
 	const style: CSSProperties & { '--color'?: string } = {
 		'--color': color,
 		width: `${diameter}px`,
@@ -27,8 +19,8 @@ export const PulsCircle = ({
 	};
 
 	return (
-		<div className={css['puls-circle']} style={style}>
-			<div className={cn(css['content'], className)}>
+		<div className={cn(css['puls-circle'])} style={style}>
+			<div className={css['content']}>
 				{title && (
 					<h6 className={css['title']} style={{ fontSize: `${fontSize}px` }}>
 						{title}
