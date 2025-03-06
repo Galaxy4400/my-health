@@ -1,11 +1,9 @@
 import css from './measure.module.scss';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Icons } from 'shared/types';
-import { Icon } from 'shared/ui/icons';
-import cn from 'classnames';
 import { SkipStep } from 'features/steps';
 import { Loader, MeasureStatus } from 'shared/ui/components';
+import cn from 'classnames';
 
 interface MeasureProps<T = unknown> {
 	startCount?: number;
