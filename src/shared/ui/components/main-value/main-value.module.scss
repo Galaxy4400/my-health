@@ -1,0 +1,20 @@
+.main {
+	display: grid;
+	grid-template-columns: 1fr;
+	align-items: center;
+	gap: rem(20);
+	&:global(.has-title) {
+		grid-template-columns: auto 1fr;
+	}
+}
+
+.title {
+	font-size: rem(20);
+	font-weight: 700;
+}
+
+.value {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

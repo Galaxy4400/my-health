@@ -1,21 +1,18 @@
 import css from './summary.module.scss';
-import { Model3d, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
+import { MainValue, Model3d, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
 
 export const Summary = () => {
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
 				<ResultHead />
-				<div className={css['value']}>
-					<PulsCircle
-						color="#96D665"
-						diameter={150}
-						fontSize={20}
-						title="Общая оценка:"
-						status="Хорошо"
-						value="(7/10)"
-					/>
-				</div>
+				<MainValue
+					className={css['main-value']}
+					valueTitle="Общая оценка:"
+					color="#96D665"
+					status="Хорошо"
+					value="(7/10)"
+				/>
 				<div className={css['buttons']}>
 					<TabsButton className={css['btn']} index={2}>
 						<div className={css['btn-head']}>

@@ -21,3 +21,4 @@ export * from './loader';
 export * from './model-3d';
 export * from './result-head';
 export * from './puls-circle';
+export * from './main-value';
