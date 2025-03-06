@@ -68,6 +68,7 @@ export const Measure = ({ action, onSuccess, onError, nextStep, startCount = 5 }
 			navigate(nextStep);
 			return;
 		}
+
 		setIsRunning(true);
 		setIsComplete(false);
 		setCount(startCount);

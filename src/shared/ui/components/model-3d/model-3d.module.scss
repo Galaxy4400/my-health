@@ -1,0 +1,21 @@
+.model {
+}
+
+.title {
+	margin: 0px 0px rem(20) 0px;
+}
+
+.text {
+	font-size: rem(20);
+}
+
+.code {
+	font-weight: 700;
+	font-size: rem(24);
+}
+
+.frame {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

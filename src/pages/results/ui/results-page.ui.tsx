@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Container, PageHead, Steps, Tabs, TabsContainer } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
 import { ResultActions, ResultButtons } from './components';
+import { Summary } from 'widgets/results';
 
 export const ResultsPage = () => {
 	const navigate = useNavigate();
@@ -17,7 +18,9 @@ export const ResultsPage = () => {
 			<Steps current={5} />
 			<Tabs active={1}>
 				<div className={css['results']}>
-					<TabsContainer index={1}>results 1</TabsContainer>
+					<TabsContainer index={1}>
+						<Summary />
+					</TabsContainer>
 					<TabsContainer index={2}>results 2</TabsContainer>
 					<TabsContainer index={3}>results 3</TabsContainer>
 					<TabsContainer index={4}>results 4</TabsContainer>
