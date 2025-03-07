@@ -1,0 +1,43 @@
+.main {
+	display: grid;
+	grid-template-columns: auto rem(300);
+	gap: rem(40);
+}
+
+.main-value {
+	margin: 0px 0px rem(40) 0px;
+}
+
+.content-wrapper {
+	height: rem(520);
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.content {
+	font-size: rem(20);
+}
+
+.section {
+	display: grid;
+	gap: rem(20);
+	margin: 0px 0px rem(40) 0px;
+}
+
+.norecomend-title {
+	margin: 0px 0px rem(10) 0px;
+	color: $color-primary;
+	font-size: rem(20);
+	font-weight: 700;
+}
+
+.recomend-title {
+	margin: 0px 0px rem(10) 0px;
+	color: $color-second;
+	font-size: rem(20);
+	font-weight: 700;
+}
+
+.title {
+	font-weight: 700;
+}

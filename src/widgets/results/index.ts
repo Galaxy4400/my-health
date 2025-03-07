@@ -7,3 +7,5 @@ export * from './metabolism';
 export * from './stress';
 export * from './cardio';
 export * from './risk';
+export * from './nutrition';
+export * from './sport';
