@@ -14,6 +14,7 @@ export default defineConfig({
 		outDir: 'build',
 	},
 	plugins: [svgr(), react()],
+	assetsInclude: ['**/*.glb'],
 	resolve: {
 		alias: {
 			app: '/src/app',

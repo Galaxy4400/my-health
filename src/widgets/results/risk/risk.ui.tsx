@@ -54,7 +54,7 @@ export const Risk = () => {
 					</ol>
 				</div>
 			</div>
-			<Model3d />
+			<Model3d url="https://server1.webisgroup.ru/health.ru/frames/man.php" />
 		</div>
 	);
 };

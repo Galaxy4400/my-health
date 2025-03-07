@@ -43,7 +43,7 @@ export const Metabolism = () => {
 					</ValueItem>
 				</ValueList>
 			</div>
-			<Model3d />
+			<Model3d url="https://server1.webisgroup.ru/health.ru/frames/man.php" />
 		</div>
 	);
 };

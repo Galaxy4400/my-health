@@ -1,7 +1,8 @@
 import css from './model-3d.module.scss';
+import { Scene } from 'shared/ui/scene-3d/scene';
 import model from 'shared/assets/img/model.png';
 
-export const Model3d = () => {
+export const Model3d = ({ url }: { url: string }) => {
 	return (
 		<div className={css['model']}>
 			<div className={css['title']}>
@@ -10,7 +11,8 @@ export const Model3d = () => {
 				<p className={css['text']}>Запомните или запишите его у себя</p>
 			</div>
 			<div className={css['frame']}>
-				<img src={model} alt="model" />
+				{/* <Scene /> */}
+				<iframe src={url} width="100%" height="553px"></iframe>
 			</div>
 		</div>
 	);

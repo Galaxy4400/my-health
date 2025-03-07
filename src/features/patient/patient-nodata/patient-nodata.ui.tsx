@@ -13,7 +13,7 @@ export const PatientNodata = () => {
 
 	const submitHandler = async (data: RequestData) => {
 		setIsLoading(true);
-		console.log(data);
+
 		// const { error } = await registration(login as string, password as string);
 
 		setIsLoading(false);
