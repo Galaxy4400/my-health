@@ -1,0 +1,45 @@
+.main {
+	display: grid;
+	grid-template-columns: auto rem(300);
+	gap: rem(40);
+}
+
+.main-value {
+	margin: 0px 0px rem(30) 0px;
+}
+
+.buttons {
+	border-bottom: rem(1) solid $color-second;
+	display: flex;
+	justify-content: space-between;
+	gap: rem(5);
+	margin: 0px 0px rem(20) 0px;
+}
+
+.btn {
+	flex-grow: 1;
+	border-radius: rem(10) rem(10) 0px 0px;
+	border: rem(1) solid $color-second;
+	border-bottom: none;
+	background: $color-second;
+	color: #fff;
+	text-align: center;
+	font-size: rem(20);
+	padding: rem(15) rem(24);
+	&:global(.active) {
+		background: #fff;
+		color: $color-second;
+	}
+}
+
+.content-wrapper {
+}
+
+.just-value {
+	font-size: rem(18);
+	font-weight: 700;
+	min-height: 50;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

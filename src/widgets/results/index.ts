@@ -3,3 +3,4 @@ export * from './print';
 export * from './add-to-card';
 export * from './summary';
 export * from './body';
+export * from './metabolism';

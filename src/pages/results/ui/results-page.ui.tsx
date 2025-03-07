@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Container, PageHead, Steps, Tabs, TabsContainer } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
 import { ResultActions, ResultButtons } from './components';
-import { Body, Summary } from 'widgets/results';
+import { Body, Metabolism, Summary } from 'widgets/results';
 
 export const ResultsPage = () => {
 	const navigate = useNavigate();
@@ -24,7 +24,9 @@ export const ResultsPage = () => {
 					<TabsContainer index={2}>
 						<Body />
 					</TabsContainer>
-					<TabsContainer index={3}>results 3</TabsContainer>
+					<TabsContainer index={3}>
+						<Metabolism />
+					</TabsContainer>
 					<TabsContainer index={4}>results 4</TabsContainer>
 					<TabsContainer index={5}>results 5</TabsContainer>
 					<TabsContainer index={6}>results 6</TabsContainer>
