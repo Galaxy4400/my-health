@@ -4,3 +4,6 @@ export * from './add-to-card';
 export * from './summary';
 export * from './body';
 export * from './metabolism';
+export * from './stress';
+export * from './cardio';
+export * from './risk';

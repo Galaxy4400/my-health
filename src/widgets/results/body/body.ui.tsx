@@ -138,7 +138,7 @@ export const Body = () => {
 										/>
 									</ValueItem>
 									<ValueItem title="Идеальный вес тела:">
-										<div className={css['just-value']}>82 кг</div>
+										<GradientValue title="82 кг" />
 									</ValueItem>
 								</ValueList>
 							</div>

@@ -6,11 +6,21 @@
 	justify-content: center;
 	position: relative;
 	height: rem(30);
+	&:global(.full) {
+		height: rem(40);
+		align-items: center;
+	}
 }
 
 .title {
 	padding: rem(2) 0px 0px 0px;
 	font-size: rem(18);
+	&:global(.full) {
+		padding: 0px 0px 0px 0px;
+	}
+	&:global(.bold) {
+		font-weight: 700;
+	}
 }
 
 .arrow {

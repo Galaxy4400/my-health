@@ -1,6 +1,13 @@
 import { hexToGrb } from './hex-to-rgb';
 
-export const interpolateColor = (value: number, min: number, max: number, colors: string[]): string => {
+export const interpolateColor = (
+	value: number,
+	min: number,
+	max: number,
+	colors: string[] | string,
+): string => {
+	if (!Array.isArray(colors)) return colors;
+
 	const percentage = (value - min) / (max - min);
 	const rgbColors = colors.map(hexToGrb);
 	const steps = rgbColors.length - 1;
