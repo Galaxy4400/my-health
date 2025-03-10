@@ -3,12 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
 import { useMeasure } from '../lib';
-import img from 'shared/assets/img/measure/man.png';
 import { Measure } from 'widgets/measure';
+import { Sex } from 'shared/api/patient';
+import { selectPatientData } from 'entities/patient/patient-data';
+import { useAppSelector } from 'shared/lib/store';
+import man from 'shared/assets/img/measure/man.png';
+import woman from 'shared/assets/img/measure/woman.png';
 
 export const BodyPage = () => {
 	const navigate = useNavigate();
 	const { startMeasure } = useMeasure();
+	const patient = useAppSelector(selectPatientData);
 
 	return (
 		<Container>
@@ -30,7 +35,7 @@ export const BodyPage = () => {
 				}
 			/>
 			<figure className={css['img']}>
-				<img src={img} alt="patient" />
+				<img src={patient.sex === Sex.man ? man : woman} alt="patient" />
 			</figure>
 			<Measure action={startMeasure} nextStep={path.finish()} />
 		</Container>

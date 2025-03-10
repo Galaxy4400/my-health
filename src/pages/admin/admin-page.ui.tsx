@@ -1,6 +1,6 @@
 import css from './admin-page.module.scss';
 import { useAuth } from 'app/providers/auth';
-import { PatientList } from 'entities/patient';
+import { PatientList } from 'entities/patient/patient-list';
 import { PatientFilter, PatientPagination, PatientSearch } from 'features/patient';
 import { Button, Container, PageHead, TitleBlock } from 'shared/ui/components';
 

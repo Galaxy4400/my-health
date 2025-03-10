@@ -2,22 +2,28 @@ import css from './patient-form.module.scss';
 import { useRef, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form, Input, Radio, RadioComponent } from 'shared/ui/form-components';
-import { RequestData } from 'shared/api';
 import { patientFormRules } from './patient-form.rules';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
 import cn from 'classnames';
 import { Icon } from 'shared/ui/icons';
 import { Icons } from 'shared/types';
+import { useAppDispatch } from 'shared/lib/store';
+import { setPatientData } from 'entities/patient/patient-data';
+import { PatientType } from 'shared/api/patient';
+import { RequestData } from 'shared/api';
 
 export const PatientForm = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [hasYes, setHasYes] = useState(false);
 	const navigate = useNavigate();
 	const formRef = useRef<HTMLFormElement | null>(null);
+	const dispatch = useAppDispatch();
 
 	const submitHandler = async (data: RequestData) => {
 		setIsLoading(true);
+
+		dispatch(setPatientData(data as unknown as PatientType));
 
 		// const { error } = await registration(login as string, password as string);
 
@@ -68,8 +74,8 @@ export const PatientForm = () => {
 						</div>
 						<div className={css['column']}>
 							<div className={css['radios']}>
-								<Radio label="Мужчина" name="sex" value="X" />
-								<Radio label="Женщина" name="sex" value="Y" />
+								<Radio label="Мужчина" name="sex" value="man" />
+								<Radio label="Женщина" name="sex" value="woman" />
 							</div>
 						</div>
 					</div>

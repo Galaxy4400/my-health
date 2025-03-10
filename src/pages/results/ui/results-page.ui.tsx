@@ -12,7 +12,7 @@ export const ResultsPage = () => {
 		<Container>
 			<PageHead>
 				<Button onClick={() => navigate(path.start())} width="big">
-					Завершить обследование
+					Завершить исследование
 				</Button>
 			</PageHead>
 			<Steps current={5} />

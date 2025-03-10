@@ -1,17 +1,19 @@
-import { useOverflow } from 'shared/hooks';
 import css from './sport.module.scss';
 import { MainValue, Model3d, ResultHead } from 'shared/ui/components';
+import { Sex } from 'shared/api/patient';
+import { useAppSelector } from 'shared/lib/store';
+import { selectPatientData } from 'entities/patient/patient-data';
 
 export const Sport = () => {
-	const { parentRef, childRef, isOverflowing } = useOverflow();
+	const patient = useAppSelector(selectPatientData);
 
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
 				<ResultHead patient="Константинопольский К.К. (М)" age="52" />
 				<MainValue className={css['main-value']} title="Советы по тренировкам и SPA-процедурам:" />
-				<div className={css['content-wrapper']} ref={parentRef}>
-					<div className={css['content']} ref={childRef}>
+				<div className={css['content-wrapper']}>
+					<div className={css['content']}>
 						<div className={css['section']}>
 							<h5 className={css['title']}>Спортивные нагрузки</h5>
 							<div className={css['item']}>
@@ -37,7 +39,7 @@ export const Sport = () => {
 					</div>
 				</div>
 			</div>
-			<Model3d url="https://server1.webisgroup.ru/health.ru/frames/man.php" />
+			{/* <Model3d url="https://server1.webisgroup.ru/health.ru/frames/man.php" /> */}
 		</div>
 	);
 };

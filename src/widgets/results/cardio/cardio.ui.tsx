@@ -64,7 +64,7 @@ export const Cardio = () => {
 					</ValueItem>
 				</ValueList>
 			</div>
-			<Model3d url="https://server1.webisgroup.ru/health.ru/frames/man_organs.php?group=Heart" />
+			{/* <Model3d url="https://server1.webisgroup.ru/health.ru/frames/man_organs.php?group=Heart" /> */}
 		</div>
 	);
 };

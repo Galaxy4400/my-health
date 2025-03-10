@@ -5,6 +5,7 @@ import { Form, Input, Radio, Button as FormButton } from 'shared/ui/form-compone
 import { yupResolver } from '@hookform/resolvers/yup';
 import { cardFormRules } from './card.rules';
 import { Button } from 'shared/ui/components';
+import { useModal } from 'app/providers/modal';
 
 interface CardFormProps {
 	onSuccess?: () => void;
@@ -12,10 +13,17 @@ interface CardFormProps {
 }
 
 export const CardForm = ({ onSuccess, onReject }: CardFormProps) => {
+	const { openModal } = useModal();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const loginHandler = async ({ data }: RequestData) => {
 		onSuccess?.();
+
+		openModal(
+			<div style={{ padding: '60px 120px' }}>
+				<h3>Добавлено в медкарту</h3>
+			</div>,
+		);
 	};
 
 	return (

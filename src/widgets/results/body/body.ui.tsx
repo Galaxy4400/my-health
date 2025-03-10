@@ -1,3 +1,4 @@
+import { Sex } from 'shared/api/patient';
 import css from './body.module.scss';
 import {
 	GradientValue,
@@ -12,8 +13,12 @@ import {
 	ValueItem,
 	ValueList,
 } from 'shared/ui/components';
+import { useAppSelector } from 'shared/lib/store';
+import { selectPatientData } from 'entities/patient/patient-data';
 
 export const Body = () => {
+	const patient = useAppSelector(selectPatientData);
+
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
@@ -232,7 +237,7 @@ export const Body = () => {
 					</div>
 				</Tabs>
 			</div>
-			<Model3d url="https://server1.webisgroup.ru/health.ru/frames/man.php" />
+			{/* <Model3d url="https://server1.webisgroup.ru/health.ru/frames/man.php" /> */}
 		</div>
 	);
 };

@@ -5,6 +5,7 @@ import { Form, Radio, Button as FormButton } from 'shared/ui/form-components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { printFormRules } from './print.rules';
 import { Button } from 'shared/ui/components';
+import { useModal } from 'app/providers/modal';
 
 interface PrintFormProps {
 	onSuccess?: () => void;
@@ -12,10 +13,17 @@ interface PrintFormProps {
 }
 
 export const PrintForm = ({ onSuccess, onReject }: PrintFormProps) => {
+	const { openModal } = useModal();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const loginHandler = async ({ data }: RequestData) => {
 		onSuccess?.();
+
+		openModal(
+			<div style={{ padding: '60px 120px' }}>
+				<h3>Отправлено на печать</h3>
+			</div>,
+		);
 	};
 
 	return (

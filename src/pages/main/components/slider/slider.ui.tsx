@@ -2,17 +2,22 @@ import css from './slider.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
 import { Swiper as SwiperType } from 'swiper';
-import slide1 from 'shared/assets/img/swiper/slide1.jpg';
+import { useFetch } from 'shared/hooks';
+import slide1 from 'shared/assets/img/swiper/pic1.jpg';
+import slide2 from 'shared/assets/img/swiper/pic2.jpg';
+import slide3 from 'shared/assets/img/swiper/video.mp4';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
-import { useFetch } from 'shared/hooks';
 
 const slides = [
 	{
 		url: slide1,
 	},
 	{
-		url: 'https://tickets.dkmir-dubna.ru/images/data/adv/0_adv_1737541931.mp4',
+		url: slide2,
+	},
+	{
+		url: slide3,
 	},
 ];
 

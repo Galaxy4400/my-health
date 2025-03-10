@@ -1,7 +1,12 @@
+import { Sex } from 'shared/api/patient';
 import css from './risk.module.scss';
 import { GradientValue, MainValue, Model3d, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
+import { useAppSelector } from 'shared/lib/store';
+import { selectPatientData } from 'entities/patient/patient-data';
 
 export const Risk = () => {
+	const patient = useAppSelector(selectPatientData);
+
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
@@ -54,7 +59,7 @@ export const Risk = () => {
 					</ol>
 				</div>
 			</div>
-			<Model3d url="https://server1.webisgroup.ru/health.ru/frames/man.php" />
+			{/* <Model3d url="https://server1.webisgroup.ru/health.ru/frames/man.php" /> */}
 		</div>
 	);
 };

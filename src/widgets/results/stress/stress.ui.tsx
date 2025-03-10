@@ -34,7 +34,7 @@ export const Stress = () => {
 					</ValueItem>
 				</ValueList>
 			</div>
-			<Model3d url="https://server1.webisgroup.ru/health.ru/frames/man_organs.php?group=Brain" />
+			{/* <Model3d url="https://server1.webisgroup.ru/health.ru/frames/man_organs.php?group=Brain" /> */}
 		</div>
 	);
 };

@@ -1,7 +1,11 @@
+import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import css from './summary.module.scss';
-import { MainValue, Model3d, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
+import { MainValue, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
+import { useAppSelector } from 'shared/lib/store';
 
 export const Summary = () => {
+	const patient = useAppSelector(selectPatientData);
+
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
@@ -48,7 +52,7 @@ export const Summary = () => {
 					</TabsButton>
 				</div>
 			</div>
-			<Model3d url="https://server1.webisgroup.ru/health.ru/frames/man.php" />
+			<PatientModel sex={patient.sex} model="model" />
 		</div>
 	);
 };
