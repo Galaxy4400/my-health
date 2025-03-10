@@ -237,7 +237,15 @@ export const Body = () => {
 					</div>
 				</Tabs>
 			</div>
-			<PatientModel sex={patient.sex} model="model" />
+			<PatientModel
+				sex={patient.sex}
+				model="model"
+				colors={
+					patient.sex === Sex.man
+						? '&highlightParts=Body_red&highlightColor=FF5722&highlightOpacity=1'
+						: '&highlightParts=Leg_r_red,Leg_l_red&highlightColor=FF5722&highlightOpacity=1'
+				}
+			/>
 		</div>
 	);
 };

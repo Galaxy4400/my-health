@@ -2,6 +2,7 @@ import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import css from './summary.module.scss';
 import { MainValue, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
+import { Sex } from 'shared/api/patient';
 
 export const Summary = () => {
 	const patient = useAppSelector(selectPatientData);
@@ -55,7 +56,11 @@ export const Summary = () => {
 			<PatientModel
 				sex={patient.sex}
 				model="model"
-				colors="&highlightParts=Body_red&highlightColor=000&highlightOpacity=1"
+				colors={
+					patient.sex === Sex.man
+						? '&highlightParts=Body_red&highlightColor=FF5722&highlightOpacity=1'
+						: '&highlightParts=Leg_r_red,Leg_l_red&highlightColor=FF5722&highlightOpacity=1'
+				}
 			/>
 		</div>
 	);

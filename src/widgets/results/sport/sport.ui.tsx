@@ -2,6 +2,7 @@ import css from './sport.module.scss';
 import { MainValue, ResultHead } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
+import { Sex } from 'shared/api/patient';
 
 export const Sport = () => {
 	const patient = useAppSelector(selectPatientData);
@@ -38,7 +39,15 @@ export const Sport = () => {
 					</div>
 				</div>
 			</div>
-			<PatientModel sex={patient.sex} model="model" />
+			<PatientModel
+				sex={patient.sex}
+				model="model"
+				colors={
+					patient.sex === Sex.man
+						? '&highlightParts=Body_red&highlightColor=FF5722&highlightOpacity=1'
+						: '&highlightParts=Leg_r_red,Leg_l_red&highlightColor=FF5722&highlightOpacity=1'
+				}
+			/>
 		</div>
 	);
 };
