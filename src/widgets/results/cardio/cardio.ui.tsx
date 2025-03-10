@@ -1,7 +1,11 @@
+import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import css from './cardio.module.scss';
-import { GradientValue, MainValue, Model3d, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
+import { GradientValue, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
+import { useAppSelector } from 'shared/lib/store';
 
 export const Cardio = () => {
+	const patient = useAppSelector(selectPatientData);
+
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
@@ -64,7 +68,7 @@ export const Cardio = () => {
 					</ValueItem>
 				</ValueList>
 			</div>
-			{/* <Model3d url="https://server1.webisgroup.ru/health.ru/frames/man_organs.php?group=Heart" /> */}
+			<PatientModel sex={patient.sex} model="heart" />
 		</div>
 	);
 };

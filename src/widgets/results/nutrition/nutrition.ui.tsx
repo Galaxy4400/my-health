@@ -1,17 +1,18 @@
-import { useOverflow } from 'shared/hooks';
 import css from './nutrition.module.scss';
-import { MainValue, Model3d, ResultHead } from 'shared/ui/components';
+import { MainValue, ResultHead } from 'shared/ui/components';
+import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
+import { useAppSelector } from 'shared/lib/store';
 
 export const Nutrition = () => {
-	const { parentRef, childRef, isOverflowing } = useOverflow();
+	const patient = useAppSelector(selectPatientData);
 
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
 				<ResultHead patient="Константинопольский К.К. (М)" age="52" />
 				<MainValue className={css['main-value']} title="Советы по питанию:" />
-				<div className={css['content-wrapper']} ref={parentRef}>
-					<div className={css['content']} ref={childRef}>
+				<div className={css['content-wrapper']}>
+					<div className={css['content']}>
 						<div className={css['dayly']}>
 							Ежедневный расход энергии: <span>3500 Kcal</span>
 						</div>
@@ -58,7 +59,7 @@ export const Nutrition = () => {
 					</div>
 				</div>
 			</div>
-			{/* <Model3d url="https://server1.webisgroup.ru/health.ru/frames/man_organs.php?group=Intestines" /> */}
+			<PatientModel sex={patient.sex} model="intestine" />
 		</div>
 	);
 };

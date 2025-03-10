@@ -14,7 +14,7 @@ import {
 	ValueList,
 } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
-import { selectPatientData } from 'entities/patient/patient-data';
+import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 
 export const Body = () => {
 	const patient = useAppSelector(selectPatientData);
@@ -237,7 +237,7 @@ export const Body = () => {
 					</div>
 				</Tabs>
 			</div>
-			{/* <Model3d url="https://server1.webisgroup.ru/health.ru/frames/man.php" /> */}
+			<PatientModel sex={patient.sex} model="model" />
 		</div>
 	);
 };

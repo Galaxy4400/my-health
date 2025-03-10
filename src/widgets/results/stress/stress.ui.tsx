@@ -1,7 +1,11 @@
+import { useAppSelector } from 'shared/lib/store';
 import css from './stress.module.scss';
-import { GradientValue, MainValue, Model3d, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
+import { GradientValue, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
+import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 
 export const Stress = () => {
+	const patient = useAppSelector(selectPatientData);
+
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
@@ -34,7 +38,7 @@ export const Stress = () => {
 					</ValueItem>
 				</ValueList>
 			</div>
-			{/* <Model3d url="https://server1.webisgroup.ru/health.ru/frames/man_organs.php?group=Brain" /> */}
+			<PatientModel sex={patient.sex} model="brain" />
 		</div>
 	);
 };

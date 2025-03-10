@@ -6,10 +6,9 @@ type ModelType = 'model' | 'brain' | 'heart' | 'intestine';
 interface PatientModelProps {
 	sex?: Sex;
 	model?: ModelType;
+	colors?: string;
 }
 
-export const PatientModel = ({ sex = Sex.man, model = 'model' }: PatientModelProps) => {
-	console.log(sex, model, MODELS_URLS[sex][model]);
-
-	return <Model3d url={MODELS_URLS[sex][model]} />;
+export const PatientModel = ({ sex = Sex.man, model = 'model', colors = '' }: PatientModelProps) => {
+	return <Model3d url={MODELS_URLS[sex][model] + colors} />;
 };

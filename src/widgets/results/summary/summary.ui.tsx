@@ -52,7 +52,11 @@ export const Summary = () => {
 					</TabsButton>
 				</div>
 			</div>
-			<PatientModel sex={patient.sex} model="model" />
+			<PatientModel
+				sex={patient.sex}
+				model="model"
+				colors="&highlightParts=Body_red&highlightColor=000&highlightOpacity=1"
+			/>
 		</div>
 	);
 };
