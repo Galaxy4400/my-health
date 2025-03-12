@@ -24,3 +24,4 @@ export * from './main-value';
 export * from './gradient-value';
 export * from './value-list';
 export * from './value-grid';
+export * from './circle-progress';
