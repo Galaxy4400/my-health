@@ -3,7 +3,6 @@ import css from './body.module.scss';
 import {
 	GradientValue,
 	MainValue,
-	Model3d,
 	ResultHead,
 	Tabs,
 	TabsButton,
@@ -141,6 +140,9 @@ export const Body = () => {
 											max={15}
 											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
 										/>
+									</ValueItem>
+									<ValueItem title="Рост:">
+										<GradientValue title="175 см" />
 									</ValueItem>
 									<ValueItem title="Идеальный вес тела:">
 										<GradientValue title="82 кг" />
