@@ -3,6 +3,7 @@ import css from './summary.module.scss';
 import { MainValue, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { Sex } from 'shared/api/patient';
+import { ResultPage } from 'shared/types';
 
 export const Summary = () => {
 	const patient = useAppSelector(selectPatientData);
@@ -19,7 +20,7 @@ export const Summary = () => {
 					value="(7/10)"
 				/>
 				<div className={css['buttons']}>
-					<TabsButton className={css['btn']} index={2}>
+					<TabsButton className={css['btn']} index={ResultPage.body}>
 						<div className={css['btn-head']}>
 							<h5 className={css['btn-title']}>Состав тела:</h5>
 						</div>
@@ -27,7 +28,7 @@ export const Summary = () => {
 							<PulsCircle color="#96D665" diameter={85} fontSize={18} status="Хорошо" value="(8/10)" />
 						</div>
 					</TabsButton>
-					<TabsButton className={css['btn']} index={3}>
+					<TabsButton className={css['btn']} index={ResultPage.metabolism}>
 						<div className={css['btn-head']}>
 							<h5 className={css['btn-title']}>Обмен веществ:</h5>
 						</div>
@@ -35,7 +36,7 @@ export const Summary = () => {
 							<PulsCircle color="#F9EC5C" diameter={85} fontSize={18} status="Средне" value="(6/10)" />
 						</div>
 					</TabsButton>
-					<TabsButton className={css['btn']} index={4}>
+					<TabsButton className={css['btn']} index={ResultPage.stress}>
 						<div className={css['btn-head']}>
 							<h5 className={css['btn-title']}>Стресс:</h5>
 						</div>
@@ -43,7 +44,7 @@ export const Summary = () => {
 							<PulsCircle color="#96D665" diameter={85} fontSize={18} status="Хорошо" value="(8/10)" />
 						</div>
 					</TabsButton>
-					<TabsButton className={css['btn']} index={5}>
+					<TabsButton className={css['btn']} index={ResultPage.cardio}>
 						<div className={css['btn-head']}>
 							<h5 className={css['btn-title']}>Сердечно-сосудистая система:</h5>
 						</div>
