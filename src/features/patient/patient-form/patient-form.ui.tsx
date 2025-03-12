@@ -40,7 +40,7 @@ export const PatientForm = () => {
 
 		// showToast({ message: 'Вы успешно зарегистрировались', type: 'success' });
 
-		navigate(path.measure());
+		navigate(path.body());
 	};
 
 	const changeHandler = () => {

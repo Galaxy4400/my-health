@@ -32,7 +32,7 @@ export const CardioPage = () => {
 					<img className={css['img']} src={img2} alt="image2" />
 				</div>
 			</div>
-			<Measure action={startMeasure} nextStep={path.body()} />
+			<Measure action={startMeasure} nextStep={path.finish()} />
 		</Container>
 	);
 };

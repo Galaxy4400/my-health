@@ -22,22 +22,16 @@ export const BodyPage = () => {
 					В начало
 				</Button>
 			</PageHead>
-			<Steps current={4} />
+			<Steps current={2} />
 			<TitleBlock
 				className={css['title']}
-				title="Измерение состава тела и обмена веществ"
-				label={
-					<span>
-						Мы используем метод биоимпедансного анализа. Это совершенно безопасно.
-						<br />
-						Положите ладони на электроды, как показано на рисунке:
-					</span>
-				}
+				title="Анализ тела"
+				label="Встаньте на весы, положите руки на электроды, как показано на рисунке"
 			/>
 			<figure className={css['img']}>
 				<img src={patient.sex === Sex.man ? man : woman} alt="patient" />
 			</figure>
-			<Measure action={startMeasure} nextStep={path.finish()} />
+			<Measure action={startMeasure} nextStep={path.cardio()} />
 		</Container>
 	);
 };

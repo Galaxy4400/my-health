@@ -20,12 +20,12 @@ export const FinishPage = () => {
 					В начало
 				</Button>
 			</PageHead>
-			<Steps current={5} />
+			<Steps current={4} />
 			{loading ? (
 				<>
 					<TitleBlock
 						className={css['title']}
-						title="Обследование завершено"
+						title="Исследование завершено"
 						label={
 							<span>
 								Поздравляем! Вы заботитесь о своём здоровье - Вы великолепны.
