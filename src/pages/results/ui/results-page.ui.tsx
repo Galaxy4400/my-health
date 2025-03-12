@@ -4,6 +4,7 @@ import { Button, Container, PageHead, Steps, Tabs, TabsContainer } from 'shared/
 import { path } from 'shared/lib/router';
 import { ResultActions, ResultButtons } from './components';
 import { Body, Cardio, Metabolism, Nutrition, Risk, Sport, Stress, Summary } from 'widgets/results';
+import { ResultPage } from 'shared/types';
 
 export const ResultsPage = () => {
 	const navigate = useNavigate();
@@ -16,30 +17,30 @@ export const ResultsPage = () => {
 				</Button>
 			</PageHead>
 			<Steps current={4} />
-			<Tabs active={1}>
+			<Tabs active={ResultPage.summary}>
 				<div className={css['results']}>
-					<TabsContainer index={1}>
+					<TabsContainer index={ResultPage.summary}>
 						<Summary />
 					</TabsContainer>
-					<TabsContainer index={2}>
+					<TabsContainer index={ResultPage.body}>
 						<Body />
 					</TabsContainer>
-					<TabsContainer index={3}>
+					<TabsContainer index={ResultPage.metabolism}>
 						<Metabolism />
 					</TabsContainer>
-					<TabsContainer index={4}>
+					<TabsContainer index={ResultPage.stress}>
 						<Stress />
 					</TabsContainer>
-					<TabsContainer index={5}>
+					<TabsContainer index={ResultPage.cardio}>
 						<Cardio />
 					</TabsContainer>
-					<TabsContainer index={6}>
+					<TabsContainer index={ResultPage.risk}>
 						<Risk />
 					</TabsContainer>
-					<TabsContainer index={7}>
+					<TabsContainer index={ResultPage.nutrition}>
 						<Nutrition />
 					</TabsContainer>
-					<TabsContainer index={8}>
+					<TabsContainer index={ResultPage.sport}>
 						<Sport />
 					</TabsContainer>
 				</div>
