@@ -18,7 +18,7 @@ export const Stress = () => {
 					value="(8/10)"
 				/>
 				<ValueList>
-					<ValueItem title="ИМТ:">
+					<ValueItem title="Оценка стресса:">
 						<GradientValue
 							title="низкий (2/10)"
 							value={2}
@@ -27,7 +27,7 @@ export const Stress = () => {
 							gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
 						/>
 					</ValueItem>
-					<ValueItem title="Базовый расход калорий:">
+					<ValueItem title="Основной усталости:">
 						<GradientValue
 							title="низкая (3/10)"
 							value={3}
