@@ -28,7 +28,7 @@ export const PrintForm = ({ onSuccess, onReject }: PrintFormProps) => {
 
 	return (
 		<div className={css['main']}>
-			<h3 className={css['title']}>Отправим результаты на email</h3>
+			<h3 className={css['title']}>Отправим результаты на печать администратору</h3>
 			<p className={css['label']}>Выберите тип отчёта</p>
 			<Form className={css['form']} onSubmit={loginHandler} resolver={yupResolver(printFormRules)}>
 				<div className={css['radios']}>

@@ -4,12 +4,12 @@
 
 .title {
 	text-align: center;
-	margin: 0px 0px rem(20) 0px;
+	margin: 0px 0px rem(30) 0px;
 }
 
 .label {
 	text-align: center;
-	margin: 0px 0px rem(40) 0px;
+	margin: 0px 0px rem(15) 0px;
 	font-size: rem(24);
 }
 
@@ -18,6 +18,10 @@
 
 .inputs {
 	margin: 0px 0px rem(40) 0px;
+}
+
+.radios-block {
+	padding: rem(30) 0px 0px 0px;
 }
 
 .inputs-row {

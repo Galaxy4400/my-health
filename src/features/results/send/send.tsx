@@ -29,17 +29,19 @@ export const SendForm = ({ onSuccess, onReject }: SendFormProps) => {
 	return (
 		<div className={css['main']}>
 			<h3 className={css['title']}>Отправим результаты на email</h3>
-			<p className={css['label']}>Выберите тип отчёта</p>
 			<Form className={css['form']} onSubmit={loginHandler} resolver={yupResolver(sendFormRules)}>
 				<div className={css['inputs']}>
 					<div className={css['inputs-row']}>
 						<span className={css['input-label']}>Ваш email:</span>
 						<Input className={css['login']} type="email" name="email" />
 					</div>
-				</div>
-				<div className={css['radios']}>
-					<Radio name="type" value="short" label="Краткий отчёт" />
-					<Radio name="type" value="full" label="Полный отчёт" />
+					<div className={css['radios-block']}>
+						<p className={css['label']}>Выберите тип отчёта:</p>
+						<div className={css['radios']}>
+							<Radio name="type" value="short" label="Краткий отчёт" />
+							<Radio name="type" value="full" label="Полный отчёт" />
+						</div>
+					</div>
 				</div>
 				<div className={css['actions']}>
 					<Button onClick={onReject} color="second" type="button">
