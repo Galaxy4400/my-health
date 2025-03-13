@@ -6,6 +6,11 @@ export type QueryData = Record<string, string | number | boolean>;
 
 export type RequestData = Record<string, string | number | boolean>;
 
+export interface ResponseType {
+	status: string;
+	meta: Record<string, string>;
+}
+
 export interface PagingData<T> {
 	items: T[];
 	total: number;

@@ -1,14 +1,25 @@
-import { useEffect } from 'react';
-import { request } from 'shared/api';
+import { useEffect, useState } from 'react';
+import { request, ResponseType } from 'shared/api';
 
-const delay = 30000;
+const delay = 5000;
 
 export const usePing = () => {
+	const [isError, setIsError] = useState(false);
+
 	useEffect(() => {
-		const ping = () => request({ query: { action: 'ping' } }).then(console.log);
+		const ping = () =>
+			request<ResponseType>({ query: { action: 'ping' } }).then((response) => {
+				if (response.status !== 'ok') {
+					setIsError(true);
+				} else {
+					setIsError(false);
+				}
+			});
 
 		const interval = setInterval(ping, delay);
 
 		return () => clearInterval(interval);
 	}, []);
+
+	return { isError };
 };

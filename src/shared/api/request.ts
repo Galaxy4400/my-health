@@ -1,6 +1,6 @@
 import { Methods, QueryData, RequestData } from './types';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 
 interface requestProps {
 	url?: string;
@@ -20,8 +20,6 @@ export const request = async <T>({
 	const queryString = Object.keys(query).length
 		? `?${new URLSearchParams(query as Record<string, string>).toString()}`
 		: '';
-
-	console.log(endpoint + queryString);
 
 	const response = await fetch(endpoint + queryString, {
 		method,
