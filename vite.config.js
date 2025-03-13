@@ -10,10 +10,19 @@ const __dirname = dirname(__filename);
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	plugins: [svgr(), react()],
 	build: {
 		outDir: 'build',
 	},
-	plugins: [svgr(), react()],
+	server: {
+		proxy: {
+			'/api': {
+				target: 'https://stand.webishost.ru',
+				changeOrigin: true,
+				secure: false,
+			},
+		},
+	},
 	assetsInclude: ['**/*.glb'],
 	resolve: {
 		alias: {

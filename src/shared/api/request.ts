@@ -1,7 +1,9 @@
 import { Methods, QueryData, RequestData } from './types';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 interface requestProps {
-	url: string;
+	url?: string;
 	method?: Methods;
 	data?: RequestData;
 	query?: QueryData;
@@ -13,11 +15,13 @@ export const request = async <T>({
 	data = {},
 	query = {},
 }: requestProps): Promise<T> => {
-	const endpoint = `/api/${url.replace(/^\/+/, '')}`;
+	const endpoint = `${API_BASE_URL}/api/${url ? url.replace(/^\/+/, '') : ''}`;
 
 	const queryString = Object.keys(query).length
 		? `?${new URLSearchParams(query as Record<string, string>).toString()}`
 		: '';
+
+	console.log(endpoint + queryString);
 
 	const response = await fetch(endpoint + queryString, {
 		method,
