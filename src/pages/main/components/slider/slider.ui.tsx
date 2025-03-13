@@ -2,31 +2,14 @@ import css from './slider.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
 import { Swiper as SwiperType } from 'swiper';
-import { useFetch } from 'shared/hooks';
-import slide1 from 'shared/assets/img/swiper/pic1.jpg';
-import slide2 from 'shared/assets/img/swiper/pic2.jpg';
-import slide3 from 'shared/assets/img/swiper/video.mp4';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
-
-const slides = [
-	{
-		url: slide1,
-	},
-	{
-		url: slide2,
-	},
-	{
-		url: slide3,
-	},
-];
+import { useAppSelector } from 'shared/lib/store';
+import { selectApplicationDataLoading, selectApplicationSlider } from 'entities/application';
 
 export const Slider = () => {
-	const { data, loading } = useFetch('mock', slides);
-
-	if (loading) {
-		return <div>Loading...</div>;
-	}
+	const loading = useAppSelector(selectApplicationDataLoading);
+	const slider = useAppSelector(selectApplicationSlider);
 
 	const handleSlideChange = (swiper: SwiperType) => {
 		const currentSlide = swiper.slides[swiper.activeIndex];
@@ -44,6 +27,10 @@ export const Slider = () => {
 		}
 	};
 
+	if (loading || !slider.length) {
+		return <div>Loading...</div>;
+	}
+
 	return (
 		<Swiper
 			className={css['slider']}
@@ -57,9 +44,9 @@ export const Slider = () => {
 			}}
 			loop={true}
 		>
-			{data?.map((item, i) => (
+			{slider?.map((item, i) => (
 				<SwiperSlide className={css['slide']} key={i}>
-					{item.url.trim().endsWith('.mp4') ? (
+					{item.type === 'video' ? (
 						<video src={item.url} muted loop={false} />
 					) : (
 						<img src={item.url} alt="slide" />

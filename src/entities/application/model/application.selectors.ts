@@ -4,7 +4,10 @@ const selectApplicationState = (state: RootState) => state.applicationData;
 
 export const selectApplicationData = createSelector(selectApplicationState, (state) => state.application);
 
-export const selectMainSlider = createSelector(selectApplicationState, (state) => state.application.slider);
+export const selectApplicationSlider = createSelector(
+	selectApplicationState,
+	(state) => state.application.slider,
+);
 
 export const selectMainBackgound = createSelector(
 	selectApplicationState,
