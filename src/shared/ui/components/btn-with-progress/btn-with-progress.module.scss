@@ -1,0 +1,41 @@
+.btn {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	font-size: rem(42);
+	width: rem(250);
+	height: rem(250);
+	color: #fff;
+	background: $color-second;
+	border-radius: 50%;
+	scale: 1;
+	box-shadow: 0 0 0 0 rgba($color-second, 0.5);
+	animation: pulse 1.5s infinite;
+}
+
+.progress {
+	position: absolute;
+	top: rem(10);
+	left: rem(10);
+	color: #2eb2bd;
+	z-index: 1;
+}
+
+.text {
+	position: relative;
+	z-index: 2;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.9);
+	}
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 80px rgba($color-second, 0);
+	}
+	100% {
+		transform: scale(0.9);
+		box-shadow: 0 0 0 0 rgba($color-second, 0);
+	}
+}

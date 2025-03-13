@@ -1,17 +1,46 @@
 import css from './finish-page.module.scss';
-import { useNavigate } from 'react-router-dom';
-import { Button, Container, Loader, PageHead, PulsBtn, Steps, TitleBlock } from 'shared/ui/components';
+import { Navigate, useNavigate } from 'react-router-dom';
+import {
+	BtnWithProgress,
+	Button,
+	Container,
+	Loader,
+	PageHead,
+	Steps,
+	TitleBlock,
+} from 'shared/ui/components';
 import { path } from 'shared/lib/router';
 import { useMeasure } from '../lib';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import cn from 'classnames';
+
+const deleyTime = 3000;
 
 export const FinishPage = () => {
 	const navigate = useNavigate();
+	const [delayCount, setDelayCount] = useState(0);
+	const [isComplete, setIsComplete] = useState(false);
 	const { startMeasure, loading } = useMeasure();
 
+	const countStep = 10;
+
 	useEffect(() => {
-		startMeasure();
+		startMeasure().then(() => setIsComplete(true));
 	}, []);
+
+	useEffect(() => {
+		if (!isComplete) return;
+
+		const interval = setInterval(() => {
+			setDelayCount((prev) => prev + countStep);
+		}, countStep);
+
+		return () => clearInterval(interval);
+	}, [isComplete, navigate]);
+
+	if (delayCount >= deleyTime) {
+		return <Navigate to={path.results()} />;
+	}
 
 	return (
 		<Container>
@@ -45,9 +74,13 @@ export const FinishPage = () => {
 						title="Исследование завершено"
 						label={'Результаты готовы. Нажмите на кнопку для просмотра:'}
 					/>
-					<PulsBtn className={css['btn']} onClick={() => navigate(path.results())}>
-						Результаты
-					</PulsBtn>
+					<BtnWithProgress
+						className={cn(css['btn'])}
+						text="Результаты"
+						onClick={() => navigate(path.results())}
+						curValue={delayCount}
+						totalValue={deleyTime}
+					/>
 				</>
 			)}
 		</Container>

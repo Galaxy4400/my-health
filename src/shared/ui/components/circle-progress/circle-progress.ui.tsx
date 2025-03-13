@@ -1,9 +1,11 @@
-interface CircleProgressProps {
+import { HTMLAttributes } from 'react';
+
+interface CircleProgressProps extends HTMLAttributes<SVGAElement> {
 	value: number;
 	size?: number;
 }
 
-export const CircleProgress = ({ value, size = 100 }: CircleProgressProps) => {
+export const CircleProgress = ({ value, size = 100, className }: CircleProgressProps) => {
 	const center = size / 2; // Центр круга
 	const radius = size / 2; // Радиус круга
 	const angle = (value / 100) * 360; // Угол заполнения
@@ -25,8 +27,8 @@ export const CircleProgress = ({ value, size = 100 }: CircleProgressProps) => {
   `;
 
 	return (
-		<svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-			<path d={pathData} fill="green" />
+		<svg className={className} width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+			<path d={pathData} fill="currentColor" />
 		</svg>
 	);
 };

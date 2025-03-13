@@ -25,3 +25,4 @@ export * from './gradient-value';
 export * from './value-list';
 export * from './value-grid';
 export * from './circle-progress';
+export * from './btn-with-progress';

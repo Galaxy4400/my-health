@@ -1,8 +1,7 @@
 import css from './gradient-value.module.scss';
 import arrow from 'shared/assets/img/arrow.svg';
-import { getRelationPercent } from 'shared/utils/get-relation-percent';
-import { interpolateColor } from 'shared/utils/interpolate-color';
 import cn from 'classnames';
+import { getRelationPercent, interpolateColor } from 'shared/utils';
 
 interface GradientValueProps {
 	title: string;

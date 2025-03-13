@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ReactNode } from 'react';
 import { path } from 'shared/lib/router';
 import { Icon } from 'shared/ui/icons';
-import { priceFormat } from 'shared/utils';
+
 import { AccountType } from 'shared/api/account';
 import { getAccountTypeImage, getAccountTypeName } from 'shared/lib/account';
 

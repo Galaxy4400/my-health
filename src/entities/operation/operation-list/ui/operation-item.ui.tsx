@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
 import { path } from 'shared/lib/router';
 import { Icon, IconCategory } from 'shared/ui/icons';
-import { priceFormat } from 'shared/utils';
+
 import { format } from 'date-fns';
 import { DATETIME_FORMAT } from 'shared/constants/datetime-format';
 import { Icons } from 'shared/types';
