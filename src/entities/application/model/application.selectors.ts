@@ -11,8 +11,11 @@ export const selectMainBackgound = createSelector(
 	(state) => state.application.background,
 );
 
-export const selectIdle = createSelector(selectApplicationState, (state) => state.application.idleTimeout);
+export const selectApplicationIdle = createSelector(
+	selectApplicationState,
+	(state) => state.application.idleTimeout,
+);
 
-export const selectAccountListLoading = createSelector(selectApplicationState, (state) => state.loading);
+export const selectApplicationDataLoading = createSelector(selectApplicationState, (state) => state.loading);
 
-export const selectAccountListError = createSelector(selectApplicationState, (state) => state.error);
+export const selectApplicationError = createSelector(selectApplicationState, (state) => state.error);

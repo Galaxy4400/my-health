@@ -2,21 +2,32 @@ import css from './layouts.module.scss';
 import { Outlet } from 'react-router-dom';
 import { LayoutWrapper } from 'shared/ui/components';
 import { Header } from 'widgets/header';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 import { IdleProvider } from 'app/providers/idle';
-import { useFetch, usePing } from 'shared/hooks';
+import { usePing } from 'shared/hooks';
+import { useAppDispatch, useAppSelector } from 'shared/lib/store';
+import {
+	fetchGetApplication,
+	selectApplicationDataLoading,
+	selectApplicationIdle,
+} from 'entities/application';
 
 export const MainLayout = ({ children }: PropsWithChildren) => {
 	const { isError } = usePing();
+	const dispatch = useAppDispatch();
+	const idle = useAppSelector(selectApplicationIdle);
+	const loading = useAppSelector(selectApplicationDataLoading);
 
-	const { data: seconds, loading } = useFetch('mock', 9999);
+	useEffect(() => {
+		dispatch(fetchGetApplication());
+	}, [dispatch]);
 
 	if (loading) {
 		return <div>Loading...</div>;
 	}
 
 	return (
-		<IdleProvider seconds={seconds || 60}>
+		<IdleProvider seconds={idle || 60}>
 			<LayoutWrapper>
 				<Header />
 				<main className={css['main']}>{children || <Outlet />}</main>

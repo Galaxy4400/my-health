@@ -3,7 +3,7 @@ import { ApplicationType, getApplication } from 'shared/api/application';
 import { ErrorType } from 'shared/types';
 
 export const fetchGetApplication = createAsyncThunk<ApplicationType, void, { rejectValue: ErrorType }>(
-	'account/fetchGetApplication',
+	'application/fetchGetApplication',
 	async (_, { rejectWithValue }) => {
 		try {
 			const { status, ...rest } = await getApplication();
