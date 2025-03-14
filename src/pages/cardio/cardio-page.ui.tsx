@@ -2,14 +2,17 @@ import css from './cardio-page.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
-import { useMeasure } from '../lib';
 import { Measure } from 'widgets/measure';
 import img1 from 'shared/assets/img/measure/tonometr.png';
 import img2 from 'shared/assets/img/measure/pulsococsimetr.png';
+import { useMeasure } from 'shared/hooks';
+import { useAppSelector } from 'shared/lib/store';
+import { selectPatientData } from 'entities/patient/patient-data';
 
 export const CardioPage = () => {
 	const navigate = useNavigate();
 	const { startMeasure } = useMeasure();
+	const patient = useAppSelector(selectPatientData);
 
 	return (
 		<Container>
@@ -32,7 +35,7 @@ export const CardioPage = () => {
 					<img className={css['img']} src={img2} alt="image2" />
 				</div>
 			</div>
-			<Measure action={startMeasure} nextStep={path.finish()} />
+			<Measure action={() => startMeasure(2, patient.visit_id || 0)} nextStep={path.finish()} />
 		</Container>
 	);
 };

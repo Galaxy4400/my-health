@@ -23,6 +23,11 @@ export interface PatientResponse {
 	status: string;
 }
 
+export interface MeasureStatus {
+	status: string;
+	message: string;
+}
+
 // export interface AccountsResponse {
 // 	readonly error: string | null;
 // 	readonly accounts: AccountType[] | null;

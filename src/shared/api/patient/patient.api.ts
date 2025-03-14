@@ -1,6 +1,6 @@
 import { request } from '../request';
 import { RequestData } from '../types';
-import { PatientRequestFormData, PatientResponse } from './patient.types';
+import { MeasureStatus, PatientRequestFormData, PatientResponse } from './patient.types';
 
 export const visitPatient = (submittedData: PatientRequestFormData): Promise<PatientResponse> => {
 	const requestData: RequestData = {
@@ -16,6 +16,17 @@ export const visitPatient = (submittedData: PatientRequestFormData): Promise<Pat
 				pregnacy: submittedData.pregnacy,
 			},
 		},
+	};
+
+	return request({ method: 'POST', data: requestData });
+};
+
+export const measurePatient = (step: number, visitId: number): Promise<MeasureStatus> => {
+	const requestData: RequestData = {
+		action: 'examination',
+		subaction: 'step',
+		step: step,
+		visit_id: visitId,
 	};
 
 	return request({ method: 'POST', data: requestData });

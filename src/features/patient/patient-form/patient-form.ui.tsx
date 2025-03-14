@@ -13,7 +13,7 @@ import { fetchVisitPatient } from 'entities/patient/patient-data';
 import cn from 'classnames';
 import { RequestData } from 'shared/api';
 import { useModal } from 'app/providers/modal';
-import { Button as SimpleButton, Warning } from 'shared/ui/components';
+import { WarningPopup } from 'shared/ui/components';
 
 export const PatientForm = () => {
 	const [hasYes, setHasYes] = useState(false);
@@ -29,10 +29,11 @@ export const PatientForm = () => {
 			navigate(path.body());
 		} catch (error) {
 			openModal(
-				<>
-					<Warning header="Не заполнены необходимые данные" text="Вернитесь и попробуйте ещё раз" />
-					<SimpleButton onClick={closeModal}>ОК</SimpleButton>
-				</>,
+				<WarningPopup
+					header="Не заполнены необходимые данные"
+					text="Вернитесь и попробуйте ещё раз"
+					onOk={closeModal}
+				/>,
 			);
 			console.log(error);
 		}

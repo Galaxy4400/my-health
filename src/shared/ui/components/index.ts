@@ -27,3 +27,4 @@ export * from './value-grid';
 export * from './circle-progress';
 export * from './btn-with-progress';
 export * from './warning';
+export * from './warning-popup';

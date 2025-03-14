@@ -10,6 +10,8 @@ interface WarningProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Warning = ({ header, text, className }: WarningProps) => {
+	const isString = typeof text === 'string';
+
 	return (
 		<div className={cn(css['body'], className)}>
 			<div className={css['icon-column']}>
@@ -19,7 +21,10 @@ export const Warning = ({ header, text, className }: WarningProps) => {
 			</div>
 			<div className={css['content']}>
 				<h3 className={css['title']}>{header}</h3>
-				<div className={css['text']}>{text}</div>
+				<div
+					className={css['text']}
+					{...(isString ? { dangerouslySetInnerHTML: { __html: text } } : { children: text })}
+				/>
 			</div>
 		</div>
 	);

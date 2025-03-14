@@ -1,14 +1,14 @@
 import css from './body-page.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/components';
+import { Button, Container, PageHead, Steps, TitleBlock, WarningPopup } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
-import { useMeasure } from '../lib';
 import { Measure } from 'widgets/measure';
 import { Gender } from 'shared/api/patient';
 import { selectPatientData } from 'entities/patient/patient-data';
 import { useAppSelector } from 'shared/lib/store';
 import man from 'shared/assets/img/measure/man.png';
 import woman from 'shared/assets/img/measure/woman.png';
+import { useMeasure } from 'shared/hooks';
 
 export const BodyPage = () => {
 	const navigate = useNavigate();
@@ -31,7 +31,7 @@ export const BodyPage = () => {
 			<figure className={css['img']}>
 				<img src={patient.gender === Gender.male ? man : woman} alt="patient" />
 			</figure>
-			<Measure action={startMeasure} nextStep={path.cardio()} />
+			<Measure action={() => startMeasure(1, patient.visit_id || 0)} nextStep={path.cardio()} />
 		</Container>
 	);
 };
