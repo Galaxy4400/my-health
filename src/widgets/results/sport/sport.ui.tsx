@@ -10,7 +10,7 @@ export const Sport = () => {
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
-				<ResultHead patient="Константинопольский К.К. (М)" age="52" />
+				{/* <ResultHead patient="Константинопольский К.К. (М)" age="52" /> */}
 				<MainValue className={css['main-value']} title="Советы по тренировкам и SPA-процедурам:" />
 				<div className={css['content-wrapper']}>
 					<div className={css['content']}>

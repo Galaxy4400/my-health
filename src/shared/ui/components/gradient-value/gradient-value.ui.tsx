@@ -16,7 +16,7 @@ const getCssGradient = (colors: string[]) => {
 };
 
 export const GradientValue = ({ title, value = 0, min = 0, max = 0, gradientColors }: GradientValueProps) => {
-	const isGradient = Array.isArray(gradientColors);
+	const isGradient = Array.isArray(gradientColors) && gradientColors.length > 1;
 
 	return (
 		<div className={css['main']}>

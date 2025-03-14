@@ -1,6 +1,6 @@
 import { request } from '../request';
 import { RequestData } from '../types';
-import { MeasureStatus, PatientRequestFormData, PatientResponse } from './patient.types';
+import { MeasureStatus, PatientRequestFormData, PatientResponse, ResultPageData } from './patient.types';
 
 export const visitPatient = (submittedData: PatientRequestFormData): Promise<PatientResponse> => {
 	const requestData: RequestData = {
@@ -38,5 +38,15 @@ export const resultsPatient = (visitId: number): Promise<MeasureStatus> => {
 		visit_id: visitId,
 	};
 
+	return request({ method: 'POST', data: requestData });
+};
+
+export const metabolicPatient = (visitId: number | null): Promise<ResultPageData> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: 'page',
+		page: 'metabolic',
+		visit_id: visitId || 0,
+	};
 	return request({ method: 'POST', data: requestData });
 };

@@ -9,7 +9,7 @@ export const Stress = () => {
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
-				<ResultHead patient="Константинопольский К.К. (М)" age="52" />
+				{/* <ResultHead patient="Константинопольский К.К. (М)" age="52" /> */}
 				<MainValue
 					className={css['main-value']}
 					title="Стресс:"

@@ -7,6 +7,7 @@ export const interpolateColor = (
 	colors: string[] | string,
 ): string => {
 	if (!Array.isArray(colors)) return colors;
+	if (colors.length === 1) return colors[0];
 
 	const percentage = (value - min) / (max - min);
 	const rgbColors = colors.map(hexToGrb);

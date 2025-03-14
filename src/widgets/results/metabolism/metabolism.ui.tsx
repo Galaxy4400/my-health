@@ -1,51 +1,63 @@
-import { Gender } from 'shared/api/patient';
+import { Gender, metabolicPatient, ResultPageData } from 'shared/api/patient';
 import css from './metabolism.module.scss';
-import { GradientValue, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
+import {
+	GradientValue,
+	MainValue,
+	ResultHead,
+	ValueItem,
+	ValueList,
+	WarningPopup,
+} from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
+import { useEffect, useState } from 'react';
+import { useModal } from 'app/providers/modal';
 
 export const Metabolism = () => {
+	const [loading, setLoading] = useState(true);
+	const [data, setData] = useState<ResultPageData | null>(null);
 	const patient = useAppSelector(selectPatientData);
+	const { openModal, closeModal } = useModal();
+
+	useEffect(() => {
+		setLoading(true);
+
+		metabolicPatient(patient.visit_id)
+			.then((results) => {
+				setData(results);
+			})
+			.finally(() => setLoading(false));
+	}, [closeModal, openModal, patient.visit_id]);
+
+	if (!data || loading) {
+		return <div>Нет данных</div>;
+	}
+
+	console.log(data);
 
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
-				<ResultHead patient="Константинопольский К.К. (М)" age="52" />
+				{/* <ResultHead patient="Константинопольский К.К. (М)" age="52" /> */}
 				<MainValue
 					className={css['main-value']}
-					title="Обмен веществ:"
-					color="#F9EC5C"
-					status="Хорошо"
-					value="(7/10)"
+					title={'data.score.label'}
+					color={data.score.color}
+					status={data.score.title}
+					value={data.score.value}
 				/>
 				<ValueList>
-					<ValueItem title="ИМТ:">
-						<GradientValue
-							title="выше нормы (36)"
-							value={36}
-							min={0}
-							max={40}
-							gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-						/>
-					</ValueItem>
-					<ValueItem title="Базовый расход калорий:">
-						<GradientValue
-							title="выше нормы (2611 Kcal)"
-							value={2611}
-							min={0}
-							max={3000}
-							gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-						/>
-					</ValueItem>
-					<ValueItem title="Расчётный возраст тела:">
-						<GradientValue
-							title="выше нормы (110 кг)"
-							value={110}
-							min={0}
-							max={200}
-							gradientColors={['#95D665', '#FFEA07', '#FD531B']}
-						/>
-					</ValueItem>
+					{data.statuses.map((status, i) => (
+						<ValueItem title={status.label} key={i}>
+							<GradientValue
+								title={status.title}
+								value={status.value === false ? undefined : status.value}
+								min={status.min === false ? undefined : status.min}
+								max={status.max === false ? undefined : status.max}
+								gradientColors={status.gradientColors}
+							/>
+						</ValueItem>
+					))}
 				</ValueList>
 			</div>
 			<PatientModel

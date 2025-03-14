@@ -28,7 +28,24 @@ export interface MeasureStatus {
 	message: string;
 }
 
-// export interface AccountsResponse {
-// 	readonly error: string | null;
-// 	readonly accounts: AccountType[] | null;
-// }
+export interface StatusType {
+	label: string;
+	title: string;
+	value: number | false;
+	min: number | false;
+	max: number | false;
+	gradientColors: string | string[];
+}
+
+export interface ScoreType {
+	label: string;
+	title: string;
+	color: string;
+	value: string;
+}
+
+export interface ResultPageData {
+	status: string;
+	statuses: StatusType[];
+	score: ScoreType;
+}
