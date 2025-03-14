@@ -1,11 +1,13 @@
 import { request } from '../request';
 import { RequestData } from '../types';
 import {
+	BodyPageData,
 	MeasureStatus,
 	ModelResponseData,
 	PatientRequestFormData,
 	PatientResponse,
 	ResultPageData,
+	SummaryPageData,
 } from './patient.types';
 
 export const visitPatient = (submittedData: PatientRequestFormData): Promise<PatientResponse> => {
@@ -44,6 +46,25 @@ export const resultsPatient = (visitId: number): Promise<MeasureStatus> => {
 		visit_id: visitId,
 	};
 
+	return request({ method: 'POST', data: requestData });
+};
+
+export const summaryPatient = (visitId: number | null): Promise<SummaryPageData> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: 'page',
+		visit_id: visitId || 0,
+	};
+	return request({ method: 'POST', data: requestData });
+};
+
+export const bodyPatient = (visitId: number | null): Promise<BodyPageData> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: 'page',
+		page: 'body',
+		visit_id: visitId || 0,
+	};
 	return request({ method: 'POST', data: requestData });
 };
 

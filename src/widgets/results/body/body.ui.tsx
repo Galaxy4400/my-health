@@ -1,4 +1,4 @@
-import { Gender, model3dPatient } from 'shared/api/patient';
+import { BodyPageData, bodyPatient, Gender, model3dPatient } from 'shared/api/patient';
 import css from './body.module.scss';
 import {
 	GradientValue,
@@ -17,6 +17,8 @@ import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
 
 export const Body = () => {
+	const [loading, setLoading] = useState(true);
+	const [data, setData] = useState<BodyPageData | null>(null);
 	const patient = useAppSelector(selectPatientData);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
 
@@ -24,7 +26,21 @@ export const Body = () => {
 		model3dPatient(patient.visit_id).then((results) => {
 			setModelUrl(results.url);
 		});
+
+		setLoading(true);
+
+		bodyPatient(patient.visit_id)
+			.then((results) => {
+				setData(results);
+			})
+			.finally(() => setLoading(false));
 	}, [patient.visit_id]);
+
+	if (!data || loading) {
+		return <div>Нет данных</div>;
+	}
+
+	console.log(data);
 
 	return (
 		<div className={css['main']}>
@@ -32,10 +48,10 @@ export const Body = () => {
 				{/* <ResultHead patient="Константинопольский К.К. (М)" age="52" /> */}
 				<MainValue
 					className={css['main-value']}
-					title="Состав тела:"
-					color="#96D665"
-					status="Хорошо"
-					value="(7/10)"
+					title={data.score.label}
+					color={data.score.color}
+					status={data.score.title}
+					value={data.score.value}
 				/>
 				<Tabs active={1}>
 					<div className={css['buttons']}>
@@ -53,194 +69,54 @@ export const Body = () => {
 						<TabsContainer index={1}>
 							<div className={css['content-wrapper']}>
 								<ValueList>
-									<ValueItem title="Мышечная масса:">
-										<GradientValue
-											title="отлично (85.4 кг)"
-											value={85.4}
-											min={0}
-											max={100}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-										/>
-									</ValueItem>
-									<ValueItem title="Процент мышц:">
-										<GradientValue
-											title="отлично (62.5%)"
-											value={62.5}
-											min={0}
-											max={100}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-										/>
-									</ValueItem>
-									<ValueItem title="Телесный жир:">
-										<GradientValue
-											title="выше нормы (25%)"
-											value={25}
-											min={0}
-											max={100}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-										/>
-									</ValueItem>
-									<ValueItem title="Подкожный жир:">
-										<GradientValue
-											title="выше нормы (25%)"
-											value={25}
-											min={0}
-											max={100}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-										/>
-									</ValueItem>
-									<ValueItem title="Висцеральный жир:">
-										<GradientValue
-											title="выше нормы (16%)"
-											value={16}
-											min={0}
-											max={100}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-										/>
-									</ValueItem>
-									<ValueItem title="Вода:">
-										<GradientValue
-											title="ниже нормы (47%)"
-											value={47}
-											min={0}
-											max={100}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-										/>
-									</ValueItem>
+									{data.statuses_tab1.map((status, i) => (
+										<ValueItem title={status.label} key={i}>
+											<GradientValue
+												title={status.title}
+												value={status.value === false ? undefined : status.value}
+												min={status.min === false ? undefined : status.min}
+												max={status.max === false ? undefined : status.max}
+												gradientColors={status.gradientColors}
+											/>
+										</ValueItem>
+									))}
 								</ValueList>
 							</div>
 						</TabsContainer>
 						<TabsContainer index={2}>
 							<div className={css['content-wrapper']}>
 								<ValueList>
-									<ValueItem title="Вес:">
-										<GradientValue
-											title="выше нормы (110 кг)"
-											value={110}
-											min={0}
-											max={120}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-										/>
-									</ValueItem>
-									<ValueItem title="Скелетные мышцы:">
-										<GradientValue
-											title="отлично (38.8%)"
-											value={38.8}
-											min={0}
-											max={50}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-										/>
-									</ValueItem>
-									<ValueItem title="Костная масса:">
-										<GradientValue
-											title="отлично (6.1 кг)"
-											value={6.1}
-											min={0}
-											max={7}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-										/>
-									</ValueItem>
-									<ValueItem title="Белок:">
-										<GradientValue
-											title="отлично (13.3%)"
-											value={13.3}
-											min={0}
-											max={15}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-										/>
-									</ValueItem>
-									<ValueItem title="Рост:">
-										<GradientValue title="175 см" />
-									</ValueItem>
-									<ValueItem title="Идеальный вес тела:">
-										<GradientValue title="82 кг" />
-									</ValueItem>
+									{data.statuses_tab2.map((status, i) => (
+										<ValueItem title={status.label} key={i}>
+											<GradientValue
+												title={status.title}
+												value={status.value === false ? undefined : status.value}
+												min={status.min === false ? undefined : status.min}
+												max={status.max === false ? undefined : status.max}
+												gradientColors={status.gradientColors}
+											/>
+										</ValueItem>
+									))}
 								</ValueList>
 							</div>
 						</TabsContainer>
 						<TabsContainer index={3}>
 							<div className={css['content-wrapper']}>
 								<ValueGrid>
-									<ValueGridItem title="Левая рука:" row={1} col={1}>
-										<GradientValue
-											title="жир: 416%"
-											value={416}
-											min={0}
-											max={500}
-											gradientColors={['#95D665', '#FFEA07', '#FD531B']}
-										/>
-										<GradientValue
-											title="мышцы: 108%"
-											value={108}
-											min={0}
-											max={120}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-										/>
-									</ValueGridItem>
-									<ValueGridItem title="Правая рука:" row={1} col={3}>
-										<GradientValue
-											title="жир: 416%"
-											value={416}
-											min={0}
-											max={500}
-											gradientColors={['#95D665', '#FFEA07', '#FD531B']}
-										/>
-										<GradientValue
-											title="мышцы: 108%"
-											value={108}
-											min={0}
-											max={120}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-										/>
-									</ValueGridItem>
-									<ValueGridItem title="Торс:" row={2} col={2}>
-										<GradientValue
-											title="жир: 416%"
-											value={416}
-											min={0}
-											max={500}
-											gradientColors={['#95D665', '#FFEA07', '#FD531B']}
-										/>
-										<GradientValue
-											title="мышцы: 108%"
-											value={108}
-											min={0}
-											max={120}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-										/>
-									</ValueGridItem>
-									<ValueGridItem title="Левая нога:" row={3} col={1}>
-										<GradientValue
-											title="жир: 416%"
-											value={416}
-											min={0}
-											max={500}
-											gradientColors={['#95D665', '#FFEA07', '#FD531B']}
-										/>
-										<GradientValue
-											title="мышцы: 108%"
-											value={108}
-											min={0}
-											max={120}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-										/>
-									</ValueGridItem>
-									<ValueGridItem title="Правая нога:" row={3} col={3}>
-										<GradientValue
-											title="жир: 416%"
-											value={416}
-											min={0}
-											max={500}
-											gradientColors={['#95D665', '#FFEA07', '#FD531B']}
-										/>
-										<GradientValue
-											title="мышцы: 108%"
-											value={108}
-											min={0}
-											max={120}
-											gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-										/>
-									</ValueGridItem>
+									{data.statuses_tab3.map((item, i) => (
+										<ValueGridItem title={item.label} row={item.row} col={item.col} key={i}>
+											{item.gradients.map((status, j) => (
+												<GradientValue
+													title={status.title}
+													value={status.value === false ? undefined : status.value}
+													min={status.min === false ? undefined : status.min}
+													max={status.max === false ? undefined : status.max}
+													gradientColors={status.gradientColors}
+													key={j}
+												/>
+											))}
+										</ValueGridItem>
+									))}
 								</ValueGrid>
 							</div>
 						</TabsContainer>

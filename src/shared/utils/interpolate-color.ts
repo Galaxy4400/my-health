@@ -19,7 +19,7 @@ export const interpolateColor = (
 	const startColor = rgbColors[index];
 	const endColor = rgbColors[index + 1];
 
-	const interpolatedColor = startColor.map((start, i) => Math.round(start + (endColor[i] - start) * t));
+	const interpolatedColor = startColor?.map((start, i) => Math.round(start + (endColor[i] - start) * t));
 
-	return `rgb(${interpolatedColor.join(',')})`;
+	return `rgb(${interpolatedColor?.join(',')})`;
 };

@@ -50,6 +50,27 @@ export interface ResultPageData {
 	score: ScoreType;
 }
 
+export interface SummaryPageData {
+	items: ScoreType[];
+	score: ScoreType;
+	status: string;
+}
+
+export interface BodyPartType {
+	label: string;
+	row: number;
+	col: number;
+	gradients: StatusType[];
+}
+
+export interface BodyPageData {
+	status: string;
+	statuses_tab1: StatusType[];
+	statuses_tab2: StatusType[];
+	statuses_tab3: BodyPartType[];
+	score: ScoreType;
+}
+
 export interface ModelResponseData {
 	status: string;
 	url: string;
