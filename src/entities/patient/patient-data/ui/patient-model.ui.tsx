@@ -1,6 +1,6 @@
 import css from './patient-model.module.scss';
 
-const API_BASE_URL = import.meta.env.MODE === 'development' ? import.meta.env.VITE_API_BASE_URL : '';
+const API_BASE_URL = import.meta.env.MODE === 'development' ? `${import.meta.env.VITE_API_BASE_URL}/` : '';
 
 type ModelType = 'model' | 'brain' | 'heart' | 'intestine';
 
@@ -22,7 +22,7 @@ export const PatientModel = ({ url }: PatientModelProps) => {
 				<p className={css['text']}>Запомните или запишите его у себя</p>
 			</div> */}
 			<div className={css['frame']}>
-				<iframe src={`${API_BASE_URL}/${url}`} width="100%" height="660px"></iframe>
+				<iframe src={`${API_BASE_URL}${url}`} width="100%" height="660px"></iframe>
 			</div>
 		</div>
 	);

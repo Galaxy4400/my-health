@@ -30,7 +30,7 @@ export const Stress = () => {
 				{/* <ResultHead patient="Константинопольский К.К. (М)" age="52" /> */}
 				<MainValue
 					className={css['main-value']}
-					title={'data.score.label'}
+					title={data.score.label}
 					color={data.score.color}
 					status={data.score.title}
 					value={data.score.value}
