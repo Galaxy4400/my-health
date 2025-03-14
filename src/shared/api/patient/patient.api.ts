@@ -1,9 +1,9 @@
 import { request } from '../request';
-import { QueryData } from '../types';
+import { RequestData } from '../types';
 import { PatientRequestFormData, PatientResponse } from './patient.types';
 
 export const visitPatient = (submittedData: PatientRequestFormData): Promise<PatientResponse> => {
-	const queryData: QueryData = {
+	const requestData: RequestData = {
 		action: 'examination',
 		subaction: 'start',
 		patient: {
@@ -18,5 +18,5 @@ export const visitPatient = (submittedData: PatientRequestFormData): Promise<Pat
 		},
 	};
 
-	return request({ query: queryData });
+	return request({ method: 'POST', data: requestData });
 };
