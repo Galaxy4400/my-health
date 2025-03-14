@@ -38,7 +38,7 @@ export const Stress = () => {
 					</ValueItem>
 				</ValueList>
 			</div>
-			<PatientModel sex={patient.sex} model="brain" />
+			<PatientModel gender={patient.gender} model="brain" />
 		</div>
 	);
 };

@@ -68,7 +68,7 @@ export const Cardio = () => {
 					</ValueItem>
 				</ValueList>
 			</div>
-			<PatientModel sex={patient.sex} model="heart" />
+			<PatientModel gender={patient.gender} model="heart" />
 		</div>
 	);
 };

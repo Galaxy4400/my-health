@@ -1,4 +1,4 @@
-import { Sex } from 'shared/api/patient';
+import { Gender } from 'shared/api/patient';
 import css from './body.module.scss';
 import {
 	GradientValue,
@@ -240,10 +240,10 @@ export const Body = () => {
 				</Tabs>
 			</div>
 			<PatientModel
-				sex={patient.sex}
+				gender={patient.gender}
 				model="model"
 				colors={
-					patient.sex === Sex.man
+					patient.gender === Gender.male
 						? '&highlightParts=Body_red&highlightColor=FF5722&highlightOpacity=1'
 						: '&highlightParts=Leg_r_red,Leg_l_red&highlightColor=FF5722&highlightOpacity=1'
 				}

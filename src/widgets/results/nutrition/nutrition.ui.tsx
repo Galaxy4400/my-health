@@ -59,7 +59,7 @@ export const Nutrition = () => {
 					</div>
 				</div>
 			</div>
-			<PatientModel sex={patient.sex} model="intestine" />
+			<PatientModel gender={patient.gender} model="intestine" />
 		</div>
 	);
 };

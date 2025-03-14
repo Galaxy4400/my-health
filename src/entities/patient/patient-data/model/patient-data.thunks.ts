@@ -1,78 +1,24 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { RequestData } from 'shared/api';
-import { AccountType, createAccount, deleteAccount, editAccount, getAccount } from 'shared/api/account';
-import { ErrorType, ID } from 'shared/types';
+import { PatientRequestFormData, PatientType, visitPatient } from 'shared/api/patient';
+import { ErrorType } from 'shared/types';
 
-export const fetchGetAccount = createAsyncThunk<AccountType, ID, { rejectValue: ErrorType }>(
-	'account/fetchGetAccount',
-	async (id, { rejectWithValue }) => {
-		try {
-			const { account, error } = await getAccount(id);
-
-			if (!account) {
-				throw new Error(error as string);
-			}
-
-			return account;
-		} catch (error: unknown) {
-			const knownError = error as ErrorType;
-
-			return rejectWithValue(knownError);
-		}
-	},
-);
-
-export const fetchCreateAccount = createAsyncThunk<AccountType, RequestData, { rejectValue: ErrorType }>(
-	'account/fetchCreateAccount',
-	async (submittedData, { rejectWithValue }) => {
-		try {
-			const { account, error } = await createAccount(submittedData);
-
-			if (!account) {
-				throw new Error(error as string);
-			}
-
-			return account;
-		} catch (error: unknown) {
-			const knownError = error as ErrorType;
-
-			return rejectWithValue(knownError);
-		}
-	},
-);
-
-export const fetchDeleteAccount = createAsyncThunk<ID, ID, { rejectValue: ErrorType }>(
-	'account/fetchDeleteAccount',
-	async (id, { rejectWithValue }) => {
-		try {
-			const { error } = await deleteAccount(id);
-
-			if (error) {
-				throw new Error(error as string);
-			}
-
-			return id;
-		} catch (error: unknown) {
-			const knownError = error as ErrorType;
-
-			return rejectWithValue(knownError);
-		}
-	},
-);
-
-export const fetchEditAccount = createAsyncThunk<
-	AccountType,
-	{ id: ID; submittedData: RequestData },
+export const fetchVisitPatient = createAsyncThunk<
+	PatientType,
+	PatientRequestFormData,
 	{ rejectValue: ErrorType }
->('account/fetchEditAccount', async ({ id, submittedData }, { rejectWithValue }) => {
+>('patient/fetchVisitPatient', async (submittedData, { rejectWithValue }) => {
 	try {
-		const { account, error } = await editAccount(id, submittedData);
+		const { status, visit_id } = await visitPatient(submittedData);
 
-		if (!account) {
-			throw new Error(error as string);
+		if (status !== 'ok') {
+			throw new Error('Ошибка при регистрации пациента');
 		}
 
-		return account;
+		return {
+			visit_id,
+			gender: submittedData.gender,
+			age: submittedData.age,
+		};
 	} catch (error: unknown) {
 		const knownError = error as ErrorType;
 

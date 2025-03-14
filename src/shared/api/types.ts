@@ -2,9 +2,13 @@ export type URL = `http${'s' | ''}://${string}`;
 
 export type Methods = 'GET' | 'POST' | 'UPDATE' | 'PATCH' | 'PUT' | 'DELETE';
 
-export type QueryData = Record<string, string | number | boolean>;
+export interface QueryData {
+	[key: string]: string | number | boolean | QueryData | QueryData[];
+}
 
-export type RequestData = Record<string, string | number | boolean>;
+export interface RequestData {
+	[key: string]: string | number | boolean | RequestData | RequestData[];
+}
 
 export interface ResponseType {
 	status: string;

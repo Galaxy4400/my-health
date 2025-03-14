@@ -1,30 +1,37 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { PatientDataState } from './patient-data.types';
-import { PatientType, Sex } from 'shared/api/patient';
+import { Gender } from 'shared/api/patient';
+import { fetchVisitPatient } from './patient-data.thunks';
 
 const initialState: PatientDataState = {
 	patient: {
-		sex: Sex.man,
+		visit_id: null,
+		gender: Gender.male,
 		age: 0,
 	},
 	loading: false,
-	creating: false,
-	deleting: false,
-	updating: false,
 	error: null,
 };
 
 export const patientDataSlice = createSlice({
 	name: 'patient',
 	initialState,
-	reducers: {
-		setPatientData: (state, action: PayloadAction<PatientType>) => {
-			state.patient = action.payload;
-		},
-		resetPatientData: () => initialState,
-	},
+	reducers: {},
+	extraReducers: (builder) =>
+		builder
+			.addCase(fetchVisitPatient.pending, (state) => {
+				state.loading = true;
+				state.error = null;
+			})
+			.addCase(fetchVisitPatient.fulfilled, (state, { payload }) => {
+				state.patient = payload;
+				state.loading = false;
+				state.error = null;
+			})
+			.addCase(fetchVisitPatient.rejected, (state, { payload }) => {
+				state.loading = false;
+				state.error = payload?.message ?? null;
+			}),
 });
-
-export const { setPatientData, resetPatientData } = patientDataSlice.actions;
 
 export const patientDataReducer = patientDataSlice.reducer;

@@ -1,17 +1,27 @@
-export enum Sex {
-	man = 'man',
-	woman = 'woman',
+export enum Gender {
+	male = 'male',
+	female = 'female',
 }
 
 export interface PatientType {
-	sex: Sex;
+	visit_id: number | null;
+	gender: Gender;
 	age: number;
 }
 
-// export interface AccountResponse {
-// 	readonly error: string | null;
-// 	readonly account: AccountType | null;
-// }
+export interface PatientRequestFormData {
+	gender: Gender;
+	age: number;
+	heart: 'yes' | 'no';
+	breathing: 'yes' | 'no';
+	diabetes: 'yes' | 'no';
+	pregnacy: 'yes' | 'no';
+}
+
+export interface PatientResponse {
+	visit_id: number;
+	status: string;
+}
 
 // export interface AccountsResponse {
 // 	readonly error: string | null;

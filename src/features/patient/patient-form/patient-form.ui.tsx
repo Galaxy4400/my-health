@@ -5,42 +5,28 @@ import { Button, Form, Input, Radio, RadioComponent } from 'shared/ui/form-compo
 import { patientFormRules } from './patient-form.rules';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
-import cn from 'classnames';
 import { Icon } from 'shared/ui/icons';
 import { Icons } from 'shared/types';
 import { useAppDispatch } from 'shared/lib/store';
-import { setPatientData } from 'entities/patient/patient-data';
-import { PatientType } from 'shared/api/patient';
+import { PatientRequestFormData } from 'shared/api/patient';
+import { fetchVisitPatient } from 'entities/patient/patient-data';
+import cn from 'classnames';
 import { RequestData } from 'shared/api';
 
 export const PatientForm = () => {
-	const [isLoading, setIsLoading] = useState(false);
 	const [hasYes, setHasYes] = useState(false);
 	const navigate = useNavigate();
 	const formRef = useRef<HTMLFormElement | null>(null);
 	const dispatch = useAppDispatch();
 
 	const submitHandler = async (data: RequestData) => {
-		setIsLoading(true);
+		try {
+			await dispatch(fetchVisitPatient(data as unknown as PatientRequestFormData)).unwrap();
 
-		dispatch(setPatientData(data as unknown as PatientType));
-
-		// const { error } = await registration(login as string, password as string);
-
-		setIsLoading(false);
-
-		// if (error) {
-		// 	showToast({
-		// 		message: error.includes('E11000') ? 'Такой пользователь уже существует' : error,
-		// 		type: 'error',
-		// 	});
-
-		// 	return;
-		// }
-
-		// showToast({ message: 'Вы успешно зарегистрировались', type: 'success' });
-
-		navigate(path.body());
+			navigate(path.body());
+		} catch (error) {
+			console.error('Ошибка при отправке данных пациента:', error);
+		}
 	};
 
 	const changeHandler = () => {
@@ -50,7 +36,7 @@ export const PatientForm = () => {
 
 		const data = Object.fromEntries(formData.entries());
 
-		const hasYes = ['q1', 'q2', 'q3', 'q4'].some((key) => data[key] === 'yes');
+		const hasYes = ['heart', 'breathing', 'diabetes', 'pregnacy'].some((key) => data[key] === 'yes');
 
 		setHasYes(hasYes);
 	};
@@ -74,8 +60,8 @@ export const PatientForm = () => {
 						</div>
 						<div className={css['column']}>
 							<div className={css['radios']}>
-								<Radio label="Мужчина" name="sex" value="man" />
-								<Radio label="Женщина" name="sex" value="woman" />
+								<Radio label="Мужчина" name="gender" value="male" />
+								<Radio label="Женщина" name="gender" value="female" />
 							</div>
 						</div>
 					</div>
@@ -98,10 +84,10 @@ export const PatientForm = () => {
 						<div className={css['question-row']}>
 							<div className={css['question']}>Заболевания сердечно-сосудистой системы</div>
 							<div className={css['question-values']}>
-								<RadioComponent name="q1" value="yes">
+								<RadioComponent name="heart" value="yes">
 									<div className={css['question-value']}>Да</div>
 								</RadioComponent>
-								<RadioComponent name="q1" value="no">
+								<RadioComponent name="heart" value="no">
 									<div className={cn(css['question-value'], 'no')}>Нет</div>
 								</RadioComponent>
 							</div>
@@ -109,10 +95,10 @@ export const PatientForm = () => {
 						<div className={css['question-row']}>
 							<div className={css['question']}>Заболевания дыхательной системы</div>
 							<div className={css['question-values']}>
-								<RadioComponent name="q2" value="yes">
+								<RadioComponent name="breathing" value="yes">
 									<div className={css['question-value']}>Да</div>
 								</RadioComponent>
-								<RadioComponent name="q2" value="no">
+								<RadioComponent name="breathing" value="no">
 									<div className={cn(css['question-value'], 'no')}>Нет</div>
 								</RadioComponent>
 							</div>
@@ -120,10 +106,10 @@ export const PatientForm = () => {
 						<div className={css['question-row']}>
 							<div className={css['question']}>Диабет</div>
 							<div className={css['question-values']}>
-								<RadioComponent name="q3" value="yes">
+								<RadioComponent name="diabetes" value="yes">
 									<div className={css['question-value']}>Да</div>
 								</RadioComponent>
-								<RadioComponent name="q3" value="no">
+								<RadioComponent name="diabetes" value="no">
 									<div className={cn(css['question-value'], 'no')}>Нет</div>
 								</RadioComponent>
 							</div>
@@ -131,10 +117,10 @@ export const PatientForm = () => {
 						<div className={css['question-row']}>
 							<div className={css['question']}>Беременность</div>
 							<div className={css['question-values']}>
-								<RadioComponent name="q4" value="yes">
+								<RadioComponent name="pregnacy" value="yes">
 									<div className={css['question-value']}>Да</div>
 								</RadioComponent>
-								<RadioComponent name="q4" value="no">
+								<RadioComponent name="pregnacy" value="no">
 									<div className={cn(css['question-value'], 'no')}>Нет</div>
 								</RadioComponent>
 							</div>

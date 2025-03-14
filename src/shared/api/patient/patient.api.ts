@@ -1,34 +1,22 @@
-// import { ID } from 'shared/types';
-// import { request } from '../request';
-// import { RequestData } from '../types';
-// import { AccountResponse, AccountsResponse } from './patient.types';
+import { request } from '../request';
+import { QueryData } from '../types';
+import { PatientRequestFormData, PatientResponse } from './patient.types';
 
-// const BASE_URL = 'accounts';
+export const visitPatient = (submittedData: PatientRequestFormData): Promise<PatientResponse> => {
+	const queryData: QueryData = {
+		action: 'examination',
+		subaction: 'start',
+		patient: {
+			gender: submittedData.gender,
+			age: submittedData.age,
+			diseases: {
+				heart: submittedData.heart,
+				breathing: submittedData.breathing,
+				diabetes: submittedData.diabetes,
+				pregnacy: submittedData.pregnacy,
+			},
+		},
+	};
 
-// export const getAccounts = (): Promise<AccountsResponse> => {
-// 	return request({ url: `${BASE_URL}` });
-// };
-
-// export const getAccount = (id: ID): Promise<AccountResponse> => {
-// 	return request({ url: `${BASE_URL}/${id}` });
-// };
-
-// export const deleteAccount = (id: ID): Promise<AccountResponse> => {
-// 	return request({ url: `${BASE_URL}/${id}`, method: 'DELETE' });
-// };
-
-// export const createAccount = (submittedData: RequestData): Promise<AccountResponse> => {
-// 	return request({
-// 		url: BASE_URL,
-// 		method: 'POST',
-// 		data: submittedData,
-// 	});
-// };
-
-// export const editAccount = (id: ID, submittedData: RequestData): Promise<AccountResponse> => {
-// 	return request({
-// 		url: `${BASE_URL}/${id}`,
-// 		method: 'PATCH',
-// 		data: submittedData,
-// 	});
-// };
+	return request({ query: queryData });
+};

@@ -1,6 +1,6 @@
-import { Sex } from 'shared/api/patient';
+import { Gender } from 'shared/api/patient';
 import css from './metabolism.module.scss';
-import { GradientValue, MainValue, Model3d, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
+import { GradientValue, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 
@@ -49,10 +49,10 @@ export const Metabolism = () => {
 				</ValueList>
 			</div>
 			<PatientModel
-				sex={patient.sex}
+				gender={patient.gender}
 				model="model"
 				colors={
-					patient.sex === Sex.man
+					patient.gender === Gender.male
 						? '&highlightParts=Body_red&highlightColor=FF5722&highlightOpacity=1'
 						: '&highlightParts=Leg_r_red,Leg_l_red&highlightColor=FF5722&highlightOpacity=1'
 				}

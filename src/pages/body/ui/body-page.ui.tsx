@@ -4,7 +4,7 @@ import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/compon
 import { path } from 'shared/lib/router';
 import { useMeasure } from '../lib';
 import { Measure } from 'widgets/measure';
-import { Sex } from 'shared/api/patient';
+import { Gender } from 'shared/api/patient';
 import { selectPatientData } from 'entities/patient/patient-data';
 import { useAppSelector } from 'shared/lib/store';
 import man from 'shared/assets/img/measure/man.png';
@@ -29,7 +29,7 @@ export const BodyPage = () => {
 				label="Встаньте на весы, положите руки на электроды, как показано на рисунке"
 			/>
 			<figure className={css['img']}>
-				<img src={patient.sex === Sex.man ? man : woman} alt="patient" />
+				<img src={patient.gender === Gender.male ? man : woman} alt="patient" />
 			</figure>
 			<Measure action={startMeasure} nextStep={path.cardio()} />
 		</Container>
