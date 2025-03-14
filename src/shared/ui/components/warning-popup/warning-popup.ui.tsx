@@ -6,7 +6,7 @@ import cn from 'classnames';
 
 interface WarningProps extends HTMLAttributes<HTMLDivElement> {
 	header: ReactNode;
-	text: ReactNode;
+	text?: ReactNode;
 	onOk?: () => void;
 }
 

@@ -10,23 +10,17 @@ import {
 	TitleBlock,
 } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
-import { useMeasure } from '../lib';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
+import { useResults } from '../lib';
 
 const deleyTime = 3000;
+const countStep = 10;
 
 export const FinishPage = () => {
 	const navigate = useNavigate();
 	const [delayCount, setDelayCount] = useState(0);
-	const [isComplete, setIsComplete] = useState(false);
-	const { startMeasure, loading } = useMeasure();
-
-	const countStep = 10;
-
-	useEffect(() => {
-		startMeasure().then(() => setIsComplete(true));
-	}, []);
+	const { loading, isComplete } = useResults();
 
 	useEffect(() => {
 		if (!isComplete) return;

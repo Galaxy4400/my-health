@@ -31,3 +31,12 @@ export const measurePatient = (step: number, visitId: number): Promise<MeasureSt
 
 	return request({ method: 'POST', data: requestData });
 };
+
+export const resultsPatient = (visitId: number): Promise<MeasureStatus> => {
+	const requestData: RequestData = {
+		action: 'report',
+		visit_id: visitId,
+	};
+
+	return request({ method: 'POST', data: requestData });
+};
