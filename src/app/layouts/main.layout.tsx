@@ -6,31 +6,36 @@ import { PropsWithChildren, useEffect } from 'react';
 import { IdleProvider } from 'app/providers/idle';
 import { usePing } from 'shared/hooks';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
-import {
-	fetchGetApplication,
-	selectApplicationDataLoading,
-	selectApplicationIdle,
-} from 'entities/application';
+import { fetchGetApplication, selectApplicationBackgound, selectApplicationIdle } from 'entities/application';
+
+const intervalDelay = 1000 * 60 * 10;
 
 export const MainLayout = ({ children }: PropsWithChildren) => {
 	const { isError } = usePing();
 	const dispatch = useAppDispatch();
 	const idle = useAppSelector(selectApplicationIdle);
-	const loading = useAppSelector(selectApplicationDataLoading);
+	const background = useAppSelector(selectApplicationBackgound);
 
 	useEffect(() => {
-		dispatch(fetchGetApplication());
-	}, [dispatch]);
+		const interval = setInterval(() => dispatch(fetchGetApplication()), intervalDelay);
 
-	if (loading) {
-		return <div>Loading...</div>;
-	}
+		dispatch(fetchGetApplication());
+
+		return () => clearInterval(interval);
+	}, [dispatch]);
 
 	return (
 		<IdleProvider seconds={idle || 60}>
 			<LayoutWrapper>
 				<Header />
-				<main className={css['main']}>{children || <Outlet />}</main>
+				<main className={css['main']} style={{ background: background.color }}>
+					{children || <Outlet />}
+					{background.image && (
+						<figure className={css['bg']}>
+							<img src={background.image} alt="background" />
+						</figure>
+					)}
+				</main>
 				{isError && (
 					<div className={css['error']}>
 						<h1>Диагностический стенд сейчас недоступен</h1>

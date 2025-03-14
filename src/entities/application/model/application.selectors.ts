@@ -9,7 +9,7 @@ export const selectApplicationSlider = createSelector(
 	(state) => state.application.slider,
 );
 
-export const selectMainBackgound = createSelector(
+export const selectApplicationBackgound = createSelector(
 	selectApplicationState,
 	(state) => state.application.background,
 );
