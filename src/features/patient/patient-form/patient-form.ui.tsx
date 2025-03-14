@@ -12,12 +12,15 @@ import { PatientRequestFormData } from 'shared/api/patient';
 import { fetchVisitPatient } from 'entities/patient/patient-data';
 import cn from 'classnames';
 import { RequestData } from 'shared/api';
+import { useModal } from 'app/providers/modal';
+import { Button as SimpleButton, Warning } from 'shared/ui/components';
 
 export const PatientForm = () => {
 	const [hasYes, setHasYes] = useState(false);
 	const navigate = useNavigate();
 	const formRef = useRef<HTMLFormElement | null>(null);
 	const dispatch = useAppDispatch();
+	const { openModal, closeModal } = useModal();
 
 	const submitHandler = async (data: RequestData) => {
 		try {
@@ -25,7 +28,13 @@ export const PatientForm = () => {
 
 			navigate(path.body());
 		} catch (error) {
-			console.error('Ошибка при отправке данных пациента:', error);
+			openModal(
+				<>
+					<Warning header="Не заполнены необходимые данные" text="Вернитесь и попробуйте ещё раз" />
+					<SimpleButton onClick={closeModal}>ОК</SimpleButton>
+				</>,
+			);
+			console.log(error);
 		}
 	};
 

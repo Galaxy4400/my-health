@@ -1,0 +1,29 @@
+.body {
+	display: flex;
+	gap: rem(30);
+}
+
+.title {
+	display: flex;
+	align-items: center;
+	gap: rem(30);
+	white-space: nowrap;
+	margin: 0px 0px rem(18) 0px;
+}
+
+.text {
+	display: grid;
+	gap: rem(15);
+	font-size: rem(20);
+}
+
+.icon {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border: rem(1) solid $color-primary;
+	border-radius: 50%;
+	width: rem(80);
+	height: rem(80);
+	color: $color-primary;
+}

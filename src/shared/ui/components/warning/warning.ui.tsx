@@ -1,0 +1,26 @@
+import css from './warning.module.scss';
+import { Icon } from 'shared/ui/icons';
+import { Icons } from 'shared/types';
+import { HTMLAttributes, ReactNode } from 'react';
+import cn from 'classnames';
+
+interface WarningProps extends HTMLAttributes<HTMLDivElement> {
+	header: ReactNode;
+	text: ReactNode;
+}
+
+export const Warning = ({ header, text, className }: WarningProps) => {
+	return (
+		<div className={cn(css['body'], className)}>
+			<div className={css['icon-column']}>
+				<div className={css['icon']}>
+					<Icon name={Icons.exclam} width={12} height={44} />
+				</div>
+			</div>
+			<div className={css['content']}>
+				<h3 className={css['title']}>{header}</h3>
+				<div className={css['text']}>{text}</div>
+			</div>
+		</div>
+	);
+};
