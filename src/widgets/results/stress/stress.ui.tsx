@@ -1,10 +1,28 @@
 import { useAppSelector } from 'shared/lib/store';
 import css from './stress.module.scss';
-import { GradientValue, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
+import { GradientValue, MainValue, ValueItem, ValueList } from 'shared/ui/components';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
+import { useEffect, useState } from 'react';
+import { Gender, ResultPageData, stressPatient } from 'shared/api/patient';
 
 export const Stress = () => {
+	const [loading, setLoading] = useState(true);
+	const [data, setData] = useState<ResultPageData | null>(null);
 	const patient = useAppSelector(selectPatientData);
+
+	useEffect(() => {
+		setLoading(true);
+
+		stressPatient(patient.visit_id)
+			.then((results) => {
+				setData(results);
+			})
+			.finally(() => setLoading(false));
+	}, [patient.visit_id]);
+
+	if (!data || loading) {
+		return <div>Нет данных</div>;
+	}
 
 	return (
 		<div className={css['main']}>
@@ -12,33 +30,28 @@ export const Stress = () => {
 				{/* <ResultHead patient="Константинопольский К.К. (М)" age="52" /> */}
 				<MainValue
 					className={css['main-value']}
-					title="Стресс:"
-					color="#95D665"
-					status="Хорошо"
-					value="(8/10)"
+					title={'data.score.label'}
+					color={data.score.color}
+					status={data.score.title}
+					value={data.score.value}
 				/>
 				<ValueList>
-					<ValueItem title="Оценка стресса:">
-						<GradientValue
-							title="низкий (2/10)"
-							value={2}
-							min={0}
-							max={10}
-							gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-						/>
-					</ValueItem>
-					<ValueItem title="Основной усталости:">
-						<GradientValue
-							title="низкая (3/10)"
-							value={3}
-							min={0}
-							max={10}
-							gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-						/>
-					</ValueItem>
+					{data.statuses.map((status, i) => (
+						<ValueItem title={status.label} key={i}>
+							<GradientValue
+								title={status.title}
+								value={status.value === false ? undefined : status.value}
+								min={status.min === false ? undefined : status.min}
+								max={status.max === false ? undefined : status.max}
+								gradientColors={status.gradientColors}
+							/>
+						</ValueItem>
+					))}
 				</ValueList>
 			</div>
-			<PatientModel gender={patient.gender} model="brain" />
+			<PatientModel
+				url={`3d/frames/man_organs.php?model=${patient.gender === Gender.male ? 'man' : 'woman'}&group=Brain`}
+			/>
 		</div>
 	);
 };

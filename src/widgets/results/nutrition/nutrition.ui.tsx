@@ -2,6 +2,7 @@ import css from './nutrition.module.scss';
 import { MainValue, ResultHead } from 'shared/ui/components';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { useAppSelector } from 'shared/lib/store';
+import { Gender } from 'shared/api/patient';
 
 export const Nutrition = () => {
 	const patient = useAppSelector(selectPatientData);
@@ -59,7 +60,9 @@ export const Nutrition = () => {
 					</div>
 				</div>
 			</div>
-			<PatientModel gender={patient.gender} model="intestine" />
+			<PatientModel
+				url={`3d/frames/man_organs.php?model=${patient.gender === Gender.male ? 'man' : 'woman'}&group=Intestines`}
+			/>
 		</div>
 	);
 };

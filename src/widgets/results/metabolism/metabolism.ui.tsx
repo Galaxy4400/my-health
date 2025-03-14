@@ -1,4 +1,4 @@
-import { Gender, metabolicPatient, ResultPageData } from 'shared/api/patient';
+import { Gender, metabolicPatient, model3dPatient, ResultPageData } from 'shared/api/patient';
 import css from './metabolism.module.scss';
 import {
 	GradientValue,
@@ -11,29 +11,30 @@ import {
 import { useAppSelector } from 'shared/lib/store';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
-import { useModal } from 'app/providers/modal';
 
 export const Metabolism = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<ResultPageData | null>(null);
 	const patient = useAppSelector(selectPatientData);
-	const { openModal, closeModal } = useModal();
+	const [modelUrl, setModelUrl] = useState<string | null>(null);
 
 	useEffect(() => {
 		setLoading(true);
+
+		model3dPatient(patient.visit_id).then((results) => {
+			setModelUrl(results.url);
+		});
 
 		metabolicPatient(patient.visit_id)
 			.then((results) => {
 				setData(results);
 			})
 			.finally(() => setLoading(false));
-	}, [closeModal, openModal, patient.visit_id]);
+	}, [patient.visit_id]);
 
 	if (!data || loading) {
 		return <div>Нет данных</div>;
 	}
-
-	console.log(data);
 
 	return (
 		<div className={css['main']}>
@@ -60,15 +61,7 @@ export const Metabolism = () => {
 					))}
 				</ValueList>
 			</div>
-			<PatientModel
-				gender={patient.gender}
-				model="model"
-				colors={
-					patient.gender === Gender.male
-						? '&highlightParts=Body_red&highlightColor=FF5722&highlightOpacity=1'
-						: '&highlightParts=Leg_r_red,Leg_l_red&highlightColor=FF5722&highlightOpacity=1'
-				}
-			/>
+			{modelUrl && <PatientModel url={modelUrl} />}
 		</div>
 	);
 };

@@ -2,9 +2,28 @@ import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import css from './cardio.module.scss';
 import { GradientValue, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
+import { useEffect, useState } from 'react';
+import { cardioPatient, Gender, ResultPageData } from 'shared/api/patient';
+import { useModal } from 'app/providers/modal';
 
 export const Cardio = () => {
+	const [loading, setLoading] = useState(true);
+	const [data, setData] = useState<ResultPageData | null>(null);
 	const patient = useAppSelector(selectPatientData);
+
+	useEffect(() => {
+		setLoading(true);
+
+		cardioPatient(patient.visit_id)
+			.then((results) => {
+				setData(results);
+			})
+			.finally(() => setLoading(false));
+	}, [patient.visit_id]);
+
+	if (!data || loading) {
+		return <div>Нет данных</div>;
+	}
 
 	return (
 		<div className={css['main']}>
@@ -12,63 +31,28 @@ export const Cardio = () => {
 				{/* <ResultHead patient="Константинопольский К.К. (М)" age="52" /> */}
 				<MainValue
 					className={css['main-value']}
-					title="Сердечно-сосудистая система:"
-					color="#95D665"
-					status="Средне"
-					value="(6/10)"
+					title={'data.score.label'}
+					color={data.score.color}
+					status={data.score.title}
+					value={data.score.value}
 				/>
 				<ValueList>
-					<ValueItem title="Систолическое давление:">
-						<GradientValue
-							title="выше нормы (140)"
-							value={140}
-							min={0}
-							max={180}
-							gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-						/>
-					</ValueItem>
-					<ValueItem title="Диастолическое давление:">
-						<GradientValue
-							title="в норме (85)"
-							value={85}
-							min={0}
-							max={150}
-							gradientColors={['#FD531B', '#FFEA07', '#95D665']}
-						/>
-					</ValueItem>
-					<ValueItem title="Пульс:">
-						<GradientValue
-							title="выше нормы (80)"
-							value={80}
-							min={0}
-							max={100}
-							gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-						/>
-					</ValueItem>
-					<ValueItem title="Насыщение крови кислородом (SpO2):">
-						<GradientValue
-							title="отличное (99)"
-							value={99}
-							min={0}
-							max={200}
-							gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-						/>
-					</ValueItem>
-					<ValueItem title="Артериальная жёсткость:">
-						<GradientValue
-							title="выше нормы (80)"
-							value={80}
-							min={0}
-							max={100}
-							gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-						/>
-					</ValueItem>
-					<ValueItem title="Нарушения сердечного ритма:">
-						<GradientValue title="не обнаружены" gradientColors="#95D665" />
-					</ValueItem>
+					{data.statuses.map((status, i) => (
+						<ValueItem title={status.label} key={i}>
+							<GradientValue
+								title={status.title}
+								value={status.value === false ? undefined : status.value}
+								min={status.min === false ? undefined : status.min}
+								max={status.max === false ? undefined : status.max}
+								gradientColors={status.gradientColors}
+							/>
+						</ValueItem>
+					))}
 				</ValueList>
 			</div>
-			<PatientModel gender={patient.gender} model="heart" />
+			<PatientModel
+				url={`3d/frames/man_organs.php?model=${patient.gender === Gender.male ? 'man' : 'woman'}&group=Heart`}
+			/>
 		</div>
 	);
 };

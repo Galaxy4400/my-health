@@ -1,6 +1,12 @@
 import { request } from '../request';
 import { RequestData } from '../types';
-import { MeasureStatus, PatientRequestFormData, PatientResponse, ResultPageData } from './patient.types';
+import {
+	MeasureStatus,
+	ModelResponseData,
+	PatientRequestFormData,
+	PatientResponse,
+	ResultPageData,
+} from './patient.types';
 
 export const visitPatient = (submittedData: PatientRequestFormData): Promise<PatientResponse> => {
 	const requestData: RequestData = {
@@ -46,6 +52,35 @@ export const metabolicPatient = (visitId: number | null): Promise<ResultPageData
 		action: 'report',
 		subaction: 'page',
 		page: 'metabolic',
+		visit_id: visitId || 0,
+	};
+	return request({ method: 'POST', data: requestData });
+};
+
+export const stressPatient = (visitId: number | null): Promise<ResultPageData> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: 'page',
+		page: 'stress',
+		visit_id: visitId || 0,
+	};
+	return request({ method: 'POST', data: requestData });
+};
+
+export const cardioPatient = (visitId: number | null): Promise<ResultPageData> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: 'page',
+		page: 'heart',
+		visit_id: visitId || 0,
+	};
+	return request({ method: 'POST', data: requestData });
+};
+
+export const model3dPatient = (visitId: number | null): Promise<ModelResponseData> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: '3d',
 		visit_id: visitId || 0,
 	};
 	return request({ method: 'POST', data: requestData });

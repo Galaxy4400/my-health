@@ -1,4 +1,4 @@
-import { Gender } from 'shared/api/patient';
+import { Gender, model3dPatient } from 'shared/api/patient';
 import css from './body.module.scss';
 import {
 	GradientValue,
@@ -14,9 +14,17 @@ import {
 } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
+import { useEffect, useState } from 'react';
 
 export const Body = () => {
 	const patient = useAppSelector(selectPatientData);
+	const [modelUrl, setModelUrl] = useState<string | null>(null);
+
+	useEffect(() => {
+		model3dPatient(patient.visit_id).then((results) => {
+			setModelUrl(results.url);
+		});
+	}, [patient.visit_id]);
 
 	return (
 		<div className={css['main']}>
@@ -239,15 +247,7 @@ export const Body = () => {
 					</div>
 				</Tabs>
 			</div>
-			<PatientModel
-				gender={patient.gender}
-				model="model"
-				colors={
-					patient.gender === Gender.male
-						? '&highlightParts=Body_red&highlightColor=FF5722&highlightOpacity=1'
-						: '&highlightParts=Leg_r_red,Leg_l_red&highlightColor=FF5722&highlightOpacity=1'
-				}
-			/>
+			{modelUrl && <PatientModel url={modelUrl} />}
 		</div>
 	);
 };

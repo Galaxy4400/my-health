@@ -49,3 +49,8 @@ export interface ResultPageData {
 	statuses: StatusType[];
 	score: ScoreType;
 }
+
+export interface ModelResponseData {
+	status: string;
+	url: string;
+}

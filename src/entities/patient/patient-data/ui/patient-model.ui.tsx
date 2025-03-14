@@ -1,15 +1,19 @@
 import css from './patient-model.module.scss';
-import { MODELS_URLS, Gender } from 'shared/api/patient';
+
+const API_BASE_URL = import.meta.env.MODE === 'development' ? import.meta.env.VITE_API_BASE_URL : '';
 
 type ModelType = 'model' | 'brain' | 'heart' | 'intestine';
 
+// interface PatientModelProps {
+// 	gender?: Gender;
+// 	model?: ModelType;
+// 	colors?: string;
+// }
 interface PatientModelProps {
-	gender?: Gender;
-	model?: ModelType;
-	colors?: string;
+	url: string;
 }
 
-export const PatientModel = ({ gender = Gender.male, model = 'model', colors = '' }: PatientModelProps) => {
+export const PatientModel = ({ url }: PatientModelProps) => {
 	return (
 		<div className={css['model']}>
 			{/* <div className={css['title']}>
@@ -18,7 +22,7 @@ export const PatientModel = ({ gender = Gender.male, model = 'model', colors = '
 				<p className={css['text']}>Запомните или запишите его у себя</p>
 			</div> */}
 			<div className={css['frame']}>
-				<iframe src={MODELS_URLS[gender][model] + colors} width="100%" height="660px"></iframe>
+				<iframe src={`${API_BASE_URL}/${url}`} width="100%" height="660px"></iframe>
 			</div>
 		</div>
 	);

@@ -2,11 +2,19 @@ import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import css from './summary.module.scss';
 import { MainValue, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
-import { Gender } from 'shared/api/patient';
+import { model3dPatient } from 'shared/api/patient';
 import { ResultPage } from 'shared/types';
+import { useEffect, useState } from 'react';
 
 export const Summary = () => {
 	const patient = useAppSelector(selectPatientData);
+	const [modelUrl, setModelUrl] = useState<string | null>(null);
+
+	useEffect(() => {
+		model3dPatient(patient.visit_id).then((results) => {
+			setModelUrl(results.url);
+		});
+	}, [patient.visit_id]);
 
 	return (
 		<div className={css['main']}>
@@ -54,15 +62,7 @@ export const Summary = () => {
 					</TabsButton>
 				</div>
 			</div>
-			<PatientModel
-				gender={patient.gender}
-				model="model"
-				colors={
-					patient.gender === Gender.male
-						? '&highlightParts=Body_red&highlightColor=FF5722&highlightOpacity=1'
-						: '&highlightParts=Leg_r_red,Leg_l_red&highlightColor=FF5722&highlightOpacity=1'
-				}
-			/>
+			{modelUrl && <PatientModel url={modelUrl} />}
 		</div>
 	);
 };
