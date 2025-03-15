@@ -1,5 +1,5 @@
 import css from './risk.module.scss';
-import { Gender, model3dPatient, RisksPageData, risksPatient } from 'shared/api/patient';
+import { Gender, patient3dModelRequest, RisksPageData, patientRisksRequest } from 'shared/api/patient';
 import {
 	GradientValue,
 	Loader,
@@ -20,13 +20,13 @@ export const Risk = () => {
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
 
 	useEffect(() => {
-		model3dPatient(patient.visit_id).then((results) => {
+		patient3dModelRequest(patient.visit_id).then((results) => {
 			setModelUrl(results.url);
 		});
 
 		setLoading(true);
 
-		risksPatient(patient.visit_id)
+		patientRisksRequest(patient.visit_id)
 			.then((results) => {
 				setData(results);
 			})

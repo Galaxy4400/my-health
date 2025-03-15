@@ -2,7 +2,7 @@ import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import css from './summary.module.scss';
 import { Loader, MainValue, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
-import { model3dPatient, SummaryPageData, summaryPatient } from 'shared/api/patient';
+import { patient3dModelRequest, SummaryPageData, patientSummaryRequest } from 'shared/api/patient';
 import { ResultPage } from 'shared/types';
 import { useEffect, useState } from 'react';
 
@@ -15,13 +15,13 @@ export const Summary = () => {
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
 
 	useEffect(() => {
-		model3dPatient(patient.visit_id).then((results) => {
+		patient3dModelRequest(patient.visit_id).then((results) => {
 			setModelUrl(results.url);
 		});
 
 		setLoading(true);
 
-		summaryPatient(patient.visit_id)
+		patientSummaryRequest(patient.visit_id)
 			.then((results) => {
 				setData(results);
 			})
@@ -47,7 +47,7 @@ export const Summary = () => {
 					{data.items.map((item, i) => (
 						<TabsButton className={css['btn']} index={TABS_INDEXES[i]} key={i}>
 							<div className={css['btn-head']}>
-								<h5 className={css['btn-title']}>{item.label}:</h5>
+								<h5 className={css['btn-title']}>{item.label}</h5>
 							</div>
 							<div className={css['btn-value']}>
 								<PulsCircle

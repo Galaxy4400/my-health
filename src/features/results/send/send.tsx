@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { sendFormRules } from './send.rules';
 import { Button, Loader, WarningPopup } from 'shared/ui/components';
 import { useModal } from 'app/providers/modal';
-import { emailPatient, PatientSendFormData } from 'shared/api/patient';
+import { patientEmailRequest, PatientSendFormData } from 'shared/api/patient';
 import { useAppSelector } from 'shared/lib/store';
 import { selectPatientData } from 'entities/patient/patient-data';
 
@@ -23,7 +23,7 @@ export const SendForm = ({ onSuccess, onReject }: SendFormProps) => {
 	const submitHandler = async (data: RequestData) => {
 		setIsLoading(true);
 
-		const result = await emailPatient(patient.visit_id, data as unknown as PatientSendFormData);
+		const result = await patientEmailRequest(patient.visit_id, data as unknown as PatientSendFormData);
 
 		setIsLoading(false);
 

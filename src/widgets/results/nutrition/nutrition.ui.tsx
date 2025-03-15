@@ -2,7 +2,7 @@ import css from './nutrition.module.scss';
 import { Loader, MainValue, ResultHead } from 'shared/ui/components';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { useAppSelector } from 'shared/lib/store';
-import { Gender, NutritionPageData, nutritionPatient } from 'shared/api/patient';
+import { Gender, NutritionPageData, patientNutritionRequest } from 'shared/api/patient';
 import { useEffect, useState } from 'react';
 
 export const Nutrition = () => {
@@ -13,7 +13,7 @@ export const Nutrition = () => {
 	useEffect(() => {
 		setLoading(true);
 
-		nutritionPatient(patient.visit_id)
+		patientNutritionRequest(patient.visit_id)
 			.then((results) => {
 				setData(results);
 			})

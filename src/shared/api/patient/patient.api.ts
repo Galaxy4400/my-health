@@ -17,7 +17,7 @@ import {
 	SummaryPageData,
 } from './patient.types';
 
-export const visitPatient = (submittedData: PatientRequestFormData): Promise<PatientResponse> => {
+export const patientVisitRequest = (submittedData: PatientRequestFormData): Promise<PatientResponse> => {
 	const requestData: RequestData = {
 		action: 'examination',
 		subaction: 'start',
@@ -36,7 +36,7 @@ export const visitPatient = (submittedData: PatientRequestFormData): Promise<Pat
 	return request({ method: 'POST', data: requestData });
 };
 
-export const measurePatient = (step: number, visitId: number): Promise<MeasureStatus> => {
+export const patientMeasureRequest = (step: number, visitId: number): Promise<MeasureStatus> => {
 	const requestData: RequestData = {
 		action: 'examination',
 		subaction: 'step',
@@ -47,7 +47,7 @@ export const measurePatient = (step: number, visitId: number): Promise<MeasureSt
 	return request({ method: 'POST', data: requestData });
 };
 
-export const resultsPatient = (visitId: number): Promise<MeasureStatus> => {
+export const patientResultsRequest = (visitId: number): Promise<MeasureStatus> => {
 	const requestData: RequestData = {
 		action: 'report',
 		visit_id: visitId,
@@ -56,7 +56,7 @@ export const resultsPatient = (visitId: number): Promise<MeasureStatus> => {
 	return request({ method: 'POST', data: requestData });
 };
 
-export const summaryPatient = (visitId: number | null): Promise<SummaryPageData> => {
+export const patientSummaryRequest = (visitId: number | null): Promise<SummaryPageData> => {
 	const requestData: RequestData = {
 		action: 'report',
 		subaction: 'page',
@@ -65,7 +65,7 @@ export const summaryPatient = (visitId: number | null): Promise<SummaryPageData>
 	return request({ method: 'POST', data: requestData });
 };
 
-export const bodyPatient = (visitId: number | null): Promise<BodyPageData> => {
+export const patientBodyRequest = (visitId: number | null): Promise<BodyPageData> => {
 	const requestData: RequestData = {
 		action: 'report',
 		subaction: 'page',
@@ -75,7 +75,7 @@ export const bodyPatient = (visitId: number | null): Promise<BodyPageData> => {
 	return request({ method: 'POST', data: requestData });
 };
 
-export const metabolicPatient = (visitId: number | null): Promise<ResultPageData> => {
+export const patientMetabolicRequest = (visitId: number | null): Promise<ResultPageData> => {
 	const requestData: RequestData = {
 		action: 'report',
 		subaction: 'page',
@@ -85,7 +85,7 @@ export const metabolicPatient = (visitId: number | null): Promise<ResultPageData
 	return request({ method: 'POST', data: requestData });
 };
 
-export const stressPatient = (visitId: number | null): Promise<ResultPageData> => {
+export const patientStressRequest = (visitId: number | null): Promise<ResultPageData> => {
 	const requestData: RequestData = {
 		action: 'report',
 		subaction: 'page',
@@ -95,7 +95,7 @@ export const stressPatient = (visitId: number | null): Promise<ResultPageData> =
 	return request({ method: 'POST', data: requestData });
 };
 
-export const cardioPatient = (visitId: number | null): Promise<ResultPageData> => {
+export const patientCardioRequest = (visitId: number | null): Promise<ResultPageData> => {
 	const requestData: RequestData = {
 		action: 'report',
 		subaction: 'page',
@@ -105,7 +105,7 @@ export const cardioPatient = (visitId: number | null): Promise<ResultPageData> =
 	return request({ method: 'POST', data: requestData });
 };
 
-export const risksPatient = (visitId: number | null): Promise<RisksPageData> => {
+export const patientRisksRequest = (visitId: number | null): Promise<RisksPageData> => {
 	const requestData: RequestData = {
 		action: 'report',
 		subaction: 'page',
@@ -115,7 +115,7 @@ export const risksPatient = (visitId: number | null): Promise<RisksPageData> => 
 	return request({ method: 'POST', data: requestData });
 };
 
-export const nutritionPatient = (visitId: number | null): Promise<NutritionPageData> => {
+export const patientNutritionRequest = (visitId: number | null): Promise<NutritionPageData> => {
 	const requestData: RequestData = {
 		action: 'report',
 		subaction: 'page',
@@ -126,7 +126,7 @@ export const nutritionPatient = (visitId: number | null): Promise<NutritionPageD
 	return request({ method: 'POST', data: requestData });
 };
 
-export const sportPatient = (visitId: number | null): Promise<SportPageData> => {
+export const patientSportRequest = (visitId: number | null): Promise<SportPageData> => {
 	const requestData: RequestData = {
 		action: 'report',
 		subaction: 'page',
@@ -137,16 +137,7 @@ export const sportPatient = (visitId: number | null): Promise<SportPageData> => 
 	return request({ method: 'POST', data: requestData });
 };
 
-export const model3dPatient = (visitId: number | null): Promise<ModelResponseData> => {
-	const requestData: RequestData = {
-		action: 'report',
-		subaction: '3d',
-		visit_id: visitId || 0,
-	};
-	return request({ method: 'POST', data: requestData });
-};
-
-export const emailPatient = (
+export const patientEmailRequest = (
 	visitId: number | null,
 	submittedData: PatientSendFormData,
 ): Promise<EmailStatus> => {
@@ -161,7 +152,7 @@ export const emailPatient = (
 	return request({ method: 'POST', data: requestData });
 };
 
-export const printPatient = (
+export const patientPrintRequest = (
 	visitId: number | null,
 	submittedData: PatientPrintFormData,
 ): Promise<EmailStatus> => {
@@ -175,7 +166,7 @@ export const printPatient = (
 	return request({ method: 'POST', data: requestData });
 };
 
-export const cardPatient = (
+export const patientCardRequest = (
 	visitId: number | null,
 	submittedData: PatientCardFormData,
 ): Promise<EmailStatus> => {
@@ -186,5 +177,14 @@ export const cardPatient = (
 		visit_id: visitId || 0,
 	};
 
+	return request({ method: 'POST', data: requestData });
+};
+
+export const patient3dModelRequest = (visitId: number | null): Promise<ModelResponseData> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: '3d',
+		visit_id: visitId || 0,
+	};
 	return request({ method: 'POST', data: requestData });
 };

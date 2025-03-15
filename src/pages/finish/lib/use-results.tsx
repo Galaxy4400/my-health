@@ -1,7 +1,7 @@
 import { useModal } from 'app/providers/modal';
 import { selectPatientData } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
-import { resultsPatient } from 'shared/api/patient';
+import { patientResultsRequest } from 'shared/api/patient';
 import { useAppSelector } from 'shared/lib/store';
 import { WarningPopup } from 'shared/ui/components';
 
@@ -32,7 +32,7 @@ export const useResults = () => {
 		setLoading(true);
 
 		try {
-			const result = await resultsPatient(visitId);
+			const result = await patientResultsRequest(visitId);
 
 			if (result.status !== 'ok') {
 				setError(result.message);

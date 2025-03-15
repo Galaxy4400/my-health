@@ -8,7 +8,7 @@ import { Button, Loader, WarningPopup } from 'shared/ui/components';
 import { useModal } from 'app/providers/modal';
 import { useAppSelector } from 'shared/lib/store';
 import { selectPatientData } from 'entities/patient/patient-data';
-import { cardPatient, PatientCardFormData } from 'shared/api/patient';
+import { patientCardRequest, PatientCardFormData } from 'shared/api/patient';
 
 interface CardFormProps {
 	onSuccess?: () => void;
@@ -23,7 +23,7 @@ export const CardForm = ({ onSuccess, onReject }: CardFormProps) => {
 	const submitHandler = async (data: RequestData) => {
 		setIsLoading(true);
 
-		const result = await cardPatient(patient.visit_id, data as unknown as PatientCardFormData);
+		const result = await patientCardRequest(patient.visit_id, data as unknown as PatientCardFormData);
 
 		setIsLoading(false);
 

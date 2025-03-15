@@ -1,4 +1,4 @@
-import { Gender, metabolicPatient, model3dPatient, ResultPageData } from 'shared/api/patient';
+import { Gender, patientMetabolicRequest, patient3dModelRequest, ResultPageData } from 'shared/api/patient';
 import css from './metabolism.module.scss';
 import {
 	GradientValue,
@@ -22,11 +22,11 @@ export const Metabolism = () => {
 	useEffect(() => {
 		setLoading(true);
 
-		model3dPatient(patient.visit_id).then((results) => {
+		patient3dModelRequest(patient.visit_id).then((results) => {
 			setModelUrl(results.url);
 		});
 
-		metabolicPatient(patient.visit_id)
+		patientMetabolicRequest(patient.visit_id)
 			.then((results) => {
 				setData(results);
 			})

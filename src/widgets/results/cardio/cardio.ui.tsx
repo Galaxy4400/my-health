@@ -3,7 +3,7 @@ import css from './cardio.module.scss';
 import { GradientValue, Loader, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { useEffect, useState } from 'react';
-import { cardioPatient, Gender, ResultPageData } from 'shared/api/patient';
+import { patientCardioRequest, Gender, ResultPageData } from 'shared/api/patient';
 import { useModal } from 'app/providers/modal';
 
 export const Cardio = () => {
@@ -14,7 +14,7 @@ export const Cardio = () => {
 	useEffect(() => {
 		setLoading(true);
 
-		cardioPatient(patient.visit_id)
+		patientCardioRequest(patient.visit_id)
 			.then((results) => {
 				setData(results);
 			})

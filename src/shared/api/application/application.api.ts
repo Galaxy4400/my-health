@@ -1,6 +1,6 @@
 import { request } from '../request';
 import { ApplicationResponse } from './application.types';
 
-export const getApplication = (): Promise<ApplicationResponse> => {
+export const getApplicationDataRequest = (): Promise<ApplicationResponse> => {
 	return request({ query: { action: 'settings' } });
 };

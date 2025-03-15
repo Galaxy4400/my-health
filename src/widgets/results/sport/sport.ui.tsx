@@ -2,7 +2,7 @@ import css from './sport.module.scss';
 import { Loader, MainValue, ResultHead } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
-import { Gender, model3dPatient, SportPageData, sportPatient } from 'shared/api/patient';
+import { Gender, patient3dModelRequest, SportPageData, patientSportRequest } from 'shared/api/patient';
 import { useEffect, useState } from 'react';
 
 export const Sport = () => {
@@ -12,13 +12,13 @@ export const Sport = () => {
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
 
 	useEffect(() => {
-		model3dPatient(patient.visit_id).then((results) => {
+		patient3dModelRequest(patient.visit_id).then((results) => {
 			setModelUrl(results.url);
 		});
 
 		setLoading(true);
 
-		sportPatient(patient.visit_id)
+		patientSportRequest(patient.visit_id)
 			.then((results) => {
 				setData(results);
 			})

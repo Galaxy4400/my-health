@@ -8,7 +8,7 @@ import { Button, Loader, WarningPopup } from 'shared/ui/components';
 import { useModal } from 'app/providers/modal';
 import { useAppSelector } from 'shared/lib/store';
 import { selectPatientData } from 'entities/patient/patient-data';
-import { emailPatient, PatientPrintFormData, printPatient } from 'shared/api/patient';
+import { patientEmailRequest, PatientPrintFormData, patientPrintRequest } from 'shared/api/patient';
 
 interface PrintFormProps {
 	onSuccess?: () => void;
@@ -23,7 +23,7 @@ export const PrintForm = ({ onSuccess, onReject }: PrintFormProps) => {
 	const submitHandler = async (data: RequestData) => {
 		setIsLoading(true);
 
-		const result = await printPatient(patient.visit_id, data as unknown as PatientPrintFormData);
+		const result = await patientPrintRequest(patient.visit_id, data as unknown as PatientPrintFormData);
 
 		setIsLoading(false);
 

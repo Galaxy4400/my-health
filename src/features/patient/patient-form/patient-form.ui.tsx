@@ -9,11 +9,11 @@ import { Icon } from 'shared/ui/icons';
 import { Icons } from 'shared/types';
 import { useAppDispatch } from 'shared/lib/store';
 import { PatientRequestFormData } from 'shared/api/patient';
-import { fetchVisitPatient } from 'entities/patient/patient-data';
 import cn from 'classnames';
 import { RequestData } from 'shared/api';
 import { useModal } from 'app/providers/modal';
 import { WarningPopup } from 'shared/ui/components';
+import { fetchPatientVisit } from 'entities/patient/patient-data';
 
 export const PatientForm = () => {
 	const [hasYes, setHasYes] = useState(false);
@@ -24,7 +24,7 @@ export const PatientForm = () => {
 
 	const submitHandler = async (data: RequestData) => {
 		try {
-			await dispatch(fetchVisitPatient(data as unknown as PatientRequestFormData)).unwrap();
+			await dispatch(fetchPatientVisit(data as unknown as PatientRequestFormData)).unwrap();
 
 			navigate(path.body());
 		} catch (error) {

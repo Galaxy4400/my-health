@@ -1,6 +1,6 @@
 import { useModal } from 'app/providers/modal';
 import { useEffect, useState } from 'react';
-import { measurePatient } from 'shared/api/patient';
+import { patientMeasureRequest } from 'shared/api/patient';
 import { WarningPopup } from 'shared/ui/components';
 
 export const useMeasure = () => {
@@ -17,7 +17,7 @@ export const useMeasure = () => {
 		setError(null);
 
 		try {
-			const result = await measurePatient(step, visitId);
+			const result = await patientMeasureRequest(step, visitId);
 
 			if (result.status !== 'ok') {
 				setError(result.message);

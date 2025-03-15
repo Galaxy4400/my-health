@@ -1,4 +1,4 @@
-import { BodyPageData, bodyPatient, Gender, model3dPatient } from 'shared/api/patient';
+import { BodyPageData, patientBodyRequest, Gender, patient3dModelRequest } from 'shared/api/patient';
 import css from './body.module.scss';
 import {
 	GradientValue,
@@ -24,13 +24,13 @@ export const Body = () => {
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
 
 	useEffect(() => {
-		model3dPatient(patient.visit_id).then((results) => {
+		patient3dModelRequest(patient.visit_id).then((results) => {
 			setModelUrl(results.url);
 		});
 
 		setLoading(true);
 
-		bodyPatient(patient.visit_id)
+		patientBodyRequest(patient.visit_id)
 			.then((results) => {
 				setData(results);
 			})

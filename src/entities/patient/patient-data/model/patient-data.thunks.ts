@@ -1,14 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { PatientRequestFormData, PatientType, visitPatient } from 'shared/api/patient';
+import { PatientRequestFormData, PatientType, patientVisitRequest } from 'shared/api/patient';
 import { ErrorType } from 'shared/types';
 
-export const fetchVisitPatient = createAsyncThunk<
+export const fetchPatientVisit = createAsyncThunk<
 	PatientType,
 	PatientRequestFormData,
 	{ rejectValue: ErrorType }
->('patient/fetchVisitPatient', async (submittedData, { rejectWithValue }) => {
+>('patient/fetchPatientVisit', async (submittedData, { rejectWithValue }) => {
 	try {
-		const { status, visit_id } = await visitPatient(submittedData);
+		const { status, visit_id } = await patientVisitRequest(submittedData);
 
 		if (status !== 'ok') {
 			throw new Error('Ошибка при регистрации пациента');
