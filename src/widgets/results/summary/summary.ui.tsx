@@ -1,6 +1,6 @@
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import css from './summary.module.scss';
-import { MainValue, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
+import { Loader, MainValue, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { model3dPatient, SummaryPageData, summaryPatient } from 'shared/api/patient';
 import { ResultPage } from 'shared/types';
@@ -29,7 +29,7 @@ export const Summary = () => {
 	}, [patient.visit_id]);
 
 	if (!data || loading) {
-		return <div>Нет данных</div>;
+		return <Loader isLoading={loading} />;
 	}
 
 	return (

@@ -58,6 +58,11 @@ export const SendForm = ({ onSuccess, onReject }: SendFormProps) => {
 					<FormButton type="submit">Отправить</FormButton>
 				</div>
 			</Form>
+			{isLoading && (
+				<div className={css['loader-wrapper']}>
+					<Loader className={css['loader']} isLoading={isLoading} />
+				</div>
+			)}
 		</div>
 	);
 };

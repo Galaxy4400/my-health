@@ -2,6 +2,7 @@ import { Gender, metabolicPatient, model3dPatient, ResultPageData } from 'shared
 import css from './metabolism.module.scss';
 import {
 	GradientValue,
+	Loader,
 	MainValue,
 	ResultHead,
 	ValueItem,
@@ -33,7 +34,7 @@ export const Metabolism = () => {
 	}, [patient.visit_id]);
 
 	if (!data || loading) {
-		return <div>Нет данных</div>;
+		return <Loader isLoading={loading} />;
 	}
 
 	return (

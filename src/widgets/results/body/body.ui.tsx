@@ -2,6 +2,7 @@ import { BodyPageData, bodyPatient, Gender, model3dPatient } from 'shared/api/pa
 import css from './body.module.scss';
 import {
 	GradientValue,
+	Loader,
 	MainValue,
 	ResultHead,
 	Tabs,
@@ -37,7 +38,7 @@ export const Body = () => {
 	}, [patient.visit_id]);
 
 	if (!data || loading) {
-		return <div>Нет данных</div>;
+		return <Loader isLoading={loading} />;
 	}
 
 	return (

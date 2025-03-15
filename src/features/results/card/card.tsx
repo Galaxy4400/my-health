@@ -56,6 +56,11 @@ export const CardForm = ({ onSuccess, onReject }: CardFormProps) => {
 					<FormButton type="submit">Отправить</FormButton>
 				</div>
 			</Form>
+			{isLoading && (
+				<div className={css['loader-wrapper']}>
+					<Loader className={css['loader']} isLoading={isLoading} />
+				</div>
+			)}
 		</div>
 	);
 };

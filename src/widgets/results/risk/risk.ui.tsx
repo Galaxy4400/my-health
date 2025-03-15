@@ -1,6 +1,14 @@
 import css from './risk.module.scss';
 import { Gender, model3dPatient, RisksPageData, risksPatient } from 'shared/api/patient';
-import { GradientValue, MainValue, Model3d, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
+import {
+	GradientValue,
+	Loader,
+	MainValue,
+	Model3d,
+	ResultHead,
+	ValueItem,
+	ValueList,
+} from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
@@ -26,7 +34,7 @@ export const Risk = () => {
 	}, [patient.visit_id]);
 
 	if (!data || loading) {
-		return <div>Нет данных</div>;
+		return <Loader isLoading={loading} />;
 	}
 
 	return (

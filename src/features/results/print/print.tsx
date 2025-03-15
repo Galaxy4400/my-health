@@ -4,7 +4,7 @@ import { RequestData } from 'shared/api';
 import { Form, Radio, Button as FormButton } from 'shared/ui/form-components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { printFormRules } from './print.rules';
-import { Button, WarningPopup } from 'shared/ui/components';
+import { Button, Loader, WarningPopup } from 'shared/ui/components';
 import { useModal } from 'app/providers/modal';
 import { useAppSelector } from 'shared/lib/store';
 import { selectPatientData } from 'entities/patient/patient-data';
@@ -52,6 +52,11 @@ export const PrintForm = ({ onSuccess, onReject }: PrintFormProps) => {
 					<FormButton type="submit">Отправить</FormButton>
 				</div>
 			</Form>
+			{isLoading && (
+				<div className={css['loader-wrapper']}>
+					<Loader className={css['loader']} isLoading={isLoading} />
+				</div>
+			)}
 		</div>
 	);
 };

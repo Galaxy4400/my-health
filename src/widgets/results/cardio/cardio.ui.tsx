@@ -1,6 +1,6 @@
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import css from './cardio.module.scss';
-import { GradientValue, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
+import { GradientValue, Loader, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { useEffect, useState } from 'react';
 import { cardioPatient, Gender, ResultPageData } from 'shared/api/patient';
@@ -22,7 +22,7 @@ export const Cardio = () => {
 	}, [patient.visit_id]);
 
 	if (!data || loading) {
-		return <div>Нет данных</div>;
+		return <Loader isLoading={loading} />;
 	}
 
 	return (

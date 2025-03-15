@@ -1,5 +1,5 @@
 import css from './nutrition.module.scss';
-import { MainValue, ResultHead } from 'shared/ui/components';
+import { Loader, MainValue, ResultHead } from 'shared/ui/components';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { useAppSelector } from 'shared/lib/store';
 import { Gender, NutritionPageData, nutritionPatient } from 'shared/api/patient';
@@ -21,7 +21,7 @@ export const Nutrition = () => {
 	}, [patient.visit_id]);
 
 	if (!data || loading) {
-		return <div>Нет данных</div>;
+		return <Loader isLoading={loading} />;
 	}
 
 	return (

@@ -1,5 +1,5 @@
 import css from './sport.module.scss';
-import { MainValue, ResultHead } from 'shared/ui/components';
+import { Loader, MainValue, ResultHead } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { Gender, model3dPatient, SportPageData, sportPatient } from 'shared/api/patient';
@@ -26,7 +26,7 @@ export const Sport = () => {
 	}, [patient.visit_id]);
 
 	if (!data || loading) {
-		return <div>Нет данных</div>;
+		return <Loader isLoading={loading} />;
 	}
 
 	return (

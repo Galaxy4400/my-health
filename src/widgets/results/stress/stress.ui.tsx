@@ -1,6 +1,6 @@
 import { useAppSelector } from 'shared/lib/store';
 import css from './stress.module.scss';
-import { GradientValue, MainValue, ValueItem, ValueList } from 'shared/ui/components';
+import { GradientValue, Loader, MainValue, ValueItem, ValueList } from 'shared/ui/components';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
 import { Gender, ResultPageData, stressPatient } from 'shared/api/patient';
@@ -21,7 +21,7 @@ export const Stress = () => {
 	}, [patient.visit_id]);
 
 	if (!data || loading) {
-		return <div>Нет данных</div>;
+		return <Loader isLoading={loading} />;
 	}
 
 	return (
