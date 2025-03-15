@@ -31,8 +31,6 @@ export const PrintForm = ({ onSuccess, onReject }: PrintFormProps) => {
 			openModal(
 				<WarningPopup header="Отчёт отправлен на печать администратору" onOk={closeModal} noIcon={true} />,
 			);
-
-			onSuccess?.();
 		} else {
 			openModal(<WarningPopup header="Ошибка" text={result.message} onOk={closeModal} />);
 		}

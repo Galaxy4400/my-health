@@ -6,6 +6,7 @@ import {
 	MeasureStatus,
 	ModelResponseData,
 	NutritionPageData,
+	PatientCardFormData,
 	PatientPrintFormData,
 	PatientRequestFormData,
 	PatientResponse,
@@ -168,6 +169,20 @@ export const printPatient = (
 		action: 'report',
 		subaction: 'print',
 		reportType: submittedData.reportType,
+		visit_id: visitId || 0,
+	};
+
+	return request({ method: 'POST', data: requestData });
+};
+
+export const cardPatient = (
+	visitId: number | null,
+	submittedData: PatientCardFormData,
+): Promise<EmailStatus> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: 'medcard',
+		code: submittedData.code,
 		visit_id: visitId || 0,
 	};
 

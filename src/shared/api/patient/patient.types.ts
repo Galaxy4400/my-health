@@ -105,3 +105,7 @@ export interface PatientSendFormData {
 export interface PatientPrintFormData {
 	reportType: string;
 }
+
+export interface PatientCardFormData {
+	code: string;
+}

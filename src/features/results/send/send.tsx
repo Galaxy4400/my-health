@@ -4,7 +4,7 @@ import { RequestData } from 'shared/api';
 import { Form, Input, Radio, Button as FormButton } from 'shared/ui/form-components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { sendFormRules } from './send.rules';
-import { Button, WarningPopup } from 'shared/ui/components';
+import { Button, Loader, WarningPopup } from 'shared/ui/components';
 import { useModal } from 'app/providers/modal';
 import { emailPatient, PatientSendFormData } from 'shared/api/patient';
 import { useAppSelector } from 'shared/lib/store';
@@ -29,8 +29,6 @@ export const SendForm = ({ onSuccess, onReject }: SendFormProps) => {
 
 		if (result.status === 'ok') {
 			openModal(<WarningPopup header="Письмо отправлено" onOk={closeModal} noIcon={true} />);
-
-			onSuccess?.();
 		} else {
 			openModal(<WarningPopup header="Ошибка" text={result.message} onOk={closeModal} />);
 		}
