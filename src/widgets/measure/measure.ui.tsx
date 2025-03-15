@@ -13,7 +13,7 @@ interface MeasureProps<T = unknown> {
 	delayTime?: number;
 }
 
-export const Measure = ({ action, onSuccess, onError, nextStep, delayTime = 1000 }: MeasureProps) => {
+export const Measure = ({ action, onSuccess, onError, nextStep, delayTime = 5000 }: MeasureProps) => {
 	const [isRunning, setIsRunning] = useState(false);
 	const [isActionProcess, setIsActionProcess] = useState(false);
 	const [isComplete, setIsComplete] = useState(false);
