@@ -15,8 +15,6 @@ export const IdleProvider = ({ seconds = 30, children }: IdleProviderProps) => {
 	const [idleTimer, setIdleTimer] = useState(seconds);
 	const [showPopup, setShowPopup] = useState(false);
 
-	console.log(idleTimer);
-
 	const resetTimer = useCallback(() => {
 		setIdleTimer(seconds);
 	}, [seconds]);
