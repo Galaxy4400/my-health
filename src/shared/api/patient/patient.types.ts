@@ -71,6 +71,17 @@ export interface BodyPageData {
 	score: ScoreType;
 }
 
+export interface RisksPageData {
+	status: string;
+	statuses: StatusType[];
+	content: string;
+}
+
+export interface NutritionPageData {
+	status: string;
+	content: string;
+}
+
 export interface ModelResponseData {
 	status: string;
 	url: string;

@@ -4,9 +4,11 @@ import {
 	BodyPageData,
 	MeasureStatus,
 	ModelResponseData,
+	NutritionPageData,
 	PatientRequestFormData,
 	PatientResponse,
 	ResultPageData,
+	RisksPageData,
 	SummaryPageData,
 } from './patient.types';
 
@@ -95,6 +97,27 @@ export const cardioPatient = (visitId: number | null): Promise<ResultPageData> =
 		page: 'heart',
 		visit_id: visitId || 0,
 	};
+	return request({ method: 'POST', data: requestData });
+};
+
+export const risksPatient = (visitId: number | null): Promise<RisksPageData> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: 'page',
+		page: 'risks',
+		visit_id: visitId || 0,
+	};
+	return request({ method: 'POST', data: requestData });
+};
+
+export const nutritionPatient = (visitId: number | null): Promise<NutritionPageData> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: 'page',
+		page: 'nutrition',
+		visit_id: visitId || 0,
+	};
+
 	return request({ method: 'POST', data: requestData });
 };
 

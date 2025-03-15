@@ -46,13 +46,14 @@
 
 .recomentations {
 	margin: rem(30) 0px 0px 0px;
+
+	ol,
+	ul {
+		font-size: rem(20);
+		padding: 0px 0px 0px rem(25);
+	}
 }
 
 .recomentations-title {
 	margin: 0px 0px rem(10) 0px;
-}
-
-.recomentations-list {
-	font-size: rem(20);
-	padding: 0px 0px 0px rem(25);
 }

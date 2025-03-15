@@ -1,11 +1,13 @@
-import { Gender, model3dPatient } from 'shared/api/patient';
 import css from './risk.module.scss';
+import { Gender, model3dPatient, RisksPageData, risksPatient } from 'shared/api/patient';
 import { GradientValue, MainValue, Model3d, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
 
 export const Risk = () => {
+	const [loading, setLoading] = useState(true);
+	const [data, setData] = useState<RisksPageData | null>(null);
 	const patient = useAppSelector(selectPatientData);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
 
@@ -13,7 +15,19 @@ export const Risk = () => {
 		model3dPatient(patient.visit_id).then((results) => {
 			setModelUrl(results.url);
 		});
+
+		setLoading(true);
+
+		risksPatient(patient.visit_id)
+			.then((results) => {
+				setData(results);
+			})
+			.finally(() => setLoading(false));
 	}, [patient.visit_id]);
+
+	if (!data || loading) {
+		return <div>Нет данных</div>;
+	}
 
 	return (
 		<div className={css['main']}>
@@ -21,50 +35,21 @@ export const Risk = () => {
 				{/* <ResultHead patient="Константинопольский К.К. (М)" age="52" /> */}
 				<MainValue className={css['main-value']} title="Факторы риска:" />
 				<ValueList>
-					<ValueItem title="Артериальное давление:">
-						<GradientValue
-							title="средний риск (4/10)"
-							value={4}
-							min={0}
-							max={10}
-							gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-						/>
-					</ValueItem>
-					<ValueItem title="ИМТ:">
-						<GradientValue
-							title="выше нормы (36)"
-							value={36}
-							min={0}
-							max={40}
-							gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-						/>
-					</ValueItem>
-					<ValueItem title="Висцеральный жир:">
-						<GradientValue
-							title="выше нормы (16%)"
-							value={16}
-							min={0}
-							max={100}
-							gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-						/>
-					</ValueItem>
-					<ValueItem title="Вода:">
-						<GradientValue
-							title="в норме (47%)"
-							value={47}
-							min={0}
-							max={100}
-							gradientColors={['#FD531B', '#FFEA07', '#95D665', '#FFEA07', '#FD531B']}
-						/>
-					</ValueItem>
+					{data.statuses.map((status, i) => (
+						<ValueItem title={status.label} key={i}>
+							<GradientValue
+								title={status.title}
+								value={status.value === false ? undefined : status.value}
+								min={status.min === false ? undefined : status.min}
+								max={status.max === false ? undefined : status.max}
+								gradientColors={status.gradientColors}
+							/>
+						</ValueItem>
+					))}
 				</ValueList>
 				<div className={css['recomentations']}>
 					<h3 className={css['recomentations-title']}>Рекомендации:</h3>
-					<ol className={css['recomentations-list']}>
-						<li>Консультация врача-кардиолога</li>
-						<li>Корректировка диеты</li>
-						<li>Физические упражнения</li>
-					</ol>
+					<div dangerouslySetInnerHTML={{ __html: data.content }} />
 				</div>
 			</div>
 			{modelUrl && <PatientModel url={modelUrl} />}

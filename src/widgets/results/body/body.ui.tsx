@@ -40,8 +40,6 @@ export const Body = () => {
 		return <div>Нет данных</div>;
 	}
 
-	console.log(data);
-
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
