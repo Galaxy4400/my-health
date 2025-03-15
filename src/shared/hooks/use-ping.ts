@@ -8,13 +8,9 @@ export const usePing = () => {
 
 	useEffect(() => {
 		const ping = () =>
-			request<ResponseType>({ query: { action: 'ping' } }).then((response) => {
-				if (response.status !== 'ok') {
-					setIsError(true);
-				} else {
-					setIsError(false);
-				}
-			});
+			request<ResponseType>({ query: { action: 'ping' } })
+				.then(() => setIsError(false))
+				.catch(() => setIsError(true));
 
 		const interval = setInterval(ping, delay);
 

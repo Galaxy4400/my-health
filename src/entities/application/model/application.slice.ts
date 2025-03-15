@@ -5,7 +5,7 @@ import { fetchGetApplication } from './application.thunks';
 const initialState: AppDataState = {
 	application: {
 		background: {},
-		idleTimeout: 60000,
+		idleTimeout: 20,
 		slider: [],
 	},
 	loading: false,

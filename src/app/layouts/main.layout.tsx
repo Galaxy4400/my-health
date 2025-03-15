@@ -28,12 +28,12 @@ export const MainLayout = ({ children }: PropsWithChildren) => {
 			<LayoutWrapper>
 				<Header />
 				<main className={css['main']}>{children || <Outlet />}</main>
-				{isError && (
+				{/* {isError && (
 					<div className={css['error']}>
 						<h1>Диагностический стенд сейчас недоступен</h1>
 						<h3>Проводятся работы по его обслуживанию. Пожалуйста, дождитесь их завершения.</h3>
 					</div>
-				)}
+				)} */}
 			</LayoutWrapper>
 		</IdleProvider>
 	);

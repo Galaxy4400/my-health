@@ -1,0 +1,19 @@
+.main {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
+	padding: rem(60) rem(120);
+	background: #fff;
+	box-shadow: 0px 0px rem(50) rem(5) rgba(0, 0, 0, 0.2);
+	z-index: 10;
+	display: grid;
+	justify-items: center;
+	gap: rem(50);
+	text-align: center;
+	min-width: rem(900);
+}
+
+.timer {
+	font-size: rem(100);
+}
