@@ -13,6 +13,14 @@ export const Slider = () => {
 
 	const handleSlideChange = (swiper: SwiperType) => {
 		const currentSlide = swiper.slides[swiper.activeIndex];
+		const item = slider[swiper.activeIndex];
+		const duration = (item?.duration || 3) * 1000;
+
+		if (swiper.autoplay && typeof swiper.params.autoplay === 'object') {
+			swiper.autoplay.stop();
+			swiper.params.autoplay.delay = duration;
+			swiper.autoplay.start();
+		}
 
 		const video = currentSlide.querySelector('video');
 
