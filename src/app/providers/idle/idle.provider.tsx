@@ -1,4 +1,4 @@
-import { PropsWithChildren, useCallback, useEffect, useRef, useState } from 'react';
+import { PropsWithChildren, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IdleContext } from './idle.context';
 import { path } from 'shared/lib/router';
@@ -15,6 +15,8 @@ export const IdleProvider = ({ seconds = 30, children }: IdleProviderProps) => {
 	const [idleTimer, setIdleTimer] = useState(seconds);
 	const [showPopup, setShowPopup] = useState(false);
 
+	console.log(idleTimer);
+
 	const resetTimer = useCallback(() => {
 		setIdleTimer(seconds);
 	}, [seconds]);
@@ -24,7 +26,7 @@ export const IdleProvider = ({ seconds = 30, children }: IdleProviderProps) => {
 			setIdleTimer((prev) => prev - 1);
 		}, 1000);
 
-		const events = ['mousemove', 'keydown', 'scroll', 'touchstart'];
+		const events = ['keydown', 'scroll', 'touchstart', 'click'];
 		events.forEach((event) => window.addEventListener(event, resetTimer));
 
 		return () => {
@@ -49,7 +51,7 @@ export const IdleProvider = ({ seconds = 30, children }: IdleProviderProps) => {
 	return (
 		<IdleContext.Provider value={{ resetIdleTimer: resetTimer }}>
 			{children}
-			{showPopup && <IdlePopup secLeft={idleTimer} totalSeconds={SEC_LEFT_SHOW_POPUP} />}
+			{showPopup && <IdlePopup secLeft={idleTimer} totalSeconds={SEC_LEFT_SHOW_POPUP} onClick={resetTimer} />}
 		</IdleContext.Provider>
 	);
 };
