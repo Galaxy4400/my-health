@@ -2,10 +2,12 @@ import css from './sport.module.scss';
 import { MainValue, ResultHead } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
-import { Gender, model3dPatient } from 'shared/api/patient';
+import { Gender, model3dPatient, SportPageData, sportPatient } from 'shared/api/patient';
 import { useEffect, useState } from 'react';
 
 export const Sport = () => {
+	const [loading, setLoading] = useState(true);
+	const [data, setData] = useState<SportPageData | null>(null);
 	const patient = useAppSelector(selectPatientData);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
 
@@ -13,7 +15,19 @@ export const Sport = () => {
 		model3dPatient(patient.visit_id).then((results) => {
 			setModelUrl(results.url);
 		});
+
+		setLoading(true);
+
+		sportPatient(patient.visit_id)
+			.then((results) => {
+				setData(results);
+			})
+			.finally(() => setLoading(false));
 	}, [patient.visit_id]);
+
+	if (!data || loading) {
+		return <div>Нет данных</div>;
+	}
 
 	return (
 		<div className={css['main']}>
@@ -21,30 +35,7 @@ export const Sport = () => {
 				{/* <ResultHead patient="Константинопольский К.К. (М)" age="52" /> */}
 				<MainValue className={css['main-value']} title="Советы по тренировкам и SPA-процедурам:" />
 				<div className={css['content-wrapper']}>
-					<div className={css['content']}>
-						<div className={css['section']}>
-							<h5 className={css['title']}>Спортивные нагрузки</h5>
-							<div className={css['item']}>
-								<h5 className={css['norecomend-title']}>Не рекомендуемые:</h5>
-								<p>Тяжёлая атлетика, бег</p>
-							</div>
-							<div className={css['item']}>
-								<h5 className={css['recomend-title']}>Рекомендуемые:</h5>
-								<p>Плавание, ходьба, спортивная ходьба</p>
-							</div>
-						</div>
-						<div className={css['section']}>
-							<h5 className={css['title']}>SPA-процедуры</h5>
-							<div className={css['item']}>
-								<h5 className={css['norecomend-title']}>Не рекомендуемые:</h5>
-								<p>Баня</p>
-							</div>
-							<div className={css['item']}>
-								<h5 className={css['recomend-title']}>Рекомендуемые:</h5>
-								<p>Массаж, прессотерапия</p>
-							</div>
-						</div>
-					</div>
+					<div className={css['content']} dangerouslySetInnerHTML={{ __html: data.content }} />
 				</div>
 			</div>
 			{modelUrl && <PatientModel url={modelUrl} />}

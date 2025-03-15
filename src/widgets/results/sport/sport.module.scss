@@ -16,28 +16,26 @@
 
 .content {
 	font-size: rem(20);
-}
 
-.section {
-	display: grid;
-	gap: rem(20);
-	margin: 0px 0px rem(40) 0px;
-}
+	:global(.section) {
+		margin: 0px 0px rem(40) 0px;
+	}
 
-.norecomend-title {
-	margin: 0px 0px rem(10) 0px;
-	color: $color-primary;
-	font-size: rem(20);
-	font-weight: 700;
-}
+	:global(.title) {
+		font-weight: 700;
+	}
 
-.recomend-title {
-	margin: 0px 0px rem(10) 0px;
-	color: $color-second;
-	font-size: rem(20);
-	font-weight: 700;
-}
+	:global(.norecommend) {
+		margin: rem(20) 0px rem(10) 0px;
+		color: $color-primary;
+		font-size: rem(20);
+		font-weight: 700;
+	}
 
-.title {
-	font-weight: 700;
+	:global(.recommend) {
+		margin: rem(20) 0px rem(10) 0px;
+		color: $color-second;
+		font-size: rem(20);
+		font-weight: 700;
+	}
 }

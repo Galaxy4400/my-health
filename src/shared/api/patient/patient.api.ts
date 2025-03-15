@@ -9,6 +9,7 @@ import {
 	PatientResponse,
 	ResultPageData,
 	RisksPageData,
+	SportPageData,
 	SummaryPageData,
 } from './patient.types';
 
@@ -115,6 +116,17 @@ export const nutritionPatient = (visitId: number | null): Promise<NutritionPageD
 		action: 'report',
 		subaction: 'page',
 		page: 'nutrition',
+		visit_id: visitId || 0,
+	};
+
+	return request({ method: 'POST', data: requestData });
+};
+
+export const sportPatient = (visitId: number | null): Promise<SportPageData> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: 'page',
+		page: 'assignments',
 		visit_id: visitId || 0,
 	};
 

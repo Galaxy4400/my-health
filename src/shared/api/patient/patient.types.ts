@@ -82,6 +82,11 @@ export interface NutritionPageData {
 	content: string;
 }
 
+export interface SportPageData {
+	status: string;
+	content: string;
+}
+
 export interface ModelResponseData {
 	status: string;
 	url: string;
