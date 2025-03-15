@@ -6,7 +6,7 @@ import { PropsWithChildren, useEffect } from 'react';
 import { IdleProvider } from 'app/providers/idle';
 import { usePing } from 'shared/hooks';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
-import { fetchGetApplication, selectApplicationBackgound, selectApplicationIdle } from 'entities/application';
+import { fetchGetApplication, selectApplicationIdle } from 'entities/application';
 
 const intervalDelay = 1000 * 60 * 10;
 
@@ -14,7 +14,6 @@ export const MainLayout = ({ children }: PropsWithChildren) => {
 	const { isError } = usePing();
 	const dispatch = useAppDispatch();
 	const idle = useAppSelector(selectApplicationIdle);
-	const background = useAppSelector(selectApplicationBackgound);
 
 	useEffect(() => {
 		const interval = setInterval(() => dispatch(fetchGetApplication()), intervalDelay);
@@ -28,14 +27,7 @@ export const MainLayout = ({ children }: PropsWithChildren) => {
 		<IdleProvider seconds={idle || 60}>
 			<LayoutWrapper>
 				<Header />
-				<main className={css['main']} style={{ background: background.color }}>
-					{children || <Outlet />}
-					{background.image && (
-						<figure className={css['bg']}>
-							<img src={background.image} alt="background" />
-						</figure>
-					)}
-				</main>
+				<main className={css['main']}>{children || <Outlet />}</main>
 				{isError && (
 					<div className={css['error']}>
 						<h1>Диагностический стенд сейчас недоступен</h1>
