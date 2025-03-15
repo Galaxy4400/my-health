@@ -46,11 +46,11 @@ export const Slider = () => {
 			slidesPerView={1}
 			modules={[Autoplay, EffectFade]}
 			effect="fade"
+			loop={true}
 			autoplay={{
 				delay: 3000,
 				disableOnInteraction: false,
 			}}
-			loop={true}
 		>
 			{slider?.map((item, i) => (
 				<SwiperSlide className={css['slide']} key={i}>
