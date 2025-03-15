@@ -8,12 +8,13 @@ interface WarningProps extends HTMLAttributes<HTMLDivElement> {
 	header: ReactNode;
 	text?: ReactNode;
 	onOk?: () => void;
+	noIcon?: boolean;
 }
 
-export const WarningPopup = ({ header, text, className, onOk }: WarningProps) => {
+export const WarningPopup = ({ header, text, className, onOk, noIcon = false }: WarningProps) => {
 	return (
 		<div className={cn(css['main'], className)}>
-			<Warning header={header} text={text} />
+			<Warning header={header} text={text} noIcon={noIcon} />
 			<Button className={css['btn']} onClick={onOk}>
 				ОК
 			</Button>

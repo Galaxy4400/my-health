@@ -2,11 +2,14 @@ import { request } from '../request';
 import { RequestData } from '../types';
 import {
 	BodyPageData,
+	EmailStatus,
 	MeasureStatus,
 	ModelResponseData,
 	NutritionPageData,
+	PatientPrintFormData,
 	PatientRequestFormData,
 	PatientResponse,
+	PatientSendFormData,
 	ResultPageData,
 	RisksPageData,
 	SportPageData,
@@ -139,5 +142,34 @@ export const model3dPatient = (visitId: number | null): Promise<ModelResponseDat
 		subaction: '3d',
 		visit_id: visitId || 0,
 	};
+	return request({ method: 'POST', data: requestData });
+};
+
+export const emailPatient = (
+	visitId: number | null,
+	submittedData: PatientSendFormData,
+): Promise<EmailStatus> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: 'email',
+		email: submittedData.email,
+		reportType: submittedData.reportType,
+		visit_id: visitId || 0,
+	};
+
+	return request({ method: 'POST', data: requestData });
+};
+
+export const printPatient = (
+	visitId: number | null,
+	submittedData: PatientPrintFormData,
+): Promise<EmailStatus> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: 'print',
+		reportType: submittedData.reportType,
+		visit_id: visitId || 0,
+	};
+
 	return request({ method: 'POST', data: requestData });
 };

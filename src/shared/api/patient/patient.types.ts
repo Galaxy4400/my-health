@@ -28,6 +28,11 @@ export interface MeasureStatus {
 	message: string;
 }
 
+export interface EmailStatus {
+	status: string;
+	message: string;
+}
+
 export interface StatusType {
 	label: string;
 	title: string;
@@ -90,4 +95,13 @@ export interface SportPageData {
 export interface ModelResponseData {
 	status: string;
 	url: string;
+}
+
+export interface PatientSendFormData {
+	email: string;
+	reportType: string;
+}
+
+export interface PatientPrintFormData {
+	reportType: string;
 }
