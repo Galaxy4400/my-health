@@ -1,5 +1,5 @@
 import { PropsWithChildren, useCallback, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { IdleContext } from './idle.context';
 import { path } from 'shared/lib/router';
 import { IdlePopup } from './idle.ui';
@@ -12,8 +12,9 @@ const SEC_LEFT_SHOW_POPUP = 10;
 
 export const IdleProvider = ({ seconds = 30, children }: IdleProviderProps) => {
 	const navigate = useNavigate();
-	const [idleTimer, setIdleTimer] = useState(seconds);
+	const [idleTimer, setIdleTimer] = useState(12);
 	const [showPopup, setShowPopup] = useState(false);
+	const location = useLocation();
 
 	const resetTimer = useCallback(() => {
 		setIdleTimer(seconds);
@@ -49,7 +50,9 @@ export const IdleProvider = ({ seconds = 30, children }: IdleProviderProps) => {
 	return (
 		<IdleContext.Provider value={{ resetIdleTimer: resetTimer }}>
 			{children}
-			{showPopup && <IdlePopup secLeft={idleTimer} totalSeconds={SEC_LEFT_SHOW_POPUP} onClick={resetTimer} />}
+			{showPopup && location.pathname !== path.home() && (
+				<IdlePopup totalSeconds={SEC_LEFT_SHOW_POPUP} onClick={resetTimer} />
+			)}
 		</IdleContext.Provider>
 	);
 };

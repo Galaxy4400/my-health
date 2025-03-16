@@ -1,24 +1,33 @@
+import { useEffect, useState } from 'react';
 import css from './idle.module.scss';
-import { BtnWithProgress, Button } from 'shared/ui/components';
+import { BtnWithProgress } from 'shared/ui/components';
 
 interface IdlePopupProps {
-	secLeft: number;
 	totalSeconds: number;
 	onClick: () => void;
 }
 
-export const IdlePopup = ({ secLeft, totalSeconds, onClick }: IdlePopupProps) => {
+export const IdlePopup = ({ totalSeconds, onClick }: IdlePopupProps) => {
+	const [progress, setProgress] = useState(totalSeconds * 1000);
+
+	useEffect(() => {
+		const intervar = setInterval(() => {
+			setProgress((prev) => prev - 10);
+		}, 10);
+
+		return () => clearInterval(intervar);
+	}, []);
+
 	return (
 		<div className={css['main']}>
 			<h2>Хотите продолжить работу?</h2>
 			<BtnWithProgress
 				className={css['timer']}
-				text={String(secLeft)}
+				text="Продолжить"
 				onClick={onClick}
-				curValue={secLeft}
-				totalValue={totalSeconds}
+				curValue={progress}
+				totalValue={totalSeconds * 1000}
 			/>
-			<Button onClick={onClick}>Продолжить</Button>
 		</div>
 	);
 };

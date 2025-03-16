@@ -24,7 +24,7 @@ export const MainLayout = ({ children }: PropsWithChildren) => {
 	}, [dispatch]);
 
 	return (
-		<IdleProvider seconds={idle || 60}>
+		<IdleProvider seconds={idle}>
 			<LayoutWrapper>
 				<Header />
 				<main className={css['main']}>{children || <Outlet />}</main>
