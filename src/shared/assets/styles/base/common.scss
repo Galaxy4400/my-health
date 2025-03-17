@@ -25,6 +25,10 @@ html {
 	overflow-y: scroll;
 }
 
+#root {
+	position: relative;
+}
+
 body {
 	color: $color-font;
 	background: $color-body-background;

@@ -39,3 +39,18 @@ interface ImportMetaEnv {
 interface ImportMeta {
 	readonly env: ImportMetaEnv;
 }
+
+declare module 'react-screen-keyboard' {
+	import React from 'react';
+
+	interface KeyboardProps {
+		inputNode?: HTMLInputElement | null;
+		value?: string;
+		onChange?: (value: string) => void;
+		layout?: Record<string, string[]>;
+		theme?: string;
+	}
+
+	const Keyboard: React.FC<KeyboardProps>;
+	export default Keyboard;
+}
