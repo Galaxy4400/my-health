@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { IdleContext } from './idle.context';
 import { path } from 'shared/lib/router';
 import { IdlePopup } from './idle.ui';
+import { useModal } from '../modal';
 
 interface IdleProviderProps extends PropsWithChildren {
 	seconds?: number;
@@ -14,6 +15,7 @@ export const IdleProvider = ({ seconds = 30, children }: IdleProviderProps) => {
 	const navigate = useNavigate();
 	const [idleTimer, setIdleTimer] = useState(12);
 	const [showPopup, setShowPopup] = useState(false);
+	const { closeModal } = useModal();
 	const location = useLocation();
 
 	const resetTimer = useCallback(() => {
@@ -43,9 +45,10 @@ export const IdleProvider = ({ seconds = 30, children }: IdleProviderProps) => {
 
 		if (idleTimer <= 0) {
 			resetTimer();
+			closeModal();
 			navigate(path.home());
 		}
-	}, [idleTimer, resetTimer, navigate]);
+	}, [idleTimer, resetTimer, navigate, closeModal]);
 
 	return (
 		<IdleContext.Provider value={{ resetIdleTimer: resetTimer }}>

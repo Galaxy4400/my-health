@@ -21,17 +21,30 @@ export const request = async <T>({
 		? `?${new URLSearchParams(query as Record<string, string>).toString()}`
 		: '';
 
-	const response = await fetch(endpoint + queryString, {
-		method,
-		body: method !== 'GET' && Object.keys(data).length ? JSON.stringify(data) : undefined,
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	});
+	const controller = new AbortController();
+	const timeoutId = setTimeout(() => controller.abort(), 120000);
 
-	if (!response.ok) {
-		throw new Error(`HTTP error! Status: ${response.status}`);
+	try {
+		const response = await fetch(endpoint + queryString, {
+			method,
+			body: method !== 'GET' && Object.keys(data).length ? JSON.stringify(data) : undefined,
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			signal: controller.signal,
+		});
+
+		clearTimeout(timeoutId);
+
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+
+		return (await response.json()) as T;
+	} catch (error) {
+		if ((error as Error).name === 'AbortError') {
+			throw new Error('Request timed out after 120 seconds');
+		}
+		throw error;
 	}
-
-	return (await response.json()) as T;
 };
