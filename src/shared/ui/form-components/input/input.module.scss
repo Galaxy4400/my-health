@@ -26,6 +26,18 @@
 	&.success {
 		border: rem(1) solid $color-success;
 	}
+
+	&[type="number"] {
+		-moz-appearance: textfield; /* Firefox */
+		-webkit-appearance: none; /* Chrome, Safari */
+		appearance: none; /* Стандартное свойство */
+	}
+
+	&[type="number"]::-webkit-outer-spin-button,
+	&[type="number"]::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
 }
 
 .error {

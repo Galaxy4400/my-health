@@ -22,6 +22,7 @@
 }
 
 html {
+	position: relative;
 	overflow-y: scroll;
 }
 
@@ -30,9 +31,19 @@ html {
 }
 
 body {
+	position: relative;
 	color: $color-font;
 	background: $color-body-background;
+	height: auto;
 	&.lock {
 		overflow: hidden;
 	}
+}
+
+#keyboard {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
 }

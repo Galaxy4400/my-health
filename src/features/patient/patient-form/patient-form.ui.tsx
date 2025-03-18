@@ -81,7 +81,7 @@ export const PatientForm = () => {
 						</div>
 						<div className={css['column']}>
 							<div className={css['age-wrapper']}>
-								<Input name="age" />
+								<Input name="age" type="number" />
 							</div>
 						</div>
 					</div>
