@@ -46,4 +46,10 @@ body {
 	left: 0;
 	width: 100%;
 	z-index: 1000;
+
+	.keyboard-button {
+		font-size: rem(40);
+		height: 2em;
+		font-family: "Inter";
+	}
 }

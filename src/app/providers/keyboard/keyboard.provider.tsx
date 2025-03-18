@@ -54,7 +54,7 @@ export const KeyboardProvider = ({ children }: PropsWithChildren) => {
 
 			if (
 				(target.tagName === 'INPUT' &&
-					['text', 'password', 'email', 'search', 'tel', 'url'].includes(
+					['text', 'password', 'email', 'search', 'tel', 'url', 'number'].includes(
 						(target as HTMLInputElement).type,
 					)) ||
 				target.tagName === 'TEXTAREA'

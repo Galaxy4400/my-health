@@ -41,7 +41,7 @@ export const SendForm = ({ onSuccess, onReject }: SendFormProps) => {
 				<div className={css['inputs']}>
 					<div className={css['inputs-row']}>
 						<span className={css['input-label']}>Ваш email:</span>
-						<Input className={css['login']} type="email" name="email" />
+						<Input className={css['login']} type="text" name="email" />
 					</div>
 					<div className={css['radios-block']}>
 						<p className={css['label']}>Выберите тип отчёта:</p>
