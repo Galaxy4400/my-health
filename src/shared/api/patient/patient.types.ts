@@ -109,3 +109,8 @@ export interface PatientPrintFormData {
 export interface PatientCardFormData {
 	code: string;
 }
+
+export interface MeasureProcessStatus {
+	status: string;
+	content: string;
+}

@@ -3,6 +3,7 @@ import { RequestData } from '../types';
 import {
 	BodyPageData,
 	EmailStatus,
+	MeasureProcessStatus,
 	MeasureStatus,
 	ModelResponseData,
 	NutritionPageData,
@@ -186,5 +187,10 @@ export const patient3dModelRequest = (visitId: number | null): Promise<ModelResp
 		subaction: '3d',
 		visit_id: visitId || 0,
 	};
+	return request({ method: 'POST', data: requestData });
+};
+
+export const patientMeasureStatusRequest = (visitId: number | null): Promise<MeasureProcessStatus> => {
+	const requestData: RequestData = { action: 'progress', visit_id: visitId || 0 };
 	return request({ method: 'POST', data: requestData });
 };

@@ -4,6 +4,9 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { SkipStep } from 'features/steps';
 import { BtnWithProgress, Loader, MeasureStatus } from 'shared/ui/components';
 import cn from 'classnames';
+import { patientMeasureStatusRequest } from 'shared/api/patient';
+import { useAppSelector } from 'shared/lib/store';
+import { selectPatientData } from 'entities/patient/patient-data';
 
 interface MeasureProps<T = unknown> {
 	action: () => Promise<T>;
@@ -14,15 +17,27 @@ interface MeasureProps<T = unknown> {
 }
 
 export const Measure = ({ action, onSuccess, onError, nextStep, delayTime = 5000 }: MeasureProps) => {
+	const patient = useAppSelector(selectPatientData);
 	const [isRunning, setIsRunning] = useState(false);
 	const [isActionProcess, setIsActionProcess] = useState(false);
 	const [isComplete, setIsComplete] = useState(false);
 	const [isBtnClose, setIsBtnClose] = useState(false);
 	const [isFinish, setIsFinish] = useState(false);
 	const [delayCount, setDelayCount] = useState(0);
+	const [processStatus, setProcessStatus] = useState<string | null>(null);
 	const navigate = useNavigate();
 
 	const countStep = 10;
+
+	useEffect(() => {
+		if (!isRunning || !isActionProcess) return;
+
+		const interval = setInterval(() => {
+			patientMeasureStatusRequest(patient.visit_id).then((response) => setProcessStatus(response.content));
+		}, 2000);
+
+		return () => clearInterval(interval);
+	}, [isRunning, isActionProcess, patient.visit_id]);
 
 	useEffect(() => {
 		if (!isRunning || delayCount < delayTime || isActionProcess) return;
@@ -41,6 +56,7 @@ export const Measure = ({ action, onSuccess, onError, nextStep, delayTime = 5000
 			.finally(() => {
 				setIsRunning(false);
 				setIsActionProcess(false);
+				setProcessStatus(null);
 				setDelayCount(0);
 
 				setTimeout(() => {
@@ -111,6 +127,11 @@ export const Measure = ({ action, onSuccess, onError, nextStep, delayTime = 5000
 	return (
 		<>
 			<MeasureStatus isComplete={isComplete} />
+			{isRunning && isActionProcess && processStatus && (
+				<div className={css['process']}>
+					<div dangerouslySetInnerHTML={{ __html: processStatus }} />
+				</div>
+			)}
 			<div className={css['main']}>
 				<BtnWithProgress
 					className={cn(css['btn'], completeClass, runningClass, btnCloseClass)}
