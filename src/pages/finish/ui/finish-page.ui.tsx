@@ -43,7 +43,7 @@ export const FinishPage = () => {
 					В начало
 				</Button>
 			</PageHead>
-			<Steps current={4} />
+			<Steps current={5} />
 			{loading ? (
 				<>
 					<TitleBlock

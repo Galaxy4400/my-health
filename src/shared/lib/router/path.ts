@@ -20,6 +20,9 @@ export const path = {
 	cardio() {
 		return path.root.concat('cardio');
 	},
+	puls() {
+		return path.root.concat('puls');
+	},
 	body() {
 		return path.root.concat('body');
 	},

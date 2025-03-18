@@ -1,12 +1,7 @@
 import css from './steps.module.scss';
 import cn from 'classnames';
 
-const steps: string[] = [
-	'Данные пациента',
-	'Состав тела и обмен веществ',
-	'Сердечно-сосудистая система',
-	'Результаты',
-];
+const steps: string[] = ['Данные пациента', 'Состав тела и обмен веществ', 'Пульс', 'Давление', 'Результаты'];
 
 export const Steps = ({ current }: { current: number }) => {
 	return (

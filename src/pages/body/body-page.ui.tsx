@@ -31,7 +31,7 @@ export const BodyPage = () => {
 			<figure className={css['img']}>
 				<img src={patient.gender === Gender.male ? man : woman} alt="patient" />
 			</figure>
-			<Measure action={() => startMeasure(1, patient.visit_id || 0)} nextStep={path.cardio()} />
+			<Measure action={() => startMeasure(1, patient.visit_id || 0)} nextStep={path.puls()} />
 		</Container>
 	);
 };

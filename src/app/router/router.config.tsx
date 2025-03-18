@@ -12,6 +12,7 @@ import { CardioPage } from 'pages/cardio';
 import { BodyPage } from 'pages/body';
 import { FinishPage } from 'pages/finish';
 import { ResultsPage } from 'pages/results';
+import { PulsPage } from 'pages/puls';
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -42,6 +43,10 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.measure(),
 				element: <MeasurePage />,
+			},
+			{
+				path: path.puls(),
+				element: <PulsPage />,
 			},
 			{
 				path: path.cardio(),
