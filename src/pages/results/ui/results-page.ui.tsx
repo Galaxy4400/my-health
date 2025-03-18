@@ -16,7 +16,7 @@ export const ResultsPage = () => {
 					Завершить исследование
 				</Button>
 			</PageHead>
-			<Steps current={4} />
+			<Steps current={5} />
 			<Tabs active={ResultPage.summary}>
 				<div className={css['results']}>
 					<TabsContainer index={ResultPage.summary}>
