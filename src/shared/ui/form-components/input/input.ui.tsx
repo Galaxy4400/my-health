@@ -27,6 +27,7 @@ export const Input = ({ name, label, type = 'text', dataType, className, ...rest
 				type={type}
 				{...rest}
 				data-type={dataType}
+				autoComplete="off"
 			/>
 			{/* {!!errors[name] && <p className={css['error']}>{String(errors[name]?.message)}</p>} */}
 		</label>

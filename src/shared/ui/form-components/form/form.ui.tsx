@@ -32,6 +32,7 @@ export const Form = forwardRef<HTMLFormElement, FormProps>(
 					className={className}
 					onSubmit={handleSubmit(onSubmit)}
 					onChange={(event) => onChange?.(event)}
+					autoComplete="off"
 					{...rest}
 				>
 					{children}

@@ -8,9 +8,9 @@ export const Providers = ({ children }: PropsWithChildren) => {
 	return (
 		<StoreProvider>
 			<AuthProvider>
-				<ModalProvider>
-					<KeyboardProvider>{children}</KeyboardProvider>
-				</ModalProvider>
+				<KeyboardProvider>
+					<ModalProvider>{children}</ModalProvider>
+				</KeyboardProvider>
 			</AuthProvider>
 		</StoreProvider>
 	);

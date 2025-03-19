@@ -29,6 +29,7 @@ export const Password = ({ name, label, className, ...rest }: PasswordProps) => 
 					className={cn(css['input'], className)}
 					{...register(name)}
 					type={visible ? 'text' : 'password'}
+					autoComplete="new-password"
 					{...rest}
 				/>
 				<div className={css['eye']} onClick={() => setVisible((prev) => !prev)}>
