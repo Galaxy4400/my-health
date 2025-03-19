@@ -11,38 +11,6 @@ export const KeyboardProvider = ({ children }: PropsWithChildren) => {
 	const keyboardRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
-		if (!inputNode) return;
-
-		const handleInputChange = (newValue: string) => {
-			const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
-				window.HTMLInputElement.prototype,
-				'value',
-			)!.set;
-
-			nativeInputValueSetter!.call(inputNode, newValue);
-
-			// Создаём событие "input" и диспатчим его
-			const event = new Event('input', { bubbles: true });
-			inputNode.dispatchEvent(event);
-		};
-
-		// Патчим inputNode, чтобы реагировать на изменение value
-		const keyboard = document.querySelector('.react-screen-keyboard');
-		if (keyboard) {
-			keyboard.addEventListener('click', () => {
-				// Передаём актуальное значение инпута
-				handleInputChange(inputNode.value);
-			});
-		}
-
-		return () => {
-			if (keyboard) {
-				keyboard.removeEventListener('click', () => handleInputChange(inputNode.value));
-			}
-		};
-	}, [inputNode]);
-
-	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (
 				keyboardRef.current &&
