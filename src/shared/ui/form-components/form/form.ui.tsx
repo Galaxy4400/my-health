@@ -1,7 +1,8 @@
 /* eslint-disable react/display-name */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-unused-vars */
-import { FormEvent, forwardRef, PropsWithChildren } from 'react';
+import { useKeyboard } from 'app/providers/keyboard';
+import { FormEvent, forwardRef, PropsWithChildren, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { RequestData } from 'shared/api';
 
@@ -16,7 +17,13 @@ interface FormProps extends PropsWithChildren {
 export const Form = forwardRef<HTMLFormElement, FormProps>(
 	({ className, defaultValues, resolver, onSubmit, onChange, children, ...rest }, ref) => {
 		const methods = useForm({ defaultValues, resolver, mode: 'onChange' });
-		const { handleSubmit } = methods;
+		const { handleSubmit, setValue, trigger } = methods;
+		const { toggleOnChange, inputNode } = useKeyboard();
+
+		useEffect(() => {
+			setValue(inputNode?.name || '', inputNode?.value || '', { shouldValidate: true, shouldDirty: true });
+			trigger(inputNode?.name);
+		}, [setValue, inputNode?.name, inputNode?.value, toggleOnChange, trigger]);
 
 		return (
 			<FormProvider {...{ ...methods, onSubmit }}>

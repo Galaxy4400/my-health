@@ -4,11 +4,11 @@ import { KeyboardContext } from './keyboard.context';
 // @ts-expect-error
 import Keyboard, { NumericLayout, LatinLayout } from 'react-screen-keyboard';
 import 'react-screen-keyboard/src/Keyboard.css';
-import { createPortal } from 'react-dom';
 
 export const KeyboardProvider = ({ children }: PropsWithChildren) => {
 	const [inputNode, setInputNode] = useState<HTMLInputElement | null>(null);
 	const keyboardRef = useRef<HTMLDivElement | null>(null);
+	const [toggleOnChange, setToggleOnChange] = useState(false);
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
@@ -52,7 +52,7 @@ export const KeyboardProvider = ({ children }: PropsWithChildren) => {
 	}, []);
 
 	return (
-		<KeyboardContext.Provider value={null}>
+		<KeyboardContext.Provider value={{ toggleOnChange, inputNode }}>
 			{children}
 			{inputNode && (
 				<div
@@ -61,6 +61,7 @@ export const KeyboardProvider = ({ children }: PropsWithChildren) => {
 					ref={keyboardRef}
 				>
 					<Keyboard
+						onClick={() => setToggleOnChange((prev) => !prev)}
 						inputNode={inputNode}
 						{...(inputNode.dataset.type === 'number' ? { layouts: [NumericLayout] } : {})}
 						{...(inputNode.dataset.type === 'email' ? { layouts: [LatinLayout] } : {})}

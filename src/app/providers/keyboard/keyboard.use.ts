@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { KeyboardState } from './keyboard.types';
+import { KeyboardContextValues } from './keyboard.types';
 import { KeyboardContext } from './keyboard.context';
 
-export const useKeyboard = (): KeyboardState => {
+export const useKeyboard = (): KeyboardContextValues => {
 	const context = useContext(KeyboardContext);
 
 	if (context === null) {
