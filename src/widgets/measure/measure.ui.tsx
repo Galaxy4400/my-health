@@ -32,9 +32,14 @@ export const Measure = ({ action, onSuccess, onError, nextStep, delayTime = 5000
 	useEffect(() => {
 		if (!isRunning || !isActionProcess) return;
 
-		const interval = setInterval(() => {
+		const getProgress = () =>
 			patientMeasureStatusRequest(patient.visit_id).then((response) => setProcessStatus(response.content));
+
+		const interval = setInterval(() => {
+			getProgress();
 		}, 2000);
+
+		getProgress();
 
 		return () => clearInterval(interval);
 	}, [isRunning, isActionProcess, patient.visit_id]);
@@ -127,11 +132,17 @@ export const Measure = ({ action, onSuccess, onError, nextStep, delayTime = 5000
 	return (
 		<>
 			<MeasureStatus isComplete={isComplete} />
-			{isRunning && isActionProcess && processStatus && (
-				<div className={css['process']}>
-					<div dangerouslySetInnerHTML={{ __html: processStatus }} />
-				</div>
-			)}
+			<div className={cn(css['process'], isRunning ? 'active' : '')}>
+				<Loader className={css['loader']} text="Измеряем..." isLoading={isActionProcess} />
+				<BtnWithProgress
+					className={cn(css['btn-process'], completeClass, runningClass, btnCloseClass)}
+					text={btnText}
+					onClick={clickHandler}
+					curValue={delayCount}
+					totalValue={delayTime}
+				/>
+				{processStatus && <div dangerouslySetInnerHTML={{ __html: processStatus }} />}
+			</div>
 			<div className={css['main']}>
 				<BtnWithProgress
 					className={cn(css['btn'], completeClass, runningClass, btnCloseClass)}
@@ -140,7 +151,6 @@ export const Measure = ({ action, onSuccess, onError, nextStep, delayTime = 5000
 					curValue={delayCount}
 					totalValue={delayTime}
 				/>
-				<Loader text="Измеряем..." isLoading={isActionProcess} />
 				{!isRunning && !isActionProcess && !isComplete && <SkipStep nextStep={nextStep} />}
 			</div>
 		</>

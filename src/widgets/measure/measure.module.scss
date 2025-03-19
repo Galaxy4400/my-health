@@ -15,7 +15,7 @@
 		font-size: rem(36);
 	}
 	&:global(.running) {
-		font-size: rem(28);
+		scale: 0;
 	}
 	&:global(.close) {
 		scale: 0;
@@ -55,4 +55,44 @@
 	padding: rem(60) rem(120);
 	background: #fff;
 	box-shadow: 0px 0px rem(50) rem(5) rgba(0, 0, 0, 0.2);
+	min-width: rem(700);
+	min-height: rem(400);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	visibility: hidden;
+	scale: 0;
+	transition: all 0.3s ease 0s;
+	&:global(.active) {
+		opacity: 1;
+		visibility: visible;
+		scale: 1;
+	}
+}
+
+.btn-process {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
+	transition: scale 0.5s ease 0s;
+	&:global(.complete) {
+		font-size: rem(36);
+	}
+	&:global(.running) {
+		font-size: rem(28);
+	}
+	&:global(.close) {
+		scale: 0;
+	}
+}
+
+.loader {
+	position: absolute;
+	top: rem(30);
+	left: rem(30);
+	width: rem(100);
+	height: rem(100);
+	scale: 0.5;
 }
