@@ -1,6 +1,6 @@
 import css from './body-page.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { Button, Container, PageHead, Steps, TitleBlock, WarningPopup } from 'shared/ui/components';
+import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
 import { Measure } from 'widgets/measure';
 import { Gender } from 'shared/api/patient';
