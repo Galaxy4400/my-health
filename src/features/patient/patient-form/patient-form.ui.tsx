@@ -9,11 +9,11 @@ import { Icon } from 'shared/ui/icons';
 import { Icons } from 'shared/types';
 import { useAppDispatch } from 'shared/lib/store';
 import { PatientRequestFormData } from 'shared/api/patient';
-import cn from 'classnames';
 import { RequestData } from 'shared/api';
 import { useModal } from 'app/providers/modal';
 import { WarningPopup } from 'shared/ui/components';
 import { fetchPatientVisit } from 'entities/patient/patient-data';
+import cn from 'classnames';
 
 export const PatientForm = () => {
 	const [hasYes, setHasYes] = useState(false);
@@ -81,7 +81,7 @@ export const PatientForm = () => {
 						</div>
 						<div className={css['column']}>
 							<div className={css['age-wrapper']}>
-								<Input name="age" />
+								<Input name="age" dataType="number" />
 							</div>
 						</div>
 					</div>

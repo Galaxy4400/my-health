@@ -1,6 +1,8 @@
 import { PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { KeyboardContext } from './keyboard.context';
-import Keyboard from 'react-screen-keyboard';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import Keyboard, { NumericLayout, LatinLayout } from 'react-screen-keyboard';
 import 'react-screen-keyboard/src/Keyboard.css';
 import { useFormContext } from 'react-hook-form';
 import { createPortal } from 'react-dom';
@@ -76,7 +78,11 @@ export const KeyboardProvider = ({ children }: PropsWithChildren) => {
 			{inputNode &&
 				createPortal(
 					<div ref={keyboardRef}>
-						<Keyboard inputNode={inputNode} />
+						<Keyboard
+							inputNode={inputNode}
+							{...(inputNode.dataset.type === 'number' ? { layouts: [NumericLayout] } : {})}
+							{...(inputNode.dataset.type === 'email' ? { layouts: [LatinLayout] } : {})}
+						/>
 					</div>,
 					document.getElementById('keyboard')!,
 				)}

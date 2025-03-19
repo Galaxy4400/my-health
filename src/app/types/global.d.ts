@@ -47,7 +47,7 @@ declare module 'react-screen-keyboard' {
 		inputNode?: HTMLInputElement | null;
 		value?: string;
 		onChange?: (value: string) => void;
-		layout?: Record<string, string[]>;
+		layouts?: Array<unknown>;
 		theme?: string;
 	}
 
