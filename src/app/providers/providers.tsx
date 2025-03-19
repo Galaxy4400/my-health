@@ -2,12 +2,15 @@ import { PropsWithChildren } from 'react';
 import { AuthProvider } from './auth';
 import { ModalProvider } from './modal';
 import { StoreProvider } from './store';
+import { KeyboardProvider } from './keyboard';
 
 export const Providers = ({ children }: PropsWithChildren) => {
 	return (
 		<StoreProvider>
 			<AuthProvider>
-				<ModalProvider>{children}</ModalProvider>
+				<ModalProvider>
+					<KeyboardProvider>{children}</KeyboardProvider>
+				</ModalProvider>
 			</AuthProvider>
 		</StoreProvider>
 	);

@@ -1,7 +1,6 @@
 /* eslint-disable react/display-name */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-unused-vars */
-import { KeyboardProvider } from 'app/providers/keyboard';
 import { FormEvent, forwardRef, PropsWithChildren } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { RequestData } from 'shared/api';
@@ -21,17 +20,15 @@ export const Form = forwardRef<HTMLFormElement, FormProps>(
 
 		return (
 			<FormProvider {...{ ...methods, onSubmit }}>
-				<KeyboardProvider>
-					<form
-						ref={ref}
-						className={className}
-						onSubmit={handleSubmit(onSubmit)}
-						onChange={(event) => onChange?.(event)}
-						{...rest}
-					>
-						{children}
-					</form>
-				</KeyboardProvider>
+				<form
+					ref={ref}
+					className={className}
+					onSubmit={handleSubmit(onSubmit)}
+					onChange={(event) => onChange?.(event)}
+					{...rest}
+				>
+					{children}
+				</form>
 			</FormProvider>
 		);
 	},

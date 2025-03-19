@@ -4,13 +4,43 @@ import { KeyboardContext } from './keyboard.context';
 // @ts-expect-error
 import Keyboard, { NumericLayout, LatinLayout } from 'react-screen-keyboard';
 import 'react-screen-keyboard/src/Keyboard.css';
-import { useFormContext } from 'react-hook-form';
 import { createPortal } from 'react-dom';
 
 export const KeyboardProvider = ({ children }: PropsWithChildren) => {
 	const [inputNode, setInputNode] = useState<HTMLInputElement | null>(null);
 	const keyboardRef = useRef<HTMLDivElement | null>(null);
-	const formContext = useFormContext();
+
+	useEffect(() => {
+		if (!inputNode) return;
+
+		const handleInputChange = (newValue: string) => {
+			const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+				window.HTMLInputElement.prototype,
+				'value',
+			)!.set;
+
+			nativeInputValueSetter!.call(inputNode, newValue);
+
+			// Создаём событие "input" и диспатчим его
+			const event = new Event('input', { bubbles: true });
+			inputNode.dispatchEvent(event);
+		};
+
+		// Патчим inputNode, чтобы реагировать на изменение value
+		const keyboard = document.querySelector('.react-screen-keyboard');
+		if (keyboard) {
+			keyboard.addEventListener('click', () => {
+				// Передаём актуальное значение инпута
+				handleInputChange(inputNode.value);
+			});
+		}
+
+		return () => {
+			if (keyboard) {
+				keyboard.removeEventListener('click', () => handleInputChange(inputNode.value));
+			}
+		};
+	}, [inputNode]);
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
@@ -30,25 +60,6 @@ export const KeyboardProvider = ({ children }: PropsWithChildren) => {
 			document.removeEventListener('mousedown', handleClickOutside);
 		};
 	}, [inputNode]);
-
-	useEffect(() => {
-		if (!inputNode) return;
-		if (!formContext) return;
-
-		const { setValue, trigger } = formContext;
-
-		const handleInput = (event: Event) => {
-			const target = event.target as HTMLInputElement;
-			setValue(target.name, target.value, { shouldValidate: true, shouldDirty: true });
-			trigger(target.name);
-		};
-
-		inputNode.addEventListener('input', handleInput);
-
-		return () => {
-			inputNode.removeEventListener('input', handleInput);
-		};
-	}, [formContext, inputNode]);
 
 	useEffect(() => {
 		const handleFocus = (event: FocusEvent) => {
