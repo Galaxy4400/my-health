@@ -42,10 +42,35 @@ body {
 
 #keyboard {
 	position: absolute;
-	bottom: 0;
+	bottom: rem(20);
 	left: 0;
 	width: 100%;
 	z-index: 1000;
+
+	.numeric-keyboard {
+		.keyboard {
+			position: relative;
+			max-width: rem(500);
+			.keyboard-row:nth-child(1) {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+			.keyboard-row:nth-child(1) {
+				.keyboard-button:not(:last-child) {
+					display: none;
+				}
+			}
+			.keyboard-row:nth-child(5) {
+				.keyboard-button:not(:nth-child(3)) {
+					display: none;
+				}
+			}
+			.keyboard-row:nth-child(6) {
+				display: none;
+			}
+		}
+	}
 
 	.keyboard-button {
 		font-size: rem(40);

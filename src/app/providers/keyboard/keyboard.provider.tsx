@@ -77,7 +77,7 @@ export const KeyboardProvider = ({ children }: PropsWithChildren) => {
 			{children}
 			{inputNode &&
 				createPortal(
-					<div ref={keyboardRef}>
+					<div className={inputNode.dataset.type === 'number' ? 'numeric-keyboard' : ''} ref={keyboardRef}>
 						<Keyboard
 							inputNode={inputNode}
 							{...(inputNode.dataset.type === 'number' ? { layouts: [NumericLayout] } : {})}
