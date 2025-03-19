@@ -54,17 +54,19 @@ export const KeyboardProvider = ({ children }: PropsWithChildren) => {
 	return (
 		<KeyboardContext.Provider value={null}>
 			{children}
-			{inputNode &&
-				createPortal(
-					<div className={inputNode.dataset.type === 'number' ? 'numeric-keyboard' : ''} ref={keyboardRef}>
-						<Keyboard
-							inputNode={inputNode}
-							{...(inputNode.dataset.type === 'number' ? { layouts: [NumericLayout] } : {})}
-							{...(inputNode.dataset.type === 'email' ? { layouts: [LatinLayout] } : {})}
-						/>
-					</div>,
-					document.getElementById('keyboard')!,
-				)}
+			{inputNode && (
+				<div
+					id="keyboard"
+					className={inputNode.dataset.type === 'number' ? 'numeric-keyboard' : ''}
+					ref={keyboardRef}
+				>
+					<Keyboard
+						inputNode={inputNode}
+						{...(inputNode.dataset.type === 'number' ? { layouts: [NumericLayout] } : {})}
+						{...(inputNode.dataset.type === 'email' ? { layouts: [LatinLayout] } : {})}
+					/>
+				</div>
+			)}
 		</KeyboardContext.Provider>
 	);
 };

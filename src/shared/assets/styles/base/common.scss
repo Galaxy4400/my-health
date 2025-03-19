@@ -47,10 +47,12 @@ body {
 	width: 100%;
 	z-index: 1000;
 
-	.numeric-keyboard {
+	&.numeric-keyboard {
+		max-width: rem(500);
+		left: 50%;
+		translate: -50% 0;
 		.keyboard {
 			position: relative;
-			max-width: rem(500);
 			.keyboard-row:nth-child(1) {
 				position: absolute;
 				bottom: 0;
