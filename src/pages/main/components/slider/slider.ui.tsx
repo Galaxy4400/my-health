@@ -56,7 +56,7 @@ export const Slider = () => {
 					{item.type === 'video' ? (
 						<video src={item.url} muted loop={false} />
 					) : (
-						<img src={item.url.replace('http://localhost', 'https://stand.webishost.ru')} alt="slide" />
+						<img src={item.url} alt="slide" />
 					)}
 				</SwiperSlide>
 			))}
