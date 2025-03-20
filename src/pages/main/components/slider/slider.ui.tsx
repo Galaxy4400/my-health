@@ -46,18 +46,17 @@ export const Slider = () => {
 			slidesPerView={1}
 			modules={[Autoplay, EffectFade]}
 			effect="fade"
-			loop={true}
 			autoplay={{
 				delay: 3000,
 				disableOnInteraction: false,
 			}}
 		>
 			{slider?.map((item, i) => (
-				<SwiperSlide className={css['slide']} key={i}>
+				<SwiperSlide className={css['slide']} key={item.url}>
 					{item.type === 'video' ? (
 						<video src={item.url} muted loop={false} />
 					) : (
-						<img src={item.url} alt="slide" />
+						<img src={item.url.replace('http://localhost', 'https://stand.webishost.ru')} alt="slide" />
 					)}
 				</SwiperSlide>
 			))}
