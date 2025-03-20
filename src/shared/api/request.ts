@@ -7,6 +7,7 @@ interface requestProps {
 	method?: Methods;
 	data?: RequestData;
 	query?: QueryData;
+	responseType?: 'json' | 'binary';
 }
 
 export const request = async <T>({
@@ -14,6 +15,7 @@ export const request = async <T>({
 	method = 'GET',
 	data = {},
 	query = {},
+	responseType = 'json',
 }: requestProps): Promise<T> => {
 	const endpoint = `${API_BASE_URL}/api/${url ? url.replace(/^\/+/, '') : ''}`;
 
@@ -25,12 +27,16 @@ export const request = async <T>({
 	const timeoutId = setTimeout(() => controller.abort(), 120000);
 
 	try {
+		const headers: Record<string, string> = {};
+
+		if (responseType === 'json') {
+			headers['Content-Type'] = 'application/json';
+		}
+
 		const response = await fetch(endpoint + queryString, {
 			method,
 			body: method !== 'GET' && Object.keys(data).length ? JSON.stringify(data) : undefined,
-			headers: {
-				'Content-Type': 'application/json',
-			},
+			headers,
 			signal: controller.signal,
 		});
 
@@ -40,7 +46,14 @@ export const request = async <T>({
 			throw new Error(`HTTP error! Status: ${response.status}`);
 		}
 
-		return (await response.json()) as T;
+		switch (responseType) {
+			case 'json':
+				return (await response.json()) as T;
+			case 'binary':
+				return (await response.blob()) as T;
+			default:
+				throw new Error(`Unsupported responseType: ${responseType}`);
+		}
 	} catch (error) {
 		if ((error as Error).name === 'AbortError') {
 			throw new Error('Request timed out after 120 seconds');

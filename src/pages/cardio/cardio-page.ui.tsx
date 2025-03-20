@@ -7,11 +7,19 @@ import { useMeasure } from 'shared/hooks';
 import { useAppSelector } from 'shared/lib/store';
 import { selectPatientData } from 'entities/patient/patient-data';
 import img from 'shared/assets/img/measure/tonometr.png';
+import { useEffect } from 'react';
+import { say } from 'shared/utils';
 
 export const CardioPage = () => {
 	const navigate = useNavigate();
 	const { startMeasure } = useMeasure();
 	const patient = useAppSelector(selectPatientData);
+
+	useEffect(() => {
+		say(
+			'Теперь измерим ваше давление! Вставьте руку в тонометр так, как показано на рисунке. Когда будете готовы - нажмите кнопку "Измерить"',
+		);
+	}, []);
 
 	return (
 		<Container>

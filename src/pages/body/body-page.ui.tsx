@@ -9,11 +9,19 @@ import { useAppSelector } from 'shared/lib/store';
 import man from 'shared/assets/img/measure/man.png';
 import woman from 'shared/assets/img/measure/woman.png';
 import { useMeasure } from 'shared/hooks';
+import { useEffect } from 'react';
+import { say } from 'shared/utils';
 
 export const BodyPage = () => {
 	const navigate = useNavigate();
 	const { startMeasure } = useMeasure();
 	const patient = useAppSelector(selectPatientData);
+
+	useEffect(() => {
+		say(
+			'Анализ тела! Встаньте на весы, положите руки на электроды, как показано на рисунке. Когда будете готовы - нажмите кнопку "Измерить"',
+		);
+	}, []);
 
 	return (
 		<Container>

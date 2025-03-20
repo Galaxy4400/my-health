@@ -3,9 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
 import { PatientForm } from 'features/patient';
+import { useEffect } from 'react';
+import { say } from 'shared/utils';
 
 export const PatientDataPage = () => {
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		say(
+			'Укажите свои данные! Это нужно для того, чтобы сохранить их в истории исследования или отправить в вашу электронную медицинскую карту.',
+		);
+	}, []);
+
 	return (
 		<Container>
 			<PageHead>
@@ -18,7 +27,7 @@ export const PatientDataPage = () => {
 				className={css['title']}
 				title="Укажите свои данные"
 				label="Это нужно для того, чтобы сохранить их в истории исследования или отправить в вашу электронную
-				медицинскую карту. Вы можете не указывать свои данные, если не хотите."
+				медицинскую карту."
 			/>
 			<PatientForm />
 		</Container>

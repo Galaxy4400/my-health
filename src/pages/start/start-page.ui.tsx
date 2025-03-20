@@ -1,5 +1,5 @@
 import css from './start-page.module.scss';
-import { Container, IconItem, PulsBtn } from 'shared/ui/components';
+import { Button, Container, IconItem, PulsBtn } from 'shared/ui/components';
 import { Icons } from 'shared/types';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
@@ -7,10 +7,16 @@ import { Appointment } from 'widgets/appointment';
 import { AdminEnter } from 'widgets/admin-enter';
 import { useAppSelector } from 'shared/lib/store';
 import { selectApplicationBackgound } from 'entities/application';
+import { useEffect } from 'react';
+import { say } from 'shared/utils';
 
 export const StartPage = () => {
 	const navigate = useNavigate();
 	const background = useAppSelector(selectApplicationBackgound);
+
+	useEffect(() => {
+		say('Здравствуйте! Пройдите экспресс-диагностику вашего организма за 5 минут');
+	}, []);
 
 	return (
 		<div className={css['wrapper']} style={{ background: background.color }}>
