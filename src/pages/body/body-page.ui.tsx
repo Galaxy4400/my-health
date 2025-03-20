@@ -10,18 +10,19 @@ import man from 'shared/assets/img/measure/man.png';
 import woman from 'shared/assets/img/measure/woman.png';
 import { useMeasure } from 'shared/hooks';
 import { useEffect } from 'react';
-import { say } from 'shared/utils';
+import { useVoice } from 'app/providers/voice';
 
 export const BodyPage = () => {
 	const navigate = useNavigate();
 	const { startMeasure } = useMeasure();
 	const patient = useAppSelector(selectPatientData);
+	const { speak } = useVoice();
 
 	useEffect(() => {
-		say(
+		speak(
 			'Анализ тела! Встаньте на весы, положите руки на электроды, как показано на рисунке. Когда будете готовы - нажмите кнопку "Измерить"',
 		);
-	}, []);
+	}, [speak]);
 
 	return (
 		<Container>

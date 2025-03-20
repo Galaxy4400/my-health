@@ -8,18 +8,19 @@ import { useAppSelector } from 'shared/lib/store';
 import { selectPatientData } from 'entities/patient/patient-data';
 import img from 'shared/assets/img/measure/pulsococsimetr.png';
 import { useEffect } from 'react';
-import { say } from 'shared/utils';
+import { useVoice } from 'app/providers/voice';
 
 export const PulsPage = () => {
 	const navigate = useNavigate();
 	const { startMeasure } = useMeasure();
 	const patient = useAppSelector(selectPatientData);
+	const { speak } = useVoice();
 
 	useEffect(() => {
-		say(
+		speak(
 			'Давайте измерим ваш пульс! Вставьте указательный палец любой руки в пульсоксиметр, как показано на рисунке. Когда будете готовы - нажмите кнопку "Измерить"',
 		);
-	}, []);
+	}, [speak]);
 
 	return (
 		<Container>

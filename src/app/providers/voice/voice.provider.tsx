@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useState } from 'react';
+import { PropsWithChildren, useCallback, useEffect, useRef, useState } from 'react';
 import { VoiceContext } from './voice.context';
 import { request } from 'shared/api';
 
@@ -19,23 +19,25 @@ export enum Voices {
 }
 
 export const VoiceProvider = ({ children }: PropsWithChildren) => {
-	const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+	const audioRef = useRef<HTMLAudioElement | null>(null);
 
-	const speak = (phrase: string) => {
+	const speak = useCallback((phrase: string) => {
+		if (audioRef.current) {
+			audioRef.current.pause();
+			audioRef.current.currentTime = 0;
+		}
+
 		request<Blob>({
 			url: `/libtts/tts.php?phrase=${phrase}&voice=${Voices.jane_good}&speed=${1}`,
 			responseType: 'binary',
 		}).then((audioBlob) => {
 			const audioUrl = URL.createObjectURL(audioBlob);
-			const audio = new Audio(audioUrl);
-			audio?.pause();
-			setAudio(audio);
-		});
-	};
+			const newAudio = new Audio(audioUrl);
 
-	useEffect(() => {
-		audio?.play();
-	}, [audio]);
+			audioRef.current = newAudio;
+			audioRef.current.play();
+		});
+	}, []);
 
 	return <VoiceContext.Provider value={{ speak }}>{children}</VoiceContext.Provider>;
 };

@@ -4,16 +4,17 @@ import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/compon
 import { path } from 'shared/lib/router';
 import { PatientForm } from 'features/patient';
 import { useEffect } from 'react';
-import { say } from 'shared/utils';
+import { useVoice } from 'app/providers/voice';
 
 export const PatientDataPage = () => {
 	const navigate = useNavigate();
+	const { speak } = useVoice();
 
 	useEffect(() => {
-		say(
+		speak(
 			'Укажите свои данные! Это нужно для того, чтобы сохранить их в истории исследования или отправить в вашу электронную медицинскую карту.',
 		);
-	}, []);
+	}, [speak]);
 
 	return (
 		<Container>

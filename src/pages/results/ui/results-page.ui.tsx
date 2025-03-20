@@ -6,14 +6,15 @@ import { ResultActions, ResultButtons } from './components';
 import { Body, Cardio, Metabolism, Nutrition, Risk, Sport, Stress, Summary } from 'widgets/results';
 import { ResultPage } from 'shared/types';
 import { useEffect } from 'react';
-import { say } from 'shared/utils';
+import { useVoice } from 'app/providers/voice';
 
 export const ResultsPage = () => {
 	const navigate = useNavigate();
+	const { speak } = useVoice();
 
 	useEffect(() => {
-		say('Ваши результаты готовы!');
-	}, []);
+		speak('Ваши результаты готовы!');
+	}, [speak]);
 
 	return (
 		<Container>
