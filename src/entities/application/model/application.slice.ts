@@ -7,6 +7,13 @@ const initialState: AppDataState = {
 		background: {},
 		idleTimeout: 20,
 		slider: [],
+		sounds: {
+			mainscreen_intro: '',
+			examination_start: '',
+			examination_step1: '',
+			examination_step2: '',
+			examination_step3: '',
+		},
 	},
 	loading: false,
 	error: null,

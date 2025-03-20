@@ -15,6 +15,7 @@ export const fetchGetApplication = createAsyncThunk<ApplicationType, void, { rej
 			return {
 				background: rest.background,
 				idleTimeout: rest.general.idleTimeout,
+				sounds: rest.general.sounds,
 				slider: rest.slider,
 			};
 		} catch (error: unknown) {

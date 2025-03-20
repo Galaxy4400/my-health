@@ -9,18 +9,18 @@ import { selectPatientData } from 'entities/patient/patient-data';
 import img from 'shared/assets/img/measure/tonometr.png';
 import { useEffect } from 'react';
 import { useVoice } from 'app/providers/voice';
+import { selectApplicationPhrases } from 'entities/application';
 
 export const CardioPage = () => {
 	const navigate = useNavigate();
 	const { startMeasure } = useMeasure();
 	const patient = useAppSelector(selectPatientData);
+	const phrases = useAppSelector(selectApplicationPhrases);
 	const { speak } = useVoice();
 
 	useEffect(() => {
-		speak(
-			'Теперь измерим ваше давление! Вставьте руку в тонометр так, как показано на рисунке. Когда будете готовы - нажмите кнопку "Измерить"',
-		);
-	}, [speak]);
+		speak(phrases.examination_step3);
+	}, [phrases.examination_step3, speak]);
 
 	return (
 		<Container>

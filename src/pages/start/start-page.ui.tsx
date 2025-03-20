@@ -6,18 +6,19 @@ import { path } from 'shared/lib/router';
 import { Appointment } from 'widgets/appointment';
 import { AdminEnter } from 'widgets/admin-enter';
 import { useAppSelector } from 'shared/lib/store';
-import { selectApplicationBackgound } from 'entities/application';
+import { selectApplicationBackgound, selectApplicationPhrases } from 'entities/application';
 import { useEffect } from 'react';
 import { useVoice } from 'app/providers/voice';
 
 export const StartPage = () => {
 	const navigate = useNavigate();
 	const background = useAppSelector(selectApplicationBackgound);
+	const phrases = useAppSelector(selectApplicationPhrases);
 	const { speak } = useVoice();
 
 	useEffect(() => {
-		speak('Здравствуйте! Пройдите экспресс-диагностику вашего организма за 5 минут');
-	}, [speak]);
+		speak(phrases.mainscreen_intro);
+	}, [phrases.mainscreen_intro, speak]);
 
 	return (
 		<div className={css['wrapper']} style={{ background: background.color }}>

@@ -5,16 +5,17 @@ import { path } from 'shared/lib/router';
 import { PatientForm } from 'features/patient';
 import { useEffect } from 'react';
 import { useVoice } from 'app/providers/voice';
+import { useAppSelector } from 'shared/lib/store';
+import { selectApplicationPhrases } from 'entities/application';
 
 export const PatientDataPage = () => {
 	const navigate = useNavigate();
+	const phrases = useAppSelector(selectApplicationPhrases);
 	const { speak } = useVoice();
 
 	useEffect(() => {
-		speak(
-			'Укажите свои данные! Это нужно для того, чтобы сохранить их в истории исследования или отправить в вашу электронную медицинскую карту.',
-		);
-	}, [speak]);
+		speak(phrases.examination_start);
+	}, [phrases.examination_start, speak]);
 
 	return (
 		<Container>

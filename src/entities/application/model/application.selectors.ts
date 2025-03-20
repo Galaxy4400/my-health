@@ -9,6 +9,11 @@ export const selectApplicationSlider = createSelector(
 	(state) => state.application.slider,
 );
 
+export const selectApplicationPhrases = createSelector(
+	selectApplicationState,
+	(state) => state.application.sounds,
+);
+
 export const selectApplicationBackgound = createSelector(
 	selectApplicationState,
 	(state) => state.application.background,
