@@ -51,7 +51,7 @@ export const Slider = () => {
 				disableOnInteraction: false,
 			}}
 		>
-			{slider?.map((item, i) => (
+			{slider?.map((item) => (
 				<SwiperSlide className={css['slide']} key={item.url}>
 					{item.type === 'video' ? (
 						<video src={item.url} muted loop={false} />
