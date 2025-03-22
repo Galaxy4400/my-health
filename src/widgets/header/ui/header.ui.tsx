@@ -1,6 +1,6 @@
 import css from './header.module.scss';
 import { Container } from 'shared/ui/components';
-import logo from 'shared/assets/img/logo.svg';
+import logo from 'shared/assets/img/logo.png';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
 
