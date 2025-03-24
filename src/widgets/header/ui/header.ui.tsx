@@ -15,8 +15,11 @@ export const Header = () => {
 						<img src={logo} alt="logo" />
 					</div>
 					<div className={css['title']}>
-						<h1>Моё здоровье</h1>
-						<p>Пройдите экспресс-диагностику вашего здоровья</p>
+						<h3>
+							Пройдите экспресс-диагностику
+							<br />
+							вашего здоровья
+						</h3>
 					</div>
 				</div>
 			</Container>
