@@ -16,9 +16,11 @@ export interface ResponseType {
 }
 
 export interface PagingData<T> {
+	status: string;
+	message: string;
 	items: T[];
 	total: number;
-	page: number;
-	limit: number;
-	totalPages: number;
+	current_page: number;
+	per_page: number;
+	total_pages: number;
 }

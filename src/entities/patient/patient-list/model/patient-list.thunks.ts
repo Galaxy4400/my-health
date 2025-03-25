@@ -1,46 +1,24 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { PatientRequestFormData, PatientType, patientVisitRequest } from 'shared/api/patient';
+import { PagingData } from 'shared/api';
+import { patientListRequest, PatientType } from 'shared/api/patient';
 import { ErrorType } from 'shared/types';
 
-// export const fetchPatientVisit = createAsyncThunk<
-// 	PatientType,
-// 	PatientRequestFormData,
-// 	{ rejectValue: ErrorType }
-// >('patient/fetchPatientVisit', async (submittedData, { rejectWithValue }) => {
-// 	try {
-// 		const { status, visit_id } = await patientVisitRequest(submittedData);
+export const fetchGetPatientList = createAsyncThunk<
+	PagingData<PatientType>,
+	number,
+	{ rejectValue: ErrorType }
+>('patients/fetchGetPatientList', async (page, { rejectWithValue }) => {
+	try {
+		const response = await patientListRequest(page);
 
-// 		if (status !== 'ok') {
-// 			throw new Error('Ошибка при регистрации пациента');
-// 		}
-
-// 		return {
-// 			visit_id,
-// 			gender: submittedData.gender,
-// 			age: submittedData.age,
-// 		};
-// 	} catch (error: unknown) {
-// 		const knownError = error as ErrorType;
-
-// 		return rejectWithValue(knownError);
-// 	}
-// });
-
-export const fetchGetPatientList = createAsyncThunk<PatientType[], void, { rejectValue: ErrorType }>(
-	'patients/fetchGetPatientList',
-	async (_, { rejectWithValue }) => {
-		try {
-			const { categories, error } = await getPatients();
-
-			if (!categories) {
-				throw new Error(error as string);
-			}
-
-			return categories;
-		} catch (error: unknown) {
-			const knownError = error as ErrorType;
-
-			return rejectWithValue(knownError);
+		if (response.status !== 'ok') {
+			throw new Error(response.message as string);
 		}
-	},
-);
+
+		return response;
+	} catch (error: unknown) {
+		const knownError = error as ErrorType;
+
+		return rejectWithValue(knownError);
+	}
+});

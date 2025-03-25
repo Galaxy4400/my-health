@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PatientListState } from './patient-list.types';
-import { fetchPatientVisit } from './patient-list.thunks';
+import { fetchGetPatientList } from './patient-list.thunks';
 
 const initialState: PatientListState = {
 	patients: [],
-	page: 0,
+	page: 1,
 	total: 0,
+	limit: 20,
 	totalPages: 0,
 	loading: false,
 	error: null,
@@ -17,16 +18,20 @@ export const patientListSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) =>
 		builder
-			.addCase(fetchGetCategoryList.pending, (state) => {
+			.addCase(fetchGetPatientList.pending, (state) => {
 				state.loading = true;
 				state.error = null;
 			})
-			.addCase(fetchGetCategoryList.fulfilled, (state, { payload }) => {
-				state.categories = payload;
+			.addCase(fetchGetPatientList.fulfilled, (state, { payload }) => {
+				state.patients = payload.items;
+				state.page = payload.current_page;
+				state.total = payload.total;
+				state.limit = payload.per_page;
+				state.totalPages = payload.total_pages;
 				state.loading = false;
 				state.error = null;
 			})
-			.addCase(fetchGetCategoryList.rejected, (state, { payload }) => {
+			.addCase(fetchGetPatientList.rejected, (state, { payload }) => {
 				state.loading = false;
 				state.error = payload?.message ?? null;
 			}),

@@ -1,5 +1,5 @@
 import { request } from '../request';
-import { RequestData } from '../types';
+import { PagingData, RequestData } from '../types';
 import {
 	BodyPageData,
 	EmailStatus,
@@ -12,6 +12,7 @@ import {
 	PatientRequestFormData,
 	PatientResponse,
 	PatientSendFormData,
+	PatientType,
 	ResultPageData,
 	RisksPageData,
 	SportPageData,
@@ -192,5 +193,15 @@ export const patient3dModelRequest = (visitId: number | null): Promise<ModelResp
 
 export const patientMeasureStatusRequest = (visitId: number | null): Promise<MeasureProcessStatus> => {
 	const requestData: RequestData = { action: 'progress', visit_id: visitId || 0 };
+	return request({ method: 'POST', data: requestData });
+};
+
+export const patientListRequest = (page: number): Promise<PagingData<PatientType>> => {
+	const requestData: RequestData = {
+		action: 'admin',
+		subaction: 'reports',
+		page,
+	};
+
 	return request({ method: 'POST', data: requestData });
 };
