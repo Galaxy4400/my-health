@@ -1,11 +1,9 @@
 import css from './patient-list.module.scss';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button, Typography } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
-import { useAppDispatch, useAppSelector } from 'shared/lib/store';
-import { fetchGetPatientList, selectPatientList } from '../model';
-import { useEffect } from 'react';
-import { ckb } from 'date-fns/locale';
+import { useAppSelector } from 'shared/lib/store';
+import { selectPatientList } from '../model';
 
 export const PatientList = () => {
 	const navigate = useNavigate();
@@ -18,6 +16,7 @@ export const PatientList = () => {
 			<table className={css['table']}>
 				<thead>
 					<tr>
+						<th>ID</th>
 						<th>Дата/Время</th>
 						<th>Пол</th>
 						<th>Возраст</th>
@@ -28,6 +27,7 @@ export const PatientList = () => {
 				<tbody>
 					{patients.map((patient) => (
 						<tr key={patient.id}>
+							<td>{patient.id}</td>
 							<td>{patient.datetime}</td>
 							<td>{patient.gender}</td>
 							<td>{patient.age}</td>
