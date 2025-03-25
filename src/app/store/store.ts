@@ -5,6 +5,7 @@ import { patientDataReducer } from 'entities/patient/patient-data';
 const rootReducer = combineReducers({
 	applicationData: applicationReducer,
 	patientData: patientDataReducer,
+	// patientList: patientListReducer,
 });
 
 export const store = configureStore({ reducer: rootReducer });

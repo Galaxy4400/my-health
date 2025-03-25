@@ -12,9 +12,7 @@ export const Appointment = ({ trigger }: AppointmentProps) => {
 	const { openModal } = useModal();
 
 	const action = () => {
-		openModal(
-			<iframe src="https://www.mos.ru/services/zapis-k-vrachu/" width="700px" height="1000px"></iframe>,
-		);
+		openModal(<iframe src="https://reg.fmba.gov.ru/" width="950px" height="1000px"></iframe>);
 	};
 
 	return trigger ? (

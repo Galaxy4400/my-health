@@ -15,8 +15,8 @@ export const AdminPage = () => {
 				</Button>
 			</PageHead>
 			<TitleBlock className={css['title']} title="Исследования" />
-			<PatientFilter />
-			<PatientSearch />
+			{/* <PatientFilter /> */}
+			{/* <PatientSearch /> */}
 			<PatientList />
 			<PatientPagination />
 		</Container>
