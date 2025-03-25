@@ -1,7 +1,7 @@
-import { PatientType } from 'shared/api/patient';
+import { VisitType } from 'shared/api/patient';
 
 export interface PatientListState {
-	patients: PatientType[];
+	patients: VisitType[];
 	page: number;
 	total: number;
 	limit: number;

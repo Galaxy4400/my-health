@@ -13,29 +13,28 @@ import {
 	ValueItem,
 	ValueList,
 } from 'shared/ui/components';
-import { useAppSelector } from 'shared/lib/store';
-import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
+import { PatientModel, usePatientId } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
 
 export const Body = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<BodyPageData | null>(null);
-	const patient = useAppSelector(selectPatientData);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
+	const patientId = usePatientId();
 
 	useEffect(() => {
-		patient3dModelRequest(patient.visit_id).then((results) => {
+		patient3dModelRequest(patientId).then((results) => {
 			setModelUrl(results.url);
 		});
 
 		setLoading(true);
 
-		patientBodyRequest(patient.visit_id)
+		patientBodyRequest(patientId)
 			.then((results) => {
 				setData(results);
 			})
 			.finally(() => setLoading(false));
-	}, [patient.visit_id]);
+	}, [patientId]);
 
 	if (!data || loading) {
 		return <Loader isLoading={loading} />;

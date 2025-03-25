@@ -12,11 +12,11 @@ import {
 	PatientRequestFormData,
 	PatientResponse,
 	PatientSendFormData,
-	PatientType,
 	ResultPageData,
 	RisksPageData,
 	SportPageData,
 	SummaryPageData,
+	VisitType,
 } from './patient.types';
 
 export const patientVisitRequest = (submittedData: PatientRequestFormData): Promise<PatientResponse> => {
@@ -196,7 +196,7 @@ export const patientMeasureStatusRequest = (visitId: number | null): Promise<Mea
 	return request({ method: 'POST', data: requestData });
 };
 
-export const patientListRequest = (page: number): Promise<PagingData<PatientType>> => {
+export const patientListRequest = (page: number): Promise<PagingData<VisitType>> => {
 	const requestData: RequestData = {
 		action: 'admin',
 		subaction: 'reports',

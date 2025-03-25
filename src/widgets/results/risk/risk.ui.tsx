@@ -1,37 +1,28 @@
 import css from './risk.module.scss';
-import { Gender, patient3dModelRequest, RisksPageData, patientRisksRequest } from 'shared/api/patient';
-import {
-	GradientValue,
-	Loader,
-	MainValue,
-	Model3d,
-	ResultHead,
-	ValueItem,
-	ValueList,
-} from 'shared/ui/components';
-import { useAppSelector } from 'shared/lib/store';
-import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
+import { patient3dModelRequest, RisksPageData, patientRisksRequest } from 'shared/api/patient';
+import { GradientValue, Loader, MainValue, ValueItem, ValueList } from 'shared/ui/components';
+import { PatientModel, usePatientId } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
 
 export const Risk = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<RisksPageData | null>(null);
-	const patient = useAppSelector(selectPatientData);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
+	const patientId = usePatientId();
 
 	useEffect(() => {
-		patient3dModelRequest(patient.visit_id).then((results) => {
+		patient3dModelRequest(patientId).then((results) => {
 			setModelUrl(results.url);
 		});
 
 		setLoading(true);
 
-		patientRisksRequest(patient.visit_id)
+		patientRisksRequest(patientId)
 			.then((results) => {
 				setData(results);
 			})
 			.finally(() => setLoading(false));
-	}, [patient.visit_id]);
+	}, [patientId]);
 
 	if (!data || loading) {
 		return <Loader isLoading={loading} />;

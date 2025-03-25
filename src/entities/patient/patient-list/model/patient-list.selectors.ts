@@ -1,9 +1,20 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-const selectPatientDataState = (state: RootState) => state.patientData;
+const selectPatientListState = (state: RootState) => state.patientList;
 
-export const selectPatientData = createSelector(selectPatientDataState, (state) => state.patient);
+export const selectPatientList = createSelector(selectPatientListState, (state) => state.patients);
 
-export const selectPatientDataLoading = createSelector(selectPatientDataState, (state) => state.loading);
+export const selectPatientListLoading = createSelector(selectPatientListState, (state) => state.loading);
 
-export const selectPatientDataError = createSelector(selectPatientDataState, (state) => state.error);
+export const selectPatientListError = createSelector(selectPatientListState, (state) => state.error);
+
+export const selectPatientListPage = createSelector(selectPatientListState, (state) => state.page);
+
+export const selectPatientListLimit = createSelector(selectPatientListState, (state) => state.limit);
+
+export const selectPatientListTotal = createSelector(selectPatientListState, (state) => state.total);
+
+export const selectPatientListTotalPages = createSelector(
+	selectPatientListState,
+	(state) => state.totalPages,
+);

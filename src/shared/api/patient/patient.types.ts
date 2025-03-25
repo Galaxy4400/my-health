@@ -9,6 +9,13 @@ export interface PatientType {
 	age: number;
 }
 
+export interface VisitType {
+	id: number;
+	datetime: string;
+	gender: Gender;
+	age: number;
+}
+
 export interface PatientRequestFormData {
 	gender: Gender;
 	age: number;

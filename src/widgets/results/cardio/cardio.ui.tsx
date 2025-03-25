@@ -1,25 +1,25 @@
-import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
+import { PatientModel, selectPatientData, usePatientId } from 'entities/patient/patient-data';
 import css from './cardio.module.scss';
-import { GradientValue, Loader, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
+import { GradientValue, Loader, MainValue, ValueItem, ValueList } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { useEffect, useState } from 'react';
 import { patientCardioRequest, Gender, ResultPageData } from 'shared/api/patient';
-import { useModal } from 'app/providers/modal';
 
 export const Cardio = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<ResultPageData | null>(null);
 	const patient = useAppSelector(selectPatientData);
+	const patientId = usePatientId();
 
 	useEffect(() => {
 		setLoading(true);
 
-		patientCardioRequest(patient.visit_id)
+		patientCardioRequest(patientId)
 			.then((results) => {
 				setData(results);
 			})
 			.finally(() => setLoading(false));
-	}, [patient.visit_id]);
+	}, [patientId]);
 
 	if (!data || loading) {
 		return <Loader isLoading={loading} />;

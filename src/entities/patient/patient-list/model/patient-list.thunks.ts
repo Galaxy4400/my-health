@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { PagingData } from 'shared/api';
-import { patientListRequest, PatientType } from 'shared/api/patient';
+import { patientListRequest, VisitType } from 'shared/api/patient';
 import { ErrorType } from 'shared/types';
 
 export const fetchGetPatientList = createAsyncThunk<
-	PagingData<PatientType>,
+	PagingData<VisitType>,
 	number,
 	{ rejectValue: ErrorType }
 >('patients/fetchGetPatientList', async (page, { rejectWithValue }) => {

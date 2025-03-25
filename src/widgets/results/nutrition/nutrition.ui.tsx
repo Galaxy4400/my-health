@@ -1,6 +1,6 @@
 import css from './nutrition.module.scss';
 import { Loader, MainValue, ResultHead } from 'shared/ui/components';
-import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
+import { PatientModel, selectPatientData, usePatientId } from 'entities/patient/patient-data';
 import { useAppSelector } from 'shared/lib/store';
 import { Gender, NutritionPageData, patientNutritionRequest } from 'shared/api/patient';
 import { useEffect, useState } from 'react';
@@ -9,16 +9,17 @@ export const Nutrition = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<NutritionPageData | null>(null);
 	const patient = useAppSelector(selectPatientData);
+	const patientId = usePatientId();
 
 	useEffect(() => {
 		setLoading(true);
 
-		patientNutritionRequest(patient.visit_id)
+		patientNutritionRequest(patientId)
 			.then((results) => {
 				setData(results);
 			})
 			.finally(() => setLoading(false));
-	}, [patient.visit_id]);
+	}, [patientId]);
 
 	if (!data || loading) {
 		return <Loader isLoading={loading} />;
