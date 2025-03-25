@@ -9,8 +9,6 @@ export const PatientList = () => {
 	const navigate = useNavigate();
 	const patients = useAppSelector(selectPatientList);
 
-	console.log(patients);
-
 	return (
 		<Typography>
 			<table className={css['table']}>
