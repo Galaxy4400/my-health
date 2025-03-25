@@ -24,7 +24,9 @@ export const PatientPagination = () => {
 			<Button color="white" onClick={prev} disabled={page === 1}>
 				Предыдущие
 			</Button>
-			<div className={css['value']}>{`Записи ${page * limit - limit + 1}-${page * limit} из ${total}`}</div>
+			<div
+				className={css['value']}
+			>{`Записи ${page * limit - limit + 1}-${page === totalPages ? total : page * limit} из ${total}`}</div>
 			<Button color="second" onClick={next} disabled={page === totalPages}>
 				Следующие
 			</Button>
