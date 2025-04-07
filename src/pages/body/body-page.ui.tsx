@@ -1,10 +1,9 @@
 import css from './body-page.module.scss';
-import { useNavigate } from 'react-router-dom';
 import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
 import { Measure } from 'widgets/measure';
 import { Gender } from 'shared/api/patient';
-import { selectPatientData } from 'entities/patient/patient-data';
+import { selectPatientData, useAbortPatient } from 'entities/patient/patient-data';
 import { useAppSelector } from 'shared/lib/store';
 import man from 'shared/assets/img/measure/man.png';
 import woman from 'shared/assets/img/measure/woman.png';
@@ -14,11 +13,11 @@ import { useVoice } from 'app/providers/voice';
 import { selectApplicationPhrases } from 'entities/application';
 
 export const BodyPage = () => {
-	const navigate = useNavigate();
 	const { startMeasure } = useMeasure();
 	const patient = useAppSelector(selectPatientData);
 	const phrases = useAppSelector(selectApplicationPhrases);
 	const { speak } = useVoice();
+	const { abort } = useAbortPatient();
 
 	useEffect(() => {
 		speak(phrases.examination_step1);
@@ -27,7 +26,7 @@ export const BodyPage = () => {
 	return (
 		<Container>
 			<PageHead>
-				<Button onClick={() => navigate(path.start())} width="big">
+				<Button onClick={abort} width="big">
 					В начало
 				</Button>
 			</PageHead>

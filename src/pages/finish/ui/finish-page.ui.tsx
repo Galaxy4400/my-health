@@ -13,6 +13,7 @@ import { path } from 'shared/lib/router';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { useResults } from '../lib';
+import { useAbortPatient } from 'entities/patient/patient-data';
 
 const deleyTime = 3000;
 const countStep = 10;
@@ -21,6 +22,7 @@ export const FinishPage = () => {
 	const navigate = useNavigate();
 	const [delayCount, setDelayCount] = useState(0);
 	const { loading, isComplete } = useResults();
+	const { abort } = useAbortPatient();
 
 	useEffect(() => {
 		if (!isComplete) return;
@@ -30,7 +32,7 @@ export const FinishPage = () => {
 		}, countStep);
 
 		return () => clearInterval(interval);
-	}, [isComplete, navigate]);
+	}, [isComplete]);
 
 	if (delayCount >= deleyTime) {
 		return <Navigate to={path.results()} />;
@@ -39,7 +41,7 @@ export const FinishPage = () => {
 	return (
 		<Container>
 			<PageHead>
-				<Button onClick={() => navigate(path.start())} width="big">
+				<Button onClick={abort} width="big">
 					В начало
 				</Button>
 			</PageHead>

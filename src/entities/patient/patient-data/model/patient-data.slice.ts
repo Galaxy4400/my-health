@@ -16,7 +16,9 @@ const initialState: PatientDataState = {
 export const patientDataSlice = createSlice({
 	name: 'patient',
 	initialState,
-	reducers: {},
+	reducers: {
+		clearPatientData: () => initialState,
+	},
 	extraReducers: (builder) =>
 		builder
 			.addCase(fetchPatientVisit.pending, (state) => {
@@ -33,5 +35,7 @@ export const patientDataSlice = createSlice({
 				state.error = payload?.message ?? null;
 			}),
 });
+
+export const { clearPatientData } = patientDataSlice.actions;
 
 export const patientDataReducer = patientDataSlice.reducer;

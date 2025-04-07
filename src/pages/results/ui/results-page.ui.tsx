@@ -1,18 +1,17 @@
 import css from './results-page.module.scss';
-import { useNavigate } from 'react-router-dom';
 import { Button, Container, PageHead, Steps, Tabs, TabsContainer } from 'shared/ui/components';
-import { path } from 'shared/lib/router';
 import { ResultActions, ResultButtons } from './components';
 import { Body, Cardio, Metabolism, Nutrition, Risk, Sport, Stress, Summary } from 'widgets/results';
 import { ResultPage } from 'shared/types';
+import { useAbortPatient } from 'entities/patient/patient-data';
 
 export const ResultsPage = () => {
-	const navigate = useNavigate();
+	const { abort } = useAbortPatient();
 
 	return (
 		<Container>
 			<PageHead>
-				<Button onClick={() => navigate(path.start())} width="big">
+				<Button onClick={abort} width="big">
 					Завершить исследование
 				</Button>
 			</PageHead>
