@@ -1,0 +1,23 @@
+.title {
+	margin: 0px 0px rem(40) 0px;
+}
+
+.img {
+	text-align: center;
+	img {
+		max-height: rem(590);
+	}
+}
+
+.loader-container {
+	padding: rem(100) 0px 0px 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn {
+	display: block;
+	margin: rem(160) auto 0;
+	font-size: rem(40);
+}

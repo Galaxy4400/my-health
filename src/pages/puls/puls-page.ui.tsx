@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { useVoice } from 'app/providers/voice';
 import { selectApplicationPhrases } from 'entities/application';
 import img from 'shared/assets/img/measure/pulsococsimetr.png';
+import { Navigate } from 'react-router-dom';
 
 export const PulsPage = () => {
 	const { startMeasure } = useMeasure();
@@ -20,6 +21,10 @@ export const PulsPage = () => {
 	useEffect(() => {
 		speak(phrases.examination_step2);
 	}, [phrases.examination_step2, speak]);
+
+	if (!patient.visit_id) {
+		return <Navigate to={path.start()} />;
+	}
 
 	return (
 		<Container>

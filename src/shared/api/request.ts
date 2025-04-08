@@ -1,6 +1,6 @@
 import { Methods, QueryData, RequestData } from './types';
 
-const API_BASE_URL = import.meta.env.MODE === 'development' ? import.meta.env.VITE_API_BASE_URL : '';
+export const API_BASE_URL = import.meta.env.MODE === 'development' ? import.meta.env.VITE_API_BASE_URL : '';
 
 interface requestProps {
 	url?: string;

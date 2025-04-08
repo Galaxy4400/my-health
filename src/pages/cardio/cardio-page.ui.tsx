@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { useVoice } from 'app/providers/voice';
 import { selectApplicationPhrases } from 'entities/application';
 import img from 'shared/assets/img/measure/tonometr.png';
+import { Navigate } from 'react-router-dom';
 
 export const CardioPage = () => {
 	const { startMeasure } = useMeasure();
@@ -20,6 +21,10 @@ export const CardioPage = () => {
 	useEffect(() => {
 		speak(phrases.examination_step3);
 	}, [phrases.examination_step3, speak]);
+
+	if (!patient.visit_id) {
+		return <Navigate to={path.start()} />;
+	}
 
 	return (
 		<Container>
@@ -49,7 +54,7 @@ export const CardioPage = () => {
 					<img className={css['img']} src={img} alt="image" />
 				</div>
 			</div>
-			<Measure action={() => startMeasure(3, patient.visit_id || 0)} nextStep={path.finish()} />
+			<Measure action={() => startMeasure(3, patient.visit_id || 0)} nextStep={path.examination()} />
 		</Container>
 	);
 };

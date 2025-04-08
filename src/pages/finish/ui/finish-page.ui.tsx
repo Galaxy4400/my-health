@@ -13,7 +13,8 @@ import { path } from 'shared/lib/router';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { useResults } from '../lib';
-import { useAbortPatient } from 'entities/patient/patient-data';
+import { selectPatientData, useAbortPatient } from 'entities/patient/patient-data';
+import { useAppSelector } from 'shared/lib/store';
 
 const deleyTime = 3000;
 const countStep = 10;
@@ -23,6 +24,7 @@ export const FinishPage = () => {
 	const [delayCount, setDelayCount] = useState(0);
 	const { loading, isComplete } = useResults();
 	const { abort } = useAbortPatient();
+	const patient = useAppSelector(selectPatientData);
 
 	useEffect(() => {
 		if (!isComplete) return;
@@ -38,6 +40,10 @@ export const FinishPage = () => {
 		return <Navigate to={path.results()} />;
 	}
 
+	if (!patient.visit_id) {
+		return <Navigate to={path.start()} />;
+	}
+
 	return (
 		<Container>
 			<PageHead>
@@ -45,7 +51,7 @@ export const FinishPage = () => {
 					В начало
 				</Button>
 			</PageHead>
-			<Steps current={5} />
+			<Steps current={6} />
 			{loading ? (
 				<>
 					<TitleBlock

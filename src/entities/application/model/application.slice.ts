@@ -13,6 +13,7 @@ const initialState: AppDataState = {
 			examination_step1: '',
 			examination_step2: '',
 			examination_step3: '',
+			examination_examenation: '',
 		},
 	},
 	loading: false,

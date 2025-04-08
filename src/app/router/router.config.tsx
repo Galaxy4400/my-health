@@ -13,6 +13,7 @@ import { BodyPage } from 'pages/body';
 import { FinishPage } from 'pages/finish';
 import { ResultsPage } from 'pages/results';
 import { PulsPage } from 'pages/puls';
+import { ExaminationPage } from 'pages/examination';
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -55,6 +56,10 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.body(),
 				element: <BodyPage />,
+			},
+			{
+				path: path.examination(),
+				element: <ExaminationPage />,
 			},
 			{
 				path: path.finish(),

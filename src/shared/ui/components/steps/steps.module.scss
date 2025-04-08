@@ -1,6 +1,6 @@
 .steps {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(6, 1fr);
 	gap: rem(33);
 	margin: 0px 0px rem(80) 0px;
 }
@@ -40,7 +40,7 @@
 		position: absolute;
 		top: rem(45);
 		left: calc(100% + rem(15));
-		width: rem(70);
+		width: rem(36);
 		height: rem(1);
 		background: $color-second;
 	}

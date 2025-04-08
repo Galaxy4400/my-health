@@ -9,7 +9,7 @@ import { useAppSelector } from 'shared/lib/store';
 import { selectPatientData } from 'entities/patient/patient-data';
 
 interface MeasureProps<T = unknown> {
-	action: () => Promise<T>;
+	action?: () => Promise<T>;
 	onSuccess?: () => void;
 	onError?: () => void;
 	nextStep: string;
@@ -49,7 +49,7 @@ export const Measure = ({ action, onSuccess, onError, nextStep, delayTime = 5000
 
 		setIsActionProcess(true);
 
-		action()
+		action?.()
 			.then(() => {
 				setIsComplete(true);
 
@@ -131,7 +131,7 @@ export const Measure = ({ action, onSuccess, onError, nextStep, delayTime = 5000
 
 	return (
 		<>
-			<MeasureStatus isComplete={isComplete} />
+			{action && <MeasureStatus isComplete={isComplete} />}
 			<div className={cn(css['process'], isRunning ? 'active' : '')}>
 				<Loader className={css['loader']} text="Измеряем..." isLoading={isActionProcess} />
 				<BtnWithProgress
@@ -144,13 +144,15 @@ export const Measure = ({ action, onSuccess, onError, nextStep, delayTime = 5000
 				{processStatus && <div dangerouslySetInnerHTML={{ __html: processStatus }} />}
 			</div>
 			<div className={css['main']}>
-				<BtnWithProgress
-					className={cn(css['btn'], completeClass, runningClass, btnCloseClass)}
-					text={btnText}
-					onClick={clickHandler}
-					curValue={delayCount}
-					totalValue={delayTime}
-				/>
+				{action && (
+					<BtnWithProgress
+						className={cn(css['btn'], completeClass, runningClass, btnCloseClass)}
+						text={btnText}
+						onClick={clickHandler}
+						curValue={delayCount}
+						totalValue={delayTime}
+					/>
+				)}
 				{!isRunning && !isActionProcess && !isComplete && <SkipStep nextStep={nextStep} />}
 			</div>
 		</>

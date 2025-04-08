@@ -46,7 +46,7 @@ export const IdleProvider = ({ seconds = 30, children }: IdleProviderProps) => {
 		if (idleTimer <= 0) {
 			resetTimer();
 			closeModal();
-			navigate(path.home());
+			// navigate(path.home());
 		}
 	}, [idleTimer, resetTimer, navigate, closeModal]);
 
