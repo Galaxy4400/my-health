@@ -1,44 +1,51 @@
 import css from './patient-nodata.module.scss';
-import { useState } from 'react';
+import { useRef } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form, Input, Radio } from 'shared/ui/form-components';
-import { RequestData } from 'shared/api';
 import { patientNodataFormRules } from './patient-nodata.rules';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
+import { useAppDispatch } from 'shared/lib/store';
+import { PatientNodataData } from 'shared/api/patient';
+import { RequestData } from 'shared/api';
+import { useModal } from 'app/providers/modal';
+import { WarningPopup } from 'shared/ui/components';
+import { fetchPatientVisit } from 'entities/patient/patient-data';
 
 export const PatientNodata = () => {
-	const [isLoading, setIsLoading] = useState(false);
 	const navigate = useNavigate();
+	const formRef = useRef<HTMLFormElement | null>(null);
+	const dispatch = useAppDispatch();
+	const { openModal, closeModal } = useModal();
 
 	const submitHandler = async (data: RequestData) => {
-		setIsLoading(true);
+		try {
+			await dispatch(fetchPatientVisit(data as unknown as PatientNodataData)).unwrap();
 
-		// const { error } = await registration(login as string, password as string);
-
-		setIsLoading(false);
-
-		// if (error) {
-		// 	showToast({
-		// 		message: error.includes('E11000') ? 'Такой пользователь уже существует' : error,
-		// 		type: 'error',
-		// 	});
-
-		// 	return;
-		// }
-
-		// showToast({ message: 'Вы успешно зарегистрировались', type: 'success' });
-
-		navigate(path.measure());
+			navigate(path.body());
+		} catch (error) {
+			openModal(
+				<WarningPopup
+					header="Не заполнены необходимые данные"
+					text="Вернитесь и попробуйте ещё раз"
+					onOk={closeModal}
+				/>,
+			);
+			console.log(error);
+		}
 	};
 
 	return (
 		<div className={css['main']}>
-			<p className={css['label']}>Никаких проблем!</p>
 			<p className={css['label']}>
-				Только укажите, пожалуйста, <span>Ваш пол и возраст</span> - это нужно для диагностики.
+				Укажите, пожалуйста, <b>Ваш пол и возраст</b> - это нужно для диагностики.
 			</p>
-			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(patientNodataFormRules)}>
+			<Form
+				className={css['form']}
+				onSubmit={submitHandler}
+				resolver={yupResolver(patientNodataFormRules)}
+				ref={formRef}
+			>
 				<div className={css['inputs']}>
 					<div className={css['row']}>
 						<div className={css['column']}>
@@ -46,8 +53,8 @@ export const PatientNodata = () => {
 						</div>
 						<div className={css['column']}>
 							<div className={css['radios']}>
-								<Radio label="Мужчина" name="sex" value="X" />
-								<Radio label="Женщина" name="sex" value="Y" />
+								<Radio label="Мужчина" name="gender" value="male" />
+								<Radio label="Женщина" name="gender" value="female" />
 							</div>
 						</div>
 					</div>
@@ -57,7 +64,7 @@ export const PatientNodata = () => {
 						</div>
 						<div className={css['column']}>
 							<div className={css['age-wrapper']}>
-								<Input name="age" />
+								<Input name="age" dataType="number" />
 							</div>
 						</div>
 					</div>

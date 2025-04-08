@@ -1,11 +1,11 @@
 import css from './patient-data-page.module.scss';
 import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/components';
-import { PatientForm } from 'features/patient';
 import { useEffect } from 'react';
 import { useVoice } from 'app/providers/voice';
 import { useAppSelector } from 'shared/lib/store';
 import { selectApplicationPhrases } from 'entities/application';
 import { useAbortPatient } from 'entities/patient/patient-data';
+import { PatientNodata } from 'features/patient';
 
 export const PatientDataPage = () => {
 	const phrases = useAppSelector(selectApplicationPhrases);
@@ -40,7 +40,7 @@ export const PatientDataPage = () => {
 					</>
 				}
 			/>
-			<PatientForm />
+			<PatientNodata />
 		</Container>
 	);
 };

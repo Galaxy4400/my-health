@@ -8,6 +8,7 @@ import {
 	ModelResponseData,
 	NutritionPageData,
 	PatientCardFormData,
+	PatientNodataData,
 	PatientPrintFormData,
 	PatientRequestFormData,
 	PatientResponse,
@@ -19,19 +20,19 @@ import {
 	VisitType,
 } from './patient.types';
 
-export const patientVisitRequest = (submittedData: PatientRequestFormData): Promise<PatientResponse> => {
+export const patientVisitRequest = (submittedData: PatientNodataData): Promise<PatientResponse> => {
 	const requestData: RequestData = {
 		action: 'examination',
 		subaction: 'start',
 		patient: {
 			gender: submittedData.gender,
 			age: submittedData.age,
-			diseases: {
-				heart: submittedData.heart,
-				breathing: submittedData.breathing,
-				diabetes: submittedData.diabetes,
-				pregnacy: submittedData.pregnacy,
-			},
+			// diseases: {
+			// 	heart: submittedData.heart,
+			// 	breathing: submittedData.breathing,
+			// 	diabetes: submittedData.diabetes,
+			// 	pregnacy: submittedData.pregnacy,
+			// },
 		},
 	};
 

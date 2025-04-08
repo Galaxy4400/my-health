@@ -25,6 +25,11 @@ export interface PatientRequestFormData {
 	pregnacy: 'yes' | 'no';
 }
 
+export interface PatientNodataData {
+	gender: Gender;
+	age: number;
+}
+
 export interface PatientResponse {
 	visit_id: number;
 	status: string;
