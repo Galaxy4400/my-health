@@ -46,6 +46,7 @@ export const PatientNodata = () => {
 				className={css['form']}
 				onSubmit={submitHandler}
 				resolver={yupResolver(patientNodataFormRules)}
+				context={{ hasHeight: !devices.heightMeter }}
 				ref={formRef}
 			>
 				<div className={css['inputs']}>
@@ -73,7 +74,7 @@ export const PatientNodata = () => {
 					{!devices.heightMeter && (
 						<div className={css['row']}>
 							<div className={css['column']}>
-								<h5 className={css['param']}>Ваш рост:</h5>
+								<h5 className={css['param']}>Ваш рост (см):</h5>
 							</div>
 							<div className={css['column']}>
 								<div className={css['age-wrapper']}>

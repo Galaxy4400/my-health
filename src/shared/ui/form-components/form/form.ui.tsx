@@ -12,11 +12,12 @@ interface FormProps extends PropsWithChildren {
 	onSubmit: (submittedData: RequestData) => void;
 	onChange?: (event: FormEvent<HTMLFormElement>) => void;
 	resolver?: any;
+	context?: Record<string, unknown>;
 }
 
 export const Form = forwardRef<HTMLFormElement, FormProps>(
-	({ className, defaultValues, resolver, onSubmit, onChange, children, ...rest }, ref) => {
-		const methods = useForm({ defaultValues, resolver, mode: 'onChange' });
+	({ className, defaultValues, resolver, context, onSubmit, onChange, children, ...rest }, ref) => {
+		const methods = useForm({ defaultValues, resolver, context, mode: 'onChange' });
 		const { handleSubmit, setValue, trigger } = methods;
 		const { toggleOnChange, inputNode } = useKeyboard();
 
