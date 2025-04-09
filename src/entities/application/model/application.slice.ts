@@ -15,6 +15,9 @@ const initialState: AppDataState = {
 			examination_step3: '',
 			examination_examenation: '',
 		},
+		devices: {
+			heightMeter: true,
+		},
 	},
 	loading: false,
 	error: null,

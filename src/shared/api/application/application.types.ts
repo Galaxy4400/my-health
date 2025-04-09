@@ -23,6 +23,9 @@ export interface ApplicationType {
 	background: MainBackground;
 	slider: Slide[];
 	sounds: Sounds;
+	devices: {
+		heightMeter: boolean;
+	};
 }
 
 export interface ApplicationResponse {
@@ -30,6 +33,9 @@ export interface ApplicationResponse {
 	general: {
 		idleTimeout: number;
 		sounds: Sounds;
+		devices: {
+			heightMeter: boolean;
+		};
 	};
 	background: MainBackground;
 	slider: Slide[];

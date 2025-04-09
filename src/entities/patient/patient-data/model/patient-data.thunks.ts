@@ -1,10 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import {
-	PatientNodataData,
-	PatientRequestFormData,
-	PatientType,
-	patientVisitRequest,
-} from 'shared/api/patient';
+import { PatientNodataData, PatientType, patientVisitRequest } from 'shared/api/patient';
 import { ErrorType } from 'shared/types';
 
 export const fetchPatientVisit = createAsyncThunk<PatientType, PatientNodataData, { rejectValue: ErrorType }>(

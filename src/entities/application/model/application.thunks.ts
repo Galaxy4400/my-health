@@ -17,6 +17,9 @@ export const fetchGetApplication = createAsyncThunk<ApplicationType, void, { rej
 				idleTimeout: rest.general.idleTimeout,
 				sounds: rest.general.sounds,
 				slider: rest.slider,
+				devices: {
+					heightMeter: rest.general.devices.heightMeter,
+				},
 			};
 		} catch (error: unknown) {
 			const knownError = error as ErrorType;

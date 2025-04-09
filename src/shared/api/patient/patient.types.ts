@@ -28,6 +28,7 @@ export interface PatientRequestFormData {
 export interface PatientNodataData {
 	gender: Gender;
 	age: number;
+	height?: number;
 }
 
 export interface PatientResponse {

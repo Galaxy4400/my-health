@@ -5,18 +5,20 @@ import { Button, Form, Input, Radio } from 'shared/ui/form-components';
 import { patientNodataFormRules } from './patient-nodata.rules';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
-import { useAppDispatch } from 'shared/lib/store';
+import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import { PatientNodataData } from 'shared/api/patient';
 import { RequestData } from 'shared/api';
 import { useModal } from 'app/providers/modal';
 import { WarningPopup } from 'shared/ui/components';
 import { fetchPatientVisit } from 'entities/patient/patient-data';
+import { selectApplicationDevices } from 'entities/application';
 
 export const PatientNodata = () => {
 	const navigate = useNavigate();
 	const formRef = useRef<HTMLFormElement | null>(null);
 	const dispatch = useAppDispatch();
 	const { openModal, closeModal } = useModal();
+	const devices = useAppSelector(selectApplicationDevices);
 
 	const submitHandler = async (data: RequestData) => {
 		try {
@@ -68,6 +70,18 @@ export const PatientNodata = () => {
 							</div>
 						</div>
 					</div>
+					{!devices.heightMeter && (
+						<div className={css['row']}>
+							<div className={css['column']}>
+								<h5 className={css['param']}>Ваш рост:</h5>
+							</div>
+							<div className={css['column']}>
+								<div className={css['age-wrapper']}>
+									<Input name="height" dataType="number" />
+								</div>
+							</div>
+						</div>
+					)}
 				</div>
 				<div className={css['actions']}>
 					<Button type="submit">Начать обследование</Button>

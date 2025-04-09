@@ -10,7 +10,6 @@ import {
 	PatientCardFormData,
 	PatientNodataData,
 	PatientPrintFormData,
-	PatientRequestFormData,
 	PatientResponse,
 	PatientSendFormData,
 	ResultPageData,
@@ -27,12 +26,9 @@ export const patientVisitRequest = (submittedData: PatientNodataData): Promise<P
 		patient: {
 			gender: submittedData.gender,
 			age: submittedData.age,
-			// diseases: {
-			// 	heart: submittedData.heart,
-			// 	breathing: submittedData.breathing,
-			// 	diabetes: submittedData.diabetes,
-			// 	pregnacy: submittedData.pregnacy,
-			// },
+			devicedata: {
+				heightMeter: submittedData.height || 0,
+			},
 		},
 	};
 
