@@ -3,16 +3,15 @@ import { Button, Container, PageHead, Steps, Tabs, TabsContainer } from 'shared/
 import { ResultActions, ResultButtons } from './components';
 import { Body, Cardio, Metabolism, Nutrition, Risk, Sport, Stress, Summary } from 'widgets/results';
 import { ResultPage } from 'shared/types';
-import { selectPatientData, useAbortPatient } from 'entities/patient/patient-data';
+import { useAbortPatient, usePatientId } from 'entities/patient/patient-data';
 import { Navigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
-import { useAppSelector } from 'shared/lib/store';
 
 export const ResultsPage = () => {
 	const { abort } = useAbortPatient();
-	const patient = useAppSelector(selectPatientData);
+	const patientId = usePatientId();
 
-	if (!patient.visit_id) {
+	if (!patientId) {
 		return <Navigate to={path.start()} />;
 	}
 
