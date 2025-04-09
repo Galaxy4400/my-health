@@ -19,6 +19,7 @@ export const fetchGetApplication = createAsyncThunk<ApplicationType, void, { rej
 				slider: rest.slider,
 				devices: {
 					heightMeter: rest.general.devices.heightMeter,
+					questionnaire: rest.general.devices.questionnaire,
 				},
 			};
 		} catch (error: unknown) {

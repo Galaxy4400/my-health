@@ -17,6 +17,7 @@ const initialState: AppDataState = {
 		},
 		devices: {
 			heightMeter: true,
+			questionnaire: true,
 		},
 	},
 	loading: false,

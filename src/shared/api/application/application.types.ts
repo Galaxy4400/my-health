@@ -18,14 +18,17 @@ export interface Sounds {
 	examination_examenation: string;
 }
 
+export interface Devices {
+	heightMeter: boolean;
+	questionnaire: boolean;
+}
+
 export interface ApplicationType {
 	idleTimeout: number;
 	background: MainBackground;
 	slider: Slide[];
 	sounds: Sounds;
-	devices: {
-		heightMeter: boolean;
-	};
+	devices: Devices;
 }
 
 export interface ApplicationResponse {
@@ -33,9 +36,7 @@ export interface ApplicationResponse {
 	general: {
 		idleTimeout: number;
 		sounds: Sounds;
-		devices: {
-			heightMeter: boolean;
-		};
+		devices: Devices;
 	};
 	background: MainBackground;
 	slider: Slide[];

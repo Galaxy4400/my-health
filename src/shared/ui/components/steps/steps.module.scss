@@ -1,8 +1,15 @@
 .steps {
 	display: grid;
-	grid-template-columns: repeat(6, 1fr);
+	grid-template-columns: repeat(5, 1fr);
 	gap: rem(33);
 	margin: 0px 0px rem(80) 0px;
+	&:global(.exam) {
+		grid-template-columns: repeat(6, 1fr);
+
+		.number::before {
+			width: rem(36);
+		}
+	}
 }
 
 .step {
@@ -40,7 +47,7 @@
 		position: absolute;
 		top: rem(45);
 		left: calc(100% + rem(15));
-		width: rem(36);
+		width: rem(68);
 		height: rem(1);
 		background: $color-second;
 	}

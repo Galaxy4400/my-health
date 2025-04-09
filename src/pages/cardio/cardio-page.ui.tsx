@@ -7,12 +7,13 @@ import { useAppSelector } from 'shared/lib/store';
 import { selectPatientData, useAbortPatient } from 'entities/patient/patient-data';
 import { useEffect } from 'react';
 import { useVoice } from 'app/providers/voice';
-import { selectApplicationPhrases } from 'entities/application';
+import { selectApplicationDevices, selectApplicationPhrases } from 'entities/application';
 import img from 'shared/assets/img/measure/tonometr.png';
 import { Navigate } from 'react-router-dom';
 
 export const CardioPage = () => {
 	const { startMeasure } = useMeasure();
+	const devices = useAppSelector(selectApplicationDevices);
 	const patient = useAppSelector(selectPatientData);
 	const phrases = useAppSelector(selectApplicationPhrases);
 	const { speak } = useVoice();
@@ -54,7 +55,10 @@ export const CardioPage = () => {
 					<img className={css['img']} src={img} alt="image" />
 				</div>
 			</div>
-			<Measure action={() => startMeasure(3, patient.visit_id || 0)} nextStep={path.examination()} />
+			<Measure
+				action={() => startMeasure(3, patient.visit_id || 0)}
+				nextStep={devices.questionnaire ? path.examination() : path.results()}
+			/>
 		</Container>
 	);
 };
