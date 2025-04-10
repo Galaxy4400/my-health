@@ -57,7 +57,7 @@ export const CardioPage = () => {
 			</div>
 			<Measure
 				action={() => startMeasure(3, patient.visit_id || 0)}
-				nextStep={devices.questionnaire ? path.examination() : path.results()}
+				nextStep={devices.questionnaire ? path.examination() : path.finish()}
 			/>
 		</Container>
 	);
