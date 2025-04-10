@@ -1,5 +1,5 @@
 import css from './examination-page.module.scss';
-import { selectPatientData, useAbortPatient, usePatientId } from 'entities/patient/patient-data';
+import { selectPatientData, useAbortPatient } from 'entities/patient/patient-data';
 import { Button, Container, PageHead, Steps, TitleBlock } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
 import { Measure } from 'widgets/measure';
@@ -24,7 +24,7 @@ export const ExaminationPage = () => {
 	useEffect(() => {
 		const handleMessage = (event: MessageEvent) => {
 			if (event.data?.type === 'examenation-finish') {
-				navigate(path.results());
+				navigate(path.finish());
 			}
 		};
 
