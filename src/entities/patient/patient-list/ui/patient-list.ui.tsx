@@ -4,10 +4,17 @@ import { Button, Typography } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
 import { useAppSelector } from 'shared/lib/store';
 import { selectPatientList } from '../model';
+import { useAuth } from 'app/providers/auth';
 
 export const PatientList = () => {
+	const { logout } = useAuth();
 	const navigate = useNavigate();
 	const patients = useAppSelector(selectPatientList);
+
+	const toResult = (patientId: number) => {
+		navigate(path.results(), { state: { visit_id: patientId } });
+		logout();
+	};
 
 	return (
 		<Typography>
@@ -35,11 +42,7 @@ export const PatientList = () => {
 								</Button>
 							</td> */}
 							<td>
-								<Button
-									size="small"
-									color="second"
-									onClick={() => navigate(path.results(), { state: { visit_id: patient.id } })}
-								>
+								<Button size="small" color="second" onClick={() => toResult(patient.id)}>
 									Отчёт »
 								</Button>
 							</td>
