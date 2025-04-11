@@ -1,5 +1,5 @@
 import css from './nutrition.module.scss';
-import { Loader, MainValue, ResultHead } from 'shared/ui/components';
+import { Loader, MainValue } from 'shared/ui/components';
 import { PatientModel, selectPatientData, usePatientId } from 'entities/patient/patient-data';
 import { useAppSelector } from 'shared/lib/store';
 import { Gender, NutritionPageData, patientNutritionRequest } from 'shared/api/patient';

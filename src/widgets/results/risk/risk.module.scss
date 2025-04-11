@@ -33,6 +33,9 @@
 }
 
 .content-wrapper {
+	height: rem(530);
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .just-value {
