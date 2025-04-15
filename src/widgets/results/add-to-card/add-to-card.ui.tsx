@@ -3,11 +3,11 @@ import { useModal } from 'app/providers/modal';
 import { CardForm } from 'features/results';
 import { Button } from 'shared/ui/components';
 
-export const AddToCard = () => {
+export const AddToCard = ({ patientId }: { patientId: number }) => {
 	const { openModal, closeModal } = useModal();
 
 	const clickHandler = () => {
-		openModal(<CardForm onSuccess={closeModal} onReject={closeModal} />);
+		openModal(<CardForm patientId={patientId} onReject={closeModal} />);
 	};
 
 	return (

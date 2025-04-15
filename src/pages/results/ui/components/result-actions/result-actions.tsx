@@ -15,8 +15,8 @@ export const ResultActions = () => {
 				</div>
 				<div className={css['actions']}>
 					<SendToEmail patientId={patientId || 0} />
-					<Print />
-					<AddToCard />
+					<Print patientId={patientId || 0} />
+					<AddToCard patientId={patientId || 0} />
 				</div>
 			</div>
 			<div className={css['block']}>

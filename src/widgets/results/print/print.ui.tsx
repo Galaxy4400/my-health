@@ -3,11 +3,11 @@ import { useModal } from 'app/providers/modal';
 import { Button } from 'shared/ui/components';
 import { PrintForm } from 'features/results';
 
-export const Print = () => {
+export const Print = ({ patientId }: { patientId: number }) => {
 	const { openModal, closeModal } = useModal();
 
 	const clickHandler = () => {
-		openModal(<PrintForm onSuccess={closeModal} onReject={closeModal} />);
+		openModal(<PrintForm patientId={patientId} onReject={closeModal} />);
 	};
 
 	return (

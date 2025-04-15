@@ -6,24 +6,21 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { cardFormRules } from './card.rules';
 import { Button, Loader, WarningPopup } from 'shared/ui/components';
 import { useModal } from 'app/providers/modal';
-import { useAppSelector } from 'shared/lib/store';
-import { selectPatientData } from 'entities/patient/patient-data';
 import { patientCardRequest, PatientCardFormData } from 'shared/api/patient';
 
 interface CardFormProps {
-	onSuccess?: () => void;
+	patientId: number;
 	onReject?: () => void;
 }
 
-export const CardForm = ({ onSuccess, onReject }: CardFormProps) => {
+export const CardForm = ({ patientId, onReject }: CardFormProps) => {
 	const { openModal, closeModal } = useModal();
 	const [isLoading, setIsLoading] = useState(false);
-	const patient = useAppSelector(selectPatientData);
 
 	const submitHandler = async (data: RequestData) => {
 		setIsLoading(true);
 
-		const result = await patientCardRequest(patient.visit_id, data as unknown as PatientCardFormData);
+		const result = await patientCardRequest(patientId, data as unknown as PatientCardFormData);
 
 		setIsLoading(false);
 
