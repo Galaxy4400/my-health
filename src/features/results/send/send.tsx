@@ -8,22 +8,22 @@ import { Button, Loader, WarningPopup } from 'shared/ui/components';
 import { useModal } from 'app/providers/modal';
 import { patientEmailRequest, PatientSendFormData } from 'shared/api/patient';
 import { useAppSelector } from 'shared/lib/store';
-import { selectPatientData, usePatientId } from 'entities/patient/patient-data';
+import { selectPatientData } from 'entities/patient/patient-data';
 
 interface SendFormProps {
-	onSuccess?: () => void;
+	patientId: number;
 	onReject?: () => void;
 }
 
-export const SendForm = ({ onSuccess, onReject }: SendFormProps) => {
+export const SendForm = ({ onReject }: SendFormProps) => {
 	const { openModal, closeModal } = useModal();
 	const [isLoading, setIsLoading] = useState(false);
-	const patientId = usePatientId();
+	const patient = useAppSelector(selectPatientData);
 
 	const submitHandler = async (data: RequestData) => {
 		setIsLoading(true);
 
-		const result = await patientEmailRequest(patientId, data as unknown as PatientSendFormData);
+		const result = await patientEmailRequest(patient.visit_id, data as unknown as PatientSendFormData);
 
 		setIsLoading(false);
 

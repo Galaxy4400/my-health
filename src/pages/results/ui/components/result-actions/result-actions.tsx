@@ -1,9 +1,12 @@
+import { usePatientId } from 'entities/patient/patient-data';
 import css from './result-actions.module.scss';
 import { Button } from 'shared/ui/components';
 import { Appointment } from 'widgets/appointment';
 import { AddToCard, Print, SendToEmail } from 'widgets/results';
 
 export const ResultActions = () => {
+	const patientId = usePatientId();
+
 	return (
 		<div className={css['main']}>
 			<div className={css['block']}>
@@ -11,7 +14,7 @@ export const ResultActions = () => {
 					<h5 className={css['title']}>Хотите получить подробный отчёт с рекомендациями?</h5>
 				</div>
 				<div className={css['actions']}>
-					<SendToEmail />
+					<SendToEmail patientId={patientId || 0} />
 					<Print />
 					<AddToCard />
 				</div>

@@ -3,11 +3,11 @@ import { useModal } from 'app/providers/modal';
 import { Button } from 'shared/ui/components';
 import { SendForm } from 'features/results';
 
-export const SendToEmail = () => {
+export const SendToEmail = ({ patientId }: { patientId: number }) => {
 	const { openModal, closeModal } = useModal();
 
 	const clickHandler = () => {
-		openModal(<SendForm onSuccess={closeModal} onReject={closeModal} />);
+		openModal(<SendForm patientId={patientId} onReject={closeModal} />);
 	};
 
 	return (
