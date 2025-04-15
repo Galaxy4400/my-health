@@ -21,5 +21,26 @@
 	line-height: normal;
 }
 
-.thumb {
+.button-container {
+	position: relative;
+	height: rem(200);
+	width: 100%;
+}
+
+.circle {
+	position: absolute;
+	top: rem(-14);
+	left: 48%;
+	translate: -50% 0;
+	width: rem(150);
+	height: rem(150);
+}
+
+.hand {
+	position: absolute;
+	top: rem(50);
+	left: 50%;
+	translate: -50% 0;
+	width: 100px;
+	height: 100px;
 }

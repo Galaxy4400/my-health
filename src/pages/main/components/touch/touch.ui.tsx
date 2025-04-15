@@ -1,6 +1,7 @@
-import { Container } from 'shared/ui/components';
 import css from './touch.module.scss';
-import thumb from 'shared/assets/img/thumb.svg';
+import { Container } from 'shared/ui/components';
+import circle from 'shared/assets/img/circle.svg';
+import hand from 'shared/assets/img/hand.svg';
 
 export const Touch = () => {
 	return (
@@ -8,7 +9,14 @@ export const Touch = () => {
 			<Container>
 				<div className={css['body']}>
 					<h4 className={css['title']}>Коснитесь экрана, чтобы начать</h4>
-					<img className={css['thumb']} src={thumb} alt="thumb" />
+					<div className={css['button-container']}>
+						<div className={css['circle']}>
+							<img src={circle} />
+						</div>
+						<div className={css['hand']}>
+							<img src={hand} />
+						</div>
+					</div>
 				</div>
 			</Container>
 		</div>
