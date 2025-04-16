@@ -12,6 +12,8 @@ export const fetchGetApplication = createAsyncThunk<ApplicationType, void, { rej
 				throw new Error('Ошибка получения данных приложения');
 			}
 
+			console.log(rest);
+
 			return {
 				background: rest.background,
 				idleTimeout: rest.general.idleTimeout,
@@ -20,6 +22,10 @@ export const fetchGetApplication = createAsyncThunk<ApplicationType, void, { rej
 				devices: {
 					heightMeter: rest.general.devices.heightMeter,
 					questionnaire: rest.general.devices.questionnaire,
+					'buttons.doctor': rest.general.devices['buttons.doctor'],
+					'buttons.email': rest.general.devices['buttons.email'],
+					'buttons.medcard': rest.general.devices['buttons.medcard'],
+					'buttons.print': rest.general.devices['buttons.print'],
 				},
 			};
 		} catch (error: unknown) {

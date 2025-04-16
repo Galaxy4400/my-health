@@ -21,6 +21,10 @@ export interface Sounds {
 export interface Devices {
 	heightMeter: boolean;
 	questionnaire: boolean;
+	'buttons.email': boolean;
+	'buttons.print': boolean;
+	'buttons.medcard': boolean;
+	'buttons.doctor': boolean;
 }
 
 export interface ApplicationType {

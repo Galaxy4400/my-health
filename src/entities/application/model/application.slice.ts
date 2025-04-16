@@ -18,6 +18,10 @@ const initialState: AppDataState = {
 		devices: {
 			heightMeter: true,
 			questionnaire: true,
+			'buttons.doctor': true,
+			'buttons.email': true,
+			'buttons.medcard': true,
+			'buttons.print': true,
 		},
 	},
 	loading: false,
