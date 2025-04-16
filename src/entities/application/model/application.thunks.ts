@@ -12,8 +12,6 @@ export const fetchGetApplication = createAsyncThunk<ApplicationType, void, { rej
 				throw new Error('Ошибка получения данных приложения');
 			}
 
-			console.log(rest);
-
 			return {
 				background: rest.background,
 				idleTimeout: rest.general.idleTimeout,
