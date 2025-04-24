@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import css from './measure.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { SkipStep } from 'features/steps';
 import { BtnWithProgress, Loader, MeasureStatus } from 'shared/ui/components';
@@ -16,6 +16,7 @@ interface MeasureProps<T = unknown> {
 	onError?: () => void;
 	nextStep: string;
 	delayTime?: number;
+	nextDelayTime?: number;
 }
 
 export const Measure = ({
@@ -25,6 +26,7 @@ export const Measure = ({
 	onError,
 	nextStep,
 	delayTime = 5000,
+	nextDelayTime = 15000,
 }: MeasureProps) => {
 	const patient = useAppSelector(selectPatientData);
 	const [isRunning, setIsRunning] = useState(false);
@@ -34,6 +36,7 @@ export const Measure = ({
 	const [isFinish, setIsFinish] = useState(false);
 	const [delayCount, setDelayCount] = useState(0);
 	const [processStatus, setProcessStatus] = useState<string | null>(null);
+	const delayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 	const navigate = useNavigate();
 
 	const countStep = 10;
@@ -102,11 +105,11 @@ export const Measure = ({
 
 		setDelayCount(0);
 
-		const interval = setInterval(() => {
+		delayIntervalRef.current = setInterval(() => {
 			setDelayCount((prev) => {
 				const newDelayCount = prev + countStep;
 
-				if (newDelayCount >= delayTime) {
+				if (newDelayCount >= nextDelayTime) {
 					setIsFinish(true);
 				}
 
@@ -114,8 +117,8 @@ export const Measure = ({
 			});
 		}, countStep);
 
-		return () => clearInterval(interval);
-	}, [delayTime, isComplete, navigate, nextStep]);
+		return () => clearInterval(delayIntervalRef.current as unknown as number);
+	}, [nextDelayTime, isComplete, navigate, nextStep]);
 
 	const clickHandler = () => {
 		if (isRunning) return;
@@ -159,12 +162,18 @@ export const Measure = ({
 						text={btnText}
 						onClick={clickHandler}
 						curValue={delayCount}
-						totalValue={delayTime}
+						totalValue={isComplete ? nextDelayTime : delayTime}
 					/>
 				)}
-				{override &&
+				{!isRunning &&
+					!isActionProcess &&
+					override &&
 					override(
-						() => console.log('test'),
+						() => {
+							setDelayCount(0);
+							setIsComplete(false);
+							clearInterval(delayIntervalRef.current as unknown as number);
+						},
 						() => navigate(nextStep),
 					)}
 				{!isRunning && !isActionProcess && !isComplete && <SkipStep nextStep={nextStep} />}
