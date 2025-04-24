@@ -10,6 +10,7 @@ import { useVoice } from 'app/providers/voice';
 import { selectApplicationDevices, selectApplicationPhrases } from 'entities/application';
 import img from 'shared/assets/img/measure/tonometr.png';
 import { Navigate } from 'react-router-dom';
+import { OverrideCardio } from 'widgets/results';
 
 export const CardioPage = () => {
 	const { startMeasure } = useMeasure();
@@ -57,7 +58,11 @@ export const CardioPage = () => {
 			</div>
 			<Measure
 				action={() => startMeasure(3, patient.visit_id || 0)}
+				override={(onClick, onSuccess) => (
+					<OverrideCardio patientId={patient.visit_id || 0} onSuccess={onSuccess} onClick={onClick} />
+				)}
 				nextStep={devices.questionnaire ? path.examination() : path.finish()}
+				nextDelayTime={15000}
 			/>
 		</Container>
 	);

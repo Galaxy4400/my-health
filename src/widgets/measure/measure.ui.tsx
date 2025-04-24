@@ -26,7 +26,7 @@ export const Measure = ({
 	onError,
 	nextStep,
 	delayTime = 5000,
-	nextDelayTime = 15000,
+	nextDelayTime = 5000,
 }: MeasureProps) => {
 	const patient = useAppSelector(selectPatientData);
 	const [isRunning, setIsRunning] = useState(false);

@@ -61,6 +61,7 @@ export const PulsPage = () => {
 					<OverridePuls patientId={patient.visit_id || 0} onSuccess={onSuccess} onClick={onClick} />
 				)}
 				nextStep={path.cardio()}
+				nextDelayTime={15000}
 			/>
 		</Container>
 	);
