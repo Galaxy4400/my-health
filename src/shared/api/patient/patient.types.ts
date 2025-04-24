@@ -127,3 +127,10 @@ export interface MeasureProcessStatus {
 	status: string;
 	content: string;
 }
+
+export interface Override {
+	spo2?: number;
+	heartrate?: number;
+	systolic?: number;
+	diastolic?: number;
+}

@@ -1,22 +1,31 @@
+/* eslint-disable no-unused-vars */
 import css from './measure.module.scss';
 import { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { SkipStep } from 'features/steps';
 import { BtnWithProgress, Loader, MeasureStatus } from 'shared/ui/components';
-import cn from 'classnames';
 import { patientMeasureStatusRequest } from 'shared/api/patient';
 import { useAppSelector } from 'shared/lib/store';
 import { selectPatientData } from 'entities/patient/patient-data';
+import cn from 'classnames';
 
 interface MeasureProps<T = unknown> {
 	action?: () => Promise<T>;
+	override?: (onClick?: () => void, onSuccess?: () => void, onReject?: () => void) => React.ReactNode;
 	onSuccess?: () => void;
 	onError?: () => void;
 	nextStep: string;
 	delayTime?: number;
 }
 
-export const Measure = ({ action, onSuccess, onError, nextStep, delayTime = 5000 }: MeasureProps) => {
+export const Measure = ({
+	action,
+	override,
+	onSuccess,
+	onError,
+	nextStep,
+	delayTime = 5000,
+}: MeasureProps) => {
 	const patient = useAppSelector(selectPatientData);
 	const [isRunning, setIsRunning] = useState(false);
 	const [isActionProcess, setIsActionProcess] = useState(false);
@@ -153,6 +162,11 @@ export const Measure = ({ action, onSuccess, onError, nextStep, delayTime = 5000
 						totalValue={delayTime}
 					/>
 				)}
+				{override &&
+					override(
+						() => console.log('test'),
+						() => navigate(nextStep),
+					)}
 				{!isRunning && !isActionProcess && !isComplete && <SkipStep nextStep={nextStep} />}
 			</div>
 		</>

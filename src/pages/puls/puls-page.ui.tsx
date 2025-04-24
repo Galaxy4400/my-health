@@ -10,6 +10,7 @@ import { useVoice } from 'app/providers/voice';
 import { selectApplicationPhrases } from 'entities/application';
 import img from 'shared/assets/img/measure/pulsococsimetr.png';
 import { Navigate } from 'react-router-dom';
+import { OverridePuls } from 'widgets/results';
 
 export const PulsPage = () => {
 	const { startMeasure } = useMeasure();
@@ -54,7 +55,13 @@ export const PulsPage = () => {
 					<img className={css['img']} src={img} alt="image" />
 				</div>
 			</div>
-			<Measure action={() => startMeasure(2, patient.visit_id || 0)} nextStep={path.cardio()} />
+			<Measure
+				action={() => startMeasure(2, patient.visit_id || 0)}
+				override={(onClick, onSuccess) => (
+					<OverridePuls patientId={patient.visit_id || 0} onSuccess={onSuccess} onClick={onClick} />
+				)}
+				nextStep={path.cardio()}
+			/>
 		</Container>
 	);
 };

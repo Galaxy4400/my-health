@@ -7,6 +7,7 @@ import {
 	MeasureStatus,
 	ModelResponseData,
 	NutritionPageData,
+	Override,
 	PatientCardFormData,
 	PatientNodataData,
 	PatientPrintFormData,
@@ -35,12 +36,17 @@ export const patientVisitRequest = (submittedData: PatientNodataData): Promise<P
 	return request({ method: 'POST', data: requestData });
 };
 
-export const patientMeasureRequest = (step: number, visitId: number): Promise<MeasureStatus> => {
+export const patientMeasureRequest = (
+	step: number,
+	visitId: number,
+	override: Override | null,
+): Promise<MeasureStatus> => {
 	const requestData: RequestData = {
 		action: 'examination',
 		subaction: 'step',
 		step: step,
 		visit_id: visitId,
+		...(override && { override: override as RequestData }),
 	};
 
 	return request({ method: 'POST', data: requestData });

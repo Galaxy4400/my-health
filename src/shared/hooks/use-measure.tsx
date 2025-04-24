@@ -1,6 +1,6 @@
 import { useModal } from 'app/providers/modal';
 import { useEffect, useState } from 'react';
-import { patientMeasureRequest } from 'shared/api/patient';
+import { Override, patientMeasureRequest } from 'shared/api/patient';
 import { WarningPopup } from 'shared/ui/components';
 
 export const useMeasure = () => {
@@ -13,20 +13,12 @@ export const useMeasure = () => {
 		openModal(<WarningPopup header="Ошибка измерения" text={error} onOk={closeModal} />);
 	}, [closeModal, error, openModal]);
 
-	const startMeasure = async (step: number, visitId: number) => {
+	const startMeasure = async (step: number, visitId: number, overide: Override | null = null) => {
 		setError(null);
 
-		try {
-			const result = await patientMeasureRequest(step, visitId);
+		const result = await patientMeasureRequest(step, visitId, overide);
 
-			if (result.status !== 'ok') {
-				setError(result.message);
-
-				throw new Error(result.message || 'Неизвестная ошибка');
-			}
-		} catch (err) {
-			throw new Error(err as string);
-		}
+		return result;
 	};
 
 	return { startMeasure, error };

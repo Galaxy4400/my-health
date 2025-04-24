@@ -9,3 +9,4 @@ export * from './cardio';
 export * from './risk';
 export * from './nutrition';
 export * from './sport';
+export * from './override-puls';
