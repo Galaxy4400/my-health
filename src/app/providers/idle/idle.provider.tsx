@@ -23,6 +23,18 @@ export const IdleProvider = ({ seconds = 30, children }: IdleProviderProps) => {
 	}, [seconds]);
 
 	useEffect(() => {
+		const handleMessage = (event: MessageEvent) => {
+			if (event.data?.type === 'iframe-click') {
+				resetTimer();
+			}
+		};
+
+		window.addEventListener('message', handleMessage);
+
+		return () => window.removeEventListener('message', handleMessage);
+	}, [resetTimer]);
+
+	useEffect(() => {
 		const interval = setInterval(() => {
 			setIdleTimer((prev) => prev - 1);
 		}, 1000);
