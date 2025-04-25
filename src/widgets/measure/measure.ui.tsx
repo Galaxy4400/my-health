@@ -11,7 +11,7 @@ import cn from 'classnames';
 
 interface MeasureProps<T = unknown> {
 	action?: () => Promise<T>;
-	override?: (onClick?: () => void, onSuccess?: () => void, onReject?: () => void) => React.ReactNode;
+	override?: (isComplete: boolean, reboot?: () => void, next?: () => void) => React.ReactNode;
 	onSuccess?: () => void;
 	onError?: () => void;
 	nextStep: string;
@@ -169,6 +169,7 @@ export const Measure = ({
 					!isActionProcess &&
 					override &&
 					override(
+						isComplete,
 						() => {
 							setDelayCount(0);
 							setIsComplete(false);

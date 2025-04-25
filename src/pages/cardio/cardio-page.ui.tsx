@@ -58,8 +58,13 @@ export const CardioPage = () => {
 			</div>
 			<Measure
 				action={() => startMeasure(3, patient.visit_id || 0)}
-				override={(onClick, onSuccess) => (
-					<OverrideCardio patientId={patient.visit_id || 0} onSuccess={onSuccess} onClick={onClick} />
+				override={(isComplete, reboot, next) => (
+					<OverrideCardio
+						patientId={patient.visit_id || 0}
+						onSuccess={next}
+						onClick={reboot}
+						isComplete={isComplete}
+					/>
 				)}
 				nextStep={devices.questionnaire ? path.examination() : path.finish()}
 				nextDelayTime={15000}

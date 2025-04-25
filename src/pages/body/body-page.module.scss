@@ -4,8 +4,25 @@
 
 .img {
 	text-align: center;
-	margin: 0px 0px rem(40) 0px;
+	margin: 0px 0px rem(20) 0px;
 	img {
 		width: rem(260);
 	}
+}
+
+.btn {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	border-radius: rem(7);
+	border: 1px solid $color-second;
+	background: #fff;
+	color: #000;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: rem(20);
+	height: rem(44);
+	padding: rem(5) rem(15);
 }

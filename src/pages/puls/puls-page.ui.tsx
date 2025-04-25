@@ -57,8 +57,13 @@ export const PulsPage = () => {
 			</div>
 			<Measure
 				action={() => startMeasure(2, patient.visit_id || 0)}
-				override={(onClick, onSuccess) => (
-					<OverridePuls patientId={patient.visit_id || 0} onSuccess={onSuccess} onClick={onClick} />
+				override={(isComplete, reboot, next) => (
+					<OverridePuls
+						patientId={patient.visit_id || 0}
+						onSuccess={next}
+						onClick={reboot}
+						isComplete={isComplete}
+					/>
 				)}
 				nextStep={path.cardio()}
 				nextDelayTime={15000}

@@ -4,17 +4,16 @@ import { OverridePulsForm } from 'features/steps';
 
 interface OverridePulsProps {
 	patientId: number;
+	isComplete: boolean;
 	onSuccess?: () => void;
 	onReject?: () => void;
 	onClick?: () => void;
 }
 
-export const OverridePuls = ({ patientId, onSuccess, onReject, onClick }: OverridePulsProps) => {
+export const OverridePuls = ({ patientId, isComplete, onSuccess, onReject, onClick }: OverridePulsProps) => {
 	const { openModal, closeModal } = useModal();
 
 	const clickHandler = () => {
-		onClick?.();
-
 		openModal(
 			<OverridePulsForm
 				patientId={patientId}
@@ -31,8 +30,8 @@ export const OverridePuls = ({ patientId, onSuccess, onReject, onClick }: Overri
 	};
 
 	return (
-		<button className={css['btn']} onClick={clickHandler}>
-			Ввести вручную
+		<button className={css['btn']} onClick={() => (isComplete ? onClick?.() : clickHandler())}>
+			{isComplete ? 'Повторить измерение' : 'Ввести вручную'}
 		</button>
 	);
 };

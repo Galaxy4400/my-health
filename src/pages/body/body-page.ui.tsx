@@ -39,7 +39,18 @@ export const BodyPage = () => {
 			<figure className={css['img']}>
 				<img src={patient.gender === Gender.male ? man : woman} alt="patient" />
 			</figure>
-			<Measure action={() => startMeasure(1, patient.visit_id || 0)} nextStep={path.puls()} />
+			<Measure
+				action={() => startMeasure(1, patient.visit_id || 0)}
+				override={(isComplete, reboot) =>
+					isComplete ? (
+						<button className={css['btn']} onClick={reboot}>
+							Повторить измерение
+						</button>
+					) : null
+				}
+				nextStep={path.puls()}
+				nextDelayTime={15000}
+			/>
 		</Container>
 	);
 };
