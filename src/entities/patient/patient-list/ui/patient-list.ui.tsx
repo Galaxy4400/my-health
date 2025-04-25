@@ -23,6 +23,7 @@ export const PatientList = () => {
 					<tr>
 						<th>ID</th>
 						<th>Дата/Время</th>
+						<th>Пациент</th>
 						<th>Пол</th>
 						<th>Возраст</th>
 						<th></th>
@@ -34,6 +35,7 @@ export const PatientList = () => {
 						<tr key={patient.id}>
 							<td>{patient.id}</td>
 							<td>{patient.datetime}</td>
+							<td>{patient.visitor_id}</td>
 							<td>{patient.gender}</td>
 							<td>{patient.age}</td>
 							{/* <td>
