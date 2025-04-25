@@ -6,7 +6,7 @@ export const fetchPatientVisit = createAsyncThunk<PatientType, PatientNodataData
 	'patient/fetchPatientVisit',
 	async (submittedData, { rejectWithValue }) => {
 		try {
-			const { status, visit_id } = await patientVisitRequest(submittedData);
+			const { status, visit_id, visitor_id } = await patientVisitRequest(submittedData);
 
 			if (status !== 'ok') {
 				throw new Error('Ошибка при регистрации пациента');
@@ -14,6 +14,7 @@ export const fetchPatientVisit = createAsyncThunk<PatientType, PatientNodataData
 
 			return {
 				visit_id,
+				visitor_id,
 				gender: submittedData.gender,
 				age: submittedData.age,
 			};

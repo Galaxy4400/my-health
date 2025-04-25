@@ -1,6 +1,6 @@
 import css from './risk.module.scss';
 import { patient3dModelRequest, RisksPageData, patientRisksRequest } from 'shared/api/patient';
-import { GradientValue, Loader, MainValue, ValueItem, ValueList } from 'shared/ui/components';
+import { GradientValue, Loader, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
 import { PatientModel, usePatientId } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
 
@@ -31,7 +31,7 @@ export const Risk = () => {
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
-				{/* <ResultHead patient="Константинопольский К.К. (М)" age="52" /> */}
+				<ResultHead />
 				<MainValue className={css['main-value']} title="Факторы риска:" />
 				<div className={css['content-wrapper']}>
 					<ValueList>

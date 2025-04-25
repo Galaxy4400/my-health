@@ -1,19 +1,15 @@
+import { useAppSelector } from 'shared/lib/store';
 import css from './result-head.module.scss';
+import { selectPatientData } from 'entities/patient/patient-data';
 
-interface ResultHeadProps {
-	patient: string;
-	age: string;
-}
+export const ResultHead = () => {
+	const patientData = useAppSelector(selectPatientData);
 
-export const ResultHead = ({ patient, age }: ResultHeadProps) => {
 	return (
-		<div className={css['main']}>
-			<p className={css['patient']}>
-				Пациент: <span>{patient}</span>
-			</p>
-			<p className={css['age']}>
-				Полных лет: <span>{age}</span>
-			</p>
+		<div className={css['title']}>
+			<p className={css['text']}>Ваш идентификатор для будущих обследований:</p>
+			<p className={css['code']}>{patientData.visitor_id}</p>
+			<p className={css['text']}>Запомните или запишите его у себя</p>
 		</div>
 	);
 };

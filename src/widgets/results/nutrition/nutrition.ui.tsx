@@ -1,5 +1,5 @@
 import css from './nutrition.module.scss';
-import { Loader, MainValue } from 'shared/ui/components';
+import { Loader, MainValue, ResultHead } from 'shared/ui/components';
 import { PatientModel, selectPatientData, usePatientId } from 'entities/patient/patient-data';
 import { useAppSelector } from 'shared/lib/store';
 import { Gender, NutritionPageData, patientNutritionRequest } from 'shared/api/patient';
@@ -28,7 +28,7 @@ export const Nutrition = () => {
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
-				{/* <ResultHead patient="Константинопольский К.К. (М)" age="52" /> */}
+				<ResultHead />
 				<MainValue className={css['main-value']} title="Советы по питанию:" />
 				<div className={css['content-wrapper']}>
 					<div className={css['content']} dangerouslySetInnerHTML={{ __html: data.content }} />

@@ -1,6 +1,6 @@
 import { PatientModel, selectPatientData, usePatientId } from 'entities/patient/patient-data';
 import css from './cardio.module.scss';
-import { GradientValue, Loader, MainValue, ValueItem, ValueList } from 'shared/ui/components';
+import { GradientValue, Loader, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
 import { useEffect, useState } from 'react';
 import { patientCardioRequest, Gender, ResultPageData } from 'shared/api/patient';
@@ -28,7 +28,7 @@ export const Cardio = () => {
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
-				{/* <ResultHead patient="Константинопольский К.К. (М)" age="52" /> */}
+				<ResultHead />
 				<MainValue
 					className={css['main-value']}
 					title={data.score.label}

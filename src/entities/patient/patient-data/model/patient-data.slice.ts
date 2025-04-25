@@ -6,6 +6,7 @@ import { fetchPatientVisit } from './patient-data.thunks';
 const initialState: PatientDataState = {
 	patient: {
 		visit_id: null,
+		visitor_id: null,
 		gender: Gender.male,
 		age: 0,
 	},

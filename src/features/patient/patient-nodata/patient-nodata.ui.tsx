@@ -52,6 +52,16 @@ export const PatientNodata = () => {
 				<div className={css['inputs']}>
 					<div className={css['row']}>
 						<div className={css['column']}>
+							<h5 className={css['param']}>Идентификатор пациента:</h5>
+						</div>
+						<div className={css['column']}>
+							<div className={css['age-wrapper']}>
+								<Input name="visitorId" dataType="number" />
+							</div>
+						</div>
+					</div>
+					<div className={css['row']}>
+						<div className={css['column']}>
 							<h5 className={css['param']}>Вы:</h5>
 						</div>
 						<div className={css['column']}>

@@ -1,4 +1,4 @@
-import { PatientModel, selectPatientData, usePatientId } from 'entities/patient/patient-data';
+import { PatientModel, usePatientId } from 'entities/patient/patient-data';
 import css from './summary.module.scss';
 import { Loader, MainValue, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
 import { patient3dModelRequest, SummaryPageData, patientSummaryRequest } from 'shared/api/patient';
@@ -34,7 +34,7 @@ export const Summary = () => {
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
-				{/* <ResultHead patient="Константинопольский К.К. (М)" age="52" /> */}
+				<ResultHead />
 				<MainValue
 					className={css['main-value']}
 					valueTitle={data.score.label}

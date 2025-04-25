@@ -5,6 +5,7 @@ export enum Gender {
 
 export interface PatientType {
 	visit_id: number | null;
+	visitor_id: number | null;
 	gender: Gender;
 	age: number;
 }
@@ -29,10 +30,12 @@ export interface PatientNodataData {
 	gender: Gender;
 	age: number;
 	height?: number;
+	visitorId?: number;
 }
 
 export interface PatientResponse {
 	visit_id: number;
+	visitor_id: number;
 	status: string;
 }
 

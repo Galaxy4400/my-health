@@ -27,6 +27,7 @@ export const patientVisitRequest = (submittedData: PatientNodataData): Promise<P
 		patient: {
 			gender: submittedData.gender,
 			age: submittedData.age,
+			visitor_id: submittedData.visitorId || 0,
 			devicedata: {
 				heightMeter: submittedData.height || 0,
 			},

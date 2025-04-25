@@ -1,17 +1,12 @@
-.main {
-	font-size: rem(20);
+.title {
 	margin: 0px 0px rem(20) 0px;
 }
 
-.patient {
-	span {
-		font-weight: 700;
-		font-size: rem(24);
-	}
+.text {
+	font-size: rem(20);
 }
 
-.age {
-	span {
-		font-weight: 700;
-	}
+.code {
+	font-weight: 700;
+	font-size: rem(24);
 }
