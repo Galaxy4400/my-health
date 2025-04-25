@@ -7,7 +7,7 @@ import { useAppSelector } from 'shared/lib/store';
 import { selectApplicationDevices } from 'entities/application';
 
 export const ResultActions = () => {
-	const patientId = usePatientId();
+	const { visitId } = usePatientId();
 	const devices = useAppSelector(selectApplicationDevices);
 
 	const allEmpty = !devices['buttons.email'] && !devices['buttons.print'] && !devices['buttons.medcard'];
@@ -20,9 +20,9 @@ export const ResultActions = () => {
 						<h5 className={css['title']}>Хотите получить подробный отчёт с рекомендациями?</h5>
 					</div>
 					<div className={css['actions']}>
-						{devices['buttons.email'] && <SendToEmail patientId={patientId || 0} />}
-						{devices['buttons.print'] && <Print patientId={patientId || 0} />}
-						{devices['buttons.medcard'] && <AddToCard patientId={patientId || 0} />}
+						{devices['buttons.email'] && <SendToEmail patientId={visitId || 0} />}
+						{devices['buttons.print'] && <Print patientId={visitId || 0} />}
+						{devices['buttons.medcard'] && <AddToCard patientId={visitId || 0} />}
 					</div>
 				</div>
 			)}

@@ -8,21 +8,21 @@ export const Sport = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<SportPageData | null>(null);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
-	const patientId = usePatientId();
+	const { visitId } = usePatientId();
 
 	useEffect(() => {
-		patient3dModelRequest(patientId).then((results) => {
+		patient3dModelRequest(visitId).then((results) => {
 			setModelUrl(results.url);
 		});
 
 		setLoading(true);
 
-		patientSportRequest(patientId)
+		patientSportRequest(visitId)
 			.then((results) => {
 				setData(results);
 			})
 			.finally(() => setLoading(false));
-	}, [patientId]);
+	}, [visitId]);
 
 	if (!data || loading) {
 		return <Loader isLoading={loading} />;

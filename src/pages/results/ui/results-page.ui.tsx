@@ -9,9 +9,9 @@ import { path } from 'shared/lib/router';
 
 export const ResultsPage = () => {
 	const { abort } = useAbortPatient();
-	const patientId = usePatientId();
+	const { visitId } = usePatientId();
 
-	if (!patientId) {
+	if (!visitId) {
 		return <Navigate to={path.start()} />;
 	}
 

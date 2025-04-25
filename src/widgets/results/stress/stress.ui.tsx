@@ -9,17 +9,17 @@ export const Stress = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<ResultPageData | null>(null);
 	const patient = useAppSelector(selectPatientData);
-	const patientId = usePatientId();
+	const { visitId } = usePatientId();
 
 	useEffect(() => {
 		setLoading(true);
 
-		patientStressRequest(patientId)
+		patientStressRequest(visitId)
 			.then((results) => {
 				setData(results);
 			})
 			.finally(() => setLoading(false));
-	}, [patientId]);
+	}, [visitId]);
 
 	if (!data || loading) {
 		return <Loader isLoading={loading} />;

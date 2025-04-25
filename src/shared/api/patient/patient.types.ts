@@ -13,6 +13,7 @@ export interface PatientType {
 export interface VisitType {
 	id: number;
 	datetime: string;
+	visitor_id: number;
 	gender: Gender;
 	age: number;
 }

@@ -11,8 +11,8 @@ export const PatientList = () => {
 	const navigate = useNavigate();
 	const patients = useAppSelector(selectPatientList);
 
-	const toResult = (patientId: number) => {
-		navigate(path.results(), { state: { visit_id: patientId } });
+	const toResult = (visitId: number, visitorId: number) => {
+		navigate(path.results(), { state: { visit_id: visitId, visitor_id: visitorId } });
 		logout();
 	};
 
@@ -42,7 +42,7 @@ export const PatientList = () => {
 								</Button>
 							</td> */}
 							<td>
-								<Button size="small" color="second" onClick={() => toResult(patient.id)}>
+								<Button size="small" color="second" onClick={() => toResult(patient.id, patient.visitor_id)}>
 									Отчёт »
 								</Button>
 							</td>
