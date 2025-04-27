@@ -15,4 +15,5 @@ export enum Icons {
 	apple = 'apple',
 	gantel = 'gantel',
 	brain = 'brain',
+	chart = 'chart',
 }

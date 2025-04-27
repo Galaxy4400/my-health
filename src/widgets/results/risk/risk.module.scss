@@ -36,6 +36,8 @@
 	height: rem(570);
 	overflow-x: hidden;
 	overflow-y: auto;
+	width: calc(100% + rem(45));
+	padding-right: rem(45);
 }
 
 .just-value {

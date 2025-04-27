@@ -57,6 +57,7 @@ export interface StatusType {
 	min: number | false;
 	max: number | false;
 	gradientColors: string | string[];
+	historyLink?: string;
 }
 
 export interface ScoreType {
