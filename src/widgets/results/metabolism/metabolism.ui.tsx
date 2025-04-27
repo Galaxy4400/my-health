@@ -1,14 +1,14 @@
 import { patientMetabolicRequest, patient3dModelRequest, ResultPageData } from 'shared/api/patient';
 import css from './metabolism.module.scss';
 import { GradientValue, Loader, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
-import { PatientModel, usePatientId } from 'entities/patient/patient-data';
+import { PatientModel, useVisitId } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
 
 export const Metabolism = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<ResultPageData | null>(null);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
-	const { visitId } = usePatientId();
+	const visitId = useVisitId();
 
 	useEffect(() => {
 		setLoading(true);

@@ -1,14 +1,14 @@
 import css from './risk.module.scss';
 import { patient3dModelRequest, RisksPageData, patientRisksRequest } from 'shared/api/patient';
 import { GradientValue, Loader, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
-import { PatientModel, usePatientId } from 'entities/patient/patient-data';
+import { PatientModel, useVisitId } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
 
 export const Risk = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<RisksPageData | null>(null);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
-	const { visitId } = usePatientId();
+	const visitId = useVisitId();
 
 	useEffect(() => {
 		patient3dModelRequest(visitId).then((results) => {

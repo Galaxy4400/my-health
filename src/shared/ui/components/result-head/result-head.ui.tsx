@@ -1,15 +1,16 @@
+import { useAppSelector } from 'shared/lib/store';
 import css from './result-head.module.scss';
-import { usePatientId } from 'entities/patient/patient-data';
+import { selectPatientData } from 'entities/patient/patient-data';
 
 export const ResultHead = () => {
-	const { visitorId } = usePatientId();
+	const patientData = useAppSelector(selectPatientData);
 
 	return (
 		<>
-			{visitorId && (
+			{patientData.visitor_id && (
 				<div className={css['title']}>
 					<p className={css['text']}>Ваш идентификатор для будущих обследований:</p>
-					<p className={css['code']}>{visitorId}</p>
+					<p className={css['code']}>{patientData.visitor_id}</p>
 					<p className={css['text']}>Запомните или запишите его у себя</p>
 				</div>
 			)}

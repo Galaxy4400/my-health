@@ -1,4 +1,4 @@
-import { PatientModel, usePatientId } from 'entities/patient/patient-data';
+import { PatientModel, useVisitId } from 'entities/patient/patient-data';
 import css from './summary.module.scss';
 import { Loader, MainValue, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
 import { patient3dModelRequest, SummaryPageData, patientSummaryRequest } from 'shared/api/patient';
@@ -11,7 +11,7 @@ export const Summary = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<SummaryPageData | null>(null);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
-	const { visitId } = usePatientId();
+	const visitId = useVisitId();
 
 	useEffect(() => {
 		patient3dModelRequest(visitId).then((results) => {

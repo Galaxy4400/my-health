@@ -1,4 +1,4 @@
-import { PatientModel, selectPatientData, usePatientId } from 'entities/patient/patient-data';
+import { PatientModel, selectPatientData, useVisitId } from 'entities/patient/patient-data';
 import css from './cardio.module.scss';
 import { GradientValue, Loader, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
 import { useAppSelector } from 'shared/lib/store';
@@ -9,7 +9,7 @@ export const Cardio = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<ResultPageData | null>(null);
 	const patient = useAppSelector(selectPatientData);
-	const { visitId } = usePatientId();
+	const visitId = useVisitId();
 
 	useEffect(() => {
 		setLoading(true);

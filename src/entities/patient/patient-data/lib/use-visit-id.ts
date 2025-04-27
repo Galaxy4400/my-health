@@ -4,16 +4,12 @@ import { selectPatientData } from '../model';
 
 type LocationStateVisit = {
 	visit_id: number;
-	visitor_id: number;
 };
 
-export const usePatientId = () => {
+export const useVisitId = () => {
 	const location = useLocation();
 	const patient = useAppSelector(selectPatientData);
 	const state = location.state as LocationStateVisit | null;
 
-	return {
-		visitId: patient.visit_id || state?.visit_id || null,
-		visitorId: patient.visitor_id || state?.visitor_id || null,
-	};
+	return patient.visit_id || state?.visit_id || null;
 };

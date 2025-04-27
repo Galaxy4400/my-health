@@ -3,13 +3,13 @@ import { Button, Container, PageHead, Steps, Tabs, TabsContainer } from 'shared/
 import { ResultActions, ResultButtons } from './components';
 import { Body, Cardio, Metabolism, Nutrition, Risk, Sport, Stress, Summary } from 'widgets/results';
 import { ResultPage } from 'shared/types';
-import { useAbortPatient, usePatientId } from 'entities/patient/patient-data';
+import { useAbortPatient, useVisitId } from 'entities/patient/patient-data';
 import { Navigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
 
 export const ResultsPage = () => {
 	const { abort } = useAbortPatient();
-	const { visitId } = usePatientId();
+	const visitId = useVisitId();
 
 	if (!visitId) {
 		return <Navigate to={path.start()} />;

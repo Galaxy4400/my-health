@@ -1,4 +1,4 @@
-import { usePatientId } from 'entities/patient/patient-data';
+import { useVisitId } from 'entities/patient/patient-data';
 import css from './result-actions.module.scss';
 import { Button } from 'shared/ui/components';
 import { Appointment } from 'widgets/appointment';
@@ -7,7 +7,7 @@ import { useAppSelector } from 'shared/lib/store';
 import { selectApplicationDevices } from 'entities/application';
 
 export const ResultActions = () => {
-	const { visitId } = usePatientId();
+	const visitId = useVisitId();
 	const devices = useAppSelector(selectApplicationDevices);
 
 	const allEmpty = !devices['buttons.email'] && !devices['buttons.print'] && !devices['buttons.medcard'];

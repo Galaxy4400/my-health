@@ -1,6 +1,6 @@
 import css from './sport.module.scss';
 import { Loader, MainValue, ResultHead } from 'shared/ui/components';
-import { PatientModel, usePatientId } from 'entities/patient/patient-data';
+import { PatientModel, useVisitId } from 'entities/patient/patient-data';
 import { patient3dModelRequest, SportPageData, patientSportRequest } from 'shared/api/patient';
 import { useEffect, useState } from 'react';
 
@@ -8,7 +8,7 @@ export const Sport = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<SportPageData | null>(null);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
-	const { visitId } = usePatientId();
+	const visitId = useVisitId();
 
 	useEffect(() => {
 		patient3dModelRequest(visitId).then((results) => {
