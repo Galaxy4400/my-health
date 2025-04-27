@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { SkipStep } from 'features/steps';
 import { BtnWithProgress, Loader, MeasureStatus } from 'shared/ui/components';
-import { patientMeasureStatusRequest } from 'shared/api/patient';
+import { MeasureProcessStatus, patientMeasureStatusRequest } from 'shared/api/patient';
 import { useAppSelector } from 'shared/lib/store';
 import { selectPatientData } from 'entities/patient/patient-data';
+import { ProcessStatus } from './process-status.ui';
 import cn from 'classnames';
 
 interface MeasureProps<T = unknown> {
@@ -35,7 +36,7 @@ export const Measure = ({
 	const [isBtnClose, setIsBtnClose] = useState(false);
 	const [isFinish, setIsFinish] = useState(false);
 	const [delayCount, setDelayCount] = useState(0);
-	const [processStatus, setProcessStatus] = useState<string | null>(null);
+	const [processStatus, setProcessStatus] = useState<MeasureProcessStatus | null>(null);
 	const delayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 	const navigate = useNavigate();
 
@@ -45,7 +46,7 @@ export const Measure = ({
 		if (!isRunning || !isActionProcess) return;
 
 		const getProgress = () =>
-			patientMeasureStatusRequest(patient.visit_id).then((response) => setProcessStatus(response.content));
+			patientMeasureStatusRequest(patient.visit_id).then((response) => setProcessStatus(response));
 
 		const interval = setInterval(() => {
 			getProgress();
@@ -64,6 +65,7 @@ export const Measure = ({
 		action?.()
 			.then(() => {
 				setIsComplete(true);
+				setProcessStatus(null);
 
 				if (onSuccess) onSuccess();
 			})
@@ -153,7 +155,7 @@ export const Measure = ({
 					curValue={delayCount}
 					totalValue={delayTime}
 				/>
-				{processStatus && <div dangerouslySetInnerHTML={{ __html: processStatus }} />}
+				{processStatus && <ProcessStatus statusData={processStatus} />}
 			</div>
 			<div className={css['main']}>
 				{action && (

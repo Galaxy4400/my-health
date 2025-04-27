@@ -131,6 +131,12 @@ export interface PatientCardFormData {
 export interface MeasureProcessStatus {
 	status: string;
 	content: string;
+	datetime: string;
+	message: string;
+	percent: number;
+	step: number;
+	subtitle: string;
+	title: string;
 }
 
 export interface Override {

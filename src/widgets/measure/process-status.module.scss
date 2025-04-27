@@ -1,0 +1,71 @@
+.main {
+	display: grid;
+	gap: rem(30);
+}
+
+.section {
+	display: grid;
+	gap: rem(10);
+}
+
+.title {
+	font-size: rem(36);
+	font-weight: 500;
+}
+
+.datetime {
+	font-size: rem(20);
+	span {
+		color: $color-second;
+	}
+}
+
+.step {
+	font-size: rem(20);
+	span {
+		color: $color-second;
+	}
+}
+
+.sudtitle {
+	font-size: rem(23);
+	font-weight: 600;
+}
+
+.message {
+	font-size: rem(20);
+}
+
+.progress {
+	--progress: 0%;
+	height: rem(40);
+	position: relative;
+}
+
+.progress-value {
+	position: absolute;
+	bottom: rem(15);
+	left: var(--progress);
+	translate: rem(-10) 0;
+	font-size: rem(24);
+}
+
+.progress-bar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: rem(10);
+	border-radius: rem(999);
+	border: rem(1) solid $color-second;
+	&::before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: var(--progress);
+		height: rem(10);
+		border-radius: rem(999);
+		background: $color-second;
+	}
+}
