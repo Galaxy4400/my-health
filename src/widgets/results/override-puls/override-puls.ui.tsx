@@ -3,20 +3,18 @@ import css from './override-puls.module.scss';
 import { OverridePulsForm } from 'features/steps';
 
 interface OverridePulsProps {
-	patientId: number;
 	isComplete: boolean;
 	onSuccess?: () => void;
 	onReject?: () => void;
 	onClick?: () => void;
 }
 
-export const OverridePuls = ({ patientId, isComplete, onSuccess, onReject, onClick }: OverridePulsProps) => {
+export const OverridePuls = ({ isComplete, onSuccess, onReject, onClick }: OverridePulsProps) => {
 	const { openModal, closeModal } = useModal();
 
 	const clickHandler = () => {
 		openModal(
 			<OverridePulsForm
-				patientId={patientId}
 				onSuccess={() => {
 					onSuccess?.();
 					closeModal();

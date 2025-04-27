@@ -3,26 +3,18 @@ import { useModal } from 'app/providers/modal';
 import { OverrideCardioForm } from 'features/steps';
 
 interface OverrideCardioProps {
-	patientId: number;
 	isComplete: boolean;
 	onSuccess?: () => void;
 	onReject?: () => void;
 	onClick?: () => void;
 }
 
-export const OverrideCardio = ({
-	patientId,
-	isComplete,
-	onSuccess,
-	onReject,
-	onClick,
-}: OverrideCardioProps) => {
+export const OverrideCardio = ({ isComplete, onSuccess, onReject, onClick }: OverrideCardioProps) => {
 	const { openModal, closeModal } = useModal();
 
 	const clickHandler = () => {
 		openModal(
 			<OverrideCardioForm
-				patientId={patientId}
 				onSuccess={() => {
 					onSuccess?.();
 					closeModal();
