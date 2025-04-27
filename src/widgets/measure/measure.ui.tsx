@@ -147,7 +147,6 @@ export const Measure = ({
 		<>
 			{action && <MeasureStatus isComplete={isComplete} />}
 			<div className={cn(css['process'], isRunning ? 'active' : '')}>
-				<Loader className={css['loader']} text="Измеряем..." isLoading={isActionProcess} />
 				<BtnWithProgress
 					className={cn(css['btn-process'], completeClass, runningClass, btnCloseClass)}
 					text={btnText}
