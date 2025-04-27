@@ -11,11 +11,10 @@ import { selectPatientData } from 'entities/patient/patient-data';
 import { PatientPrintFormData, patientPrintRequest } from 'shared/api/patient';
 
 interface PrintFormProps {
-	patientId: number;
 	onReject?: () => void;
 }
 
-export const PrintForm = ({ patientId, onReject }: PrintFormProps) => {
+export const PrintForm = ({ onReject }: PrintFormProps) => {
 	const { openModal, closeModal } = useModal();
 	const [isLoading, setIsLoading] = useState(false);
 	const patient = useAppSelector(selectPatientData);
@@ -23,7 +22,7 @@ export const PrintForm = ({ patientId, onReject }: PrintFormProps) => {
 	const submitHandler = async (data: RequestData) => {
 		setIsLoading(true);
 
-		const result = await patientPrintRequest(patientId, data as unknown as PatientPrintFormData);
+		const result = await patientPrintRequest(patient.visit_id, data as unknown as PatientPrintFormData);
 
 		setIsLoading(false);
 

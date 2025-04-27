@@ -4,10 +4,8 @@ import { Appointment } from 'widgets/appointment';
 import { AddToCard, Print, SendToEmail } from 'widgets/results';
 import { useAppSelector } from 'shared/lib/store';
 import { selectApplicationDevices } from 'entities/application';
-import { selectPatientData } from 'entities/patient/patient-data';
 
 export const ResultActions = () => {
-	const patient = useAppSelector(selectPatientData);
 	const devices = useAppSelector(selectApplicationDevices);
 
 	const allEmpty = !devices['buttons.email'] && !devices['buttons.print'] && !devices['buttons.medcard'];
@@ -20,9 +18,9 @@ export const ResultActions = () => {
 						<h5 className={css['title']}>Хотите получить подробный отчёт с рекомендациями?</h5>
 					</div>
 					<div className={css['actions']}>
-						{devices['buttons.email'] && <SendToEmail patientId={patient.visit_id || 0} />}
-						{devices['buttons.print'] && <Print patientId={patient.visit_id || 0} />}
-						{devices['buttons.medcard'] && <AddToCard patientId={patient.visit_id || 0} />}
+						{devices['buttons.email'] && <SendToEmail />}
+						{devices['buttons.print'] && <Print />}
+						{devices['buttons.medcard'] && <AddToCard />}
 					</div>
 				</div>
 			)}
