@@ -1,4 +1,4 @@
-import { BodyPageData, patientBodyRequest, Gender, patient3dModelRequest } from 'shared/api/patient';
+import { BodyPageData, patientBodyRequest, patient3dModelRequest } from 'shared/api/patient';
 import css from './body.module.scss';
 import {
 	GradientValue,
@@ -13,28 +13,29 @@ import {
 	ValueItem,
 	ValueList,
 } from 'shared/ui/components';
-import { PatientModel, useVisitId } from 'entities/patient/patient-data';
+import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
+import { useAppSelector } from 'shared/lib/store';
 
 export const Body = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<BodyPageData | null>(null);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
-	const visitId = useVisitId();
+	const patient = useAppSelector(selectPatientData);
 
 	useEffect(() => {
-		patient3dModelRequest(visitId).then((results) => {
+		patient3dModelRequest(patient.visit_id).then((results) => {
 			setModelUrl(results.url);
 		});
 
 		setLoading(true);
 
-		patientBodyRequest(visitId)
+		patientBodyRequest(patient.visit_id)
 			.then((results) => {
 				setData(results);
 			})
 			.finally(() => setLoading(false));
-	}, [visitId]);
+	}, [patient.visit_id]);
 
 	if (!data || loading) {
 		return <Loader isLoading={loading} />;

@@ -1,7 +1,7 @@
 import { useAppSelector } from 'shared/lib/store';
 import css from './stress.module.scss';
 import { GradientValue, Loader, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
-import { PatientModel, selectPatientData, useVisitId } from 'entities/patient/patient-data';
+import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
 import { Gender, ResultPageData, patientStressRequest } from 'shared/api/patient';
 
@@ -9,17 +9,16 @@ export const Stress = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<ResultPageData | null>(null);
 	const patient = useAppSelector(selectPatientData);
-	const visitId = useVisitId();
 
 	useEffect(() => {
 		setLoading(true);
 
-		patientStressRequest(visitId)
+		patientStressRequest(patient.visit_id)
 			.then((results) => {
 				setData(results);
 			})
 			.finally(() => setLoading(false));
-	}, [visitId]);
+	}, [patient.visit_id]);
 
 	if (!data || loading) {
 		return <Loader isLoading={loading} />;

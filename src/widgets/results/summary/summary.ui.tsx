@@ -1,9 +1,10 @@
-import { PatientModel, useVisitId } from 'entities/patient/patient-data';
+import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import css from './summary.module.scss';
 import { Loader, MainValue, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
 import { patient3dModelRequest, SummaryPageData, patientSummaryRequest } from 'shared/api/patient';
 import { ResultPage } from 'shared/types';
 import { useEffect, useState } from 'react';
+import { useAppSelector } from 'shared/lib/store';
 
 const TABS_INDEXES = [ResultPage.body, ResultPage.metabolism, ResultPage.stress, ResultPage.cardio];
 
@@ -11,21 +12,21 @@ export const Summary = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<SummaryPageData | null>(null);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
-	const visitId = useVisitId();
+	const patient = useAppSelector(selectPatientData);
 
 	useEffect(() => {
-		patient3dModelRequest(visitId).then((results) => {
+		patient3dModelRequest(patient.visit_id).then((results) => {
 			setModelUrl(results.url);
 		});
 
 		setLoading(true);
 
-		patientSummaryRequest(visitId)
+		patientSummaryRequest(patient.visit_id)
 			.then((results) => {
 				setData(results);
 			})
 			.finally(() => setLoading(false));
-	}, [visitId]);
+	}, [patient.visit_id]);
 
 	if (!data || loading) {
 		return <Loader isLoading={loading} />;

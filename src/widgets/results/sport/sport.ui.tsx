@@ -1,28 +1,29 @@
 import css from './sport.module.scss';
 import { Loader, MainValue, ResultHead } from 'shared/ui/components';
-import { PatientModel, useVisitId } from 'entities/patient/patient-data';
+import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { patient3dModelRequest, SportPageData, patientSportRequest } from 'shared/api/patient';
 import { useEffect, useState } from 'react';
+import { useAppSelector } from 'shared/lib/store';
 
 export const Sport = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<SportPageData | null>(null);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
-	const visitId = useVisitId();
+	const patient = useAppSelector(selectPatientData);
 
 	useEffect(() => {
-		patient3dModelRequest(visitId).then((results) => {
+		patient3dModelRequest(patient.visit_id).then((results) => {
 			setModelUrl(results.url);
 		});
 
 		setLoading(true);
 
-		patientSportRequest(visitId)
+		patientSportRequest(patient.visit_id)
 			.then((results) => {
 				setData(results);
 			})
 			.finally(() => setLoading(false));
-	}, [visitId]);
+	}, [patient.visit_id]);
 
 	if (!data || loading) {
 		return <Loader isLoading={loading} />;

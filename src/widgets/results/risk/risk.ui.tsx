@@ -1,28 +1,29 @@
 import css from './risk.module.scss';
 import { patient3dModelRequest, RisksPageData, patientRisksRequest } from 'shared/api/patient';
 import { GradientValue, Loader, MainValue, ResultHead, ValueItem, ValueList } from 'shared/ui/components';
-import { PatientModel, useVisitId } from 'entities/patient/patient-data';
+import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { useEffect, useState } from 'react';
+import { useAppSelector } from 'shared/lib/store';
 
 export const Risk = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<RisksPageData | null>(null);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
-	const visitId = useVisitId();
+	const patient = useAppSelector(selectPatientData);
 
 	useEffect(() => {
-		patient3dModelRequest(visitId).then((results) => {
+		patient3dModelRequest(patient.visit_id).then((results) => {
 			setModelUrl(results.url);
 		});
 
 		setLoading(true);
 
-		patientRisksRequest(visitId)
+		patientRisksRequest(patient.visit_id)
 			.then((results) => {
 				setData(results);
 			})
 			.finally(() => setLoading(false));
-	}, [visitId]);
+	}, [patient.visit_id]);
 
 	if (!data || loading) {
 		return <Loader isLoading={loading} />;

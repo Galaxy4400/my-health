@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PatientDataState } from './patient-data.types';
-import { Gender } from 'shared/api/patient';
+import { Gender, VisitType } from 'shared/api/patient';
 import { fetchPatientVisit } from './patient-data.thunks';
 
 const initialState: PatientDataState = {
@@ -19,6 +19,12 @@ export const patientDataSlice = createSlice({
 	initialState,
 	reducers: {
 		clearPatientData: () => initialState,
+		setPatientData: (state, { payload }: { payload: VisitType }) => {
+			state.patient.visit_id = payload.id;
+			state.patient.visitor_id = payload.visitor_id;
+			state.patient.gender = payload.gender;
+			state.patient.age = payload.age;
+		},
 	},
 	extraReducers: (builder) =>
 		builder
@@ -37,6 +43,6 @@ export const patientDataSlice = createSlice({
 			}),
 });
 
-export const { clearPatientData } = patientDataSlice.actions;
+export const { clearPatientData, setPatientData } = patientDataSlice.actions;
 
 export const patientDataReducer = patientDataSlice.reducer;
