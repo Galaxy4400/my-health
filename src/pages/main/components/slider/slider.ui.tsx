@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import { useAppSelector } from 'shared/lib/store';
 import { selectApplicationDataLoading, selectApplicationSlider } from 'entities/application';
+import { API_BASE_URL } from 'shared/api';
 
 export const Slider = () => {
 	const loading = useAppSelector(selectApplicationDataLoading);
@@ -56,7 +57,7 @@ export const Slider = () => {
 					{item.type === 'video' ? (
 						<video src={item.url} muted loop={false} />
 					) : (
-						<img src={item.url} alt="slide" />
+						<img src={API_BASE_URL + item.url} alt="slide" />
 					)}
 				</SwiperSlide>
 			))}

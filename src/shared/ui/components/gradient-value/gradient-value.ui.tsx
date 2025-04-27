@@ -5,6 +5,7 @@ import { getRelationPercent, interpolateColor } from 'shared/utils';
 import { useModal } from 'app/providers/modal';
 import { Icon } from 'shared/ui/icons';
 import { Icons } from 'shared/types';
+import { API_BASE_URL } from 'shared/api';
 
 interface GradientValueProps {
 	title: string;
@@ -14,8 +15,6 @@ interface GradientValueProps {
 	gradientColors?: string[] | string;
 	historyLink?: string;
 }
-
-const API_BASE_URL = import.meta.env.MODE === 'development' ? `${import.meta.env.VITE_API_BASE_URL}` : '';
 
 const getCssGradient = (colors: string[]) => {
 	return `linear-gradient(to right, ${colors.join(', ')})`;

@@ -6,8 +6,7 @@ import { ResultPage } from 'shared/types';
 import { useEffect, useState } from 'react';
 import { useAppSelector } from 'shared/lib/store';
 import { useModal } from 'app/providers/modal';
-
-const API_BASE_URL = import.meta.env.MODE === 'development' ? `${import.meta.env.VITE_API_BASE_URL}` : '';
+import { API_BASE_URL } from 'shared/api';
 
 const TABS_INDEXES = [ResultPage.body, ResultPage.metabolism, ResultPage.stress, ResultPage.cardio];
 
