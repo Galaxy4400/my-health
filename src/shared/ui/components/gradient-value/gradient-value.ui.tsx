@@ -15,6 +15,8 @@ interface GradientValueProps {
 	historyLink?: string;
 }
 
+const API_BASE_URL = import.meta.env.MODE === 'development' ? `${import.meta.env.VITE_API_BASE_URL}` : '';
+
 const getCssGradient = (colors: string[]) => {
 	return `linear-gradient(to right, ${colors.join(', ')})`;
 };
@@ -30,6 +32,10 @@ export const GradientValue = ({
 	const { openModal } = useModal();
 
 	const isGradient = Array.isArray(gradientColors) && gradientColors.length > 1;
+
+	const historyHandler = (url: string) => {
+		openModal(<iframe src={`${API_BASE_URL}${url}`} width="800px" height="600px"></iframe>);
+	};
 
 	return (
 		<div className={css['main']}>
@@ -52,9 +58,11 @@ export const GradientValue = ({
 			{isGradient && (
 				<div className={css['bottom']} style={{ background: getCssGradient(gradientColors) }}></div>
 			)}
-			<button className={css['chart-btn']} onClick={() => console.log('test')}>
-				<Icon name={Icons.chart}></Icon>
-			</button>
+			{historyLink && (
+				<button className={css['chart-btn']} onClick={() => historyHandler(historyLink)}>
+					<Icon name={Icons.chart}></Icon>
+				</button>
+			)}
 		</div>
 	);
 };

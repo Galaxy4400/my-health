@@ -76,6 +76,7 @@ export const Body = () => {
 												min={status.min === false ? undefined : status.min}
 												max={status.max === false ? undefined : status.max}
 												gradientColors={status.gradientColors}
+												historyLink={status.historyLink}
 											/>
 										</ValueItem>
 									))}
@@ -93,6 +94,7 @@ export const Body = () => {
 												min={status.min === false ? undefined : status.min}
 												max={status.max === false ? undefined : status.max}
 												gradientColors={status.gradientColors}
+												historyLink={status.historyLink}
 											/>
 										</ValueItem>
 									))}
@@ -111,6 +113,7 @@ export const Body = () => {
 													min={status.min === false ? undefined : status.min}
 													max={status.max === false ? undefined : status.max}
 													gradientColors={status.gradientColors}
+													historyLink={status.historyLink}
 													key={j}
 												/>
 											))}
