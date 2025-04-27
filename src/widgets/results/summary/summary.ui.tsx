@@ -1,10 +1,13 @@
 import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import css from './summary.module.scss';
-import { Loader, MainValue, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
+import { Button, Loader, MainValue, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
 import { patient3dModelRequest, SummaryPageData, patientSummaryRequest } from 'shared/api/patient';
 import { ResultPage } from 'shared/types';
 import { useEffect, useState } from 'react';
 import { useAppSelector } from 'shared/lib/store';
+import { useModal } from 'app/providers/modal';
+
+const API_BASE_URL = import.meta.env.MODE === 'development' ? `${import.meta.env.VITE_API_BASE_URL}` : '';
 
 const TABS_INDEXES = [ResultPage.body, ResultPage.metabolism, ResultPage.stress, ResultPage.cardio];
 
@@ -13,6 +16,7 @@ export const Summary = () => {
 	const [data, setData] = useState<SummaryPageData | null>(null);
 	const [modelUrl, setModelUrl] = useState<string | null>(null);
 	const patient = useAppSelector(selectPatientData);
+	const { openModal } = useModal();
 
 	useEffect(() => {
 		patient3dModelRequest(patient.visit_id).then((results) => {
@@ -27,6 +31,16 @@ export const Summary = () => {
 			})
 			.finally(() => setLoading(false));
 	}, [patient.visit_id]);
+
+	const reportHandler = () => {
+		openModal(
+			<iframe
+				src={`${API_BASE_URL}/api/reports/report_full_${patient.visit_id}.htm`}
+				width="1000px"
+				height="1200px"
+			></iframe>,
+		);
+	};
 
 	if (!data || loading) {
 		return <Loader isLoading={loading} />;
@@ -62,7 +76,12 @@ export const Summary = () => {
 					))}
 				</div>
 			</div>
-			{modelUrl && <PatientModel url={modelUrl} />}
+			<div className={css['model']}>
+				{modelUrl && <PatientModel url={modelUrl} />}
+				<Button className={css['report-btn']} color="second" onClick={reportHandler}>
+					Показать сводный отчёт
+				</Button>
+			</div>
 		</div>
 	);
 };
