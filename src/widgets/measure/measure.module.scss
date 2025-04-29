@@ -90,8 +90,9 @@
 
 .loader {
 	position: absolute;
-	top: rem(30);
-	left: rem(30);
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
 	width: rem(100);
 	height: rem(100);
 	scale: 0.5;

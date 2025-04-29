@@ -11,7 +11,10 @@ export const ModalProvider = ({ children }: PropsWithChildren) => {
 		setIsOpen(true);
 	}, []);
 
-	const closeModal = useCallback(() => setIsOpen(false), []);
+	const closeModal = useCallback(() => {
+		setIsOpen(false);
+		setContent(null);
+	}, []);
 
 	const modalFunctions = useMemo(() => ({ openModal, closeModal }), [openModal, closeModal]);
 

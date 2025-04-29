@@ -154,7 +154,11 @@ export const Measure = ({
 					curValue={delayCount}
 					totalValue={delayTime}
 				/>
-				{processStatus && <ProcessStatus statusData={processStatus} />}
+				{processStatus ? (
+					<ProcessStatus statusData={processStatus} />
+				) : (
+					<Loader className={css['loader']} text="Измеряем..." isLoading={isActionProcess} />
+				)}
 			</div>
 			<div className={css['main']}>
 				{action && (
