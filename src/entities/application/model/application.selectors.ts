@@ -9,6 +9,11 @@ export const selectApplicationSlider = createSelector(
 	(state) => state.application.slider,
 );
 
+export const selectApplicationDoctor = createSelector(
+	selectApplicationState,
+	(state) => state.application.doctorRegisterLink,
+);
+
 export const selectApplicationDevices = createSelector(
 	selectApplicationState,
 	(state) => state.application.devices,

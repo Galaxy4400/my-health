@@ -17,10 +17,10 @@ export const fetchGetApplication = createAsyncThunk<ApplicationType, void, { rej
 				idleTimeout: rest.general.idleTimeout,
 				sounds: rest.general.sounds,
 				slider: rest.slider,
+				doctorRegisterLink: rest.general.doctorRegisterLink,
 				devices: {
 					heightMeter: rest.general.devices.heightMeter,
 					questionnaire: rest.general.devices.questionnaire,
-					'buttons.doctor': rest.general.devices['buttons.doctor'],
 					'buttons.email': rest.general.devices['buttons.email'],
 					'buttons.medcard': rest.general.devices['buttons.medcard'],
 					'buttons.print': rest.general.devices['buttons.print'],

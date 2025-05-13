@@ -24,7 +24,6 @@ export interface Devices {
 	'buttons.email': boolean;
 	'buttons.print': boolean;
 	'buttons.medcard': boolean;
-	'buttons.doctor': boolean;
 }
 
 export interface ApplicationType {
@@ -33,6 +32,7 @@ export interface ApplicationType {
 	slider: Slide[];
 	sounds: Sounds;
 	devices: Devices;
+	doctorRegisterLink: string;
 }
 
 export interface ApplicationResponse {
@@ -41,6 +41,7 @@ export interface ApplicationResponse {
 		idleTimeout: number;
 		sounds: Sounds;
 		devices: Devices;
+		doctorRegisterLink: string;
 	};
 	background: MainBackground;
 	slider: Slide[];

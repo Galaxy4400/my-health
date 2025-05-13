@@ -3,10 +3,11 @@ import { Button } from 'shared/ui/components';
 import { Appointment } from 'widgets/appointment';
 import { AddToCard, Print, SendToEmail } from 'widgets/results';
 import { useAppSelector } from 'shared/lib/store';
-import { selectApplicationDevices } from 'entities/application';
+import { selectApplicationDevices, selectApplicationDoctor } from 'entities/application';
 
 export const ResultActions = () => {
 	const devices = useAppSelector(selectApplicationDevices);
+	const doctorLink = useAppSelector(selectApplicationDoctor);
 
 	const allEmpty = !devices['buttons.email'] && !devices['buttons.print'] && !devices['buttons.medcard'];
 
@@ -24,7 +25,7 @@ export const ResultActions = () => {
 					</div>
 				</div>
 			)}
-			{devices['buttons.doctor'] && (
+			{doctorLink && (
 				<div className={css['block']}>
 					<div className={css['title-block']}>
 						<h5 className={css['title']}>
@@ -39,6 +40,7 @@ export const ResultActions = () => {
 					</div>
 					<div className={css['actions']}>
 						<Appointment
+							link={doctorLink}
 							trigger={(action) => (
 								<Button className={css['btn']} color="second" onClick={action}>
 									Открыть сервис записи

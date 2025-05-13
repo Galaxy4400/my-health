@@ -5,14 +5,15 @@ import { useModal } from 'app/providers/modal';
 import { ReactNode } from 'react';
 
 type AppointmentProps = {
+	link: string;
 	trigger?: (action: () => void) => ReactNode;
 };
 
-export const Appointment = ({ trigger }: AppointmentProps) => {
+export const Appointment = ({ link, trigger }: AppointmentProps) => {
 	const { openModal } = useModal();
 
 	const action = () => {
-		openModal(<iframe src="https://reg.fmba.gov.ru/" width="950px" height="1000px"></iframe>);
+		openModal(<iframe src={link} width="950px" height="1000px"></iframe>);
 	};
 
 	return trigger ? (

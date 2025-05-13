@@ -6,7 +6,11 @@ import { path } from 'shared/lib/router';
 import { Appointment } from 'widgets/appointment';
 import { AdminEnter } from 'widgets/admin-enter';
 import { useAppSelector } from 'shared/lib/store';
-import { selectApplicationBackgound, selectApplicationPhrases } from 'entities/application';
+import {
+	selectApplicationBackgound,
+	selectApplicationDoctor,
+	selectApplicationPhrases,
+} from 'entities/application';
 import { useEffect } from 'react';
 import { useVoice } from 'app/providers/voice';
 
@@ -14,6 +18,7 @@ export const StartPage = () => {
 	const navigate = useNavigate();
 	const background = useAppSelector(selectApplicationBackgound);
 	const phrases = useAppSelector(selectApplicationPhrases);
+	const doctorLink = useAppSelector(selectApplicationDoctor);
 	const { speak } = useVoice();
 
 	useEffect(() => {
@@ -62,7 +67,7 @@ export const StartPage = () => {
 						</PulsBtn>
 						<div className={css['actions']}>
 							<AdminEnter />
-							<Appointment />
+							{doctorLink && <Appointment link={doctorLink} />}
 						</div>
 					</div>
 				</div>
