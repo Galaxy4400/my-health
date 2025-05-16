@@ -10,12 +10,14 @@ import woman from 'shared/assets/img/measure/woman.png';
 import { useMeasure } from 'shared/hooks';
 import { useEffect } from 'react';
 import { useVoice } from 'app/providers/voice';
-import { selectApplicationPhrases } from 'entities/application';
+import { selectApplicationPhrases, selectOverrideData } from 'entities/application';
+import { OverrideBody } from 'widgets/results';
 
 export const BodyPage = () => {
 	const { startMeasure } = useMeasure();
 	const patient = useAppSelector(selectPatientData);
 	const phrases = useAppSelector(selectApplicationPhrases);
+	const overrideData = useAppSelector(selectOverrideData);
 	const { speak } = useVoice();
 	const { abort } = useAbortPatient();
 
@@ -40,14 +42,8 @@ export const BodyPage = () => {
 				<img src={patient.gender === Gender.male ? man : woman} alt="patient" />
 			</figure>
 			<Measure
-				action={() => startMeasure(1, patient.visit_id || 0)}
-				override={(isComplete, reboot) =>
-					isComplete ? (
-						<button className={css['btn']} onClick={reboot}>
-							Повторить измерение
-						</button>
-					) : null
-				}
+				action={() => startMeasure(1, patient.visit_id || 0, overrideData)}
+				override={(isComplete, reboot) => <OverrideBody onClick={reboot} isComplete={isComplete} />}
 				nextStep={path.puls()}
 				nextDelayTime={15000}
 			/>

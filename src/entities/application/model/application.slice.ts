@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AppDataState } from './application.types';
 import { fetchGetApplication } from './application.thunks';
+import { Override } from 'shared/api/patient';
 
 const initialState: AppDataState = {
 	application: {
@@ -24,6 +25,7 @@ const initialState: AppDataState = {
 		},
 		doctorRegisterLink: '',
 	},
+	override: null,
 	loading: false,
 	error: null,
 };
@@ -31,7 +33,14 @@ const initialState: AppDataState = {
 export const applicationSlice = createSlice({
 	name: 'application',
 	initialState,
-	reducers: {},
+	reducers: {
+		setOverride: (state, { payload }: { payload: Override }) => {
+			state.override = payload;
+		},
+		clearOverride: (state) => {
+			state.override = null;
+		},
+	},
 	extraReducers: (builder) =>
 		builder
 			.addCase(fetchGetApplication.pending, (state) => {
@@ -48,5 +57,7 @@ export const applicationSlice = createSlice({
 				state.error = payload?.message ?? null;
 			}),
 });
+
+export const { setOverride, clearOverride } = applicationSlice.actions;
 
 export const applicationReducer = applicationSlice.reducer;

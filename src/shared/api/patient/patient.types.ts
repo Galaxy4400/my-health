@@ -140,6 +140,7 @@ export interface MeasureProcessStatus {
 }
 
 export interface Override {
+	height?: number;
 	spo2?: number;
 	heartrate?: number;
 	systolic?: number;

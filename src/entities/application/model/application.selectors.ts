@@ -4,6 +4,8 @@ const selectApplicationState = (state: RootState) => state.applicationData;
 
 export const selectApplicationData = createSelector(selectApplicationState, (state) => state.application);
 
+export const selectOverrideData = createSelector(selectApplicationState, (state) => state.override);
+
 export const selectApplicationSlider = createSelector(
 	selectApplicationState,
 	(state) => state.application.slider,
