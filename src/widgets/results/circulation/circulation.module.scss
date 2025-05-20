@@ -1,0 +1,41 @@
+.main {
+	display: grid;
+	grid-template-columns: auto 300px;
+	gap: 40px;
+}
+
+.main-value {
+	margin: 0px 0px 40px 0px;
+}
+
+.content-wrapper {
+	height: 520px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.content {
+	font-size: 20px;
+
+	:global(.section) {
+		margin: 0px 0px 40px 0px;
+	}
+
+	:global(.title) {
+		font-weight: 700;
+	}
+
+	:global(.norecommend) {
+		margin: 20px 0px 10px 0px;
+		color: $color-primary;
+		font-size: 20px;
+		font-weight: 700;
+	}
+
+	:global(.recommend) {
+		margin: 20px 0px 10px 0px;
+		color: $color-second;
+		font-size: 20px;
+		font-weight: 700;
+	}
+}

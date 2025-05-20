@@ -1,7 +1,18 @@
 import css from './results-page.module.scss';
 import { Button, Container, PageHead, Steps, Tabs, TabsContainer } from 'shared/ui/components';
 import { ResultActions, ResultButtons } from './components';
-import { Body, Cardio, Metabolism, Nutrition, Risk, Sport, Stress, Summary } from 'widgets/results';
+import {
+	Body,
+	Cardio,
+	Circulation,
+	Metabolism,
+	Nutrition,
+	Risk,
+	Spine,
+	Sport,
+	Stress,
+	Summary,
+} from 'widgets/results';
 import { ResultPage } from 'shared/types';
 import { selectPatientData, useAbortPatient } from 'entities/patient/patient-data';
 import { Navigate } from 'react-router-dom';
@@ -49,6 +60,12 @@ export const ResultsPage = () => {
 					</TabsContainer>
 					<TabsContainer index={ResultPage.sport}>
 						<Sport />
+					</TabsContainer>
+					<TabsContainer index={ResultPage.spine}>
+						<Spine />
+					</TabsContainer>
+					<TabsContainer index={ResultPage.circulation}>
+						<Circulation />
 					</TabsContainer>
 				</div>
 				<ResultButtons />

@@ -1,7 +1,7 @@
 import css from './result-buttons.module.scss';
 import { Icon } from 'shared/ui/icons';
 import { TabsButton, useTabs } from 'shared/ui/components';
-import { Icons } from 'shared/types';
+import { Icons, ResultPage } from 'shared/types';
 import cn from 'classnames';
 
 export const ResultButtons = () => {
@@ -13,19 +13,19 @@ export const ResultButtons = () => {
 				<>
 					<h3 className={css['title']}>Рекомендации:</h3>
 					<div className={css['start']}>
-						<TabsButton className={cn(css['btn'], 'center')} index={6}>
+						<TabsButton className={cn(css['btn'], 'center')} index={ResultPage.risk}>
 							<div className={css['icon']}>
 								<Icon name={Icons.alarm} />
 							</div>
 							Факторы риска
 						</TabsButton>
-						<TabsButton className={cn(css['btn'], 'center')} index={7}>
+						<TabsButton className={cn(css['btn'], 'center')} index={ResultPage.nutrition}>
 							<div className={css['icon']}>
 								<Icon name={Icons.apple} />
 							</div>
 							Питание
 						</TabsButton>
-						<TabsButton className={cn(css['btn'], 'center')} index={8}>
+						<TabsButton className={cn(css['btn'], 'center')} index={ResultPage.sport}>
 							<div className={css['icon']}>
 								<Icon name={Icons.gantel} />
 							</div>
@@ -35,53 +35,65 @@ export const ResultButtons = () => {
 				</>
 			) : (
 				<div className={css['all']}>
-					<TabsButton className={css['btn']} index={1}>
+					<TabsButton className={css['btn']} index={ResultPage.summary}>
 						<div className={css['icon']}>
 							<Icon name={Icons.doc} />
 						</div>
 						Сводка
 					</TabsButton>
-					<TabsButton className={css['btn']} index={3}>
+					<TabsButton className={css['btn']} index={ResultPage.metabolism}>
 						<div className={css['icon']}>
 							<Icon name={Icons.back} />
 						</div>
 						Обмен веществ
 					</TabsButton>
-					<TabsButton className={css['btn']} index={5}>
+					<TabsButton className={css['btn']} index={ResultPage.cardio}>
 						<div className={css['icon']}>
 							<Icon name={Icons.heart} />
 						</div>
 						Сердечно-сосудистая
 					</TabsButton>
-					<TabsButton className={css['btn']} index={7}>
+					<TabsButton className={css['btn']} index={ResultPage.nutrition}>
 						<div className={css['icon']}>
 							<Icon name={Icons.apple} />
 						</div>
 						Питание
 					</TabsButton>
-					<TabsButton className={css['btn']} index={2}>
+					<TabsButton className={css['btn']} index={ResultPage.body}>
 						<div className={css['icon']}>
 							<Icon name={Icons.body} />
 						</div>
 						Состав тела
 					</TabsButton>
-					<TabsButton className={css['btn']} index={4}>
+					<TabsButton className={css['btn']} index={ResultPage.stress}>
 						<div className={css['icon']}>
 							<Icon name={Icons.brain} />
 						</div>
 						Стресс
 					</TabsButton>
-					<TabsButton className={css['btn']} index={6}>
+					<TabsButton className={css['btn']} index={ResultPage.risk}>
 						<div className={css['icon']}>
 							<Icon name={Icons.alarm} />
 						</div>
 						Факторы риска
 					</TabsButton>
-					<TabsButton className={css['btn']} index={8}>
+					<TabsButton className={css['btn']} index={ResultPage.sport}>
 						<div className={css['icon']}>
 							<Icon name={Icons.gantel} />
 						</div>
 						Спорт, SPA
+					</TabsButton>
+					<TabsButton className={css['btn']} index={ResultPage.spine}>
+						<div className={css['icon']}>
+							<Icon name={Icons.gantel} />
+						</div>
+						Здоровье позвоночника
+					</TabsButton>
+					<TabsButton className={css['btn']} index={ResultPage.circulation}>
+						<div className={css['icon']}>
+							<Icon name={Icons.gantel} />
+						</div>
+						Микро-циркуляция
 					</TabsButton>
 				</div>
 			)}

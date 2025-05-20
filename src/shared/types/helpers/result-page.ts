@@ -7,4 +7,6 @@ export enum ResultPage {
 	risk = 6,
 	nutrition = 7,
 	sport = 8,
+	spine = 9,
+	circulation = 10,
 }

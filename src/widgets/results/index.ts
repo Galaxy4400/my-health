@@ -12,3 +12,5 @@ export * from './sport';
 export * from './override-puls';
 export * from './override-cardio';
 export * from './override-body';
+export * from './spine';
+export * from './circulation';

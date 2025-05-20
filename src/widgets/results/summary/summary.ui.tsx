@@ -8,7 +8,14 @@ import { useAppSelector } from 'shared/lib/store';
 import { useModal } from 'app/providers/modal';
 import { API_BASE_URL } from 'shared/api';
 
-const TABS_INDEXES = [ResultPage.body, ResultPage.metabolism, ResultPage.stress, ResultPage.cardio];
+const TABS_INDEXES = [
+	ResultPage.body,
+	ResultPage.metabolism,
+	ResultPage.stress,
+	ResultPage.cardio,
+	ResultPage.spine,
+	ResultPage.circulation,
+];
 
 export const Summary = () => {
 	const [loading, setLoading] = useState(true);
@@ -44,6 +51,8 @@ export const Summary = () => {
 	if (!data || loading) {
 		return <Loader isLoading={loading} />;
 	}
+
+	console.log(data);
 
 	return (
 		<div className={css['main']}>

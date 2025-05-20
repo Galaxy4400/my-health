@@ -3,7 +3,7 @@
 }
 
 .title {
-	padding: 40px 0px 0px 0px;
+	padding: 20px 0px 0px 0px;
 	margin: 0px 0px 20px 0px;
 }
 
@@ -29,6 +29,7 @@
 	padding: 14px 20px;
 	font-size: 20px;
 	line-height: 1;
+	height: 70px;
 	&:global(.center) {
 		justify-content: center;
 	}
