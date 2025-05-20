@@ -5,9 +5,10 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { SkipStep } from 'features/steps';
 import { BtnWithProgress, Loader, MeasureStatus } from 'shared/ui/components';
 import { MeasureProcessStatus, patientMeasureStatusRequest } from 'shared/api/patient';
-import { useAppSelector } from 'shared/lib/store';
+import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import { selectPatientData } from 'entities/patient/patient-data';
 import { ProcessStatus } from './process-status.ui';
+import { clearOverride } from 'entities/application';
 import cn from 'classnames';
 
 interface MeasureProps<T = unknown> {
@@ -39,6 +40,7 @@ export const Measure = ({
 	const [processStatus, setProcessStatus] = useState<MeasureProcessStatus | null>(null);
 	const delayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
 
 	const countStep = 10;
 
@@ -77,12 +79,13 @@ export const Measure = ({
 				setIsActionProcess(false);
 				setProcessStatus(null);
 				setDelayCount(0);
+				dispatch(clearOverride());
 
 				setTimeout(() => {
 					setIsBtnClose(false);
 				}, 500);
 			});
-	}, [delayCount, action, onError, onSuccess, isRunning, isActionProcess, delayTime]);
+	}, [delayCount, action, onError, onSuccess, isRunning, isActionProcess, delayTime, dispatch]);
 
 	useEffect(() => {
 		if (!isRunning) return;
