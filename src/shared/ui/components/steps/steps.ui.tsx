@@ -1,7 +1,7 @@
-import { useAppSelector } from 'shared/lib/store';
 import css from './steps.module.scss';
-import cn from 'classnames';
+import { useAppSelector } from 'shared/lib/store';
 import { selectApplicationDevices } from 'entities/application';
+import cn from 'classnames';
 
 const getSteps = (hasExam: boolean = true) => {
 	return hasExam

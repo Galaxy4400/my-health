@@ -1,5 +1,5 @@
-import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import css from './summary.module.scss';
+import { PatientModel, selectPatientData } from 'entities/patient/patient-data';
 import { Button, Loader, MainValue, PulsCircle, ResultHead, TabsButton } from 'shared/ui/components';
 import { patient3dModelRequest, SummaryPageData, patientSummaryRequest } from 'shared/api/patient';
 import { ResultPage } from 'shared/types';
@@ -67,8 +67,8 @@ export const Summary = () => {
 									color={item.color}
 									status={item.title}
 									value={item.value}
-									diameter={85}
-									fontSize={18}
+									diameter={65}
+									fontSize={14}
 								/>
 							</div>
 						</TabsButton>
