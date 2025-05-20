@@ -1,16 +1,15 @@
 .user {
 	display: flex;
 	align-items: center;
-	gap: rem(10);
+	gap: 10px;
 }
 
 .avatar {
-	width: rem(36);
-	height: rem(36);
+	width: 36px;
+	height: 36px;
 	border-radius: 50%;
 	overflow: hidden;
 }
 
 .login {
-
 }

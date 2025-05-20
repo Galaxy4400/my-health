@@ -1,9 +1,9 @@
 .label {
 	color: #888;
 	font-weight: 400;
-	font-size: rem(14);
+	font-size: 14px;
 	display: inline-block;
-	margin: 0px 0px rem(5) 0px;
+	margin: 0px 0px 5px 0px;
 }
 
 .container {
@@ -13,22 +13,22 @@
 .input {
 	display: block;
 	width: 100%;
-	font-size: rem(16);
+	font-size: 16px;
 	line-height: prc(20, 16);
-	padding: rem(10) rem(12);
-	height: rem(38);
+	padding: 10px 12px;
+	height: 38px;
 	color: #000000;
 	background: #ffffff;
-	border: rem(1) solid #cccccc;
-	border-radius: rem(4);
+	border: 1px solid #cccccc;
+	border-radius: 4px;
 	transition: border 0.3s ease 0s;
 	&:focus {
-		border: rem(1) solid $color-focus;
+		border: 1px solid $color-focus;
 	}
 	&.error {
-		border: rem(1) solid $color-error;
+		border: 1px solid $color-error;
 	}
 	&.success {
-		border: rem(1) solid $color-success;
+		border: 1px solid $color-success;
 	}
 }

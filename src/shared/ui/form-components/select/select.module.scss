@@ -1,15 +1,15 @@
 .label {
 	color: #888;
 	font-weight: 400;
-	font-size: rem(14);
+	font-size: 14px;
 	display: inline-block;
-	margin: 0px 0px rem(5) 0px;
+	margin: 0px 0px 5px 0px;
 }
 
 .error {
 	color: $color-error;
 	font-style: italic;
-	font-size: rem(12);
+	font-size: 12px;
 	&::first-letter {
 		text-transform: uppercase;
 	}

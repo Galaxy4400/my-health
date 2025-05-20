@@ -42,13 +42,13 @@ body {
 
 #keyboard {
 	position: absolute;
-	bottom: rem(20);
+	bottom: 20px;
 	left: 0;
 	width: 100%;
 	z-index: 1000;
 
 	&.numeric-keyboard {
-		max-width: rem(500);
+		max-width: 500px;
 		left: 50%;
 		translate: -50% 0;
 		.keyboard {
@@ -75,7 +75,7 @@ body {
 	}
 
 	.keyboard-button {
-		font-size: rem(40);
+		font-size: 40px;
 		height: 2em;
 		font-family: "Inter";
 	}

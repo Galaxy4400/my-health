@@ -4,19 +4,19 @@
 .buttons {
 	display: flex;
 	justify-content: center;
-	border-bottom: rem(1) solid $color-second;
-	gap: rem(15);
+	border-bottom: 1px solid $color-second;
+	gap: 15px;
 }
 
 .button {
-	height: rem(78);
-	width: rem(370);
+	height: 78px;
+	width: 370px;
 	background: #fff;
-	border-radius: rem(10) rem(10) 0px 0px;
-	padding: rem(10) rem(30);
-	font-size: rem(20);
+	border-radius: 10px 10px 0px 0px;
+	padding: 10px 30px;
+	font-size: 20px;
 	text-align: center;
-	border: rem(1) solid $color-second;
+	border: 1px solid $color-second;
 	border-bottom: none;
 	display: inline-flex;
 	justify-content: center;
@@ -31,5 +31,5 @@
 }
 
 .container {
-	padding: rem(30) rem(30) rem(80) rem(30);
+	padding: 30px 30px 80px 30px;
 }

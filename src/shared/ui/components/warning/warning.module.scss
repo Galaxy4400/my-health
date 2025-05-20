@@ -1,28 +1,28 @@
 .body {
 	display: flex;
-	gap: rem(30);
+	gap: 30px;
 }
 
 .title {
 	display: flex;
 	align-items: center;
-	gap: rem(30);
-	margin: 0px 0px rem(18) 0px;
+	gap: 30px;
+	margin: 0px 0px 18px 0px;
 }
 
 .text {
 	display: grid;
-	gap: rem(15);
-	font-size: rem(20);
+	gap: 15px;
+	font-size: 20px;
 }
 
 .icon {
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	border: rem(1) solid $color-primary;
+	border: 1px solid $color-primary;
 	border-radius: 50%;
-	width: rem(80);
-	height: rem(80);
+	width: 80px;
+	height: 80px;
 	color: $color-primary;
 }

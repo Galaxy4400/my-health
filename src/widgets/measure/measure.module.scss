@@ -2,7 +2,7 @@
 	position: relative;
 	display: flex;
 	justify-content: center;
-	height: rem(250);
+	height: 250px;
 }
 
 .btn {
@@ -12,7 +12,7 @@
 	translate: -50% 0;
 	transition: scale 0.5s ease 0s;
 	&:global(.complete) {
-		font-size: rem(36);
+		font-size: 36px;
 	}
 	&:global(.running) {
 		scale: 0;
@@ -24,8 +24,8 @@
 
 .progress {
 	position: absolute;
-	top: rem(10);
-	left: rem(10);
+	top: 10px;
+	left: 10px;
 	color: #2eb2bd;
 	z-index: 1;
 }
@@ -40,10 +40,10 @@
 	top: 50%;
 	left: 50%;
 	translate: -50% -50%;
-	font-size: rem(150);
+	font-size: 150px;
 	color: $color-second;
 	span {
-		font-size: rem(36);
+		font-size: 36px;
 	}
 }
 
@@ -52,11 +52,11 @@
 	top: 50%;
 	left: 50%;
 	translate: -50% -50%;
-	padding: rem(60) rem(80);
+	padding: 60px 80px;
 	background: #fff;
-	box-shadow: 0px 0px rem(50) rem(5) rgba(0, 0, 0, 0.2);
-	min-width: rem(700);
-	min-height: rem(400);
+	box-shadow: 0px 0px 50px 5px rgba(0, 0, 0, 0.2);
+	min-width: 700px;
+	min-height: 400px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -78,10 +78,10 @@
 	translate: -50% -50%;
 	transition: scale 0.5s ease 0s;
 	&:global(.complete) {
-		font-size: rem(36);
+		font-size: 36px;
 	}
 	&:global(.running) {
-		font-size: rem(28);
+		font-size: 28px;
 	}
 	&:global(.close) {
 		scale: 0;
@@ -93,8 +93,8 @@
 	top: 50%;
 	left: 50%;
 	translate: -50% -50%;
-	width: rem(100);
-	height: rem(100);
+	width: 100px;
+	height: 100px;
 	scale: 0.5;
 }
 
@@ -102,7 +102,7 @@
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	border-radius: rem(7);
+	border-radius: 7px;
 	border: 1px solid $color-second;
 	background: #fff;
 	color: #000;
@@ -110,7 +110,7 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	font-size: rem(20);
-	height: rem(44);
-	padding: rem(5) rem(15);
+	font-size: 20px;
+	height: 44px;
+	padding: 5px 15px;
 }

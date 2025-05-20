@@ -8,31 +8,31 @@
 }
 
 .label {
-	font-size: rem(20);
+	font-size: 20px;
 	position: relative;
 	display: inline-flex;
-	padding: 0px 0px 0px rem(35);
+	padding: 0px 0px 0px 35px;
 	&::before {
 		content: "";
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: rem(25);
-		height: rem(25);
+		width: 25px;
+		height: 25px;
 		border-radius: 50%;
 		background: #fff;
-		border: rem(1) solid $color-second;
+		border: 1px solid $color-second;
 	}
 	&::after {
 		content: "";
 		position: absolute;
-		top: rem(8);
-		left: rem(8);
-		width: rem(10);
-		height: rem(10);
+		top: 8px;
+		left: 8px;
+		width: 10px;
+		height: 10px;
 		border-radius: 50%;
 		background: $color-second;
-		border: rem(1) solid $color-second;
+		border: 1px solid $color-second;
 		scale: 0;
 	}
 

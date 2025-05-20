@@ -3,7 +3,7 @@
 
 .title {
 	text-align: center;
-	margin: 0px 0px rem(32) 0px;
+	margin: 0px 0px 32px 0px;
 }
 
 .form {
@@ -11,17 +11,17 @@
 
 .inputs {
 	display: grid;
-	gap: rem(10);
-	margin: 0px 0px rem(30) 0px;
+	gap: 10px;
+	margin: 0px 0px 30px 0px;
 	input {
-		max-width: rem(286);
+		max-width: 286px;
 	}
 }
 
 .row {
 	display: grid;
 	grid-template-columns: 45% 1fr;
-	gap: rem(30);
+	gap: 30px;
 	align-items: center;
 }
 
@@ -29,18 +29,18 @@
 }
 
 .param {
-	font-size: rem(24);
+	font-size: 24px;
 	text-align: right;
 }
 
 .datepicker-wrapper {
-	width: rem(144);
+	width: 144px;
 }
 
 .radios {
-	padding: rem(22) 0px;
+	padding: 22px 0px;
 	display: flex;
-	gap: rem(30);
+	gap: 30px;
 }
 
 .actions {

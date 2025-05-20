@@ -1,31 +1,31 @@
 .main {
 	display: grid;
-	grid-template-columns: auto rem(300);
-	gap: rem(40);
+	grid-template-columns: auto 300px;
+	gap: 40px;
 }
 
 .main-value {
-	margin: 0px 0px rem(30) 0px;
+	margin: 0px 0px 30px 0px;
 }
 
 .buttons {
-	border-bottom: rem(1) solid $color-second;
+	border-bottom: 1px solid $color-second;
 	display: flex;
 	justify-content: space-between;
-	gap: rem(5);
-	margin: 0px 0px rem(20) 0px;
+	gap: 5px;
+	margin: 0px 0px 20px 0px;
 }
 
 .btn {
 	flex-grow: 1;
-	border-radius: rem(10) rem(10) 0px 0px;
-	border: rem(1) solid $color-second;
+	border-radius: 10px 10px 0px 0px;
+	border: 1px solid $color-second;
 	border-bottom: none;
 	background: $color-second;
 	color: #fff;
 	text-align: center;
-	font-size: rem(20);
-	padding: rem(15) rem(24);
+	font-size: 20px;
+	padding: 15px 24px;
 	&:global(.active) {
 		background: #fff;
 		color: $color-second;
@@ -33,15 +33,15 @@
 }
 
 .content-wrapper {
-	height: rem(570);
+	height: 570px;
 	overflow-x: hidden;
 	overflow-y: auto;
-	width: calc(100% + rem(45));
-	padding-right: rem(45);
+	width: calc(100% + 45px);
+	padding-right: 45px;
 }
 
 .just-value {
-	font-size: rem(18);
+	font-size: 18px;
 	font-weight: 700;
 	min-height: 50;
 	display: flex;
@@ -50,15 +50,15 @@
 }
 
 .recomentations {
-	margin: rem(30) 0px 0px 0px;
+	margin: 30px 0px 0px 0px;
 
 	ol,
 	ul {
-		font-size: rem(20);
-		padding: 0px 0px 0px rem(25);
+		font-size: 20px;
+		padding: 0px 0px 0px 25px;
 	}
 }
 
 .recomentations-title {
-	margin: 0px 0px rem(10) 0px;
+	margin: 0px 0px 10px 0px;
 }

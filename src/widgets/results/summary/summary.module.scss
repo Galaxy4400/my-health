@@ -1,37 +1,37 @@
 .main {
 	display: grid;
-	grid-template-columns: auto rem(300);
-	gap: rem(40);
+	grid-template-columns: auto 300px;
+	gap: 40px;
 }
 
 .main-value {
-	margin: 0px 0px rem(50) 0px;
+	margin: 0px 0px 50px 0px;
 }
 
 .buttons {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: rem(20);
+	gap: 20px;
 }
 
 .btn {
-	border-radius: rem(10);
-	border: rem(1) solid $color-second;
+	border-radius: 10px;
+	border: 1px solid $color-second;
 	background: #fff;
-	padding: rem(15) rem(20);
+	padding: 15px 20px;
 }
 
 .btn-head {
-	min-height: rem(48);
+	min-height: 48px;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
-	margin: 0px 0px rem(20) 0px;
+	margin: 0px 0px 20px 0px;
 }
 
 .btn-title {
 	text-align: center;
-	font-size: rem(20);
+	font-size: 20px;
 	font-weight: 700;
 }
 
@@ -39,7 +39,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 0px 0px rem(10) 0px;
+	margin: 0px 0px 10px 0px;
 }
 
 .model {
@@ -47,6 +47,6 @@
 }
 
 .report-btn {
-	padding: rem(5) rem(15);
-	font-size: rem(20);
+	padding: 5px 15px;
+	font-size: 20px;
 }

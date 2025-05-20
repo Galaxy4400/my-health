@@ -1,11 +1,11 @@
 .title {
-	margin: 0px 0px rem(40) 0px;
+	margin: 0px 0px 40px 0px;
 }
 
 .items {
 	display: grid;
-	gap: rem(40);
-	margin: 0px 0px rem(80) 0px;
+	gap: 40px;
+	margin: 0px 0px 80px 0px;
 }
 
 .item {
@@ -13,10 +13,10 @@
 }
 
 .label {
-	margin: 0px 0px rem(10) 0px;
+	margin: 0px 0px 10px 0px;
 }
 
 .img {
-	padding: rem(30) 0px 0px 0px;
-	width: rem(400);
+	padding: 30px 0px 0px 0px;
+	width: 400px;
 }

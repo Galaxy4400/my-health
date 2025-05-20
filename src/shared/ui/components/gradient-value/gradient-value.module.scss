@@ -6,16 +6,16 @@
 	display: flex;
 	justify-content: center;
 	position: relative;
-	height: rem(30);
+	height: 30px;
 	&:global(.full) {
-		height: rem(40);
+		height: 40px;
 		align-items: center;
 	}
 }
 
 .title {
-	padding: rem(2) 0px 0px 0px;
-	font-size: rem(18);
+	padding: 2px 0px 0px 0px;
+	font-size: 18px;
 	&:global(.full) {
 		padding: 0px 0px 0px 0px;
 	}
@@ -32,7 +32,7 @@
 }
 
 .bottom {
-	height: rem(10);
+	height: 10px;
 }
 
 .chart-btn {
@@ -40,12 +40,12 @@
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: rem(10);
+	border-radius: 10px;
 	color: #fff;
 	position: absolute;
 	top: 50%;
-	left: calc(100% + rem(15));
+	left: calc(100% + 15px);
 	translate: 0 -50%;
-	width: rem(30);
-	height: rem(30);
+	width: 30px;
+	height: 30px;
 }

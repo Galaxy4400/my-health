@@ -1,13 +1,13 @@
 .steps {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
-	gap: rem(33);
-	margin: 0px 0px rem(80) 0px;
+	gap: 33px;
+	margin: 0px 0px 80px 0px;
 	&:global(.exam) {
 		grid-template-columns: repeat(6, 1fr);
 
 		.number::before {
-			width: rem(36);
+			width: 36px;
 		}
 	}
 }
@@ -18,7 +18,7 @@
 	display: grid;
 	justify-items: center;
 	text-align: center;
-	gap: rem(30);
+	gap: 30px;
 	&:last-child {
 		.number::before {
 			display: none;
@@ -31,12 +31,12 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: rem(90);
-	height: rem(90);
-	border: rem(1) solid $color-second;
+	width: 90px;
+	height: 90px;
+	border: 1px solid $color-second;
 	background: #fff;
 	color: #000;
-	font-size: rem(36);
+	font-size: 36px;
 	border-radius: 50%;
 	&:global(.active) {
 		background: $color-second;
@@ -45,15 +45,15 @@
 	&::before {
 		content: "";
 		position: absolute;
-		top: rem(45);
-		left: calc(100% + rem(15));
-		width: rem(68);
-		height: rem(1);
+		top: 45px;
+		left: calc(100% + 15px);
+		width: 68px;
+		height: 1px;
 		background: $color-second;
 	}
 }
 
 .label {
-	font-size: rem(20);
-	max-width: rem(170);
+	font-size: 20px;
+	max-width: 170px;
 }

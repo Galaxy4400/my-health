@@ -1,15 +1,15 @@
 .main {
 	background: $color-second;
-	padding: rem(13) 0px;
+	padding: 13px 0px;
 	display: grid;
 	align-content: center;
 	text-align: center;
-	height: rem(304);
+	height: 304px;
 }
 
 .body {
 	display: grid;
-	gap: rem(20);
+	gap: 20px;
 	justify-items: center;
 }
 
@@ -23,7 +23,7 @@
 
 .button-container {
 	position: relative;
-	height: rem(200);
+	height: 200px;
 	width: 100%;
 }
 
@@ -32,13 +32,13 @@
 	top: rem(-14);
 	left: 48%;
 	translate: -50% 0;
-	width: rem(150);
-	height: rem(150);
+	width: 150px;
+	height: 150px;
 }
 
 .hand {
 	position: absolute;
-	top: rem(50);
+	top: 50px;
 	left: 50%;
 	translate: -50% 0;
 	width: 100px;

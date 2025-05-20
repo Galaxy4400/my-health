@@ -1,21 +1,21 @@
 .main {
 	display: grid;
-	grid-template-columns: auto rem(300);
-	gap: rem(40);
+	grid-template-columns: auto 300px;
+	gap: 40px;
 }
 
 .main-value {
-	margin: 0px 0px rem(20) 0px;
+	margin: 0px 0px 20px 0px;
 }
 
 .content-wrapper {
-	height: rem(570);
+	height: 570px;
 	overflow-x: hidden;
 	overflow-y: auto;
 }
 
 .content {
-	font-size: rem(20);
+	font-size: 20px;
 
 	:global(.daily) {
 		b {
@@ -24,16 +24,16 @@
 	}
 
 	:global(.norecommend) {
-		margin: rem(20) 0px rem(10) 0px;
+		margin: 20px 0px 10px 0px;
 		color: $color-primary;
-		font-size: rem(20);
+		font-size: 20px;
 		font-weight: 700;
 	}
 
 	:global(.recommend) {
-		margin: rem(20) 0px rem(10) 0px;
+		margin: 20px 0px 10px 0px;
 		color: $color-second;
-		font-size: rem(20);
+		font-size: 20px;
 		font-weight: 700;
 	}
 }

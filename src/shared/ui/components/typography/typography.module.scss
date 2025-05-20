@@ -5,7 +5,7 @@
 	h4,
 	h5,
 	h6 {
-		margin: 0px 0px rem(20) 0px;
+		margin: 0px 0px 20px 0px;
 	}
 
 	a {
@@ -19,27 +19,27 @@
 	}
 
 	p {
-		margin: 0px 0px rem(20) 0px;
+		margin: 0px 0px 20px 0px;
 	}
 
 	figure {
 		display: inline-block;
-		margin: 0px 0px rem(20) 0px;
+		margin: 0px 0px 20px 0px;
 		img {
-			border-radius: rem(5);
+			border-radius: 5px;
 		}
 	}
 
 	ul {
-		padding: 0px 0px 0px rem(22);
-		margin: 0px 0px rem(10) 0px;
+		padding: 0px 0px 0px 22px;
+		margin: 0px 0px 10px 0px;
 		li {
 			position: relative;
 			line-height: 150%;
-			margin: 0px 0px rem(10) 0px;
+			margin: 0px 0px 10px 0px;
 			& > ul,
 			& > ol {
-				padding-top: rem(10);
+				padding-top: 10px;
 			}
 			&::before {
 				content: "";
@@ -55,14 +55,14 @@
 	}
 
 	ol {
-		padding: 0px 0px 0px rem(22);
-		margin: 0px 0px rem(15) 0px;
+		padding: 0px 0px 0px 22px;
+		margin: 0px 0px 15px 0px;
 		li {
 			line-height: 150%;
-			margin: 0px 0px rem(10) 0px;
+			margin: 0px 0px 10px 0px;
 			& > ul,
 			& > ol {
-				padding-top: rem(10);
+				padding-top: 10px;
 			}
 		}
 	}
@@ -74,18 +74,18 @@
 		tr {
 			th {
 				background: #fff;
-				padding: rem(15);
+				padding: 15px;
 				border: 1px solid $color-second;
 				text-align: center;
-				font-size: rem(20);
+				font-size: 20px;
 				font-weight: 600;
 				line-height: normal;
 			}
 			td {
 				background: #fff;
 				border: 1px solid $color-second;
-				padding: rem(15);
-				font-size: rem(20);
+				padding: 15px;
+				font-size: 20px;
 				line-height: normal;
 			}
 		}

@@ -2,9 +2,9 @@
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	font-size: rem(42);
-	width: rem(250);
-	height: rem(250);
+	font-size: 42px;
+	width: 250px;
+	height: 250px;
 	color: #fff;
 	background: $color-second;
 	border-radius: 50%;
@@ -15,8 +15,8 @@
 
 .progress {
 	position: absolute;
-	top: rem(10);
-	left: rem(10);
+	top: 10px;
+	left: 10px;
 	color: #2eb2bd;
 	z-index: 1;
 }

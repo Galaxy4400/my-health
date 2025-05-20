@@ -1,25 +1,25 @@
 .main {
 	display: grid;
 	justify-content: center;
-	padding: rem(60) rem(120);
+	padding: 60px 120px;
 }
 
 .form {
-	max-width: rem(434);
+	max-width: 434px;
 }
 
 .title {
-	margin: 0px 0px rem(40) 0px;
+	margin: 0px 0px 40px 0px;
 }
 
 .inputs {
 	display: grid;
-	gap: rem(20);
-	margin: 0px 0px rem(40) 0px;
+	gap: 20px;
+	margin: 0px 0px 40px 0px;
 }
 
 .login {
 	border: none !important;
-	border-bottom: rem(2) solid $color-second !important;
-	height: rem(59) !important;
+	border-bottom: 2px solid $color-second !important;
+	height: 59px !important;
 }

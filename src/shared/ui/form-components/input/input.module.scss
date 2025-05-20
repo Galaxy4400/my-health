@@ -1,37 +1,37 @@
 .label {
 	color: #888;
 	font-weight: 400;
-	font-size: rem(14);
+	font-size: 14px;
 	display: inline-block;
-	margin: 0px 0px rem(5) 0px;
+	margin: 0px 0px 5px 0px;
 }
 
 .input {
 	display: block;
 	width: 100%;
-	font-size: rem(20);
+	font-size: 20px;
 	line-height: prc(20, 16);
-	padding: rem(5) rem(20);
-	height: rem(44);
+	padding: 5px 20px;
+	height: 44px;
 	color: #000000;
 	background: #ffffff;
-	border: rem(1) solid $color-second;
+	border: 1px solid $color-second;
 	transition: border 0.3s ease 0s;
 	&:focus {
-		border: rem(1) solid $color-focus;
+		border: 1px solid $color-focus;
 	}
 	&.error {
-		border: rem(1) solid $color-error;
+		border: 1px solid $color-error;
 	}
 	&.success {
-		border: rem(1) solid $color-success;
+		border: 1px solid $color-success;
 	}
 }
 
 .error {
 	color: $color-error;
 	font-style: italic;
-	font-size: rem(12);
+	font-size: 12px;
 	&::first-letter {
 		text-transform: uppercase;
 	}

@@ -1,12 +1,12 @@
 .title {
-	margin: 0px 0px rem(40) 0px;
+	margin: 0px 0px 40px 0px;
 }
 
 .img {
 	text-align: center;
-	margin: 0px 0px rem(20) 0px;
+	margin: 0px 0px 20px 0px;
 	img {
-		width: rem(260);
+		width: 260px;
 	}
 }
 
@@ -14,7 +14,7 @@
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	border-radius: rem(7);
+	border-radius: 7px;
 	border: 1px solid $color-second;
 	background: #fff;
 	color: #000;
@@ -22,7 +22,7 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	font-size: rem(20);
-	height: rem(44);
-	padding: rem(5) rem(15);
+	font-size: 20px;
+	height: 44px;
+	padding: 5px 15px;
 }

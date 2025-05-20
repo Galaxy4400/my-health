@@ -1,48 +1,48 @@
 .main {
 	position: relative;
-	padding: rem(60) rem(120) rem(80);
+	padding: 60px 120px 80px;
 }
 
 .title {
 	text-align: center;
-	margin: 0px 0px rem(20) 0px;
+	margin: 0px 0px 20px 0px;
 }
 
 .label {
 	text-align: center;
-	margin: 0px 0px rem(40) 0px;
-	font-size: rem(24);
+	margin: 0px 0px 40px 0px;
+	font-size: 24px;
 }
 
 .form {
 }
 
 .inputs {
-	margin: 0px 0px rem(40) 0px;
+	margin: 0px 0px 40px 0px;
 }
 
 .inputs-row {
 	display: flex;
-	gap: rem(30);
+	gap: 30px;
 	justify-content: center;
 	align-items: center;
 }
 
 .input-label {
-	font-size: rem(24);
+	font-size: 24px;
 }
 
 .radios {
 	display: flex;
 	justify-content: center;
-	gap: rem(30);
-	margin: 0px 0px rem(40) 0px;
+	gap: 30px;
+	margin: 0px 0px 40px 0px;
 }
 
 .actions {
 	display: flex;
 	justify-content: center;
-	gap: rem(10);
+	gap: 10px;
 }
 
 .loader-wrapper {
