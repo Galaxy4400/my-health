@@ -6,6 +6,8 @@ export const selectApplicationData = createSelector(selectApplicationState, (sta
 
 export const selectOverrideData = createSelector(selectApplicationState, (state) => state.override);
 
+export const selectSummeryPageStatus = createSelector(selectApplicationState, (state) => state.summeryPage);
+
 export const selectApplicationSlider = createSelector(
 	selectApplicationState,
 	(state) => state.application.slider,

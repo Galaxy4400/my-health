@@ -3,9 +3,18 @@ import { Icon } from 'shared/ui/icons';
 import { TabsButton, useTabs } from 'shared/ui/components';
 import { Icons, ResultPage } from 'shared/types';
 import cn from 'classnames';
+import { useAppDispatch } from 'shared/lib/store';
+import { useEffect } from 'react';
+import { setSummeryPageStatus } from 'entities/application';
 
 export const ResultButtons = () => {
+	const dispatch = useAppDispatch();
+
 	const { openIndex } = useTabs();
+
+	useEffect(() => {
+		dispatch(setSummeryPageStatus(openIndex === ResultPage.summary));
+	}, [dispatch, openIndex]);
 
 	return (
 		<div className={css['main']}>

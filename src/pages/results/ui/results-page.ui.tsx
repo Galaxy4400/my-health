@@ -1,5 +1,5 @@
 import css from './results-page.module.scss';
-import { Button, Container, PageHead, Steps, Tabs, TabsContainer } from 'shared/ui/components';
+import { Button, Container, PageHead, Steps, Tabs, TabsContainer, useTabs } from 'shared/ui/components';
 import { ResultActions, ResultButtons } from './components';
 import {
 	Body,
@@ -18,10 +18,13 @@ import { selectPatientData, useAbortPatient } from 'entities/patient/patient-dat
 import { Navigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
 import { useAppSelector } from 'shared/lib/store';
+import { selectSummeryPageStatus } from 'entities/application';
+import cn from 'classnames';
 
 export const ResultsPage = () => {
 	const { abort } = useAbortPatient();
 	const patient = useAppSelector(selectPatientData);
+	const isSummery = useAppSelector(selectSummeryPageStatus);
 
 	if (!patient.visit_id) {
 		return <Navigate to={path.start()} />;
@@ -36,7 +39,7 @@ export const ResultsPage = () => {
 			</PageHead>
 			<Steps current={6} />
 			<Tabs active={ResultPage.summary}>
-				<div className={css['results']}>
+				<div className={cn(css['results'], isSummery ? 'is-summery' : '')}>
 					<TabsContainer index={ResultPage.summary}>
 						<Summary />
 					</TabsContainer>

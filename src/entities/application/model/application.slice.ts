@@ -26,6 +26,7 @@ const initialState: AppDataState = {
 		doctorRegisterLink: '',
 	},
 	override: null,
+	summeryPage: true,
 	loading: false,
 	error: null,
 };
@@ -39,6 +40,9 @@ export const applicationSlice = createSlice({
 		},
 		clearOverride: (state) => {
 			state.override = null;
+		},
+		setSummeryPageStatus: (state, { payload }: { payload: boolean }) => {
+			state.summeryPage = payload;
 		},
 	},
 	extraReducers: (builder) =>
@@ -58,6 +62,6 @@ export const applicationSlice = createSlice({
 			}),
 });
 
-export const { setOverride, clearOverride } = applicationSlice.actions;
+export const { setOverride, clearOverride, setSummeryPageStatus } = applicationSlice.actions;
 
 export const applicationReducer = applicationSlice.reducer;

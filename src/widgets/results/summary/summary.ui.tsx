@@ -52,8 +52,6 @@ export const Summary = () => {
 		return <Loader isLoading={loading} />;
 	}
 
-	console.log(data);
-
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
