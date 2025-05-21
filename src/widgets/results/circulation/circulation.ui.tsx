@@ -12,7 +12,7 @@ export const Circulation = () => {
 	const patient = useAppSelector(selectPatientData);
 
 	useEffect(() => {
-		patient3dModelRequest(patient.visit_id).then((results) => {
+		patient3dModelRequest(patient.visit_id, 'microcirculation').then((results) => {
 			setModelUrl(results.url);
 		});
 

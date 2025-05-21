@@ -210,11 +210,15 @@ export const patientCardRequest = (
 	return request({ method: 'POST', data: requestData });
 };
 
-export const patient3dModelRequest = (visitId: number | null): Promise<ModelResponseData> => {
+export const patient3dModelRequest = (
+	visitId: number | null,
+	page: 'spine' | 'microcirculation' | null = null,
+): Promise<ModelResponseData> => {
 	const requestData: RequestData = {
 		action: 'report',
 		subaction: '3d',
 		visit_id: visitId || 0,
+		...(page ? { page } : {}),
 	};
 	return request({ method: 'POST', data: requestData });
 };
