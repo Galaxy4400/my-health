@@ -38,6 +38,7 @@
 	overflow-y: auto;
 	width: calc(100% + 45px);
 	padding-right: 45px;
+	@extend %transgradient;
 }
 
 .just-value {

@@ -12,6 +12,7 @@
 	height: 550px;
 	overflow-x: hidden;
 	overflow-y: auto;
+	@extend %transgradient;
 }
 
 .content {
