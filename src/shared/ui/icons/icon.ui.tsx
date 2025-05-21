@@ -13,6 +13,8 @@ import Apple from './svg/apple.svg?react';
 import Gantel from './svg/gantel.svg?react';
 import Brain from './svg/brain.svg?react';
 import Chart from './svg/chart.svg?react';
+import Spine from './svg/spine.svg?react';
+import Circulation from './svg/circulation.svg?react';
 import { Icons } from 'shared/types';
 import { SVGProps } from 'react';
 
@@ -166,6 +168,26 @@ export const Icon = ({ name, className, width, height, ...rest }: IconProps) => 
 		case Icons.chart:
 			return (
 				<Chart
+					className={className}
+					{...(width !== undefined && { width })}
+					{...(height !== undefined && { height })}
+					{...rest}
+				/>
+			);
+
+		case Icons.spine:
+			return (
+				<Spine
+					className={className}
+					{...(width !== undefined && { width })}
+					{...(height !== undefined && { height })}
+					{...rest}
+				/>
+			);
+
+		case Icons.circulation:
+			return (
+				<Circulation
 					className={className}
 					{...(width !== undefined && { width })}
 					{...(height !== undefined && { height })}

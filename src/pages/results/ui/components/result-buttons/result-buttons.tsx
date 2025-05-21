@@ -94,13 +94,13 @@ export const ResultButtons = () => {
 					</TabsButton>
 					<TabsButton className={css['btn']} index={ResultPage.spine}>
 						<div className={css['icon']}>
-							<Icon name={Icons.gantel} />
+							<Icon name={Icons.spine} />
 						</div>
 						Здоровье позвоночника
 					</TabsButton>
 					<TabsButton className={css['btn']} index={ResultPage.circulation}>
 						<div className={css['icon']}>
-							<Icon name={Icons.gantel} />
+							<Icon name={Icons.circulation} />
 						</div>
 						Микро-циркуляция
 					</TabsButton>
