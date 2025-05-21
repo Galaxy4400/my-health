@@ -110,6 +110,18 @@ export interface SportPageData {
 	content: string;
 }
 
+export interface SpinePageData {
+	status: string;
+	content: string;
+	score: ScoreType;
+}
+
+export interface CirculationPageData {
+	status: string;
+	content: string;
+	score: ScoreType;
+}
+
 export interface ModelResponseData {
 	status: string;
 	url: string;

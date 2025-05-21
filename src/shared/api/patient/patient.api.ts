@@ -2,6 +2,7 @@ import { request } from '../request';
 import { PagingData, RequestData } from '../types';
 import {
 	BodyPageData,
+	CirculationPageData,
 	EmailStatus,
 	MeasureProcessStatus,
 	MeasureStatus,
@@ -15,6 +16,7 @@ import {
 	PatientSendFormData,
 	ResultPageData,
 	RisksPageData,
+	SpinePageData,
 	SportPageData,
 	SummaryPageData,
 	VisitType,
@@ -137,6 +139,28 @@ export const patientSportRequest = (visitId: number | null): Promise<SportPageDa
 		action: 'report',
 		subaction: 'page',
 		page: 'assignments',
+		visit_id: visitId || 0,
+	};
+
+	return request({ method: 'POST', data: requestData });
+};
+
+export const patientSpineRequest = (visitId: number | null): Promise<SpinePageData> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: 'page',
+		page: 'spine',
+		visit_id: visitId || 0,
+	};
+
+	return request({ method: 'POST', data: requestData });
+};
+
+export const patientCirculationRequest = (visitId: number | null): Promise<CirculationPageData> => {
+	const requestData: RequestData = {
+		action: 'report',
+		subaction: 'page',
+		page: 'microcirculation',
 		visit_id: visitId || 0,
 	};
 

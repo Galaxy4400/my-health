@@ -18,7 +18,7 @@ export const ResultButtons = () => {
 
 	return (
 		<div className={css['main']}>
-			{openIndex === 1 ? (
+			{openIndex === ResultPage.summary ? (
 				<>
 					<h3 className={css['title']}>Рекомендации:</h3>
 					<div className={css['start']}>
