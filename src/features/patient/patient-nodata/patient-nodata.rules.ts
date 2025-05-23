@@ -7,4 +7,6 @@ export const patientNodataFormRules = yup.object({
 	height: yup.lazy((_, { context }) => {
 		return context?.hasHeight ? yup.string().required() : yup.string().nullable();
 	}),
+	waist: yup.string(),
+	hips: yup.string(),
 });

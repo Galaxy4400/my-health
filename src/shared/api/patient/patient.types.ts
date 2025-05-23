@@ -31,6 +31,8 @@ export interface PatientNodataData {
 	gender: Gender;
 	age: number;
 	height?: number;
+	waist?: number;
+	hips?: number;
 	visitorId?: number;
 }
 

@@ -33,6 +33,8 @@ export const patientVisitRequest = (submittedData: PatientNodataData): Promise<P
 			devicedata: {
 				heightMeter: submittedData.height || 0,
 			},
+			waist: submittedData.waist || 0,
+			hips: submittedData.hips || 0,
 		},
 	};
 

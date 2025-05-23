@@ -22,6 +22,7 @@ const initialState: AppDataState = {
 			'buttons.email': true,
 			'buttons.medcard': true,
 			'buttons.print': true,
+			tape: true,
 		},
 		doctorRegisterLink: '',
 	},

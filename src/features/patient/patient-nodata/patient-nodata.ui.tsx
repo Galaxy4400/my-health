@@ -49,54 +49,86 @@ export const PatientNodata = () => {
 				context={{ hasHeight: !devices.heightMeter }}
 				ref={formRef}
 			>
-				<div className={css['inputs']}>
-					<div className={css['row']}>
-						<div className={css['column']}>
-							<h5 className={css['param']}>
-								Идентификатор пациента <br />
-								(не обязательно):
-							</h5>
-						</div>
-						<div className={css['column']}>
-							<div className={css['age-wrapper']}>
-								<Input name="visitorId" dataType="number" />
-							</div>
-						</div>
-					</div>
-					<div className={css['row']}>
-						<div className={css['column']}>
-							<h5 className={css['param']}>Вы:</h5>
-						</div>
-						<div className={css['column']}>
-							<div className={css['radios']}>
-								<Radio label="Мужчина" name="gender" value="male" />
-								<Radio label="Женщина" name="gender" value="female" />
-							</div>
-						</div>
-					</div>
-					<div className={css['row']}>
-						<div className={css['column']}>
-							<h5 className={css['param']}>Ваш возраст (полных лет):</h5>
-						</div>
-						<div className={css['column']}>
-							<div className={css['age-wrapper']}>
-								<Input name="age" dataType="number" />
-							</div>
-						</div>
-					</div>
-					{!devices.heightMeter && (
+				<div className={css['section']}>
+					<div className={css['inputs']}>
 						<div className={css['row']}>
 							<div className={css['column']}>
-								<h5 className={css['param']}>Ваш рост (см):</h5>
+								<h5 className={css['param']}>
+									Идентификатор пациента <br />
+									(не обязательно):
+								</h5>
 							</div>
 							<div className={css['column']}>
 								<div className={css['age-wrapper']}>
-									<Input name="height" dataType="number" />
+									<Input name="visitorId" dataType="number" />
 								</div>
 							</div>
 						</div>
-					)}
+						<div className={css['row']}>
+							<div className={css['column']}>
+								<h5 className={css['param']}>Вы:</h5>
+							</div>
+							<div className={css['column']}>
+								<div className={css['radios']}>
+									<Radio label="Мужчина" name="gender" value="male" />
+									<Radio label="Женщина" name="gender" value="female" />
+								</div>
+							</div>
+						</div>
+						<div className={css['row']}>
+							<div className={css['column']}>
+								<h5 className={css['param']}>Ваш возраст (полных лет):</h5>
+							</div>
+							<div className={css['column']}>
+								<div className={css['age-wrapper']}>
+									<Input name="age" dataType="number" />
+								</div>
+							</div>
+						</div>
+						{!devices.heightMeter && (
+							<div className={css['row']}>
+								<div className={css['column']}>
+									<h5 className={css['param']}>Ваш рост (см):</h5>
+								</div>
+								<div className={css['column']}>
+									<div className={css['age-wrapper']}>
+										<Input name="height" dataType="number" />
+									</div>
+								</div>
+							</div>
+						)}
+					</div>
 				</div>
+				{devices.tape && (
+					<div className={css['section']}>
+						<p className={css['label']}>
+							Если хотите получить более точные рекоммендации - возьмите прикреплённую рулетку, замерьте
+							обхват своей <b>талии</b> и <b>бёдер</b> и введите результаты:
+						</p>
+						<div className={css['inputs']}>
+							<div className={css['row']}>
+								<div className={css['column']}>
+									<h5 className={css['param']}>Охват талии, см:</h5>
+								</div>
+								<div className={css['column']}>
+									<div className={css['age-wrapper']}>
+										<Input name="waist" dataType="number" />
+									</div>
+								</div>
+							</div>
+							<div className={css['row']}>
+								<div className={css['column']}>
+									<h5 className={css['param']}>Охват бёдер, см:</h5>
+								</div>
+								<div className={css['column']}>
+									<div className={css['age-wrapper']}>
+										<Input name="hips" dataType="number" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				)}
 				<div className={css['actions']}>
 					<Button type="submit">Начать обследование</Button>
 				</div>

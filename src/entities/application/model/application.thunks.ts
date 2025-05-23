@@ -24,6 +24,7 @@ export const fetchGetApplication = createAsyncThunk<ApplicationType, void, { rej
 					'buttons.email': rest.general.devices['buttons.email'],
 					'buttons.medcard': rest.general.devices['buttons.medcard'],
 					'buttons.print': rest.general.devices['buttons.print'],
+					tape: rest.general.devices.tape,
 				},
 			};
 		} catch (error: unknown) {

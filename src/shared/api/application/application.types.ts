@@ -24,6 +24,7 @@ export interface Devices {
 	'buttons.email': boolean;
 	'buttons.print': boolean;
 	'buttons.medcard': boolean;
+	tape: boolean;
 }
 
 export interface ApplicationType {

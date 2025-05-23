@@ -59,6 +59,12 @@ export const StartPage = () => {
 					<IconItem icon={Icons.doc} width={34} height={42}>
 						Рекомендации
 					</IconItem>
+					<IconItem icon={Icons.spine} width={34} height={42}>
+						Здоровье позвоночника
+					</IconItem>
+					<IconItem icon={Icons.circulation} width={45} height={45}>
+						Микроциркуляция
+					</IconItem>
 				</div>
 				<div className={css['body']}>
 					<div className={css['block']}>
