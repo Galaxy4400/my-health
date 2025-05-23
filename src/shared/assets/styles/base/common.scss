@@ -12,11 +12,11 @@
 	}
 
 	::-webkit-scrollbar-thumb {
-		background: $color-primary-light;
+		background: $color-second;
 		border-radius: px(5);
 		border: px(2) solid #eeeeee;
 		&:hover {
-			background: $color-primary;
+			background: $color-second;
 		}
 	}
 }

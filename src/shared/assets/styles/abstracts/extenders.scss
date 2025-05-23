@@ -5,5 +5,9 @@
 	mask-size: 100% 100%;
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
-	padding: 0px 0px 50px 0px;
+	padding: 0px 10px 50px 0px;
+
+	&::-webkit-scrollbar {
+		display: unset;
+	}
 }
