@@ -14,6 +14,7 @@ interface GradientValueProps {
 	max?: number;
 	gradientColors?: string[] | string;
 	historyLink?: string;
+	indicatorImageLink?: string;
 }
 
 const getCssGradient = (colors: string[]) => {
@@ -27,6 +28,7 @@ export const GradientValue = ({
 	max = 0,
 	gradientColors,
 	historyLink,
+	indicatorImageLink,
 }: GradientValueProps) => {
 	const { openModal } = useModal();
 
@@ -38,25 +40,34 @@ export const GradientValue = ({
 
 	return (
 		<div className={css['main']}>
-			<div
-				className={cn(css['top'], !isGradient ? 'full' : '')}
-				style={{ background: gradientColors ? interpolateColor(value, min, max, gradientColors) : undefined }}
-			>
-				<h5 className={cn(css['title'], !isGradient ? 'full' : '', !gradientColors ? 'bold' : '')}>
-					{title}
-				</h5>
-				{isGradient && (
-					<img
-						className={css['arrow']}
-						src={arrow}
-						alt="arrow"
-						style={{ left: `${getRelationPercent(value, min, max)}%` }}
-					/>
-				)}
-			</div>
-			{isGradient && (
-				<div className={css['bottom']} style={{ background: getCssGradient(gradientColors) }}></div>
+			{!indicatorImageLink ? (
+				<>
+					<div
+						className={cn(css['top'], !isGradient ? 'full' : '')}
+						style={{
+							background: gradientColors ? interpolateColor(value, min, max, gradientColors) : undefined,
+						}}
+					>
+						<h5 className={cn(css['title'], !isGradient ? 'full' : '', !gradientColors ? 'bold' : '')}>
+							{title}
+						</h5>
+						{isGradient && (
+							<img
+								className={css['arrow']}
+								src={arrow}
+								alt="arrow"
+								style={{ left: `${getRelationPercent(value, min, max)}%` }}
+							/>
+						)}
+					</div>
+					{isGradient && (
+						<div className={css['bottom']} style={{ background: getCssGradient(gradientColors) }}></div>
+					)}
+				</>
+			) : (
+				<img src={indicatorImageLink} alt="indicator" />
 			)}
+
 			{historyLink && (
 				<button className={css['chart-btn']} onClick={() => historyHandler(historyLink)}>
 					<Icon name={Icons.chart}></Icon>

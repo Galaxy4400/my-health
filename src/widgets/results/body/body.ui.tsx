@@ -41,6 +41,8 @@ export const Body = () => {
 		return <Loader isLoading={loading} />;
 	}
 
+	console.log(data);
+
 	return (
 		<div className={css['main']}>
 			<div className={css['info']}>
@@ -77,6 +79,7 @@ export const Body = () => {
 												max={status.max === false ? undefined : status.max}
 												gradientColors={status.gradientColors}
 												historyLink={status.historyLink}
+												indicatorImageLink={status.indicatorImageLink}
 											/>
 										</ValueItem>
 									))}
@@ -95,6 +98,7 @@ export const Body = () => {
 												max={status.max === false ? undefined : status.max}
 												gradientColors={status.gradientColors}
 												historyLink={status.historyLink}
+												indicatorImageLink={status.indicatorImageLink}
 											/>
 										</ValueItem>
 									))}
@@ -114,6 +118,7 @@ export const Body = () => {
 													max={status.max === false ? undefined : status.max}
 													gradientColors={status.gradientColors}
 													historyLink={status.historyLink}
+													indicatorImageLink={status.indicatorImageLink}
 													key={j}
 												/>
 											))}

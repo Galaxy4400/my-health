@@ -60,6 +60,7 @@ export interface StatusType {
 	max: number | false;
 	gradientColors: string | string[];
 	historyLink?: string;
+	indicatorImageLink?: string;
 }
 
 export interface ScoreType {

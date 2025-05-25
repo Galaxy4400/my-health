@@ -50,6 +50,7 @@ export const Metabolism = () => {
 								max={status.max === false ? undefined : status.max}
 								gradientColors={status.gradientColors}
 								historyLink={status.historyLink}
+								indicatorImageLink={status.indicatorImageLink}
 							/>
 						</ValueItem>
 					))}

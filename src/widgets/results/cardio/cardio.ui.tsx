@@ -45,6 +45,7 @@ export const Cardio = () => {
 								max={status.max === false ? undefined : status.max}
 								gradientColors={status.gradientColors}
 								historyLink={status.historyLink}
+								indicatorImageLink={status.indicatorImageLink}
 							/>
 						</ValueItem>
 					))}
