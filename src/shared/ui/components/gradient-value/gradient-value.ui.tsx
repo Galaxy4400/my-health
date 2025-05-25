@@ -65,7 +65,7 @@ export const GradientValue = ({
 					)}
 				</>
 			) : (
-				<img src={indicatorImageLink} alt="indicator" />
+				<img src={`${API_BASE_URL}${indicatorImageLink}`} alt="indicator" />
 			)}
 
 			{historyLink && (
