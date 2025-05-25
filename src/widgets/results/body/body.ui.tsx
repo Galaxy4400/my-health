@@ -105,7 +105,7 @@ export const Body = () => {
 							<div className={css['content-wrapper']}>
 								<ValueGrid>
 									{data.statuses_tab3.map((item, i) => (
-										<ValueGridItem title={item.label} row={item.row} col={item.col} key={i}>
+										<ValueGridItem title={item.label} row={item.row} col={item.col} index={i} key={i}>
 											{item.gradients.map((status, j) => (
 												<GradientValue
 													title={status.title}
