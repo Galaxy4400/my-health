@@ -37,7 +37,7 @@ export const ResultsPage = () => {
 					Завершить исследование
 				</Button>
 			</PageHead>
-			<Steps current={6} />
+			{/* <Steps current={6} /> */}
 			<Tabs active={ResultPage.summary}>
 				<div className={cn(css['results'], isSummery ? 'is-summery' : '')}>
 					<TabsContainer index={ResultPage.summary}>
