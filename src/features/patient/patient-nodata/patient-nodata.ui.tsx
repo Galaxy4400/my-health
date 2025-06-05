@@ -85,18 +85,16 @@ export const PatientNodata = () => {
 								</div>
 							</div>
 						</div>
-						{!devices.heightMeter && (
-							<div className={css['row']}>
-								<div className={css['column']}>
-									<h5 className={css['param']}>Ваш рост (см):</h5>
-								</div>
-								<div className={css['column']}>
-									<div className={css['age-wrapper']}>
-										<Input name="height" dataType="number" />
-									</div>
+						<div className={css['row']}>
+							<div className={css['column']}>
+								<h5 className={css['param']}>Ваш рост (см):</h5>
+							</div>
+							<div className={css['column']}>
+								<div className={css['age-wrapper']}>
+									<Input name="height" dataType="number" />
 								</div>
 							</div>
-						)}
+						</div>
 					</div>
 				</div>
 				{devices.tape && (
