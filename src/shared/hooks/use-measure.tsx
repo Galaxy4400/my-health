@@ -16,9 +16,19 @@ export const useMeasure = () => {
 	const startMeasure = async (step: number, visitId: number, overide: Override | null = null) => {
 		setError(null);
 
-		const result = await patientMeasureRequest(step, visitId, overide);
+		try {
+			const result = await patientMeasureRequest(step, visitId, overide);
 
-		return result;
+			if (result.status !== 'ok') {
+				setError(result.message);
+
+				throw new Error(result.message || 'Неизвестная ошибка');
+			}
+
+			return result;
+		} catch (err) {
+			throw new Error(err as string);
+		}
 	};
 
 	return { startMeasure, error };
