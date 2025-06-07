@@ -19,6 +19,7 @@ export const fetchPatientVisit = createAsyncThunk<PatientType, PatientNodataData
 				age: submittedData.age,
 				waist: submittedData.waist,
 				hips: submittedData.hips,
+				neck: submittedData.neck,
 			};
 		} catch (error: unknown) {
 			const knownError = error as ErrorType;

@@ -33,6 +33,10 @@ export interface PatientNodataData {
 	height?: number;
 	waist?: number;
 	hips?: number;
+	neck?: number;
+	caliper1?: number;
+	caliper2?: number;
+	caliper3?: number;
 	visitorId?: number;
 }
 

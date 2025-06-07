@@ -1,12 +1,12 @@
 import css from './patient-nodata.module.scss';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, Form, Input, Radio } from 'shared/ui/form-components';
+import { Button, Form, FormRef, Input, Radio } from 'shared/ui/form-components';
 import { patientNodataFormRules } from './patient-nodata.rules';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
-import { PatientNodataData } from 'shared/api/patient';
+import { Gender, PatientNodataData } from 'shared/api/patient';
 import { RequestData } from 'shared/api';
 import { useModal } from 'app/providers/modal';
 import { WarningPopup } from 'shared/ui/components';
@@ -15,10 +15,11 @@ import { selectApplicationDevices } from 'entities/application';
 
 export const PatientNodata = () => {
 	const navigate = useNavigate();
-	const formRef = useRef<HTMLFormElement | null>(null);
+	const formRef = useRef<FormRef>(null);
 	const dispatch = useAppDispatch();
 	const { openModal, closeModal } = useModal();
 	const devices = useAppSelector(selectApplicationDevices);
+	const [gender, setGender] = useState<Gender | null>(null);
 
 	const submitHandler = async (data: RequestData) => {
 		try {
@@ -37,6 +38,12 @@ export const PatientNodata = () => {
 		}
 	};
 
+	const onChangeHandler = () => {
+		const gender = formRef.current?.getValues()?.gender;
+
+		setGender(gender);
+	};
+
 	return (
 		<div className={css['main']}>
 			<p className={css['label']}>
@@ -47,6 +54,7 @@ export const PatientNodata = () => {
 				onSubmit={submitHandler}
 				resolver={yupResolver(patientNodataFormRules)}
 				context={{ hasHeight: !devices.heightMeter }}
+				onChange={onChangeHandler}
 				ref={formRef}
 			>
 				<div className={css['section']}>
@@ -98,34 +106,89 @@ export const PatientNodata = () => {
 					</div>
 				</div>
 				{devices.tape && (
-					<div className={css['section']}>
-						<p className={css['label']}>
-							Если хотите получить более точные рекоммендации - возьмите прикреплённую рулетку, замерьте
-							обхват своей <b>талии</b> и <b>бёдер</b> и введите результаты:
-						</p>
-						<div className={css['inputs']}>
-							<div className={css['row']}>
-								<div className={css['column']}>
-									<h5 className={css['param']}>Охват талии, см:</h5>
-								</div>
-								<div className={css['column']}>
-									<div className={css['age-wrapper']}>
-										<Input name="waist" dataType="number" />
+					<>
+						<div className={css['section']}>
+							<p className={css['label']}>
+								Если хотите получить более точные рекоммендации - возьмите прикреплённую рулетку, замерьте
+								обхват своей <b>талии, бёдер</b> и <b>шеи</b> и введите результаты:
+							</p>
+							<div className={css['inputs']}>
+								<div className={css['row']}>
+									<div className={css['column']}>
+										<h5 className={css['param']}>Охват талии, см:</h5>
+									</div>
+									<div className={css['column']}>
+										<div className={css['age-wrapper']}>
+											<Input name="waist" dataType="number" />
+										</div>
 									</div>
 								</div>
-							</div>
-							<div className={css['row']}>
-								<div className={css['column']}>
-									<h5 className={css['param']}>Охват бёдер, см:</h5>
+								<div className={css['row']}>
+									<div className={css['column']}>
+										<h5 className={css['param']}>Охват бёдер, см:</h5>
+									</div>
+									<div className={css['column']}>
+										<div className={css['age-wrapper']}>
+											<Input name="hips" dataType="number" />
+										</div>
+									</div>
 								</div>
-								<div className={css['column']}>
-									<div className={css['age-wrapper']}>
-										<Input name="hips" dataType="number" />
+								<div className={css['row']}>
+									<div className={css['column']}>
+										<h5 className={css['param']}>Охват шеи, см:</h5>
+									</div>
+									<div className={css['column']}>
+										<div className={css['age-wrapper']}>
+											<Input name="neck" dataType="number" />
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+						{gender && (
+							<div className={css['section']}>
+								<p className={css['label']}>
+									Если вы хотите получить максимально точные результаты и рекомендации - используйте калипер
+									для измерения толщины складок кожи в трёх точках. Обратите внимание: точки разные для мужчин
+									и женщин
+								</p>
+								<div className={css['inputs']}>
+									<div className={css['row']}>
+										<div className={css['column']}>
+											<h5 className={css['param']}>{gender === 'male' ? 'Грудь' : 'Трицепс'}, мм:</h5>
+										</div>
+										<div className={css['column']}>
+											<div className={css['age-wrapper']}>
+												<Input name="caliper1" dataType="number" />
+											</div>
+										</div>
+									</div>
+									<div className={css['row']}>
+										<div className={css['column']}>
+											<h5 className={css['param']}>
+												{gender === 'male' ? 'Живот' : 'Бок над подвздошной костью'}, мм:
+											</h5>
+										</div>
+										<div className={css['column']}>
+											<div className={css['age-wrapper']}>
+												<Input name="caliper2" dataType="number" />
+											</div>
+										</div>
+									</div>
+									<div className={css['row']}>
+										<div className={css['column']}>
+											<h5 className={css['param']}>{gender === 'male' ? 'Бедро' : 'Бедро'}, мм:</h5>
+										</div>
+										<div className={css['column']}>
+											<div className={css['age-wrapper']}>
+												<Input name="caliper3" dataType="number" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						)}
+					</>
 				)}
 				<div className={css['actions']}>
 					<Button type="submit">Начать обследование</Button>

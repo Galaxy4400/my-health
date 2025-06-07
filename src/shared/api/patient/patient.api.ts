@@ -35,6 +35,10 @@ export const patientVisitRequest = (submittedData: PatientNodataData): Promise<P
 			},
 			waist: submittedData.waist || 0,
 			hips: submittedData.hips || 0,
+			neck: submittedData.neck || 0,
+			caliper1: submittedData.caliper1 || 0,
+			caliper2: submittedData.caliper2 || 0,
+			caliper3: submittedData.caliper3 || 0,
 		},
 	};
 
