@@ -1,7 +1,7 @@
 .main {
 	display: grid;
 	grid-template-columns: auto 300px;
-	gap: 40px;
+	gap: 50px;
 }
 
 .main-value {
@@ -12,7 +12,7 @@
 	height: 660px;
 	overflow-x: hidden;
 	overflow-y: auto;
-	@extend %transgradient;
+	@extend %contentwrapper;
 }
 
 .content {
@@ -38,5 +38,47 @@
 		color: $color-second;
 		font-size: 20px;
 		font-weight: 700;
+	}
+
+	ol,
+	ul {
+		font-size: 20px;
+		padding: 0px 0px 0px 25px;
+		margin: 10px 0px;
+		li {
+			position: relative;
+			margin: 10px 0px;
+			&::before {
+				content: "";
+				position: absolute;
+				width: 6px;
+				height: 6px;
+				background: #000;
+				top: 10px;
+				left: -20px;
+				border-radius: 50%;
+			}
+			ul {
+				li {
+					&::before {
+						background: transparent;
+						border: 1px solid #000;
+						border-radius: 50%;
+					}
+					ul {
+						li {
+							&::before {
+								content: "";
+								top: 13px;
+								height: 1px;
+								background: #000;
+								border: 1px solid #000;
+								border-radius: unset;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }

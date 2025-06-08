@@ -106,12 +106,16 @@ export const PatientNodata = () => {
 					</div>
 				</div>
 				{devices.tape && (
-					<>
-						<div className={css['section']}>
-							<p className={css['label']}>
-								Если хотите получить более точные рекоммендации - возьмите прикреплённую рулетку, замерьте
-								обхват своей <b>талии, бёдер</b> и <b>шеи</b> и введите результаты:
-							</p>
+					<div className={css['section']}>
+						<p className={css['label']}>
+							Если хотите получить более точные рекоммендации - возьмите прикреплённую рулетку, замерьте
+							обхват своей <b>талии, бёдер</b> и <b>шеи</b> и введите результаты.
+							<br />
+							Если вы хотите получить максимально точные результаты и рекомендации - используйте калипер для
+							измерения толщины складок кожи в трёх точках. Обратите внимание: точки разные для мужчин и
+							женщин.
+						</p>
+						<div className={css['options']}>
 							<div className={css['inputs']}>
 								<div className={css['row']}>
 									<div className={css['column']}>
@@ -144,51 +148,42 @@ export const PatientNodata = () => {
 									</div>
 								</div>
 							</div>
-						</div>
-						{gender && (
-							<div className={css['section']}>
-								<p className={css['label']}>
-									Если вы хотите получить максимально точные результаты и рекомендации - используйте калипер
-									для измерения толщины складок кожи в трёх точках. Обратите внимание: точки разные для мужчин
-									и женщин
-								</p>
-								<div className={css['inputs']}>
-									<div className={css['row']}>
-										<div className={css['column']}>
-											<h5 className={css['param']}>{gender === 'male' ? 'Грудь' : 'Трицепс'}, мм:</h5>
-										</div>
-										<div className={css['column']}>
-											<div className={css['age-wrapper']}>
-												<Input name="caliper1" dataType="number" />
-											</div>
+							<div className={css['inputs']}>
+								<div className={css['row']}>
+									<div className={css['column']}>
+										<h5 className={css['param']}>{gender === 'male' ? 'Грудь' : 'Трицепс'}, мм:</h5>
+									</div>
+									<div className={css['column']}>
+										<div className={css['age-wrapper']}>
+											<Input name="caliper1" dataType="number" />
 										</div>
 									</div>
-									<div className={css['row']}>
-										<div className={css['column']}>
-											<h5 className={css['param']}>
-												{gender === 'male' ? 'Живот' : 'Бок над подвздошной костью'}, мм:
-											</h5>
-										</div>
-										<div className={css['column']}>
-											<div className={css['age-wrapper']}>
-												<Input name="caliper2" dataType="number" />
-											</div>
+								</div>
+								<div className={css['row']}>
+									<div className={css['column']}>
+										<h5 className={css['param']}>
+											{gender === 'male' ? 'Живот' : 'Бок над подвздошной костью'}, мм:
+										</h5>
+									</div>
+									<div className={css['column']}>
+										<div className={css['age-wrapper']}>
+											<Input name="caliper2" dataType="number" />
 										</div>
 									</div>
-									<div className={css['row']}>
-										<div className={css['column']}>
-											<h5 className={css['param']}>{gender === 'male' ? 'Бедро' : 'Бедро'}, мм:</h5>
-										</div>
-										<div className={css['column']}>
-											<div className={css['age-wrapper']}>
-												<Input name="caliper3" dataType="number" />
-											</div>
+								</div>
+								<div className={css['row']}>
+									<div className={css['column']}>
+										<h5 className={css['param']}>{gender === 'male' ? 'Бедро' : 'Бедро'}, мм:</h5>
+									</div>
+									<div className={css['column']}>
+										<div className={css['age-wrapper']}>
+											<Input name="caliper3" dataType="number" />
 										</div>
 									</div>
 								</div>
 							</div>
-						)}
-					</>
+						</div>
+					</div>
 				)}
 				<div className={css['actions']}>
 					<Button type="submit">Начать обследование</Button>

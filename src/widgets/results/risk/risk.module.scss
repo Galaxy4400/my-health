@@ -1,7 +1,7 @@
 .main {
 	display: grid;
 	grid-template-columns: auto 300px;
-	gap: 40px;
+	gap: 50px;
 }
 
 .main-value {
@@ -36,9 +36,7 @@
 	height: 800px;
 	overflow-x: hidden;
 	overflow-y: auto;
-	width: calc(100% + 45px);
-	padding-right: 50px;
-	@extend %transgradient;
+	@extend %contentwrapper;
 }
 
 .just-value {

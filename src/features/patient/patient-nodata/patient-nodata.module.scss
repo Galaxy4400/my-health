@@ -26,6 +26,12 @@
 	}
 }
 
+.options {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: rem(30);
+}
+
 .inputs {
 	display: grid;
 	gap: 10px;
@@ -37,7 +43,7 @@
 
 .row {
 	display: grid;
-	grid-template-columns: 45% 1fr;
+	grid-template-columns: 50% 1fr;
 	gap: 30px;
 	align-items: center;
 }

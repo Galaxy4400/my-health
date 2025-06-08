@@ -1,4 +1,4 @@
-%transgradient {
+%contentwrapper {
 	-webkit-mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 100px), transparent 100%);
 	mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 100px), transparent 100%);
 	-webkit-mask-size: 100% 100%;
@@ -6,6 +6,9 @@
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
 	padding: 0px 10px 50px 0px;
+
+	width: calc(100% + 45px);
+	padding-right: 50px;
 
 	&::-webkit-scrollbar {
 		display: unset;

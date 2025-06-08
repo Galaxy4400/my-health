@@ -1,7 +1,7 @@
 .main {
 	display: grid;
 	grid-template-columns: auto 300px;
-	gap: 40px;
+	gap: 50px;
 }
 
 .main-value {
@@ -13,7 +13,7 @@
 	height: 790px;
 	overflow-x: hidden;
 	overflow-y: auto;
-	@extend %transgradient;
+	@extend %contentwrapper;
 }
 
 .content {
