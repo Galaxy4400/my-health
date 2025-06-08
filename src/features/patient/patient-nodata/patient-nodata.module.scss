@@ -7,7 +7,8 @@
 
 .title {
 	text-align: center;
-	margin: 0px 0px 32px 0px;
+	font-weight: 700;
+	font-size: rem(22);
 }
 
 .form {
@@ -61,7 +62,7 @@
 }
 
 .radios {
-	padding: 22px 0px;
+	padding: 12px 0px;
 	display: flex;
 	gap: 30px;
 }
